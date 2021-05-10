@@ -1,0 +1,178 @@
+/*
+ *  Project      : Infantry_Momentum
+ * 
+ *  file         : supercap_ctrl.c
+ *  Description  : This file contains cap control function
+ *  LastEditors  : 动情丶卜灬动心
+ *  Date         : 2021-05-04 20:53:31
+ *  LastEditTime : 2021-05-08 09:28:56
+ */
+
+#include "supercap_ctrl.h"
+
+#if __FN_IF_ENABLE(__FN_SUPER_CAP)
+
+#include "buscomm_ctrl.h"
+#include "const_lib.h"
+
+CAP_ControlValueTypeDef Cap_ControlState;
+
+/**
+ * @brief      Set charge current
+ * @param      cur: cap charge current (ma)
+ * @retval     NULL
+ */
+void Cap_SetChargeCurrent(float cur) {
+    /* Set charging dead zone */
+    float current = cur / 1000.0f;
+    if (current <= 0.1f) {
+        DAC_SetCurrent(0.0f);
+    }
+    else if (current >= 5.0f) {
+        DAC_SetCurrent(5.0f);
+    }
+    else {
+        DAC_SetCurrent(current);
+    }
+}
+
+
+/**
+ * @brief      Cap Initialize control function
+ * @param      NULL
+ * @retval     NULL
+ */
+void Cap_Init() {
+    CAP_ControlValueTypeDef *capvalue = Cap_GetCapControlPtr();
+
+    Cap_SetChargeCurrent(4);
+    /* set init current */
+    GPIO_Open(CAP);
+    GPIO_Open(BUCK);
+    GPIO_Close(BOOST);
+    /* set init state   */
+
+    capvalue->cap_state = CAP_MODE_OFF;
+    capvalue->power_limit = 40.0f;
+    capvalue->power_path = Power_PATH_REFEREE;
+    capvalue->charge_state = CAP_CHARGE_OFF;
+
+    HAL_Delay(2000);
+}
+
+
+/**
+  * @brief      Gets the pointer to the cap control data object
+  * @param      NULL
+  * @retval     Pointer to cap control data object
+  */
+CAP_ControlValueTypeDef* Cap_GetCapControlPtr() {
+    return &Cap_ControlState;
+}
+
+
+/**
+ * @brief      Judge capacitor state
+ * @param      NULL
+ * @retval     NULL
+ */
+void Cap_JudgeCapState() {
+    Sen_CAPBasisValueTypeDef *basisvalue = Sen_GetBasisDataPtr();
+    CAP_ControlValueTypeDef *capvalue = Cap_GetCapControlPtr();
+    BusComm_BusCommDataTypeDef *buscomm = BusComm_GetBusDataPtr();
+
+    if (basisvalue->CapVoltage < Cap_MinVoltage && basisvalue->CapVoltage >= 0) {
+        capvalue->cap_state = CAP_MODE_OFF;
+        buscomm->cap_state = SUPERCAP_MODE_OFF;
+    }
+    else if (basisvalue->CapVoltage <= 0) {
+        capvalue->cap_state = CAP_MODE_ERROR;
+        buscomm->cap_state = SUPERCAP_MODE_ERROR;
+    }
+    else if (basisvalue->CapVoltage >= Cap_AvailableVoltage) {
+        capvalue->cap_state = CAP_MODE_ON;
+        buscomm->cap_state = SUPERCAP_MODE_ON;
+    }
+}
+
+
+/**
+ * @brief      Change Control mode
+ * @param      NULL
+ * @retval     NULL
+ */
+void Cap_CapCharge() {
+    CAP_ControlValueTypeDef *capvalue = Cap_GetCapControlPtr();
+    Sen_PowerValueTypeDef *sendata = Sen_GetPowerDataPtr();
+    Sen_CAPBasisValueTypeDef *basisdata = Sen_GetBasisDataPtr();
+    BusComm_BusCommDataTypeDef *buscomm = BusComm_GetBusDataPtr();
+
+    if (buscomm->cap_charge_mode == SUPERCAP_UNCHARGE) {
+        GPIO_Close(BUCK);
+        Cap_SetChargeCurrent(0);
+    }
+    else if(buscomm->cap_charge_mode == SUPERCAP_CHARGE) {
+        capvalue->power_limit = 0.6f * (float)buscomm->power_limit;
+
+        if (basisdata->CapVoltage <= 10.0f) {
+            Cap_SetChargeCurrent(3.5);
+        }
+        else {
+            Cap_SetChargeCurrent(capvalue->power_limit / basisdata->CapVoltage);
+        }
+        GPIO_Open(BUCK);
+    }
+}
+
+
+/**
+ * @brief      Change Control mode
+ * @param      NULL
+ * @retval     success 1 fail 0
+ */
+uint8_t Cap_ChangePowerPath(POWER_PathEnum path) {
+    CAP_ControlValueTypeDef *capvalue = Cap_GetCapControlPtr();
+    
+    if (path == Power_PATH_CAP && (capvalue->cap_state == CAP_MODE_ERROR || capvalue->cap_state == CAP_MODE_OFF)) {
+        GPIO_Close(CAP);
+        return 0;
+    }
+
+    else if (path == Power_PATH_CAP && capvalue->cap_state == CAP_MODE_ON) {
+        GPIO_Open(CAP);
+        return 1;  
+    }
+    else if (path == Power_PATH_REFEREE) {
+        GPIO_Close(CAP);
+        return 1;
+    }
+    else {
+        return 0;
+    }
+}
+
+
+/**
+ * @brief      Super Cap control function
+ * @param      NULL
+ * @retval     NULL
+ */ 
+void Cap_Control() {
+    BusComm_BusCommDataTypeDef *buscomm = BusComm_GetBusDataPtr();
+
+    uint8_t errorstate;
+
+    Sensor_Decode();
+		// sensor data decode
+    Cap_JudgeCapState();
+        // Judege Cap state
+    Cap_CapCharge();
+
+    if (buscomm->cap_mode == SUPERCAP_CTRL_ON)
+        errorstate = Cap_ChangePowerPath(Power_PATH_CAP);
+
+	else if (buscomm->cap_mode == SUPERCAP_CTRL_OFF)
+        errorstate = Cap_ChangePowerPath(Power_PATH_REFEREE);
+}
+
+#endif

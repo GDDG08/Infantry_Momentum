@@ -26,7 +26,18 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include "configure.h"
+#include "gim_gimbal_ctrl.h"
+#include "gim_miniPC_ctrl.h"
+#include "gim_shoot_ctrl.h"
+#include "gim_remote_ctrl.h"
+#include "cha_referee_ctrl.h"
+#include "cha_chassis_ctrl.h"
+#include "cha_gimbal_ctrl.h"
+#include "cha_power_ctrl.h"
+#include "supercap_ctrl.h"
+#include "buscomm_ctrl.h"
+#include "watchdog_ctrl.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -50,13 +61,14 @@
 /* USER CODE END Variables */
 osThreadId defaultTaskHandle;
 osThreadId GimbalHandle;
-osThreadId BoardCommHandle;
+osThreadId BusCommHandle;
 osThreadId RemoteHandle;
 osThreadId ChassisHandle;
 osThreadId SuperCapHandle;
 osThreadId ShootHandle;
 osThreadId MiniPCHandle;
 osThreadId RefereeHandle;
+osThreadId WatchDogHandle;
 
 /* Private function prototypes -----------------------------------------------*/
 /* USER CODE BEGIN FunctionPrototypes */
@@ -65,13 +77,14 @@ osThreadId RefereeHandle;
 
 void StartDefaultTask(void const * argument);
 void Gimbal_Task(void const * argument);
-void BoardComm_Task(void const * argument);
+void BusComm_Task(void const * argument);
 void Remote_Task(void const * argument);
 void Chassis_Task(void const * argument);
 void SuperCap_Task(void const * argument);
 void Shoot_Task(void const * argument);
 void MiniPC_Task(void const * argument);
 void Referee_Task(void const * argument);
+void WatchDog_Task(void const * argument);
 
 void MX_FREERTOS_Init(void); /* (MISRA C 2004 rule 8.1) */
 
@@ -126,9 +139,9 @@ void MX_FREERTOS_Init(void) {
   osThreadDef(Gimbal, Gimbal_Task, osPriorityNormal, 0, 128);
   GimbalHandle = osThreadCreate(osThread(Gimbal), NULL);
 
-  /* definition and creation of BoardComm */
-  osThreadDef(BoardComm, BoardComm_Task, osPriorityNormal, 0, 128);
-  BoardCommHandle = osThreadCreate(osThread(BoardComm), NULL);
+  /* definition and creation of BusComm */
+  osThreadDef(BusComm, BusComm_Task, osPriorityNormal, 0, 128);
+  BusCommHandle = osThreadCreate(osThread(BusComm), NULL);
 
   /* definition and creation of Remote */
   osThreadDef(Remote, Remote_Task, osPriorityNormal, 0, 128);
@@ -153,6 +166,10 @@ void MX_FREERTOS_Init(void) {
   /* definition and creation of Referee */
   osThreadDef(Referee, Referee_Task, osPriorityNormal, 0, 128);
   RefereeHandle = osThreadCreate(osThread(Referee), NULL);
+
+  /* definition and creation of WatchDog */
+  osThreadDef(WatchDog, WatchDog_Task, osPriorityNormal, 0, 128);
+  WatchDogHandle = osThreadCreate(osThread(WatchDog), NULL);
 
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
@@ -191,27 +208,38 @@ void Gimbal_Task(void const * argument)
   /* Infinite loop */
   for(;;)
   {
+    #if __FN_IF_ENABLE(__FN_INFANTRY_GIMBAL)
+      MiniPC_CalcAutoAim();
+      Gimbal_CtrlPitch();
+      Gimbal_CtrlYaw();
+      GimbalPitch_Output();
+    #endif
+    #if __FN_IF_ENABLE(__FN_INFANTRY_CHASSIS)
+      GimbalYaw_Control();
+      GimbalYaw_Output();
+    #endif
     osDelay(1);
   }
   /* USER CODE END Gimbal_Task */
 }
 
-/* USER CODE BEGIN Header_BoardComm_Task */
+/* USER CODE BEGIN Header_BusComm_Task */
 /**
-* @brief Function implementing the BoardComm thread.
+* @brief Function implementing the BusComm thread.
 * @param argument: Not used
 * @retval None
 */
-/* USER CODE END Header_BoardComm_Task */
-void BoardComm_Task(void const * argument)
+/* USER CODE END Header_BusComm_Task */
+void BusComm_Task(void const * argument)
 {
-  /* USER CODE BEGIN BoardComm_Task */
+  /* USER CODE BEGIN BusComm_Task */
   /* Infinite loop */
   for(;;)
   {
+    BusComm_SendBusCommData();
     osDelay(1);
   }
-  /* USER CODE END BoardComm_Task */
+  /* USER CODE END BusComm_Task */
 }
 
 /* USER CODE BEGIN Header_Remote_Task */
@@ -227,6 +255,9 @@ void Remote_Task(void const * argument)
   /* Infinite loop */
   for(;;)
   {
+    #if __FN_IF_ENABLE(__FN_CTRL_REMOTE)
+        Remote_ControlCom();
+    #endif
     osDelay(1);
   }
   /* USER CODE END Remote_Task */
@@ -245,6 +276,10 @@ void Chassis_Task(void const * argument)
   /* Infinite loop */
   for(;;)
   {
+    #if __FN_IF_ENABLE(__FN_CTRL_CHASSIS)
+        Chassis_Control();
+        Chassis_Output();
+    #endif
     osDelay(1);
   }
   /* USER CODE END Chassis_Task */
@@ -263,6 +298,9 @@ void SuperCap_Task(void const * argument)
   /* Infinite loop */
   for(;;)
   {
+    #if __FN_IF_ENABLE(__FN_SUPER_CAP)
+//        Cap_Control();
+    #endif
     osDelay(1);
   }
   /* USER CODE END SuperCap_Task */
@@ -281,6 +319,9 @@ void Shoot_Task(void const * argument)
   /* Infinite loop */
   for(;;)
   {
+    #if __FN_IF_ENABLE(__FN_CTRL_SHOOTER)
+        Shooter_Control();
+    #endif
     osDelay(1);
   }
   /* USER CODE END Shoot_Task */
@@ -299,7 +340,10 @@ void MiniPC_Task(void const * argument)
   /* Infinite loop */
   for(;;)
   {
-    osDelay(1);
+    #if __FN_IF_ENABLE(__FN_PERIPH_MINIPC)
+        MiniPC_SendHeartPacket();
+    #endif
+    osDelay(100);
   }
   /* USER CODE END MiniPC_Task */
 }
@@ -317,9 +361,31 @@ void Referee_Task(void const * argument)
   /* Infinite loop */
   for(;;)
   {
-    osDelay(1);
+    #if __FN_IF_ENABLE(__FN_CTRL_REFEREE)
+        DrawCtrl_Update();
+    #endif
+    osDelay(200);
   }
   /* USER CODE END Referee_Task */
+}
+
+/* USER CODE BEGIN Header_WatchDog_Task */
+/**
+* @brief Function implementing the WatchDog thread.
+* @param argument: Not used
+* @retval None
+*/
+/* USER CODE END Header_WatchDog_Task */
+void WatchDog_Task(void const * argument)
+{
+  /* USER CODE BEGIN WatchDog_Task */
+  /* Infinite loop */
+  for(;;)
+  {
+    WatchDog_FeedDog();
+    osDelay(1);
+  }
+  /* USER CODE END WatchDog_Task */
 }
 
 /* Private application code --------------------------------------------------*/

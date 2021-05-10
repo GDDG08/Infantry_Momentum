@@ -1,0 +1,424 @@
+/*
+ *  Project      : Infantry_Momentum
+ * 
+ *  file         : buscomm_ctrl.c
+ *  Description  : This file contains Bus communication control function
+ *  LastEditors  : 动情丶卜灬动心
+ *  Date         : 2021-05-04 20:53:31
+ *  LastEditTime : 2021-05-09 07:23:25
+ */
+
+#include "buscomm_ctrl.h"
+#include "buscomm_cmd.h"
+#include "const_lib.h"
+
+#if __FN_IF_ENABLE(__FN_INFANTRY_CHASSIS)
+    #include "cha_chassis_ctrl.h"
+    #include "cha_gimbal_ctrl.h"
+    #include "referee_periph.h"
+    #include "cha_power_ctrl.h"
+#endif
+
+#if __FN_IF_ENABLE(__FN_INFANTRY_GIMBAL)
+    #include "gim_gimbal_ctrl.h"
+#endif
+
+#if __FN_IF_ENABLE(__FN_SUPER_CAP)
+    #include "supercap_ctrl.h"
+#endif
+
+
+/*      infantry communication functions      */
+const uint16_t Const_BusComm_TX_BUFF_LEN        = 200;
+const uint16_t Const_BusComm_RX_BUFF_LEN        = 200;
+const uint16_t Const_BusComm_OFFLINE_TIME       = 500; 
+
+const uint8_t Const_BusComm_SIZE                = 8;
+
+const uint8_t Const_BusComm_FRAME_HEADER_SOF    = 0x5A;
+
+//      power limit mode
+const uint8_t POWER_LIMITED                     = 0x01;
+const uint8_t POWER_UNLIMIT                     = 0x02;
+//      gimbal yaw mode
+const uint8_t GIMBAL_YAW_CTRL_NO_AUTO           = 0x03;
+const uint8_t GIMBAL_YAW_CTRL_ARMOR             = 0x04;
+const uint8_t GIMBAL_YAW_CTRL_IMU_DEBUG         = 0x05;
+const uint8_t GIMBAL_YAW_CTRL_BIG_ENERGY        = 0x06;
+const uint8_t GIMBAL_YAW_CTRL_SMALL_ENERGY      = 0x07;
+//      chassis mode
+const uint8_t CHASSIS_CTRL_STOP                 = 0x08;
+const uint8_t CHASSIS_CTRL_NORMAL               = 0x09;
+const uint8_t CHASSIS_CTRL_GYRO                 = 0x0A;
+//      cap mode
+const uint8_t SUPERCAP_CTRL_OFF                 = 0x31;
+const uint8_t SUPERCAP_CTRL_ON                  = 0x32;
+//      cap charge mode
+const uint8_t SUPERCAP_CHARGE                   = 0x41;
+const uint8_t SUPERCAP_UNCHARGE                 = 0x42;
+//      cap state
+const uint8_t SUPERCAP_MODE_OFF                 = 0x51;
+const uint8_t SUPERCAP_MODE_ON                  = 0x52;
+const uint8_t SUPERCAP_MODE_ERROR               = 0x53;
+
+
+// Dual bus communication protocol
+
+uint8_t BusComm_TxData[Const_BusComm_TX_BUFF_LEN];
+uint8_t BusComm_RxData[Const_BusComm_RX_BUFF_LEN];
+BusComm_BusCommDataTypeDef BusComm_BusCommData;
+
+const uint32_t Const_BusComm_CAN_TX_CHASSIS_STDID   = 0x012;
+const uint32_t Const_BusComm_CAN_TX_CHASSIS_EXTID   = 0x01;
+const uint32_t Const_BusComm_CAN_TX_GIMBAL_STDID    = 0x011;
+const uint32_t Const_BusComm_CAN_TX_GIMBAL_EXTID    = 0x01;
+const uint32_t Const_BusComm_CAN_TX_SUPERCAP_STDID  = 0x013;
+const uint32_t Const_BusComm_CAN_TX_SUPERCAP_EXTID  = 0x01;
+CAN_TxHeaderTypeDef BusComm_ChassisCanTxHeader;
+CAN_TxHeaderTypeDef BusComm_GimbalCanTxHeader;
+CAN_TxHeaderTypeDef BusComm_SuperCapCanTxHeader;
+
+
+/**
+  * @brief      Inter bus communication initialization
+  * @param      NULL
+  * @retval     NULL
+  */
+void BusComm_InitBusComm() {
+    BusComm_ResetBusCommData();
+    Can_InitTxHeader(&BusComm_ChassisCanTxHeader, Const_BusComm_CAN_TX_CHASSIS_STDID, Const_BusComm_CAN_TX_CHASSIS_EXTID, Const_BusComm_SIZE);
+    Can_InitTxHeader(&BusComm_GimbalCanTxHeader, Const_BusComm_CAN_TX_GIMBAL_STDID, Const_BusComm_CAN_TX_GIMBAL_EXTID, Const_BusComm_SIZE);
+    Can_InitTxHeader(&BusComm_SuperCapCanTxHeader, Const_BusComm_CAN_TX_SUPERCAP_STDID, Const_BusComm_CAN_TX_SUPERCAP_EXTID, Const_BusComm_SIZE);
+}
+
+
+/**
+  * @brief      Gets the pointer to the bus communication data object
+  * @param      NULL
+  * @retval     Pointer to bus communication data object
+  */
+BusComm_BusCommDataTypeDef* BusComm_GetBusDataPtr() {
+    return &BusComm_BusCommData;
+}
+
+
+/**
+  * @brief      Check whether the dual bus communication is offline
+  * @param      NULL
+  * @retval     NULL
+  */
+uint8_t BusComm_IsBusCommOffline() {
+    BusComm_BusCommDataTypeDef *buscomm = BusComm_GetBusDataPtr();
+    if (HAL_GetTick() - buscomm->last_update_time > Const_BusComm_OFFLINE_TIME) {
+        buscomm->state = BusComm_STATE_LOST;
+        return 1;
+    }
+    return 0;
+}
+
+
+
+
+/**
+  * @brief      Data sending function of serial port in inter bus communication
+  * @param      NULL
+  * @retval     NULL
+  */
+void BusComm_SendBusCommData() {
+    
+  /* up data struct data    */
+    BusComm_Update();
+
+    BusComm_BusCommDataTypeDef *buscomm = BusComm_GetBusDataPtr();
+
+    buscomm->state = BusComm_STATE_PENDING;
+    
+    // Chassis stream
+    #if __FN_IF_ENABLE(__FN_INFANTRY_CHASSIS)
+    static int sent_flag = 0;
+    int func;
+    if (sent_flag == 0) {
+        func = 0;
+        sent_flag = 1;
+    }
+    else {
+        func = 2;
+        sent_flag = 0;
+    }
+    for (int i = 0; i < 2; i++) {
+        if(Buscmd_ChaSent[i + func].bus_func != NULL)
+            Buscmd_ChaSent[i + func].bus_func(BusComm_TxData);
+    }
+    #endif
+    
+    // Gimbal steram
+    #if __FN_IF_ENABLE(__FN_INFANTRY_GIMBAL)
+    static int sent_flag = 0;
+    int func;
+    if (sent_flag == 0) {
+        func = 0;
+        sent_flag = 1;
+    }
+    else {
+        func = 3;
+        sent_flag = 0;
+    }
+    
+    
+    for (int i = 0; i < 3; i++) {
+        if(Buscmd_GimSent[i + func].bus_func != NULL)
+            Buscmd_GimSent[i + func].bus_func(BusComm_TxData);
+    }
+    #endif
+    
+    // Super Cap stream
+    #if __FN_IF_ENABLE(__FN_SUPER_CAP)
+        if(Buscmd_CapSent[0].bus_func != NULL)
+            Buscmd_CapSent[0].bus_func(BusComm_TxData);
+    #endif
+
+    
+    buscomm->state = BusComm_STATE_CONNECTED;
+}
+
+
+
+/**
+  * @brief      Data check function of serial port in inter bus communication
+  * @param      buff: data buffer
+  * @param      rxdatalen: data length
+  * @retval     Verification result (1 is correct, 0 is failed)
+  */
+uint8_t BusComm_VerifyBusCommData(uint8_t* buff, uint16_t rxdatalen) {
+    const uint8_t FAILED = 0, SUCCEEDED = 1;
+
+    if (buff[0] != Const_BusComm_FRAME_HEADER_SOF) return FAILED;
+    
+    uint16_t sum = 0, checksum = buff[rxdatalen - 1];
+    for (int i = 0; i < rxdatalen - 1; ++i)
+        sum += buff[i];
+    if ((sum & 0xff) == checksum)
+        return SUCCEEDED;
+    else 
+        return FAILED;
+}
+
+
+/**
+  * @brief      Data decoding function of serial port in inter bus communication
+  * @param      buff: Data buffer
+  * @param      rxdatalen: data length
+  * @retval     NULL
+  */
+void BusComm_DecodeBusCommData(uint8_t buff[], uint16_t rxdatalen) {
+    BusComm_BusCommDataTypeDef *buscomm = BusComm_GetBusDataPtr();
+    buscomm->last_update_time = HAL_GetTick();
+
+    memcpy(BusComm_RxData, buff, rxdatalen);
+    
+    if (!BusComm_VerifyBusCommData(buff, rxdatalen)) {
+        buscomm->state = BusComm_STATE_ERROR;
+        return;
+    }
+    
+    for (int i = 0; i <= 11; i++) {
+        if ((BusComm_RxData[1] == Buscmd_Revice[i].cmd_id) && (Buscmd_Revice[i].bus_func != NULL)) {
+            Buscmd_Revice[i].bus_func(BusComm_RxData);
+            return;
+        }
+    }
+}
+
+
+/**
+  * @brief      Reset inter bus communication data object
+  * @param      NULL
+  * @retval     NULL
+  */
+void BusComm_ResetBusCommData() {
+    BusComm_BusCommDataTypeDef *buscomm = BusComm_GetBusDataPtr();
+    
+    buscomm->last_update_time = HAL_GetTick();
+    
+    // Chassis stream
+    #if __FN_IF_ENABLE(__FN_INFANTRY_CHASSIS)
+        buscomm->yaw_relative_angle   = 0;
+        buscomm->robot_id             = 0;
+        buscomm->heat_17mm            = 0;
+        buscomm->power_limit          = 0;
+        buscomm->heat_cooling_rate    = 0;
+        buscomm->heat_cooling_limit   = 0;
+        buscomm->heat_speed_limit     = 0;
+    #endif
+    
+    // Gimbal stream
+    #if __FN_IF_ENABLE(__FN_INFANTRY_GIMBAL)
+        buscomm->gimbal_yaw_mode    = 0;
+        buscomm->gimbal_yaw_ref     = 0.0f;
+        buscomm->gimbal_imu_pos     = 0.0f;
+        buscomm->gimbal_imu_spd     = 0.0f;
+        buscomm->chassis_mode       = 0;
+        buscomm->chassis_fb_ref     = 0.0f;
+        buscomm->chassis_lr_ref     = 0.0f;
+        buscomm->cap_mode           = SUPERCAP_CTRL_OFF;
+        buscomm->power_limit_mode   = POWER_LIMITED;
+        buscomm->cap_charge_mode    = SUPERCAP_UNCHARGE;
+    #endif
+
+    // SuperCap stream
+    #if __FN_IF_ENABLE(__FN_SUPER_CAP)
+        buscomm->cap_state          = SUPERCAP_MODE_OFF;
+        buscomm->cap_rest_energy    = 0;
+    #endif
+}
+
+
+/**
+  * @brief      Assignment of inter bus communication structure
+  * @param      NULL
+  * @retval     NULL
+  */
+void BusComm_Update() {
+    BusComm_BusCommDataTypeDef *data = BusComm_GetBusDataPtr();
+
+    // Chassis stream
+    #if __FN_IF_ENABLE(__FN_INFANTRY_CHASSIS)
+        GimbalYaw_GimbalYawTypeDef *gimbal = GimbalYaw_GetGimbalYawPtr();
+        Referee_RefereeDataTypeDef *referee = Referee_GetRefereeDataPtr();
+    
+        data->yaw_relative_angle = Motor_gimbalMotorYaw.encoder.limited_angle - Const_YAW_MOTOR_INIT_OFFSET;
+        data->robot_id = referee->robot_id;
+        data->power_limit = referee->max_chassis_power;
+        data->heat_17mm = referee->shooter_heat0;
+        data->heat_cooling_rate = referee->shooter_heat0_cooling_rate;
+        data->heat_cooling_limit = referee->shooter_heat0_cooling_limit;
+        data->heat_speed_limit = referee->shooter_heat0_speed_limit;
+    #endif
+
+  // Gimbal stream
+    #if __FN_IF_ENABLE(__FN_INFANTRY_GIMBAL)
+	    IMU_IMUDataTypeDef *imu = IMU_GetIMUDataPtr();
+        Gimbal_GimbalTypeDef* gimbal = Gimbal_GetGimbalControlPtr();
+
+        data->gimbal_yaw_mode = gimbal->yaw_mode + 0x02;
+        data->gimbal_yaw_ref = gimbal->angle.yaw_angle_ref;
+        data->gimbal_imu_pos = imu->angle.yaw;
+        data->gimbal_imu_spd = imu->speed.yaw;
+
+    #endif
+  
+  // Super Cap stream
+    #if __FN_IF_ENABLE(__FN_SUPER_CAP)
+        Sen_PowerValueTypeDef *powerValue = Sen_GetPowerDataPtr();
+        data->cap_rest_energy = powerValue->CapPercent;
+    #endif
+}
+
+
+void _cmd_mode_control() {
+    BusComm_BusCommDataTypeDef *buscomm = BusComm_GetBusDataPtr();
+    
+    #if __FN_IF_ENABLE(__FN_INFANTRY_CHASSIS)
+        switch (buscomm->gimbal_yaw_mode) {
+        case GIMBAL_YAW_CTRL_BIG_ENERGY: {
+            GimbalYaw_SetMode(GimbalYaw_MODE_BIG_ENERGY);
+            GimbalYaw_SetYawRef(buscomm->gimbal_yaw_ref);
+            GimbalYaw_SetIMUYawPositionFdb(buscomm->gimbal_imu_pos);
+            GimbalYaw_SetIMUYawSpeedFdb(buscomm->gimbal_imu_spd);
+            GimbalYaw_SetGimbalYawControlState(1);
+            GimbalYaw_SetGimbalYawOutputState(1);
+            break;
+        }
+        case GIMBAL_YAW_CTRL_SMALL_ENERGY: {
+            GimbalYaw_SetMode(GimbalYaw_MODE_SMALL_ENERGY);
+            GimbalYaw_SetYawRef(buscomm->gimbal_yaw_ref);
+            GimbalYaw_SetIMUYawPositionFdb(buscomm->gimbal_imu_pos);
+            GimbalYaw_SetIMUYawSpeedFdb(buscomm->gimbal_imu_spd);
+            GimbalYaw_SetGimbalYawControlState(1);
+            GimbalYaw_SetGimbalYawOutputState(1);
+            break;
+        }
+        case GIMBAL_YAW_CTRL_ARMOR: {
+            GimbalYaw_SetMode(GimbalYaw_MODE_ARMOR);
+            GimbalYaw_SetYawRef(buscomm->gimbal_yaw_ref);
+            GimbalYaw_SetIMUYawPositionFdb(buscomm->gimbal_imu_pos);
+            GimbalYaw_SetIMUYawSpeedFdb(buscomm->gimbal_imu_spd);
+            GimbalYaw_SetGimbalYawControlState(1);
+            GimbalYaw_SetGimbalYawOutputState(1);
+            break;
+        }
+        case GIMBAL_YAW_CTRL_IMU_DEBUG: {
+            GimbalYaw_SetMode(GimbalYaw_MODE_IMU_DEBUG);
+            GimbalYaw_SetYawRef(buscomm->gimbal_yaw_ref);
+            GimbalYaw_SetEncoderFdb();
+            GimbalYaw_SetGimbalYawControlState(1);
+            GimbalYaw_SetGimbalYawOutputState(1);
+            break;
+        }
+        case GIMBAL_YAW_CTRL_NO_AUTO: {
+            GimbalYaw_SetMode(GimbalYaw_MODE_NO_AUTO);
+            GimbalYaw_SetYawRef(buscomm->gimbal_yaw_ref);
+            GimbalYaw_SetIMUYawPositionFdb(buscomm->gimbal_imu_pos);
+            GimbalYaw_SetIMUYawSpeedFdb(buscomm->gimbal_imu_spd);
+            GimbalYaw_SetGimbalYawControlState(1);
+            GimbalYaw_SetGimbalYawOutputState(1);
+            break;
+        }
+        default:
+            return;     // error, stop decoding
+    }
+    
+    switch (buscomm->chassis_mode) {
+        case CHASSIS_CTRL_STOP: {
+            Chassis_SetMode(Chassis_MODE_STOP);
+            Chassis_SetForwardBackRef(0);
+            Chassis_SetLeftRightRef(0);
+            Chassis_SetChassisControlState(1);
+            Chassis_SetChassisOutputState(1);
+            break;
+        }
+        case CHASSIS_CTRL_NORMAL: {
+            Chassis_SetMode(Chassis_MODE_NORMAL);
+            Chassis_SetForwardBackRef(buscomm->chassis_fb_ref);
+            Chassis_SetLeftRightRef(buscomm->chassis_lr_ref);
+            Chassis_SetChassisControlState(1);
+            Chassis_SetChassisOutputState(1);
+            break;
+        }
+        case CHASSIS_CTRL_GYRO: {
+            Chassis_SetMode(Chassis_MODE_GYRO);
+            Chassis_SetForwardBackRef(buscomm->chassis_fb_ref);
+            Chassis_SetLeftRightRef(buscomm->chassis_lr_ref);
+            Chassis_SetChassisControlState(1);
+            Chassis_SetChassisOutputState(1);
+            break;
+        }
+        default:
+            return;     // error, stop decoding
+    }
+
+    switch (buscomm->power_limit_mode) {
+        case POWER_LIMITED:
+            Power_ForceChangePowerMode(POWER_LIMIT);
+            break;
+        case POWER_UNLIMIT:
+            Power_ForceChangePowerMode(POWER_UNLIMITED);
+            break;
+        default:
+            break;
+    }   
+    #endif     
+}
+
+
+
+/**
+  * @brief      Interrupt callback function of can in inter Bus communication
+  * @param      
+  * @retval     NULL
+  */
+void BusComm_CANRxCallback(CAN_HandleTypeDef* phcan, uint32_t stdid, uint8_t rxdata[], uint32_t len) {
+    if (phcan == Const_BusComm_CAN_HANDLER) {
+        BusComm_DecodeBusCommData(rxdata, len);
+    }
+}
