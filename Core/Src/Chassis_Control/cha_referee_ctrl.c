@@ -10,38 +10,56 @@
 
 
 #include "cha_referee_ctrl.h"
+
+#if __FN_IF_ENABLE(__FN_CTRL_CHASSIS)
+
 #include "referee_periph.h"
 
-#if __FN_IF_ENABLE(__FN_CTRL_REFEREE)
+
 /********** Drawing Constants **********/
 
 // 关于图层：图层0 ~ 9，高图层遮盖低图层
 // 对于经常更新的分图层功能，建议前景图层使用3，背景图层使用2
 // 其他功能在不产生遮挡的情况下建议使用图层2
 
+// 关于坐标：左下角为 (0, 0)，水平方向为 X，垂直方向为 Y
+
 const uint8_t AIM_LINE_LAYER        = 2;
 const Draw_Color AIM_LINE_COLOR     = Draw_COLOR_GREEN;
+const uint8_t AIM_LINE_LINE_MODE    = 3;
 const uint8_t AIM_LINE_LINE_NUM     = 3 + 1;
-const uint16_t AIM_LINES[AIM_LINE_LINE_NUM][6] = {  // ID, Width, X1, Y1, X2, Y2
-    {0x101, 2, 0, 0, 0, 0},     // Vertical Line
-    {0x102, 4, 0, 0, 0, 0},     // Horizontal Line 1
-    {0x103, 2, 0, 0, 0, 0},     // Horizontal Line 2
-    {0x104, 2, 0, 0, 0, 0}      // Horizontal Line 3
+const uint16_t AIM_LINES[AIM_LINE_LINE_MODE][AIM_LINE_LINE_NUM][6] = {  // ID, Width, X1, Y1, X2, Y2
+    {       // Mode 0: 15 m/s
+        {0x101, 2, 0, 0, 0, 0},     // Vertical Line
+        {0x102, 4, 0, 0, 0, 0},     // Horizontal Line 1
+        {0x103, 2, 0, 0, 0, 0},     // Horizontal Line 2
+        {0x104, 2, 0, 0, 0, 0}      // Horizontal Line 3
+    }, {    // Mode 1: 18 m/s
+        {0x101, 2, 0, 0, 0, 0},     // Vertical Line
+        {0x102, 4, 0, 0, 0, 0},     // Horizontal Line 1
+        {0x103, 2, 0, 0, 0, 0},     // Horizontal Line 2
+        {0x104, 2, 0, 0, 0, 0}      // Horizontal Line 3
+    }, {    // Mode 2: 18 m/s
+        {0x101, 2, 0, 0, 0, 0},     // Vertical Line
+        {0x102, 4, 0, 0, 0, 0},     // Horizontal Line 1
+        {0x103, 2, 0, 0, 0, 0},     // Horizontal Line 2
+        {0x104, 2, 0, 0, 0, 0}      // Horizontal Line 3
+    }
 };
 
 const uint8_t CROSSHAIR_LAYER       = 2;
 const Draw_Color CROSSHAIR_COLOR    = Draw_COLOR_GREEN;
-const uint16_t CROSSHAIR[5]         = {0x201, 2, 0, 0, 0};  // ID, Width, X, Y, R
+const uint16_t CROSSHAIR[5]         = {0x201, 2, 1080, 720, 10};  // ID, Width, X, Y, R
 
 const uint8_t WIDTH_MARK_LAYER      = 2;
 const Draw_Color WIDTH_MARK_COLOR   = Draw_COLOR_YELLOW;
-const uint16_t WIDTH_MARK_NORMAL[2][6] = {
-    {0x301, 2, 0, 0, 0, 0},     // Left Mark Line, Normal
-    {0x302, 2, 0, 0, 0, 0},     // Right Mark Line, Normal
+const uint16_t WIDTH_MARK_NORMAL[2][6] = {      // ID, Width, X0, Y0, X1, Y1
+    {0x301, 2, 660, 400, 660, 200},     // Left Mark Line, Normal
+    {0x302, 2, 1260, 400, 1260, 200},     // Right Mark Line, Normal
 };
 const uint16_t WIDTH_MARK_GYRO[2][6] = {
-    {0x301, 2, 0, 0, 0, 0},     // Left Mark Line, Gyro Mode
-    {0x302, 2, 0, 0, 0, 0},     // Right Mark Line, Gyro Mode
+    {0x301, 2, 660, 400, 660, 200},     // Left Mark Line, Gyro Mode
+    {0x302, 2, 1260, 400, 1260, 200},     // Right Mark Line, Gyro Mode
 };
 
 const uint8_t CAP_STATE_LAYER[2]    = {3, 2};   // Foreground, Background
@@ -52,24 +70,24 @@ const Draw_Color CAP_STATE_COLOR[5] = {
     Draw_COLOR_YELLOW,          // Foreground, Insufficient (10% ~ 50%)
     Draw_COLOR_ORANGE           // Foreground, Empty (0% ~ 10%)
 };
-const uint16_t CAP_STATE[4]         = {2, 0, 0, 0};     // Width, X, Y, R
+const uint16_t CAP_STATE[4]         = {6, 960, 240, 40};     // Width, X, Y, R
 const uint16_t CAP_STATE_CIRCLE     = 0x401;            // Background Circle ID
 const uint16_t CAP_STATE_ARC        = 0x402;            // Foreground Arc ID
-const uint16_t CAP_STATE_TEXT[5]    = {0x403, 20, 2, 0, 0};     // ID, Font Size, Width, X, Y
+const uint16_t CAP_STATE_TEXT[5]    = {0x403, 20, 2, 900, 240};     // ID, Font Size, Width, X, Y
 const char *CAP_STATE_TEXT_STR      = "CAP";
 
 const uint8_t PITCH_METER_LAYER     = 2;
 const Draw_Color PITCH_METER_COLOR  = Draw_COLOR_GREEN;
-const uint16_t PITCH_METER_TEXT[5]  = {0x501, 20, 2, 0, 0};     // ID, Font Size, Width, X, Y
+const uint16_t PITCH_METER_TEXT[5]  = {0x501, 20, 2, 1500, 540};     // ID, Font Size, Width, X, Y
 const char *PITCH_METER_TEXT_STR    = "PITCH:";
-const uint16_t PITCH_METER_VALUE[6] = {0x502, 20, 1, 2, 0, 0};  // ID, Font Size, Precision, Width, X, Y
+const uint16_t PITCH_METER_VALUE[6] = {0x502, 20, 3, 2, 1600, 540};  // ID, Font Size, Precision, Width, X, Y
 
 
 
 /********** END OF Drawing Constants **********/
 
 
-DrawCtrl_DrawCtrlDataTypeDef DrawCtrl_drawCtrlData;
+Referee_DrawDataTypeDef Referee_DrawData;
 
 
 /**
@@ -77,9 +95,21 @@ DrawCtrl_DrawCtrlDataTypeDef DrawCtrl_drawCtrlData;
   * @param      mode: 车宽线模式（1为小陀螺，0为普通）
   * @retval     无
   */
-void DrawCtrl_SetWidthMode(uint8_t mode) {
-    DrawCtrl_DrawCtrlDataTypeDef *drawctrl = &DrawCtrl_drawCtrlData;
-    drawctrl->width_mode = mode;
+void Referee_SetWidthMode(uint8_t mode) {
+    Referee_DrawDataTypeDef *draw = &Referee_DrawData;
+    draw->width_mode = mode;
+}
+
+
+/**
+  * @brief      设置瞄准线模式
+  * @param      mode: 瞄准线模式（0 ~ 2对应弹速 15,18,30 m/s）
+  * @retval     无
+  */
+void Referee_SetAimMode(uint8_t mode) {
+    Referee_DrawDataTypeDef *draw = &Referee_DrawData;
+    if (mode > 2) return;
+    draw->aim_mode = mode;
 }
 
 
@@ -88,9 +118,9 @@ void DrawCtrl_SetWidthMode(uint8_t mode) {
   * @param      state: 电容电量（0 ~ 100，单位百分比）
   * @retval     无
   */
-void DrawCtrl_SetCapState(uint8_t state) {
-    DrawCtrl_DrawCtrlDataTypeDef *drawctrl = &DrawCtrl_drawCtrlData;
-    drawctrl->cap_state = state;
+void Referee_SetCapState(uint8_t state) {
+    Referee_DrawDataTypeDef *draw = &Referee_DrawData;
+    draw->cap_state = state;
 }
 
 
@@ -99,9 +129,9 @@ void DrawCtrl_SetCapState(uint8_t state) {
   * @param      angle: Pitch倾角
   * @retval     无
   */
-void DrawCtrl_SetPitchAngle(float angle) {
-    DrawCtrl_DrawCtrlDataTypeDef *drawctrl = &DrawCtrl_drawCtrlData;
-    drawctrl->pitch_angle = angle;
+void Referee_SetPitchAngle(float angle) {
+    Referee_DrawDataTypeDef *draw = &Referee_DrawData;
+    draw->pitch_angle = angle;
 }
 
 
@@ -110,10 +140,13 @@ void DrawCtrl_SetPitchAngle(float angle) {
   * @param      无
   * @retval     无
   */
-void DrawCtrl_SetupAimLine() {
+void Referee_SetupAimLine() {
     // draw_cnt: 4
+    Referee_DrawDataTypeDef *draw = &Referee_DrawData;
+    draw->aim_mode_last = draw->aim_mode;
+    const uint16_t (*aim_lines)[6] = AIM_LINES[draw->aim_mode];
     for (int i = 0; i < AIM_LINE_LINE_NUM; ++i) {
-        Draw_AddLine(AIM_LINES[i][0], AIM_LINE_LAYER, AIM_LINE_COLOR, AIM_LINES[i][1], AIM_LINES[i][2], AIM_LINES[i][3], AIM_LINES[i][4], AIM_LINES[i][5]);
+        Draw_AddLine(aim_lines[i][0], AIM_LINE_LAYER, AIM_LINE_COLOR, aim_lines[i][1], aim_lines[i][2], aim_lines[i][3], aim_lines[i][4], aim_lines[i][5]);
     }
 }
 
@@ -123,8 +156,15 @@ void DrawCtrl_SetupAimLine() {
   * @param      无
   * @retval     无
   */
-void DrawCtrl_UpdateAimLine() {
-    // nothing
+void Referee_UpdateAimLine() {
+    // draw_cnt: 4 when mode changed, 0 when mode not change
+    Referee_DrawDataTypeDef *draw = &Referee_DrawData;
+    if (draw->aim_mode_last == draw->aim_mode) return;
+    draw->aim_mode_last = draw->aim_mode;
+    const uint16_t (*aim_lines)[6] = AIM_LINES[draw->aim_mode];
+    for (int i = 0; i < AIM_LINE_LINE_NUM; ++i) {
+        Draw_AddLine(aim_lines[i][0], AIM_LINE_LAYER, AIM_LINE_COLOR, aim_lines[i][1], aim_lines[i][2], aim_lines[i][3], aim_lines[i][4], aim_lines[i][5]);
+    }
 }
 
 
@@ -133,7 +173,7 @@ void DrawCtrl_UpdateAimLine() {
   * @param      无
   * @retval     无
   */
-void DrawCtrl_SetupCrosshair() {
+void Referee_SetupCrosshair() {
     // draw_cnt: 1
     Draw_AddCircle(CROSSHAIR[0], CROSSHAIR_LAYER, CROSSHAIR_COLOR, CROSSHAIR[1], CROSSHAIR[2], CROSSHAIR[3], CROSSHAIR[4]);
 }
@@ -144,7 +184,7 @@ void DrawCtrl_SetupCrosshair() {
   * @param      无
   * @retval     无
   */
-void DrawCtrl_UpdateCrosshair() {
+void Referee_UpdateCrosshair() {
     // nothing
 }
 
@@ -154,11 +194,11 @@ void DrawCtrl_UpdateCrosshair() {
   * @param      无
   * @retval     无
   */
-void DrawCtrl_SetupWidthMark() {
+void Referee_SetupWidthMark() {
     // draw_cnt: 2
-    DrawCtrl_DrawCtrlDataTypeDef *drawctrl = &DrawCtrl_drawCtrlData;
-    drawctrl->width_mode_last = drawctrl->width_mode;
-    const uint16_t (*mark)[6] = (drawctrl->width_mode == 1) ? WIDTH_MARK_NORMAL : WIDTH_MARK_GYRO;
+    Referee_DrawDataTypeDef *draw = &Referee_DrawData;
+    draw->width_mode_last = draw->width_mode;
+    const uint16_t (*mark)[6] = (draw->width_mode == 1) ? WIDTH_MARK_NORMAL : WIDTH_MARK_GYRO;
     for (int i = 0; i < 2; ++i) {
         Draw_AddLine(mark[i][0], WIDTH_MARK_LAYER, WIDTH_MARK_COLOR, mark[i][1], mark[i][2], mark[i][3], mark[i][4], mark[i][5]);
     }
@@ -170,12 +210,12 @@ void DrawCtrl_SetupWidthMark() {
   * @param      无
   * @retval     无
   */
-void DrawCtrl_UpdateWidthMark() {
+void Referee_UpdateWidthMark() {
     // draw_cnt: 2 when mode changed, 0 when mode not change
-    DrawCtrl_DrawCtrlDataTypeDef *drawctrl = &DrawCtrl_drawCtrlData;
-    if (drawctrl->width_mode_last == drawctrl->width_mode) return;
-    drawctrl->width_mode_last = drawctrl->width_mode;
-    const uint16_t (*mark)[6] = (drawctrl->width_mode == 1) ? WIDTH_MARK_NORMAL : WIDTH_MARK_GYRO;
+    Referee_DrawDataTypeDef *draw = &Referee_DrawData;
+    if (draw->width_mode_last == draw->width_mode) return;
+    draw->width_mode_last = draw->width_mode;
+    const uint16_t (*mark)[6] = (draw->width_mode == 1) ? WIDTH_MARK_NORMAL : WIDTH_MARK_GYRO;
     for (int i = 0; i < 2; ++i) {
         Draw_ModifyLine(mark[i][0], WIDTH_MARK_LAYER, WIDTH_MARK_COLOR, mark[i][1], mark[i][2], mark[i][3], mark[i][4], mark[i][5]);
     }
@@ -187,26 +227,29 @@ void DrawCtrl_UpdateWidthMark() {
   * @param      无
   * @retval     无
   */
-void DrawCtrl_SetupCapState() {
+void Referee_SetupCapState() {
     // draw_cnt: 2
-    DrawCtrl_DrawCtrlDataTypeDef *drawctrl = &DrawCtrl_drawCtrlData;
+    Referee_DrawDataTypeDef *draw = &Referee_DrawData;
     
     Draw_AddCircle(CAP_STATE_CIRCLE, CAP_STATE_LAYER[1], CAP_STATE_COLOR[0], CAP_STATE[0], CAP_STATE[1], CAP_STATE[2], CAP_STATE[3]);
     
+    int value = draw->cap_state;
+    value = (int) (-draw->pitch_angle + 10) * 2;
+    
     Draw_Color color;
-    if (drawctrl->cap_state > 100)
+    if (value > 100)
         return;
-    else if (drawctrl->cap_state >= 50) 
+    else if (value >= 50) 
         color = CAP_STATE_COLOR[2];
-    else if (drawctrl->cap_state >= 20)
+    else if (value >= 20)
         color = CAP_STATE_COLOR[3];
-    else 
+    else
         color = CAP_STATE_COLOR[4];
-
+    
     uint16_t start_angle = 0;
     uint16_t end_angle = 0;
-    if (drawctrl->cap_state > 0 && drawctrl->cap_state <= 100)
-        end_angle = (uint16_t) (360.0 * drawctrl->cap_state / 100.0);
+    if (value > 0 && value <= 100)
+        end_angle = (uint16_t) (360.0 * value / 100.0);
     
     Draw_AddArc(CAP_STATE_ARC, CAP_STATE_LAYER[0], color, start_angle, end_angle, CAP_STATE[0], CAP_STATE[1], CAP_STATE[2], CAP_STATE[3], CAP_STATE[3]);
 }
@@ -217,24 +260,27 @@ void DrawCtrl_SetupCapState() {
   * @param      无
   * @retval     无
   */
-void DrawCtrl_UpdateCapState() {
+void Referee_UpdateCapState() {
     // draw_cnt: 1
-    DrawCtrl_DrawCtrlDataTypeDef *drawctrl = &DrawCtrl_drawCtrlData;
+    Referee_DrawDataTypeDef *draw = &Referee_DrawData;
 
+    int value = draw->cap_state;
+    value = (int) (-draw->pitch_angle + 10) * 2;
+    
     Draw_Color color;
-    if (drawctrl->cap_state > 100)
+    if (value > 100)
         return;
-    else if (drawctrl->cap_state >= 50) 
+    else if (value >= 50) 
         color = CAP_STATE_COLOR[2];
-    else if (drawctrl->cap_state >= 20)
+    else if (value >= 20)
         color = CAP_STATE_COLOR[3];
     else
         color = CAP_STATE_COLOR[4];
     
     uint16_t start_angle = 0;
-    uint16_t end_angle = 0;
-    if (drawctrl->cap_state > 0 && drawctrl->cap_state <= 100)
-        end_angle = (uint16_t) (360.0 * drawctrl->cap_state / 100.0);
+    uint16_t end_angle = 1;
+    if (value > 0 && value <= 100)
+        end_angle = (uint16_t) (360.0f * value / 100.0f);
     
     Draw_ModifyArc(CAP_STATE_ARC, CAP_STATE_LAYER[0], color, start_angle, end_angle, CAP_STATE[0], CAP_STATE[1], CAP_STATE[2], CAP_STATE[3], CAP_STATE[3]);
 }
@@ -245,10 +291,10 @@ void DrawCtrl_UpdateCapState() {
   * @param      无
   * @retval     无
   */
-void DrawCtrl_SetupPitchMeter() {
+void Referee_SetupPitchMeter() {
     // draw_cnt: 1
-    DrawCtrl_DrawCtrlDataTypeDef *drawctrl = &DrawCtrl_drawCtrlData;
-    float value = drawctrl->pitch_angle;
+    Referee_DrawDataTypeDef *draw = &Referee_DrawData;
+    float value = -draw->pitch_angle;
     Draw_AddFloat(PITCH_METER_VALUE[0], PITCH_METER_LAYER, PITCH_METER_COLOR, PITCH_METER_VALUE[1], PITCH_METER_VALUE[2], PITCH_METER_VALUE[3], PITCH_METER_VALUE[4], PITCH_METER_VALUE[5], value);
 }
 
@@ -258,11 +304,12 @@ void DrawCtrl_SetupPitchMeter() {
   * @param      无
   * @retval     无
   */
-void DrawCtrl_UpdatePitchMeter() {
+void Referee_UpdatePitchMeter() {
     // draw_cnt: 1
-    DrawCtrl_DrawCtrlDataTypeDef *drawctrl = &DrawCtrl_drawCtrlData;
-    uint16_t value = (uint16_t) (drawctrl->pitch_angle);
+    Referee_DrawDataTypeDef *draw = &Referee_DrawData;
+    float value = -draw->pitch_angle;
     Draw_ModifyFloat(PITCH_METER_VALUE[0], PITCH_METER_LAYER, PITCH_METER_COLOR, PITCH_METER_VALUE[1], PITCH_METER_VALUE[2], PITCH_METER_VALUE[3], PITCH_METER_VALUE[4], PITCH_METER_VALUE[5], value);
+    //Draw_ModifyInt(PITCH_METER_VALUE[0], PITCH_METER_LAYER, PITCH_METER_COLOR, PITCH_METER_VALUE[1], PITCH_METER_VALUE[3], PITCH_METER_VALUE[4], PITCH_METER_VALUE[5], (int32_t) (value * 1000));
 }
 
 
@@ -271,7 +318,7 @@ void DrawCtrl_UpdatePitchMeter() {
   * @param      无
   * @retval     无
   */
-void DrawCtrl_SetupModeDisplay() {
+void Referee_SetupModeDisplay() {
     
 }
 
@@ -281,7 +328,7 @@ void DrawCtrl_SetupModeDisplay() {
   * @param      无
   * @retval     无
   */
-void DrawCtrl_UpdateModeDisplay() {
+void Referee_UpdateModeDisplay() {
     
 }
 
@@ -291,7 +338,7 @@ void DrawCtrl_UpdateModeDisplay() {
   * @param      无
   * @retval     无
   */
-void DrawCtrl_SetupErrorDisplay() {
+void Referee_SetupErrorDisplay() {
     
 }
 
@@ -301,7 +348,7 @@ void DrawCtrl_SetupErrorDisplay() {
   * @param      无
   * @retval     无
   */
-void DrawCtrl_UpdateErrorDisplay() {
+void Referee_UpdateErrorDisplay() {
     
 }
 
@@ -311,9 +358,9 @@ void DrawCtrl_UpdateErrorDisplay() {
   * @param      无
   * @retval     无
   */
-void DrawCtrl_SetupAllString() {
+void Referee_SetupAllString() {
     // cmd_cnt: 2
-    //DrawCtrl_DrawCtrlDataTypeDef *drawctrl = &DrawCtrl_drawCtrlData;
+    //Referee_RefereeDataTypeDef *Referee = &Referee_DrawData;
     
     Draw_AddString(CAP_STATE_TEXT[0], CAP_STATE_LAYER[1], CAP_STATE_COLOR[1], CAP_STATE_TEXT[1], CAP_STATE_TEXT[2], CAP_STATE_TEXT[3], CAP_STATE_TEXT[4], CAP_STATE_TEXT_STR);
     Draw_AddString(PITCH_METER_TEXT[0], PITCH_METER_LAYER, PITCH_METER_COLOR, PITCH_METER_TEXT[1], PITCH_METER_TEXT[2], PITCH_METER_TEXT[3], PITCH_METER_TEXT[4], PITCH_METER_TEXT_STR);
@@ -326,18 +373,23 @@ void DrawCtrl_SetupAllString() {
   * @param      无
   * @retval     无
   */
-void DrawCtrl_Setup() {                 
+void Referee_Setup() {     
+    static int last_time = -1000;
+    int now = HAL_GetTick();
+    if (now - last_time < 1000) return;
+    last_time = now;    
+    
     Draw_ClearAll();                    // cmd_cnt: 1, total_cmd_cnt: 1
     
-    DrawCtrl_SetupAimLine();            // draw_cnt: 4
-    DrawCtrl_SetupCrosshair();          // draw_cnt: 1
-    DrawCtrl_SetupWidthMark();          // draw_cnt: 2, send(7), total_cmd_cnt: 2
-    DrawCtrl_SetupCapState();           // draw_cnt: 2
-    DrawCtrl_SetupPitchMeter();         // draw_cnt: 1
-    DrawCtrl_SetupModeDisplay();        // draw_cnt: 0
-    DrawCtrl_SetupErrorDisplay();       // draw_cnt: 0, send(3+2), total_cmd_cnt: 3
+    Referee_SetupAimLine();            // draw_cnt: 4
+    Referee_SetupCrosshair();          // draw_cnt: 1
+    Referee_SetupWidthMark();          // draw_cnt: 2, send(7), total_cmd_cnt: 2
+    Referee_SetupCapState();           // draw_cnt: 2
+    Referee_SetupPitchMeter();         // draw_cnt: 1
+    Referee_SetupModeDisplay();        // draw_cnt: 0
+    Referee_SetupErrorDisplay();       // draw_cnt: 0, send(2)send(1), total_cmd_cnt: 4
     
-    DrawCtrl_SetupAllString();          // cmd_cnt: 2, total_cmd_cnt: 5
+    Referee_SetupAllString();          // cmd_cnt: 2, total_cmd_cnt: 6
     
     Referee_DrawingBufferFlush();       // useless since string cmd sent previously
 }
@@ -348,17 +400,17 @@ void DrawCtrl_Setup() {
   * @param      无
   * @retval     无
   */
-void DrawCtrl_Update() {                
-    DrawCtrl_UpdateAimLine();           // draw_cnt: 0
-    DrawCtrl_UpdateCrosshair();         // draw_cnt: 0
-    DrawCtrl_UpdateWidthMark();         // draw_cnt: if gyro mode changed 2, else 0
-    DrawCtrl_UpdateCapState();          // draw_cnt: 1
-    DrawCtrl_UpdatePitchMeter();        // draw_cnt: 1
-    DrawCtrl_UpdateModeDisplay();       // draw_cnt: 0
-    DrawCtrl_UpdateErrorDisplay();      // draw_cnt: 0
+void Referee_Update() {                
+    Referee_UpdateAimLine();           // draw_cnt: if bullet speed changed 4, else 0
+    Referee_UpdateCrosshair();         // draw_cnt: 0
+    Referee_UpdateWidthMark();         // draw_cnt: if gyro mode changed 2, else 0
+    Referee_UpdateCapState();          // draw_cnt: 1
+    Referee_UpdatePitchMeter();        // draw_cnt: 1
+    Referee_UpdateModeDisplay();       // draw_cnt: 0
+    Referee_UpdateErrorDisplay();      // draw_cnt: 0
     
-    Referee_DrawingBufferFlush();       // if gyro mode changed, send(4+1), total_cmd_cnt: 1
-                                        // else, send(2), total_cmd_cnt: 1
+    Referee_DrawingBufferFlush();       // max draw_cnt: 8, cmd_cnt:2
+                                        // min draw_cnt: 2, cmd_cnt:1
 }
 
 #endif

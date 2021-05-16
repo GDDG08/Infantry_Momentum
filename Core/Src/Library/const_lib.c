@@ -5,7 +5,7 @@
  *  Description  : This file contains all necessary constants
  *  LastEditors  : 动情丶卜灬动心
  *  Date         : 2021-05-04 20:53:31
- *  LastEditTime : 2021-05-08 10:15:19
+ *  LastEditTime : 2021-05-16 00:34:48
  */
 
 #include "const_lib.h"
@@ -39,7 +39,8 @@ const float Const_DAC_GAIN                          = 20.0f;	    // DAC current 
 const float Const_DAC_DetectRES                     = 0.004f;	    // DAC current set resistor（LT3790）
 
 /*          CAN Handle definition              */
-CAN_HandleTypeDef* Const_BusComm_CAN_HANDLER        = &hcan2;
+// CAN_HandleTypeDef* Const_BusComm_CAN_HANDLER        = &hcan2;
+UART_HandleTypeDef* Const_SuperCap_UART_HANDLER         = &huart5;
 
 /*          Super Cap control const             */
 const float Cap_MinVoltage                          = 10.0f;        // Cap min voltage
@@ -56,9 +57,20 @@ const float Cap_AvailableVoltage                    = 16.0f;        // Cap resta
 /*          Uart Handle definition              */
 UART_HandleTypeDef* Const_Referee_UART_HANDLER          = &huart6;
 CAN_HandleTypeDef* Const_BusComm_CAN_HANDLER            = &hcan2;
+UART_HandleTypeDef* Const_SuperCap_UART_HANDLER         = &huart3;
 
 /*          Motor control constant              */
-const float Const_YAW_MOTOR_INIT_OFFSET = -150.0f;
+#if __FN_IF_ENABLE(__FN_INFANTRY_NEW_ONE)
+    const float Const_YAW_MOTOR_INIT_OFFSET = -150.0f;
+#endif
+
+#if __FN_IF_ENABLE(__FN_INFANTRY_NEW_TWO)
+    const float Const_YAW_MOTOR_INIT_OFFSET = -60.0f;
+#endif
+
+#if __FN_IF_ENABLE(__FN_INFANTRY_NEW_THREE)
+    const float Const_YAW_MOTOR_INIT_OFFSET = -150.0f;
+#endif
 
 /*               constant                       */
 static const float Const_chassisMotorParam[4][3][4][5] = {
@@ -102,7 +114,7 @@ void Const_SetGimbalYawMotorParam() {
 
 /*          Chassis control filter const        */
 const float Const_Chassis_MOVE_REF_TO_MOTOR_REF     = 0.7f;
-const float Const_Chassis_ROTATE_REF_TO_MOTOR_REF   = 0.6f;
+const float Const_Chassis_ROTATE_REF_TO_MOTOR_REF   = 0.7f;
 
 #endif
 
@@ -123,10 +135,10 @@ const float REMOTE_PITCH_ANGLE_TO_REF   = 0.0015f;
 const float REMOTE_YAW_ANGLE_TO_REF     = 0.0015f;
 const float MOUSE_PITCH_ANGLE_TO_FACT   = 0.008f;
 const float MOUSE_YAW_ANGLE_TO_FACT 	= 0.015f;	
-const float MOUSE_CHASSIS_ACCELERATE    = 2;
-const float MOUSE_CHASSIS_SLOWDOWN      = 5;
-const float MOUSE_CHASSIS_MAX_SPEED     = 200;
-const float MOUSE_CHASSIS_MAX_GYRO_SPEED = 150;
+const float MOUSE_CHASSIS_ACCELERATE    = 50;
+const float MOUSE_CHASSIS_SLOWDOWN      = 50;
+const float MOUSE_CHASSIS_MAX_SPEED     = 1400;
+const float MOUSE_CHASSIS_MAX_GYRO_SPEED = 900;
 
 const uint32_t Const_MiniPC_Follow_Target_Time        = 200; 
 const uint32_t Const_MiniPC_Lost_Target_Time          = 1000;
@@ -135,22 +147,33 @@ const uint32_t Const_MiniPC_New_Target_Time           = 200;
 /*          Uart Handle definition              */
 UART_HandleTypeDef* Const_IMU_UART_HANDLER          = &huart3;
 UART_HandleTypeDef* Const_Remote_UART_HANDLER       = &huart1;
-UART_HandleTypeDef* Const_MiniPC_UART_HANDLER       = &huart6;
+UART_HandleTypeDef* Const_MiniPC_UART_HANDLER       = &huart5;
 CAN_HandleTypeDef* Const_BusComm_CAN_HANDLER        = &hcan2;
 
 /*          Gimbal pitch limit                  */
 const float Const_PITCH_UMAXANGLE             = 8.0f;          
 const float Const_PITCH_DMAXANGLE             = -31.5f;    
 const float Const_YAW_MAXANGLE                = 40.0f; 
-const float Const_YAW_MOTOR_INIT_OFFSET       = -150.0f;
 const float Const_PITCH_MOTOR_INIT_OFFSET     = -31.0f;
-const float Const_SERVO_INIT_OFFSET           = 0.03f;
+const float Const_SERVO_INIT_OFFSET           = 0.05f;
+
+#if __FN_IF_ENABLE(__FN_INFANTRY_NEW_ONE)
+    const float Const_YAW_MOTOR_INIT_OFFSET = -150.0f;
+#endif
+
+#if __FN_IF_ENABLE(__FN_INFANTRY_NEW_TWO)
+    const float Const_YAW_MOTOR_INIT_OFFSET = -60.0f;
+#endif
+
+#if __FN_IF_ENABLE(__FN_INFANTRY_NEW_THREE)
+    const float Const_YAW_MOTOR_INIT_OFFSET = -150.0f;
+#endif
 
 static const float Const_gimbalPitchMotorParam[5][3][4][5] = {
-    {{{1.1, 0.1, 0, 8000, 30000}, {16, -1}, {0, 0}, {-1, -1}}, {{220, 0.4, 0, 15000, 30000}, {16, -1}, {0, 0}, {-1, -1}}, {{22, 0.08, 0, 4000, 8000}, {16, -1}, {0.5, 4}, {-1, 6.366}}},        // GimbalYaw_gimbalYawMotorParamAimBigEnergy
-    {{{1.1, 0.1, 0, 8000, 30000}, {16, -1}, {0, 0}, {-1, -1}}, {{220, 0.4, 0, 15000, 30000}, {16, -1}, {0, 0}, {-1, -1}}, {{22, 0.08, 0, 4000, 8000}, {16, -1}, {0.5, 4}, {-1, 6.366}}},        // GimbalYaw_gimbalYawMotorParamAimSmallEnergy
-    {{{1.1, 0.1, 0, 8000, 30000}, {16, -1}, {0, 0}, {-1, -1}}, {{220, 0.4, 0, 15000, 30000}, {16, -1}, {0, 0}, {-1, -1}}, {{22, 0.08, 0, 4000, 8000}, {16, -1}, {0.5, 4}, {-1, 6.366}}},        // GimbalYaw_gimbalYawMotorParamArmor
-    {{{1.1, 0.1, 0, 8000, 30000}, {16, -1}, {0, 0}, {-1, -1}}, {{220, 0.4, 0, 15000, 30000}, {16, -1}, {0, 0}, {-1, -1}}, {{22, 0.08, 0, 4000, 8000}, {16, -1}, {0.5, 4}, {-1, 6.366}}},        // GimbalYaw_gimbalYawMotorParamIMUDebug
+    {{{1.1, 0.1, 0, 8000, 30000}, {-1, -1}, {0, 0}, {-1, -1}}, {{190, 0.2, 20, 15000, 30000}, {0.4, -1}, {0, 0}, {-1, -1}}, {{25, 0.08, 0, 100, 500}, {-1, -1}, {100, 160}, {0.18, 0.3}}},        // GimbalYaw_gimbalYawMotorParamAimBigEnergy
+    {{{1.1, 0.1, 0, 8000, 30000}, {-1, -1}, {0, 0}, {-1, -1}}, {{190, 0.2, 20, 15000, 30000}, {0.4, -1}, {0, 0}, {-1, -1}}, {{25, 0.08, 0, 100, 500}, {-1, -1}, {100, 160}, {0.18, 0.3}}},        // GimbalYaw_gimbalYawMotorParamAimSmallEnergy
+    {{{1.1, 0.1, 0, 8000, 30000}, {-1, -1}, {0, 0}, {-1, -1}}, {{190, 0.2, 20, 15000, 30000}, {0.4, -1}, {0, 0}, {-1, -1}}, {{25, 0.08, 0, 100, 500}, {-1, -1}, {100, 160}, {0.18, 0.3}}},        // GimbalYaw_gimbalYawMotorParamArmor
+    {{{1.1, 0.1, 0, 8000, 30000}, {-1, -1}, {0, 0}, {-1, -1}}, {{190, 0.2, 20, 15000, 30000}, {0.4, -1}, {0, 0}, {-1, -1}}, {{25, 0.08, 0, 100, 500}, {-1, -1}, {100, 160}, {0.18, 0.3}}},        // GimbalYaw_gimbalYawMotorParamIMUDebug
     {{{1.1, 0.1, 0, 8000, 30000}, {-1, -1}, {0, 0}, {-1, -1}}, {{190, 0.2, 20, 15000, 30000}, {0.4, -1}, {0, 0}, {-1, -1}}, {{25, 0.08, 0, 100, 500}, {-1, -1}, {100, 160}, {0.18, 0.3}}}         // GimbalYaw_gimbalYawMotorParamNoAuto
 //  {           Current  PID                          }   {                 SPEED PID                       }  {                    POSITION PID                 }     
 //  {Kp, Ki, Kd, SumMax, OutMax},{d_fil,delta_fil},{kf_1,kf_2},{kf1_fil_param,kf2_fil_param};   
@@ -170,12 +193,12 @@ void Const_SetGimbalPitchMotorParam() {
 
 
 static const float Const_ShooterMotorParam[2][3][4][5] = {
-    {{{0, 0, 0, 0, 0}, {16, -1}, {0, 0}, {-1, -1}}, {{70, 0.5, 35, 10000, 20000}, {16, -1}, {0, 0}, {-1, -1}}, {{0, 0, 0, 0, 0}, {16, -1}, {0, 0}, {-1, -1}}},           // Left shooter motor
-    {{{0, 0, 0, 0, 0}, {16, -1}, {0, 0}, {-1, -1}}, {{70, 0.5, 35, 10000, 20000}, {16, -1}, {0, 0}, {-1, -1}}, {{0, 0, 0, 0, 0}, {16, -1}, {0, 0}, {-1, -1}}}            // Right shooter motor  
+    {{{0, 0, 0, 0, 0}, {-1, -1}, {0, 0}, {-1, -1}}, {{18, 0.2, 30, 10000, 20000}, {-1, -1}, {0, 0}, {-1, -1}}, {{0, 0, 0, 0, 0}, {-1, -1}, {0, 0}, {-1, -1}}},           // Left shooter motor
+    {{{0, 0, 0, 0, 0}, {-1, -1}, {0, 0}, {-1, -1}}, {{18, 0.2, 30, 10000, 20000}, {-1, -1}, {0, 0}, {-1, -1}}, {{0, 0, 0, 0, 0}, {-1, -1}, {0, 0}, {-1, -1}}}            // Right shooter motor  
 };
 
 static const float Const_FeederMotorParam[1][3][4][5] = {
-    {{{0, 0, 0, 0, 0}, {16, -1}, {0, 0}, {-1, -1}}, {{1000, 0.5, 0, 10000, 20000}, {16, -1}, {0, 0}, {-1, -1}}, {{11, 0, 0, 10000, 20000}, {16, -1}, {0, 0}, {-1, -1}}}   // feeder motor
+    {{{0, 0, 0, 0, 0}, {-1, -1}, {0, 0}, {-1, -1}}, {{750, 0.01, 0, 10000, 20000}, {-1, -1}, {0, 0}, {-1, -1}}, {{8.35, 0, 0.11, 10000, 20000}, {-1, -1}, {0, 0}, {-1, -1}}}   // feeder motor
 };
 
 void Const_SetShooterPIDParam() {
@@ -193,16 +216,16 @@ float Const_ShooterLockedReverseSpeed   = 0.0f;
 float Const_ShooterSlowSpeed            = 150.0f;
 float Const_ShooterFastSpeed            = 230.0f;
 
-float Const_Shooter15mpers              = 108.0f;
-float Const_Shooter18mpers              = 110.0f;
-float Const_Shooter30mpers              = 161.0f;
+float Const_Shooter15mpers              = 230.0f;
+float Const_Shooter18mpers              = 242.0f;
+float Const_Shooter30mpers              = 347.0f;
 
 float Const_FeederSlowSpeed             = 50.0f;
 float Const_FeederFastSpeed             = 100.0f;
 
-uint16_t Const_HeatCtrlContinueLimit    = 50;
-uint16_t Const_HeatCtrlSingleLimit      = 30;
-uint16_t Const_HeatCtrlSingleCount      = 1000;
+uint16_t Const_HeatCtrlFastLimit        = 75;
+uint16_t Const_HeatCtrlSlowLimit        = 30;
+uint16_t Const_HeatCtrlSingleCount      = 10;
 uint16_t Const_HeatCtrlStopLimit        = 10;
 
 #endif

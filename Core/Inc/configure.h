@@ -5,7 +5,7 @@
  *  Description  : This file contains all functions enable
  *  LastEditors  : 动情丶卜灬动心
  *  Date         : 2021-05-04 20:53:31
- *  LastEditTime : 2021-05-08 08:36:03
+ *  LastEditTime : 2021-05-14 12:23:20
  */
 
 // #if 你觉得这份代码写的很好
@@ -30,11 +30,27 @@ extern "C" {
 
 /* Main Control program       */
 
-#define __FN_BOARD_TYPE             __FN_BOARD_TYPE_SUPERCAP
+#define __FN_BOARD_TYPE             __FN_BOARD_TYPE_GIMBAL
 
 #define __FN_BOARD_TYPE_CHASSIS     1
 #define __FN_BOARD_TYPE_GIMBAL      2
 #define __FN_BOARD_TYPE_SUPERCAP    3
+
+
+#define __FN_INFANTRY_TYPE          1
+
+#if (__FN_INFANTRY_TYPE == 1)
+    #define __FN_INFANTRY_NEW_ONE       __FN_ENABLE
+#endif
+
+#if (__FN_INFANTRY_TYPE == 2)
+    #define __FN_INFANTRY_NEW_TWO       __FN_ENABLE
+#endif
+
+#if (__FN_INFANTRY_TYPE == 3)
+    #define __FN_INFANTRY_NEW_THREE     __FN_ENABLE
+#endif
+
 
 
 /*      **********************************************      */
@@ -49,6 +65,7 @@ extern "C" {
 #if __FN_BOARD_TYPE == __FN_BOARD_TYPE_CHASSIS
     #define __FN_INFANTRY           __FN_ENABLE
     #define __FN_INFANTRY_CHASSIS   __FN_ENABLE
+    #define __FN_SUPER_CAP_COMM     __FN_ENABLE
 #else
     #define __FN_INFANTRY_CHASSIS   __FN_DISABLE
 #endif
@@ -63,6 +80,7 @@ extern "C" {
 #if __FN_BOARD_TYPE == __FN_BOARD_TYPE_SUPERCAP
     #define __FN_INFANTRY           __FN_DISABLE
     #define __FN_SUPER_CAP          __FN_ENABLE
+    #define __FN_SUPER_CAP_COMM     __FN_ENABLE
 #else
     #define __FN_SUPER_CAP          __FN_DISABLE
 #endif

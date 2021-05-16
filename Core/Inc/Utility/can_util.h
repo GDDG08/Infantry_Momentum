@@ -5,7 +5,7 @@
  *  Description  : This file contains the CAN functions
  *  LastEditors  : 动情丶卜灬动心
  *  Date         : 2021-05-04 20:53:31
- *  LastEditTime : 2021-05-08 10:53:26
+ *  LastEditTime : 2021-05-16 04:25:45
  */
 
 #ifndef CAN_UTIL_H

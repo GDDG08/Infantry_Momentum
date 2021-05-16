@@ -154,10 +154,10 @@ void MiniPC_DecodeMiniPCPacket(uint8_t* buff, uint16_t rxdatalen) {
     MiniPC_MiniPCDataTypeDef *minipc = MiniPC_GetMiniPCDataPtr();
     minipc->last_update_time = HAL_GetTick();
 
-    if(!MiniPC_VerifyMiniPCData(buff, rxdatalen)) {
-        minipc->state = MiniPC_ERROR;
-        return;
-    }
+//    if(!MiniPC_VerifyMiniPCData(buff, rxdatalen)) {
+//        minipc->state = MiniPC_ERROR;
+//        return;
+//    }
 
     switch (buff[4]) {
         case Const_MiniPC_Heart_PACKET:

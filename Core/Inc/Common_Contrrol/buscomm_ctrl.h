@@ -5,7 +5,7 @@
  *  Description  : This file contains Bus bus communication control function
  *  LastEditors  : 动情丶卜灬动心
  *  Date         : 2021-05-04 20:53:31
- *  LastEditTime : 2021-05-09 07:04:55
+ *  LastEditTime : 2021-05-16 01:21:15
  */
 
 #ifndef BUSCOMM_CTRL_H
@@ -16,6 +16,9 @@ extern "C" {
 #endif 
 
 #include "configure.h"
+
+#include "cmsis_os.h"
+#include "FreeRTOS.h"
 
 #include "can_util.h"
 #include "buff_lib.h"
@@ -83,6 +86,8 @@ typedef struct {
     uint8_t cap_mode;               // Capacitance mode
     uint8_t power_limit_mode;       // Force to change power limit mode
     uint8_t cap_charge_mode;        // cap charge mode
+    float pitch_angle;
+    uint8_t ui_cmd;
 
     // Super Cap up stream
     uint8_t cap_state;
@@ -91,7 +96,7 @@ typedef struct {
 } BusComm_BusCommDataTypeDef;
 
 extern BusComm_BusCommDataTypeDef BusComm_BusCommData;
-
+extern osMessageQId BusCommSend_QueueHandle;
 
 void BusComm_InitBusComm(void);
 BusComm_BusCommDataTypeDef* BusComm_GetBusDataPtr(void);
@@ -103,6 +108,7 @@ void BusComm_DecodeBusCommData(uint8_t buff[], uint16_t rxdatalen);
 void BusComm_ResetBusCommData(void);
 void BusComm_Update(void);
 void _cmd_mode_control(void);
+void _cmd_ui_mode_control(void);
 
 #endif
 

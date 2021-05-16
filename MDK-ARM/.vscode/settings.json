@@ -43,6 +43,19 @@
         "init_ctrl.h": "c",
         "watchdog_ctrl.h": "c",
         "config.h": "c",
-        "buscomm_cmd.h": "c"
+        "buscomm_cmd.h": "c",
+        "supercap_comm.h": "c",
+        "cstddef": "c",
+        "memory": "c",
+        "system_error": "c",
+        "xiosbase": "c",
+        "xstring": "c",
+        "xutility": "c",
+        "istream": "c",
+        "streambuf": "c",
+        "freertos.h": "c",
+        "cmsis_os.h": "c",
+        "type_traits": "c",
+        "xtr1common": "c"
     }
 }

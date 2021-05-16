@@ -5,8 +5,10 @@
  *  Description  : This document contains the data receiving and sending of the referee system
  *  LastEditors  : 动情丶卜灬动心
  *  Date         : 2021-05-04 20:53:31
- *  LastEditTime : 2021-05-07 03:43:06
+ *  LastEditTime : 2021-05-16 00:44:07
  */
+
+
 
 #include "referee_periph.h"
 
@@ -97,7 +99,7 @@ uint8_t P_ext_game_robot_status(Referee_RefereeDataTypeDef* referee, void *data_
     referee->shooter_heat1_cooling_limit = struct_ptr->shooter_id2_17mm_cooling_limit;
     referee->shooter_heat0_speed_limit = struct_ptr->shooter_id1_17mm_speed_limit;
     referee->shooter_heat1_speed_limit = struct_ptr->shooter_id2_17mm_speed_limit;
-
+    
     if (referee->robot_id != struct_ptr->robot_id) {
         referee->robot_id = struct_ptr->robot_id;
         referee->client_id = Referee_GetClientIDByRobotID(referee->robot_id);
@@ -116,7 +118,7 @@ uint8_t P_ext_power_heat_data(Referee_RefereeDataTypeDef* referee, void *data_pt
     referee->shooter_heat1 = struct_ptr->shooter_heat1;
     referee->mobile_shooter_heat2 = struct_ptr->mobile_shooter_heat2;
     
-    Referee_DrawingTimeBaseCallback();
+    // Referee_DrawingTimeBaseCallback();
     
     return PARSE_SUCCEEDED;
 }
@@ -588,10 +590,12 @@ uint32_t Referee_PackFloatGraphicData(graphic_data_struct_t *pgraph, uint32_t gr
                                       uint8_t width, uint16_t start_x, uint16_t start_y, float value)
 {
     Referee_GraphicDataConverterUnion conv;
-    conv.int_data = (uint16_t) (value * 1000.0f);
+    conv.int_data = (int32_t) (value * 1000.0f);
+    uint16_t radius = (conv.ui32_data) & 0x3ff;
+    uint16_t end_x = (conv.ui32_data >> 10) & 0x7ff;
+    uint16_t end_y = (conv.ui32_data >> 21) & 0x7ff;
     return Referee_PackGraphicData(pgraph, graph_id, operate_type, Draw_TYPE_FLOAT, layer, color, font_size, 
-                                   decimal_digit, width, start_x, start_y, conv.graphic_data.radius, 
-                                   conv.graphic_data.end_x, conv.graphic_data.end_y);
+                                   decimal_digit, width, start_x, start_y, radius, end_x, end_y);
 }
 
 
@@ -607,9 +611,11 @@ uint32_t Referee_PackIntGraphicData(graphic_data_struct_t *pgraph, uint32_t grap
 {
     Referee_GraphicDataConverterUnion conv;
     conv.int_data = value;
+    uint16_t radius = (conv.ui32_data) & 0x3ff;
+    uint16_t end_x = (conv.ui32_data >> 10) & 0x7ff;
+    uint16_t end_y = (conv.ui32_data >> 21) & 0x7ff;
     return Referee_PackGraphicData(pgraph, graph_id, operate_type, Draw_TYPE_INT, layer, color, font_size, 
-                                   0, width, start_x, start_y, conv.graphic_data.radius, 
-                                   conv.graphic_data.end_x, conv.graphic_data.end_y);
+                                   0, width, start_x, start_y, radius, end_x, end_y);
 }
 
 

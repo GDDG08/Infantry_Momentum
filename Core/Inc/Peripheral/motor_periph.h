@@ -5,7 +5,7 @@
  *  Description  : This file contains motor control function
  *  LastEditors  : 动情丶卜灬动心
  *  Date         : 2021-05-04 20:53:31
- *  LastEditTime : 2021-05-08 10:11:18
+ *  LastEditTime : 2021-05-14 11:56:42
  */
 
 #ifndef MOTOR_PERIPH_H
@@ -106,7 +106,7 @@ extern Motor_MotorTypeDef Motor_shooterMotorRight;
 
 void Motor_EncoderDecodeCallback(CAN_HandleTypeDef* phcan, uint32_t stdid, uint8_t rxdata[], uint32_t len);
 void Motor_InitAllMotors(void);
-void Motor_InitMotor(Motor_MotorTypeDef* pmotor, Motor_MotorTypeEnum type, uint8_t pid_num, uint8_t cur_pid, TIM_HandleTypeDef* htim, 
+void Motor_InitMotor(Motor_MotorTypeDef* pmotor, Motor_MotorTypeEnum type, uint8_t pid_num, uint8_t cur_pid, float fdb_param, TIM_HandleTypeDef* htim, 
                      uint32_t ch, TIM_HandleTypeDef* htim_enc, Motor_EncoderCallbackFuncTypeDef callback);
 void Motor_InitMotorGroup(Motor_MotorGroupTypeDef* pgroup, Motor_MotorTypeEnum type, uint8_t motor_num, CAN_HandleTypeDef* phcan, uint16_t stdid);
 void Motor_InitMotorParam(Motor_MotorParamTypeDef* pparam, const float pidpara[][4][5], PID_ModeEnum cur_mode, PID_ModeEnum spd_mode, PID_ModeEnum pos_mode);

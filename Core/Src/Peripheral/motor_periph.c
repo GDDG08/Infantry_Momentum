@@ -5,7 +5,7 @@
  *  Description  : This file contains motor control function
  *  LastEditors  : 动情丶卜灬动心
  *  Date         : 2021-05-04 20:53:31
- *  LastEditTime : 2021-05-08 10:11:11
+ *  LastEditTime : 2021-05-14 11:57:35
  */
 
 #include "motor_periph.h"
@@ -203,10 +203,10 @@ void Motor_InitAllMotors() {
 
     Motor_groupHandle[0] = &Motor_chassisMotors;
     Motor_InitMotorGroup(&Motor_chassisMotors, Motor_TYPE_CAN_MOTOR, 4, &hcan1, 0x200); 
-    Motor_InitMotor(&Motor_chassisMotor1, Motor_TYPE_CAN_MOTOR, 1, 0, NULL, 0, NULL, chassis_encoder_callback);
-    Motor_InitMotor(&Motor_chassisMotor2, Motor_TYPE_CAN_MOTOR, 1, 0, NULL, 0, NULL, chassis_encoder_callback);
-    Motor_InitMotor(&Motor_chassisMotor3, Motor_TYPE_CAN_MOTOR, 1, 0, NULL, 0, NULL, chassis_encoder_callback);
-    Motor_InitMotor(&Motor_chassisMotor4, Motor_TYPE_CAN_MOTOR, 1, 0, NULL, 0, NULL, chassis_encoder_callback);
+    Motor_InitMotor(&Motor_chassisMotor1, Motor_TYPE_CAN_MOTOR, 1, 0, -1, NULL, 0, NULL, chassis_encoder_callback);
+    Motor_InitMotor(&Motor_chassisMotor2, Motor_TYPE_CAN_MOTOR, 1, 0, -1, NULL, 0, NULL, chassis_encoder_callback);
+    Motor_InitMotor(&Motor_chassisMotor3, Motor_TYPE_CAN_MOTOR, 1, 0, -1, NULL, 0, NULL, chassis_encoder_callback);
+    Motor_InitMotor(&Motor_chassisMotor4, Motor_TYPE_CAN_MOTOR, 1, 0, -1, NULL, 0, NULL, chassis_encoder_callback);
     Motor_chassisMotors.motor_handle[0] = &Motor_chassisMotor1;
     Motor_chassisMotors.motor_handle[1] = &Motor_chassisMotor2;
     Motor_chassisMotors.motor_handle[2] = &Motor_chassisMotor3;
@@ -214,20 +214,20 @@ void Motor_InitAllMotors() {
     
     Motor_groupHandle[1] = &Motor_gimbalMotors;
     Motor_InitMotorGroup(&Motor_gimbalMotors, Motor_TYPE_CAN_MOTOR, 2, &hcan1, 0x1FF);
-    Motor_InitMotor(&Motor_gimbalMotorYaw, Motor_TYPE_CAN_MOTOR, 2, 1, NULL, 0, NULL, gimbal_encoder_callback);
-    Motor_InitMotor(&Motor_gimbalMotorPitch, Motor_TYPE_CAN_MOTOR, 2, 1, NULL, 0, NULL, gimbal_encoder_callback);
+    Motor_InitMotor(&Motor_gimbalMotorYaw, Motor_TYPE_CAN_MOTOR, 2, 1, -1, NULL, 0, NULL, gimbal_encoder_callback);
+    Motor_InitMotor(&Motor_gimbalMotorPitch, Motor_TYPE_CAN_MOTOR, 2, 1, -1, NULL, 0, NULL, gimbal_encoder_callback);
     Motor_gimbalMotors.motor_handle[0] = &Motor_gimbalMotorYaw;
     Motor_gimbalMotors.motor_handle[1] = &Motor_gimbalMotorPitch;
 
     Motor_groupHandle[2] = &Motor_feederMotors;
     Motor_InitMotorGroup(&Motor_feederMotors, Motor_TYPE_CAN_MOTOR, 1, &hcan1, 0x200);
-    Motor_InitMotor(&Motor_feederMotor, Motor_TYPE_CAN_MOTOR, 2, 0, NULL, 0, NULL, feeder_encoder_callback);
+    Motor_InitMotor(&Motor_feederMotor, Motor_TYPE_CAN_MOTOR, 2, 0, -1, NULL, 0, NULL, feeder_encoder_callback);
     Motor_feederMotors.motor_handle[3] = &Motor_feederMotor;
 
     Motor_groupHandle[3] = &Motor_shooterMotors;
     Motor_InitMotorGroup(&Motor_shooterMotors, Motor_TYPE_PWM_MOTOR, 2, NULL, 0);
-    Motor_InitMotor(&Motor_shooterMotorLeft, Motor_TYPE_PWM_MOTOR, 1, 0, &htim3, TIM_CHANNEL_1, &htim4, shooter_encoder_callback);
-    Motor_InitMotor(&Motor_shooterMotorRight, Motor_TYPE_PWM_MOTOR, 1, 0, &htim3, TIM_CHANNEL_4, &htim5, shooter_encoder_callback);
+    Motor_InitMotor(&Motor_shooterMotorLeft, Motor_TYPE_PWM_MOTOR, 1, 0, 0.3, &htim3, TIM_CHANNEL_1, &htim4, shooter_encoder_callback);
+    Motor_InitMotor(&Motor_shooterMotorRight, Motor_TYPE_PWM_MOTOR, 1, 0, 0.3, &htim3, TIM_CHANNEL_4, &htim5, shooter_encoder_callback);
     Motor_shooterMotors.motor_handle[0] = &Motor_shooterMotorLeft;
     Motor_shooterMotors.motor_handle[1] = &Motor_shooterMotorRight;
 }
@@ -262,7 +262,7 @@ void Motor_InitMotorParam(Motor_MotorParamTypeDef* pparam, const float pidpara[]
   * @param      callback: Motor callback function
   * @retval     NULL
   */
-void Motor_InitMotor(Motor_MotorTypeDef* pmotor, Motor_MotorTypeEnum type, uint8_t pid_num, uint8_t cur_pid, TIM_HandleTypeDef* htim, 
+void Motor_InitMotor(Motor_MotorTypeDef* pmotor, Motor_MotorTypeEnum type, uint8_t pid_num, uint8_t cur_pid, float fdb_param, TIM_HandleTypeDef* htim, 
                      uint32_t ch, TIM_HandleTypeDef* htim_enc, Motor_EncoderCallbackFuncTypeDef callback) {
     if (pmotor == NULL) return;
     pmotor->encoder.last_update_time = HAL_GetTick();
@@ -270,7 +270,7 @@ void Motor_InitMotor(Motor_MotorTypeDef* pmotor, Motor_MotorTypeEnum type, uint8
     pmotor->pid_num = pid_num;
     pmotor->cur_pid = cur_pid;
     pmotor->callback = callback;
-    Filter_LowPassInit(1, &pmotor->fdb_fil_param);
+    Filter_LowPassInit(fdb_param, &pmotor->fdb_fil_param);
     pmotor->cur_pid_div = 0;
     PID_ClearPID(&(pmotor->pid_cur));
     PID_ClearPID(&(pmotor->pid_spd));

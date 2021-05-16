@@ -5,7 +5,7 @@
  *  Description  : This file contains Bus communication control function
  *  LastEditors  : 动情丶卜灬动心
  *  Date         : 2021-05-04 20:53:31
- *  LastEditTime : 2021-05-09 07:23:25
+ *  LastEditTime : 2021-05-16 07:00:40
  */
 
 #include "buscomm_ctrl.h"
@@ -15,7 +15,7 @@
 #if __FN_IF_ENABLE(__FN_INFANTRY_CHASSIS)
     #include "cha_chassis_ctrl.h"
     #include "cha_gimbal_ctrl.h"
-    #include "referee_periph.h"
+    #include "cha_referee_ctrl.h"
     #include "cha_power_ctrl.h"
 #endif
 
@@ -27,13 +27,15 @@
     #include "supercap_ctrl.h"
 #endif
 
-
 /*      infantry communication functions      */
 const uint16_t Const_BusComm_TX_BUFF_LEN        = 200;
 const uint16_t Const_BusComm_RX_BUFF_LEN        = 200;
 const uint16_t Const_BusComm_OFFLINE_TIME       = 500; 
 
 const uint8_t Const_BusComm_SIZE                = 8;
+const uint8_t Const_BusComm_GIMBAL_BUFF_SIZE    = 7;
+const uint8_t Const_BusComm_CHASSIS_BUFF_SIZE   = 4;
+const uint8_t Const_BusComm_SUPERCAP_BUFF_SIZE  = 1;
 
 const uint8_t Const_BusComm_FRAME_HEADER_SOF    = 0x5A;
 
@@ -78,7 +80,7 @@ CAN_TxHeaderTypeDef BusComm_ChassisCanTxHeader;
 CAN_TxHeaderTypeDef BusComm_GimbalCanTxHeader;
 CAN_TxHeaderTypeDef BusComm_SuperCapCanTxHeader;
 
-
+#if __FN_IF_ENABLE(__FN_INFANTRY)
 /**
   * @brief      Inter bus communication initialization
   * @param      NULL
@@ -132,52 +134,37 @@ void BusComm_SendBusCommData() {
     BusComm_BusCommDataTypeDef *buscomm = BusComm_GetBusDataPtr();
 
     buscomm->state = BusComm_STATE_PENDING;
-    
+
     // Chassis stream
     #if __FN_IF_ENABLE(__FN_INFANTRY_CHASSIS)
-    static int sent_flag = 0;
-    int func;
-    if (sent_flag == 0) {
-        func = 0;
-        sent_flag = 1;
-    }
-    else {
-        func = 2;
-        sent_flag = 0;
-    }
-    for (int i = 0; i < 2; i++) {
-        if(Buscmd_ChaSent[i + func].bus_func != NULL)
-            Buscmd_ChaSent[i + func].bus_func(BusComm_TxData);
+    static int flag = 0;
+        flag++;
+    if (flag >= 10) {
+        flag = 0;
+        uint32_t out_time = HAL_GetTick();
+        for (int i = 0; i < Const_BusComm_CHASSIS_BUFF_SIZE; i++) {
+            while (HAL_CAN_GetTxMailboxesFreeLevel(Const_BusComm_CAN_HANDLER) == 0) {
+                if (HAL_GetTick() - out_time >= 2) return;
+            }
+            if (Buscmd_ChaSend[i].bus_func != NULL)
+                Buscmd_ChaSend[i].bus_func(BusComm_TxData);
+        }
     }
     #endif
     
     // Gimbal steram
     #if __FN_IF_ENABLE(__FN_INFANTRY_GIMBAL)
-    static int sent_flag = 0;
-    int func;
-    if (sent_flag == 0) {
-        func = 0;
-        sent_flag = 1;
+    uint32_t out_time = HAL_GetTick();
+
+    for (int i = 0; i < Const_BusComm_GIMBAL_BUFF_SIZE; i++){
+        while (HAL_CAN_GetTxMailboxesFreeLevel(Const_BusComm_CAN_HANDLER) == 0) {
+            if (HAL_GetTick() - out_time >= 2) return;
+        }
+        if (Buscmd_GimSend[i].bus_func != NULL)
+            Buscmd_GimSend[i].bus_func(BusComm_TxData);
     }
-    else {
-        func = 3;
-        sent_flag = 0;
-    }
-    
-    
-    for (int i = 0; i < 3; i++) {
-        if(Buscmd_GimSent[i + func].bus_func != NULL)
-            Buscmd_GimSent[i + func].bus_func(BusComm_TxData);
-    }
-    #endif
-    
-    // Super Cap stream
-    #if __FN_IF_ENABLE(__FN_SUPER_CAP)
-        if(Buscmd_CapSent[0].bus_func != NULL)
-            Buscmd_CapSent[0].bus_func(BusComm_TxData);
     #endif
 
-    
     buscomm->state = BusComm_STATE_CONNECTED;
 }
 
@@ -221,9 +208,9 @@ void BusComm_DecodeBusCommData(uint8_t buff[], uint16_t rxdatalen) {
         return;
     }
     
-    for (int i = 0; i <= 11; i++) {
-        if ((BusComm_RxData[1] == Buscmd_Revice[i].cmd_id) && (Buscmd_Revice[i].bus_func != NULL)) {
-            Buscmd_Revice[i].bus_func(BusComm_RxData);
+    for (int i = 0; i <= (Const_BusComm_SUPERCAP_BUFF_SIZE + Const_BusComm_CHASSIS_BUFF_SIZE + Const_BusComm_GIMBAL_BUFF_SIZE + 1); i++) {
+        if ((BusComm_RxData[1] == Buscmd_Receive[i].cmd_id) && (Buscmd_Receive[i].bus_func != NULL)) {
+            Buscmd_Receive[i].bus_func(BusComm_RxData);
             return;
         }
     }
@@ -263,6 +250,8 @@ void BusComm_ResetBusCommData() {
         buscomm->cap_mode           = SUPERCAP_CTRL_OFF;
         buscomm->power_limit_mode   = POWER_LIMITED;
         buscomm->cap_charge_mode    = SUPERCAP_UNCHARGE;
+        buscomm->pitch_angle        = 0.0f;
+        buscomm->ui_cmd             = 0;
     #endif
 
     // SuperCap stream
@@ -286,6 +275,17 @@ void BusComm_Update() {
         GimbalYaw_GimbalYawTypeDef *gimbal = GimbalYaw_GetGimbalYawPtr();
         Referee_RefereeDataTypeDef *referee = Referee_GetRefereeDataPtr();
     
+        data->heat_speed_limit = referee->shooter_heat0_speed_limit;
+        int mode = 0;
+        if (referee->shooter_heat0_speed_limit == 15) mode = 0;
+        if (referee->shooter_heat0_speed_limit == 18) mode = 1;
+        if (referee->shooter_heat0_speed_limit == 30) mode = 2;
+        Referee_SetAimMode(mode);
+
+        Referee_SetCapState(data->cap_rest_energy);
+        Referee_SetPitchAngle(data->pitch_angle);
+       
+    
         data->yaw_relative_angle = Motor_gimbalMotorYaw.encoder.limited_angle - Const_YAW_MOTOR_INIT_OFFSET;
         data->robot_id = referee->robot_id;
         data->power_limit = referee->max_chassis_power;
@@ -304,6 +304,7 @@ void BusComm_Update() {
         data->gimbal_yaw_ref = gimbal->angle.yaw_angle_ref;
         data->gimbal_imu_pos = imu->angle.yaw;
         data->gimbal_imu_spd = imu->speed.yaw;
+        data->pitch_angle = imu->angle.pitch;
 
     #endif
   
@@ -383,6 +384,9 @@ void _cmd_mode_control() {
             Chassis_SetLeftRightRef(buscomm->chassis_lr_ref);
             Chassis_SetChassisControlState(1);
             Chassis_SetChassisOutputState(1);
+
+            Referee_SetWidthMode(0);
+
             break;
         }
         case CHASSIS_CTRL_GYRO: {
@@ -391,6 +395,9 @@ void _cmd_mode_control() {
             Chassis_SetLeftRightRef(buscomm->chassis_lr_ref);
             Chassis_SetChassisControlState(1);
             Chassis_SetChassisOutputState(1);
+
+            Referee_SetWidthMode(1);
+
             break;
         }
         default:
@@ -411,6 +418,15 @@ void _cmd_mode_control() {
 }
 
 
+void _cmd_ui_mode_control() {
+    #if __FN_IF_ENABLE(__FN_INFANTRY_CHASSIS)
+    BusComm_BusCommDataTypeDef *buscomm = BusComm_GetBusDataPtr();
+        if (buscomm->ui_cmd == 1) {
+            Referee_Setup();
+        }
+    #endif
+}
+
 
 /**
   * @brief      Interrupt callback function of can in inter Bus communication
@@ -418,7 +434,11 @@ void _cmd_mode_control() {
   * @retval     NULL
   */
 void BusComm_CANRxCallback(CAN_HandleTypeDef* phcan, uint32_t stdid, uint8_t rxdata[], uint32_t len) {
-    if (phcan == Const_BusComm_CAN_HANDLER) {
-        BusComm_DecodeBusCommData(rxdata, len);
-    }
+    #if __FN_IF_ENABLE(__FN_INFANTRY)
+        if (phcan == Const_BusComm_CAN_HANDLER) {
+            BusComm_DecodeBusCommData(rxdata, len);
+        }
+    #endif
 }
+
+#endif

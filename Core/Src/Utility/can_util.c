@@ -5,7 +5,7 @@
  *  Description  : This file contains the CAN funtions
  *  LastEditors  : 动情丶卜灬动心
  *  Date         : 2021-05-04 20:53:31
- *  LastEditTime : 2021-05-08 07:45:18
+ *  LastEditTime : 2021-05-16 04:25:36
  */
 
 #include "can_util.h"
@@ -29,7 +29,7 @@ uint8_t Can_RxData[Const_Can_RX_BUFF_LEN];
 void Can_ErrorHandler(uint32_t ret) {
     //Log_DebugPrintf("Error: CAN Error!\n");
     while (1) {
-        return;
+        
     }
 }
 
@@ -133,7 +133,9 @@ void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *phcan) {
   * @retval     NULL
   */
 void Can_RxMessageCallback(CAN_HandleTypeDef* phcan, CAN_RxHeaderTypeDef* rxheader, uint8_t rxdata[]) {
-    BusComm_CANRxCallback(phcan, rxheader -> StdId, rxdata, rxheader -> DLC);
+    #if __FN_IF_ENABLE(__FN_INFANTRY)
+        BusComm_CANRxCallback(phcan, rxheader -> StdId, rxdata, rxheader -> DLC);
+    #endif
     #if __FN_IF_ENABLE(__FN_PERIPH_MOTOR)
         Motor_EncoderDecodeCallback(phcan, rxheader -> StdId, rxdata, rxheader -> DLC); //
     #endif

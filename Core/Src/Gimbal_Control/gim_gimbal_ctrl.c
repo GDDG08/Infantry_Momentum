@@ -5,7 +5,7 @@
  *  Description  : This file contains Gimbal control function
  *  LastEditors  : 动情丶卜灬动心
  *  Date         : 2021-05-04 20:53:31
- *  LastEditTime : 2021-05-08 06:05:34
+ *  LastEditTime : 2021-05-16 00:25:54
  */
 
 #include "gim_gimbal_ctrl.h"
@@ -16,6 +16,7 @@
 #include "gim_remote_ctrl.h"
 #include "gim_shoot_ctrl.h"
 #include "buscomm_ctrl.h"
+#include "gim_miniPC_ctrl.h"
 
 Motor_MotorParamTypeDef GimbalPitch_gimbalPitchMotorParamBigEnergy;
 Motor_MotorParamTypeDef GimbalPitch_gimbalPitchMotorParamSmallEnergy;
@@ -118,6 +119,7 @@ void Gimbal_CtrlYaw() {
 void Gimbal_CtrlPitch() {
     IMU_IMUDataTypeDef *imu = IMU_GetIMUDataPtr();
     Gimbal_GimbalTypeDef *gimbal = Gimbal_GetGimbalControlPtr();
+    MiniPC_MiniPCDataTypeDef *minipc_data = MiniPC_GetMiniPCDataPtr();
 
     // Set pid param
     Motor_MotorParamTypeDef* pparam;
@@ -157,7 +159,9 @@ void Gimbal_CtrlPitch() {
         gimbal->pitch_speed_fdb    = imu->speed.pitch;
     }
     
+
     Motor_SetMotorRef(&Motor_gimbalMotorPitch, gimbal->angle.pitch_angle_ref);
+
     Motor_SetMotorFdb(&Motor_gimbalMotorPitch, 2, gimbal->pitch_position_fdb);
     Motor_SetMotorFdb(&Motor_gimbalMotorPitch, 1, gimbal->pitch_speed_fdb);
     Motor_CalcMotorOutput(&Motor_gimbalMotorPitch, pparam);
@@ -218,8 +222,9 @@ void Gimbal_SetPitchRef(float ref) {
 void Gimbal_SetPitchAutoRef(float ref) {
     Gimbal_GimbalTypeDef *gimbal = Gimbal_GetGimbalControlPtr();
     IMU_IMUDataTypeDef *imu = IMU_GetIMUDataPtr();
+    MiniPC_MiniPCDataTypeDef *minipc_data = MiniPC_GetMiniPCDataPtr();
     
-    gimbal->angle.pitch_angle_ref = imu->angle.pitch - ref;
+    gimbal->angle.pitch_angle_ref = Gimbal_LimitPitch(imu->angle.pitch + ref - 1.0f);
 }
 
 
@@ -243,11 +248,9 @@ void Gimbal_SetYawRef(float ref) {
 void Gimbal_SetYawAutoRef(float ref) {
     Gimbal_GimbalTypeDef *gimbal = Gimbal_GetGimbalControlPtr();
     IMU_IMUDataTypeDef *imu = IMU_GetIMUDataPtr();
+    MiniPC_MiniPCDataTypeDef *minipc_data = MiniPC_GetMiniPCDataPtr();
     
-    if (ref != 0) 
-    {
-        gimbal->angle.yaw_angle_ref = imu->angle.yaw + ref;
-    }    
+    gimbal->angle.yaw_angle_ref = Gimbal_LimitYaw(imu->angle.yaw - ref);   
 }
 
 

@@ -50,7 +50,7 @@ typedef struct {
 
 typedef struct {
     float shooter_17mm_cooling_heat;
-    float shooter_17mm_cooling_limit;
+    float shooter_17mm_cooling_rate;
     float shooter_17mm_heat_remain;
     
     float current_speed;

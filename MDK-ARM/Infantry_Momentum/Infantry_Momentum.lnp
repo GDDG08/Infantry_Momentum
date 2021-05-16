@@ -1,4 +1,4 @@
---cpu=Cortex-M4.fp
+--cpu Cortex-M4.fp
 "infantry_momentum\startup_stm32f405xx.o"
 "infantry_momentum\main.o"
 "infantry_momentum\gpio.o"
@@ -75,11 +75,12 @@
 "infantry_momentum\cha_power_ctrl.o"
 "infantry_momentum\cha_referee_ctrl.o"
 "infantry_momentum\supercap_ctrl.o"
+"infantry_momentum\supercap_comm.o"
 "infantry_momentum\buscomm_ctrl.o"
 "infantry_momentum\init_ctrl.o"
 "infantry_momentum\watchdog_ctrl.o"
 "infantry_momentum\buscomm_cmd.o"
 --library_type=microlib --strict --scatter "Infantry_Momentum\Infantry_Momentum.sct"
---summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
+--summary_stderr --info summarysizes --map --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers
 --list "Infantry_Momentum.map" -o Infantry_Momentum\Infantry_Momentum.axf

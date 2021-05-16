@@ -158,13 +158,12 @@ void Chassis_SetStopRef() {
 void Chassis_CalcMoveRef() {
     Chassis_ChassisTypeDef *chassis = Chassis_GetChassisControlPtr();
 
-    float pi = (float)acos(-1);
-	float theta_rad = -(Motor_gimbalMotorYaw.encoder.limited_angle - Const_YAW_MOTOR_INIT_OFFSET) * pi / 180;
+	float theta_rad = -(Motor_gimbalMotorYaw.encoder.limited_angle - Const_YAW_MOTOR_INIT_OFFSET) * PI / 180;
  
 	float sin_tl = (float)sin(theta_rad);
 	float cos_tl = (float)cos(theta_rad);
-	chassis->raw_speed_ref.forward_back_ref = chassis->raw_ref.forward_back_ref * cos_tl - chassis->raw_ref.left_right_ref * sin_tl;
-	chassis->raw_speed_ref.left_right_ref   = chassis->raw_ref.forward_back_ref * sin_tl + chassis->raw_ref.left_right_ref * cos_tl;
+	chassis->raw_speed_ref.forward_back_ref = chassis->raw_ref.forward_back_ref * cos_tl + chassis->raw_ref.left_right_ref * sin_tl;
+	chassis->raw_speed_ref.left_right_ref   = -chassis->raw_ref.forward_back_ref * sin_tl + chassis->raw_ref.left_right_ref * cos_tl;
 }
 
 
@@ -201,9 +200,9 @@ void Chassis_CalcGyroRef() {
     
     float speed_ref = (float)sqrt(sqr(chassis->raw_speed_ref.forward_back_ref) + sqr(chassis->raw_speed_ref.left_right_ref));
     //chassis->raw_speed_ref.rotate_ref = 450.0f - speed_ref * 1.2f;
-    chassis->raw_speed_ref.rotate_ref = 900.0f - speed_ref * 1.2f;
-    if(chassis->raw_speed_ref.rotate_ref < 500)
-        chassis->raw_speed_ref.rotate_ref = 500;
+    chassis->raw_speed_ref.rotate_ref = 900.0f - speed_ref * 0.7f;
+    if(chassis->raw_speed_ref.rotate_ref < 300)
+        chassis->raw_speed_ref.rotate_ref = 300;
 }
 
 

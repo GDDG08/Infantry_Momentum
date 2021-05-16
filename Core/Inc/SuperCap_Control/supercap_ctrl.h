@@ -5,7 +5,7 @@
  *  Description  : This file contains cap control function
  *  LastEditors  : 动情丶卜灬动心
  *  Date         : 2021-05-04 20:53:31
- *  LastEditTime : 2021-05-08 09:18:53
+ *  LastEditTime : 2021-05-14 12:30:29
  */
 
 #ifndef SUPERCAP_CTRL_H
@@ -57,7 +57,7 @@ void Cap_Init(void);
 CAP_ControlValueTypeDef* Cap_GetCapControlPtr(void);
 void Cap_JudgeCapState(void);
 void Cap_CapCharge(void);
-uint8_t Cap_ChangePowerPath(POWER_PathEnum path);
+void Cap_ChangePowerPath(POWER_PathEnum path);
 void Cap_Control(void);
 
 #endif

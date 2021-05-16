@@ -5,7 +5,7 @@
  *  Description  : This file contains MiniPC control function
  *  LastEditors  : 动情丶卜灬动心
  *  Date         : 2021-05-04 20:53:31
- *  LastEditTime : 2021-05-08 04:44:25
+ *  LastEditTime : 2021-05-16 00:26:31
  */
 
 #include "gim_miniPC_ctrl.h"
@@ -37,8 +37,8 @@ void MiniPC_InitControl() {
     MiniPC_MiniPCContrlTypeDef *minipc = MiniPC_GetMiniPCControlDataPtr();
 
     minipc->enable_aim_output = 1;
-    Filter_LowPassInit(0.5, &minipc->yaw_fil_param);
-    Filter_LowPassInit(0.5, &minipc->pitch_fil_param);
+    Filter_LowPassInit(-1, &minipc->yaw_fil_param);
+    Filter_LowPassInit(-1, &minipc->pitch_fil_param);
 }
 
 
@@ -70,10 +70,7 @@ void MiniPC_CalcAutoAim() {
 	// Gimbal Trace Forecast
 	MiniPC_KalmanPrediction();
     
-	if (gimbal->mode.present_mode == Gimbal_ARMOR) {
-        // Set gimbal ref
-		MiniPC_SetGimbalRef();
-    }
+	MiniPC_SetGimbalRef();
 }
 
 
@@ -138,12 +135,12 @@ void MiniPC_UpdateControlData() {
     MiniPC_MiniPCDataTypeDef *minipc_data = MiniPC_GetMiniPCDataPtr();
 
     minipc->distance    = minipc_data->distance;
-    minipc->yaw_angle   = minipc_data->yaw_angle;
-    minipc->pitch_angle = minipc_data->pitch_angle;
-    
+
     if (minipc_data->is_get_target == 1) {
         minipc->get_target_time = HAL_GetTick();
     }
+    minipc->yaw_angle   = minipc_data->yaw_angle;
+    minipc->pitch_angle = minipc_data->pitch_angle;
 }
 
 
@@ -156,9 +153,10 @@ void MiniPC_SetGimbalRef() {
     MiniPC_MiniPCContrlTypeDef *minipc = MiniPC_GetMiniPCControlDataPtr();
     MiniPC_MiniPCDataTypeDef *minipc_data = MiniPC_GetMiniPCDataPtr();
 	IMU_IMUDataTypeDef *imu = IMU_GetIMUDataPtr();
-
+    Gimbal_GimbalTypeDef *gimbal = Gimbal_GetGimbalControlPtr();
+    
     float yaw_ref = 0, pitch_ref = 0;
-    if (minipc_data->state == MiniPC_CONNECTED && minipc->target_state == MiniPC_TARGET_FOLLOWING) {
+    if (minipc_data->state == MiniPC_CONNECTED) {
         yaw_ref = minipc->yaw_angle;
         pitch_ref = minipc->pitch_angle;
     }
@@ -166,9 +164,9 @@ void MiniPC_SetGimbalRef() {
     minipc->yaw_ref_filtered   = Filter_LowPass(yaw_ref,   &minipc->yaw_fil_param,   &minipc->yaw_fil);
     minipc->pitch_ref_filtered = Filter_LowPass(pitch_ref, &minipc->pitch_fil_param, &minipc->pitch_fil);
     
-    if (minipc->enable_aim_output) {
-        Gimbal_SetYawAutoRef(-Gimbal_LimitYaw((minipc->yaw_ref_filtered)));
-        Gimbal_SetPitchAutoRef(-Gimbal_LimitPitch((minipc->pitch_ref_filtered)));
+    if ((minipc->enable_aim_output) && (minipc->target_state ==  MiniPC_TARGET_FOLLOWING) && (gimbal->mode.present_mode == Gimbal_ARMOR)) {
+        Gimbal_SetYawAutoRef(minipc->yaw_ref_filtered);
+        Gimbal_SetPitchAutoRef(minipc->pitch_ref_filtered);
     }
 }
 

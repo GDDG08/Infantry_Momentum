@@ -38,6 +38,7 @@
 #include "supercap_ctrl.h"
 #include "buscomm_ctrl.h"
 #include "watchdog_ctrl.h"
+#include "supercap_comm.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -69,6 +70,7 @@ osThreadId ShootHandle;
 osThreadId MiniPCHandle;
 osThreadId RefereeHandle;
 osThreadId WatchDogHandle;
+osMessageQId BusCommSend_QueueHandle;
 
 /* Private function prototypes -----------------------------------------------*/
 /* USER CODE BEGIN FunctionPrototypes */
@@ -125,6 +127,11 @@ void MX_FREERTOS_Init(void) {
   /* USER CODE BEGIN RTOS_TIMERS */
   /* start timers, add new ones, ... */
   /* USER CODE END RTOS_TIMERS */
+
+  /* Create the queue(s) */
+  /* definition and creation of BusCommSend_Queue */
+  osMessageQDef(BusCommSend_Queue, 30, uint8_t);
+  BusCommSend_QueueHandle = osMessageCreate(osMessageQ(BusCommSend_Queue), NULL);
 
   /* USER CODE BEGIN RTOS_QUEUES */
   /* add queues, ... */
@@ -209,14 +216,14 @@ void Gimbal_Task(void const * argument)
   for(;;)
   {
     #if __FN_IF_ENABLE(__FN_INFANTRY_GIMBAL)
-      MiniPC_CalcAutoAim();
-      Gimbal_CtrlPitch();
-      Gimbal_CtrlYaw();
-      GimbalPitch_Output();
+        MiniPC_CalcAutoAim();
+        Gimbal_CtrlPitch();
+        Gimbal_CtrlYaw();
+        GimbalPitch_Output();
     #endif
     #if __FN_IF_ENABLE(__FN_INFANTRY_CHASSIS)
-      GimbalYaw_Control();
-      GimbalYaw_Output();
+        GimbalYaw_Control();
+        GimbalYaw_Output();
     #endif
     osDelay(1);
   }
@@ -236,8 +243,10 @@ void BusComm_Task(void const * argument)
   /* Infinite loop */
   for(;;)
   {
-    BusComm_SendBusCommData();
-    osDelay(1);
+      #if __FN_IF_ENABLE(__FN_INFANTRY)
+          BusComm_SendBusCommData();
+      #endif
+    osDelay(4);
   }
   /* USER CODE END BusComm_Task */
 }
@@ -298,10 +307,13 @@ void SuperCap_Task(void const * argument)
   /* Infinite loop */
   for(;;)
   {
-    #if __FN_IF_ENABLE(__FN_SUPER_CAP)
-//        Cap_Control();
+    #if __FN_IF_ENABLE(__FN_SUPER_CAP_COMM)
+        #if __FN_IF_ENABLE(__FN_SUPER_CAP)
+            Cap_Control();
+        #endif
+        CapComm_SendCapCommData();
     #endif
-    osDelay(1);
+    osDelay(10);
   }
   /* USER CODE END SuperCap_Task */
 }
@@ -362,7 +374,7 @@ void Referee_Task(void const * argument)
   for(;;)
   {
     #if __FN_IF_ENABLE(__FN_CTRL_REFEREE)
-        DrawCtrl_Update();
+        Referee_Update();
     #endif
     osDelay(200);
   }
@@ -382,8 +394,8 @@ void WatchDog_Task(void const * argument)
   /* Infinite loop */
   for(;;)
   {
-    WatchDog_FeedDog();
-    osDelay(1);
+      WatchDog_FeedDog();
+      osDelay(1);
   }
   /* USER CODE END WatchDog_Task */
 }

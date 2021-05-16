@@ -5,7 +5,7 @@
  *  Description  : This file contains Remote control function
  *  LastEditors  : 动情丶卜灬动心
  *  Date         : 2021-05-04 20:53:31
- *  LastEditTime : 2021-05-09 03:55:30
+ *  LastEditTime : 2021-05-16 01:03:37
  */
 
 #include "gim_remote_ctrl.h"
@@ -68,10 +68,9 @@ void Remote_ControlCom() {
         }
         case Remote_SWITCH_MIDDLE: {
             /* right switch mid is keymouse mode    */
-            Remote_ChangeChassisState(CHASSIS_CTRL_NORMAL);
-            Gimbal_ChangeMode(Gimbal_NOAUTO);
             Remote_KeyMouseProcess();
             Remote_MouseShooterModeSet();
+//            Remote_ChangeChassisState(CHASSIS_CTRL_STOP);
             Remote_Gesture();
             break;
         }
@@ -111,7 +110,7 @@ void Remote_MouseShooterModeSet() {
     if (data->mouse.l == 1) {
         count_mouse_L++;
         if (count_mouse_L >= 50) {
-            Shooter_ChangeFeederMode(Feeder_LOW_CONTINUE);
+            Shooter_ChangeFeederMode(Feeder_REFEREE);
             count_mouse_L = 50;
         }
     }
@@ -174,7 +173,7 @@ void Remote_RemoteProcess() {
     Remote_RemoteDataTypeDef *data = Remote_GetRemoteDataPtr();
 
     buscomm->chassis_fb_ref = Filter_Bessel((float)data->remote.ch[1],&Remote_forward_backFilter) * 0.5f;
-    buscomm->chassis_lr_ref = Filter_Bessel((float)data->remote.ch[0],&Remote_right_leftFilter) * 0.5f;
+    buscomm->chassis_lr_ref = -Filter_Bessel((float)data->remote.ch[0],&Remote_right_leftFilter) * 0.5f;
     
     if (data->remote.ch[4] <= -500.0f)
         Remote_ChangeChassisState(CHASSIS_CTRL_GYRO);
@@ -209,6 +208,7 @@ void Remote_KeyMouseProcess() {
     Remote_RemoteDataTypeDef *data = Remote_GetRemoteDataPtr();
     Gimbal_GimbalTypeDef *gimbal = Gimbal_GetGimbalControlPtr();
     BusComm_BusCommDataTypeDef *buscomm = BusComm_GetBusDataPtr();
+    MiniPC_MiniPCContrlTypeDef *minipc = MiniPC_GetMiniPCControlDataPtr();
     
     float max_chassis_speed;
     /************Control mode choise**************/
@@ -218,6 +218,12 @@ void Remote_KeyMouseProcess() {
     if (data->key.x == 1) {
     }
 
+    if (data->key.c == 1 && data->key.shift == 1) {
+        buscomm->ui_cmd = 1;
+    }
+    else {
+        buscomm->ui_cmd = 0;
+    }
     if (data->key.c == 1) {
 
     }
@@ -247,8 +253,8 @@ void Remote_KeyMouseProcess() {
             Servo_SetServoAngle(&Servo_ammoContainerCapServo, 0);
             flag_relode = 0;
         }
-        else if ((Servo_GetServoAngle(&Servo_ammoContainerCapServo) != 140) &&(flag_relode == 1)) {
-            Servo_SetServoAngle(&Servo_ammoContainerCapServo, 140);
+        else if ((Servo_GetServoAngle(&Servo_ammoContainerCapServo) != 200) && (flag_relode == 1)) {
+            Servo_SetServoAngle(&Servo_ammoContainerCapServo, 200);
             flag_relode = 0;            
         }
     }
@@ -333,22 +339,27 @@ void Remote_KeyMouseProcess() {
 	buscomm->chassis_fb_ref = t_ws;            
 
 	/**************Left and right control*************/
-	if (data->key.a == 1) {			
-		t_ad = Math_CalcSlopeRef(t_ad, max_chassis_speed, &Remote_ChassisRLSlope);
-	}
-	else if (data->key.d == 1) {
+	if (data->key.d == 1) {			
 		t_ad = Math_CalcSlopeRef(t_ad, -max_chassis_speed, &Remote_ChassisRLSlope);
+	}
+	else if (data->key.a == 1) {
+		t_ad = Math_CalcSlopeRef(t_ad, max_chassis_speed, &Remote_ChassisRLSlope);
 	}
 	else t_ad = 0;
 	buscomm->chassis_lr_ref = t_ad;
     
-    // Change the control amount according to the gimbal control
-    float yaw,pitch;
-    yaw   = (float)data->mouse.x * MOUSE_YAW_ANGLE_TO_FACT;
-    pitch = Filter_Bessel((float)data->mouse.y, &Remote_mouse_y_Filter) * MOUSE_PITCH_ANGLE_TO_FACT;
+    if (minipc->target_state ==  MiniPC_TARGET_FOLLOWING && gimbal->mode.present_mode == Gimbal_ARMOR) {
+        
+    }
+    else {
+        // Change the control amount according to the gimbal control
+        float yaw,pitch;
+        yaw   = (float)data->mouse.x * MOUSE_YAW_ANGLE_TO_FACT;
+        pitch = Filter_Bessel((float)data->mouse.y, &Remote_mouse_y_Filter) * MOUSE_PITCH_ANGLE_TO_FACT;
     
-    Gimbal_SetYawRef(Gimbal_LimitYaw(yaw));
-    Gimbal_SetPitchRef(Gimbal_LimitPitch(pitch));
+        Gimbal_SetYawRef(Gimbal_LimitYaw(yaw));
+        Gimbal_SetPitchRef(Gimbal_LimitPitch(pitch));
+    }
 }
 
 

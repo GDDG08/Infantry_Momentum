@@ -5,7 +5,7 @@
  *  Description  : This file contains all necessary constants
  *  LastEditors  : 动情丶卜灬动心
  *  Date         : 2021-05-04 20:53:31
- *  LastEditTime : 2021-05-08 10:15:30
+ *  LastEditTime : 2021-05-14 12:13:23
  */
 
 #ifndef CONST_LIB_H
@@ -37,7 +37,8 @@ extern const float Const_DAC_GAIN;			                    //DAC Current setting g
 extern const float Const_DAC_DetectRES;			                //DAC Current setting resistor (lt3790)
 
 /*          CAN Handle definition              */
-extern CAN_HandleTypeDef* Const_BusComm_CAN_HANDLER;
+// extern CAN_HandleTypeDef* Const_BusComm_CAN_HANDLER;
+extern UART_HandleTypeDef* Const_SuperCap_UART_HANDLER;
 
 /*          Super Cap control const             */
 extern const float Cap_MinVoltage;
@@ -53,6 +54,7 @@ extern const float Cap_AvailableVoltage;
 /*          Uart Handle definition              */
 extern UART_HandleTypeDef* Const_Referee_UART_HANDLER;
 extern CAN_HandleTypeDef* Const_BusComm_CAN_HANDLER;
+extern UART_HandleTypeDef* Const_SuperCap_UART_HANDLER;
 /*          Motor control constant              */
 extern const float Const_YAW_MOTOR_INIT_OFFSET;
 
@@ -127,8 +129,8 @@ extern float Const_Shooter30mpers;
 extern float Const_FeederSlowSpeed;
 extern float Const_FeederFastSpeed;
 
-extern uint16_t Const_HeatCtrlContinueLimit;
-extern uint16_t Const_HeatCtrlSingleLimit;
+extern uint16_t Const_HeatCtrlFastLimit;
+extern uint16_t Const_HeatCtrlSlowLimit;
 extern uint16_t Const_HeatCtrlSingleCount;
 extern uint16_t Const_HeatCtrlStopLimit;
 

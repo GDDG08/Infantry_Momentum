@@ -8,6 +8,7 @@
  *  LastEditTime : 2021-05-07 03:42:05
  */
 
+
 #ifndef REFEREE_PERIPH_H
 #define REFEREE_PERIPH_H
 
@@ -256,7 +257,7 @@ typedef struct {
     uint8_t graphic_buf_len;                    // 客户端自定义绘图缓冲区已占用长度
 //  uint32_t graphic_current_id;                // 客户端自定义绘图当前序号
     
-	  uint8_t game_type;                        //  游戏类型,    1:RoboMaster 机甲大师赛；
+	uint8_t game_type;                        //  游戏类型,    1:RoboMaster 机甲大师赛；
 	                                            //              2:RoboMaster 机甲大师单项赛；
                                                 //      	    3：ICRA RoboMaster 人工智能挑战赛
 	                                            //              4：RoboMaster 联盟赛3V3
@@ -331,8 +332,9 @@ typedef union {
         uint32_t end_x:11; 
         uint32_t end_y:11;
     } graphic_data;
+    uint32_t ui32_data;
     float float_data;
-    int int_data;
+    int32_t int_data;
 } Referee_GraphicDataConverterUnion;
 
 typedef enum {
@@ -348,8 +350,8 @@ typedef enum {
     Draw_TYPE_CIRCLE    = 2,    // 整圆
     Draw_TYPE_ELLIPSE   = 3,    // 椭圆
     Draw_TYPE_ARC       = 4,    // 圆弧
-    Draw_TYPE_FLOAT     = 5,    // 浮点数
-    Draw_TYPE_INT       = 6,    // 整型数
+    Draw_TYPE_FLOAT     = 6,    // 浮点数
+    Draw_TYPE_INT       = 5,    // 整型数
     Draw_TYPE_STRING    = 7     // 字符
 } Draw_GraphicType;             // 图形类型
 

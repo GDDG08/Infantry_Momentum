@@ -1,63 +1,60 @@
 /*
  *  Project      : Infantry_Momentum
  * 
- *  file         : 
- *  Description  : 
+ *  file         : cha_referee_ctrl.h
+ *  Description  : User defined UI interface of referee system
  *  LastEditors  : 动情丶卜灬动心
  *  Date         : 2021-05-04 20:53:31
- *  LastEditTime : 2021-05-08 07:53:36
- */
-/**
- * BattleSpirit Framework Header File
- * 
- * File:        draw_ctrl.h
- * Brief:       裁判系统自定义UI绘制
- * Author:      Chen Kangbing
- * Modified:    2021/4/30 16:25:24
- *
+ *  LastEditTime : 2021-05-16 00:47:58
  */
 
 
-#ifndef DRAW_CTRL_H
-#define DRAW_CTRL_H
+#ifndef CHA_REFEREE_CTRL_H
+#define CHA_REFEREE_CTRL_H
 
 #ifdef __cplusplus
 extern "C" {
 #endif 
 
+#include "configure.h"
+
+#if __FN_IF_ENABLE(__FN_CTRL_CHASSIS)
 
 #include "stm32f4xx_hal.h"
 
 
 typedef struct {
-    uint8_t width_mode, width_mode_last;    // 1 for gyro mode, 0 for normal mode
-    uint8_t cap_state;                      // cap percent, 0 ~ 100
+    uint8_t width_mode, width_mode_last;        // 1 for gyro mode, 0 for normal mode
+    uint8_t aim_mode, aim_mode_last;            // 0~2 correspond to 15,18,30 m/s bullet speed
+    uint8_t cap_state;                          // cap percent, 0 ~ 100
     float pitch_angle;
-} DrawCtrl_DrawCtrlDataTypeDef;
+} Referee_DrawDataTypeDef;
 
 
-void DrawCtrl_SetWidthMode(uint8_t mode);
-void DrawCtrl_SetCapState(uint8_t state);
-void DrawCtrl_SetPitchAngle(float angle);
+void Referee_SetWidthMode(uint8_t mode);
+void Referee_SetAimMode(uint8_t mode);
+void Referee_SetCapState(uint8_t state);
+void Referee_SetPitchAngle(float angle);
 
-void DrawCtrl_SetupAimLine(void);
-void DrawCtrl_UpdateAimLine(void);
-void DrawCtrl_SetupCrosshair(void);
-void DrawCtrl_UpdateCrosshair(void);
-void DrawCtrl_SetupWidthMark(void);
-void DrawCtrl_UpdateWidthMark(void);
-void DrawCtrl_SetupCapState(void);
-void DrawCtrl_UpdateCapState(void);
-void DrawCtrl_SetupPitchMeter(void);
-void DrawCtrl_UpdatePitchMeter(void);
-void DrawCtrl_SetupModeDisplay(void);
-void DrawCtrl_UpdateModeDisplay(void);
-void DrawCtrl_SetupErrorDisplay(void);
-void DrawCtrl_UpdateErrorDisplay(void);
-void DrawCtrl_SetupAllString(void);
-void DrawCtrl_Setup(void);
-void DrawCtrl_Update(void);
+void Referee_SetupAimLine(void);
+void Referee_UpdateAimLine(void);
+void Referee_SetupCrosshair(void);
+void Referee_UpdateCrosshair(void);
+void Referee_SetupWidthMark(void);
+void Referee_UpdateWidthMark(void);
+void Referee_SetupCapState(void);
+void Referee_UpdateCapState(void);
+void Referee_SetupPitchMeter(void);
+void Referee_UpdatePitchMeter(void);
+void Referee_SetupModeDisplay(void);
+void Referee_UpdateModeDisplay(void);
+void Referee_SetupErrorDisplay(void);
+void Referee_UpdateErrorDisplay(void);
+void Referee_SetupAllString(void);
+void Referee_Setup(void);
+void Referee_Update(void);
 
+#endif
 
 #ifdef __cplusplus
 }

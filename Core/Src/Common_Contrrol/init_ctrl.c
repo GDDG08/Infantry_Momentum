@@ -5,7 +5,7 @@
  *  Description  : This file contains Initialize control function
  *  LastEditors  : 动情丶卜灬动心
  *  Date         : 2021-05-04 20:53:31
- *  LastEditTime : 2021-05-08 10:36:57
+ *  LastEditTime : 2021-05-16 01:04:27
  */
 
 #include "init_ctrl.h"
@@ -36,6 +36,7 @@
 
 #include "const_lib.h"
 
+#include "supercap_comm.h"
 
 
 /**
@@ -50,8 +51,8 @@ void Init_InitAll() {
     Sen_Init();
     DAC_Init();
     /* basis periph init    */
+    CapComm_InitCapComm();
 
-    Can_InitFilterAndStart(&hcan2);
     Cap_Init();
     /* control function init    */
 
@@ -86,13 +87,13 @@ void Init_InitAll() {
 
     Motor_InitAllMotors();
     BusComm_InitBusComm();
+    CapComm_InitCapComm();
     Can_InitFilterAndStart(&hcan1);
     Can_InitFilterAndStart(&hcan2);
     
     Chassis_InitChassis();
     Power_InitPower();
     GimbalYaw_InitGimbalYaw();
-    DrawCtrl_Setup();
 #endif
 
 }

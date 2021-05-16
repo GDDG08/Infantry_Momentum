@@ -5,7 +5,7 @@
  *  Description  : This file containss the UART functions
  *  LastEditors  : 动情丶卜灬动心
  *  Date         : 2021-05-04 20:53:31
- *  LastEditTime : 2021-05-08 10:54:22
+ *  LastEditTime : 2021-05-14 12:25:16
  */
 
 #include "uart_util.h"
@@ -20,6 +20,7 @@
 #include "referee_periph.h"
 #include "supercap_ctrl.h"
 #include "buscomm_ctrl.h"
+#include "supercap_comm.h"
 
 /********** VOLATILE USER CODE **********/
 
@@ -52,6 +53,12 @@ void Uart_RxIdleCallback(UART_HandleTypeDef* huart) {
 #if __FN_IF_ENABLE(__FN_PERIPH_MINIPC)
     if (huart == Const_MiniPC_UART_HANDLER) {
         MiniPC_RXCallback(huart);
+    }
+#endif
+
+#if __FN_IF_ENABLE(__FN_CTRL_COM_CAP)
+    if (huart == Const_SuperCap_UART_HANDLER) {
+        CapComm_RXCallback(huart);
     }
 #endif
 

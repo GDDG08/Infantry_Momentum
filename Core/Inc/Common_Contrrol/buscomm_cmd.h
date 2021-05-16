@@ -5,7 +5,7 @@
  *  Description  : This file is for idiot Can communication
  *  LastEditors  : 动情丶卜灬动心
  *  Date         : 2021-05-09 03:52:53
- *  LastEditTime : 2021-05-09 07:21:57
+ *  LastEditTime : 2021-05-16 01:27:20
  */
 
 #ifndef BUSCOMM_CMD_H
@@ -18,7 +18,7 @@ extern "C" {
 #include "configure.h"
 
 #include "stm32f4xx_hal.h"
-    
+
 extern const uint8_t CMD_SET_YAW_RELATIVE_ANGLE;
 extern const uint8_t CMD_SET_ROBOT_ID_POWER_LIMIT;
 extern const uint8_t CMD_SET_17MM_DATA;
@@ -38,10 +38,10 @@ typedef struct {
     void (*bus_func)(uint8_t buff[]);
 } BusCmd_TableEntry;
 
-extern BusCmd_TableEntry Buscmd_Revice[11];
-extern BusCmd_TableEntry Buscmd_GimSent[6];
-extern BusCmd_TableEntry Buscmd_ChaSent[4];
-extern BusCmd_TableEntry Buscmd_CapSent[1];
+extern BusCmd_TableEntry Buscmd_Receive[13];
+extern BusCmd_TableEntry Buscmd_GimSend[7];
+extern BusCmd_TableEntry Buscmd_ChaSend[4];
+extern BusCmd_TableEntry Buscmd_CapSend[1];
 
 
 #endif

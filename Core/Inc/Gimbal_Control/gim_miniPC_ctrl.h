@@ -54,7 +54,7 @@ typedef struct {
 	MiniPC_TargetFollowModeEnum target_state;
 }MiniPC_MiniPCContrlTypeDef;
 
-
+MiniPC_MiniPCContrlTypeDef* MiniPC_GetMiniPCControlDataPtr(void);
 MiniPC_MiniPCContrlTypeDef* MiniPC_GetMiniPCDecodeDataPtr(void);
 void MiniPC_InitControl(void);
 void MiniPC_ChangeAimMode(MiniPC_AutoAimModeEnum mode);

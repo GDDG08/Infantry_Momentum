@@ -5,7 +5,7 @@
  *  Description  : This document contains the relevant auxiliary functions of steering gear control
  *  LastEditors  : 动情丶卜灬动心
  *  Date         : 2021-05-04 20:53:31
- *  LastEditTime : 2021-05-07 03:28:27
+ *  LastEditTime : 2021-05-16 00:31:15
  */
 
 #include "servo_periph.h"
@@ -79,7 +79,7 @@ float Servo_GetServoAngle(Servo_ServoTypeDef* servo) {
   */
 void Servo_SetServoAngle(Servo_ServoTypeDef* servo, float angle) {
     servo->angle = angle;
-    PWM_SetPWMDuty(&(servo->pwm), angle / 180.0f * 0.1f + Const_SERVO_INIT_OFFSET);
+    PWM_SetPWMDuty(&(servo->pwm), angle / 275.0f * 0.1f + Const_SERVO_INIT_OFFSET);
 }
 
 
