@@ -1,6 +1,6 @@
 Dependencies for Project 'Infantry_Momentum', Target 'Infantry_Momentum': (DO NOT MODIFY !)
-F (startup_stm32f405xx.s)(0x60A1258F)(--cpu Cortex-M4.fp -g --apcs=interwork --pd "__MICROLIB SETA 1" -I..\Core\Inc-I D:\LEEKA\RM2020\[2021]CODE\Infantry_Momentum5_17\Infantry_Momentum\MDK-ARM\RTE-I G:\Keil_5\ARM\PACK\ARM\CMSIS\4.2.0\CMSIS\Include-I G:\Keil_5\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Device\Include--pd "__UVISION_VERSION SETA 514" --pd "_RTE_ SETA 1" --pd "STM32F40_41xxx SETA 1"--list startup_stm32f405xx.lst --xref -o infantry_momentum\startup_stm32f405xx.o --depend infantry_momentum\startup_stm32f405xx.d)
-F (..\Core\Inc\configure.h)(0x60A2395E)()
+F (startup_stm32f405xx.s)(0x60A2C248)(--cpu Cortex-M4.fp -g --apcs=interwork --pd "__MICROLIB SETA 1" -I..\Core\Inc-I D:\LEEKA\RM2020\[2021]CODE\Infantry_Momentum5_17\Infantry_Momentum\MDK-ARM\RTE-I G:\Keil_5\ARM\PACK\ARM\CMSIS\4.2.0\CMSIS\Include-I G:\Keil_5\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Device\Include--pd "__UVISION_VERSION SETA 514" --pd "_RTE_ SETA 1" --pd "STM32F40_41xxx SETA 1"--list startup_stm32f405xx.lst --xref -o infantry_momentum\startup_stm32f405xx.o --depend infantry_momentum\startup_stm32f405xx.d)
+F (..\Core\Inc\configure.h)(0x60A2CEC7)()
 F (../Core/Src/main.c)(0x60A238EE)(--c99 -c --cpu Cortex-M4.fp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I..\Drivers\CMSIS\DSP\Include -I..\Core\Inc -I..\Core\Inc\Algorithm -I..\Core\Inc\Library -I..\Core\Inc\Peripheral -I..\Core\Inc\Utility -I..\Core\Inc\Chassis_Control -I..\Core\Inc\Gimbal_Control -I..\Core\Inc\SuperCap_Control -I..\Core\Inc\Common_Contrrol-I D:\LEEKA\RM2020\[2021]CODE\Infantry_Momentum5_17\Infantry_Momentum\MDK-ARM\RTE-I G:\Keil_5\ARM\PACK\ARM\CMSIS\4.2.0\CMSIS\Include-I G:\Keil_5\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Device\Include-D__UVISION_VERSION="514" -D_RTE_ -DSTM32F40_41xxx -DUSE_HAL_DRIVER -DSTM32F405xx -DARM_MATH_CM4 -D__TARGET_FPU_VFP -D__CC_ARM-o infantry_momentum\main.o --omf_browse infantry_momentum\main.crf --depend infantry_momentum\main.d)
 I (../Core/Inc/main.h)(0x60A1258A)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x600A9025)
@@ -60,7 +60,7 @@ I (../Core/Inc/tim.h)(0x60A12587)
 I (../Core/Inc/usart.h)(0x60A12588)
 I (../Core/Inc/gpio.h)(0x60A12580)
 I (..\Core\Inc\Common_Contrrol\init_ctrl.h)(0x609A99C8)
-I (../Core/Inc/configure.h)(0x60A2395E)
+I (../Core/Inc/configure.h)(0x60A2CEC7)
 I (../Core/Inc/Code_specification.h)(0x609A99C8)
 F (../Core/Src/gpio.c)(0x60A12580)(--c99 -c --cpu Cortex-M4.fp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I..\Drivers\CMSIS\DSP\Include -I..\Core\Inc -I..\Core\Inc\Algorithm -I..\Core\Inc\Library -I..\Core\Inc\Peripheral -I..\Core\Inc\Utility -I..\Core\Inc\Chassis_Control -I..\Core\Inc\Gimbal_Control -I..\Core\Inc\SuperCap_Control -I..\Core\Inc\Common_Contrrol-I D:\LEEKA\RM2020\[2021]CODE\Infantry_Momentum5_17\Infantry_Momentum\MDK-ARM\RTE-I G:\Keil_5\ARM\PACK\ARM\CMSIS\4.2.0\CMSIS\Include-I G:\Keil_5\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Device\Include-D__UVISION_VERSION="514" -D_RTE_ -DSTM32F40_41xxx -DUSE_HAL_DRIVER -DSTM32F405xx -DARM_MATH_CM4 -D__TARGET_FPU_VFP -D__CC_ARM-o infantry_momentum\gpio.o --omf_browse infantry_momentum\gpio.crf --depend infantry_momentum\gpio.d)
 I (../Core/Inc/gpio.h)(0x60A12580)
@@ -100,7 +100,7 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h)(0x600A9025)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h)(0x600A9025)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x600A9025)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x600A9025)
-F (../Core/Src/freertos.c)(0x60A1DD26)(--c99 -c --cpu Cortex-M4.fp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I..\Drivers\CMSIS\DSP\Include -I..\Core\Inc -I..\Core\Inc\Algorithm -I..\Core\Inc\Library -I..\Core\Inc\Peripheral -I..\Core\Inc\Utility -I..\Core\Inc\Chassis_Control -I..\Core\Inc\Gimbal_Control -I..\Core\Inc\SuperCap_Control -I..\Core\Inc\Common_Contrrol-I D:\LEEKA\RM2020\[2021]CODE\Infantry_Momentum5_17\Infantry_Momentum\MDK-ARM\RTE-I G:\Keil_5\ARM\PACK\ARM\CMSIS\4.2.0\CMSIS\Include-I G:\Keil_5\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Device\Include-D__UVISION_VERSION="514" -D_RTE_ -DSTM32F40_41xxx -DUSE_HAL_DRIVER -DSTM32F405xx -DARM_MATH_CM4 -D__TARGET_FPU_VFP -D__CC_ARM-o infantry_momentum\freertos.o --omf_browse infantry_momentum\freertos.crf --depend infantry_momentum\freertos.d)
+F (../Core/Src/freertos.c)(0x60A2CC71)(--c99 -c --cpu Cortex-M4.fp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I..\Drivers\CMSIS\DSP\Include -I..\Core\Inc -I..\Core\Inc\Algorithm -I..\Core\Inc\Library -I..\Core\Inc\Peripheral -I..\Core\Inc\Utility -I..\Core\Inc\Chassis_Control -I..\Core\Inc\Gimbal_Control -I..\Core\Inc\SuperCap_Control -I..\Core\Inc\Common_Contrrol-I D:\LEEKA\RM2020\[2021]CODE\Infantry_Momentum5_17\Infantry_Momentum\MDK-ARM\RTE-I G:\Keil_5\ARM\PACK\ARM\CMSIS\4.2.0\CMSIS\Include-I G:\Keil_5\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Device\Include-D__UVISION_VERSION="514" -D_RTE_ -DSTM32F40_41xxx -DUSE_HAL_DRIVER -DSTM32F405xx -DARM_MATH_CM4 -D__TARGET_FPU_VFP -D__CC_ARM-o infantry_momentum\freertos.o --omf_browse infantry_momentum\freertos.crf --depend infantry_momentum\freertos.d)
 I (../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h)(0x600A8FD4)
 I (G:\Keil_5\ARM\ARMCC\include\stddef.h)(0x5475F300)
 I (G:\Keil_5\ARM\ARMCC\include\stdint.h)(0x5475F300)
@@ -151,38 +151,41 @@ I (../Middlewares/Third_Party/FreeRTOS/Source/include/timers.h)(0x600A8FD4)
 I (../Middlewares/Third_Party/FreeRTOS/Source/include/queue.h)(0x600A8FD4)
 I (../Middlewares/Third_Party/FreeRTOS/Source/include/semphr.h)(0x600A8FD4)
 I (../Middlewares/Third_Party/FreeRTOS/Source/include/event_groups.h)(0x600A8FD4)
-I (../Core/Inc/configure.h)(0x60A2395E)
+I (../Core/Inc/configure.h)(0x60A2CEC7)
 I (../Core/Inc/Code_specification.h)(0x609A99C8)
 I (..\Core\Inc\Gimbal_Control\gim_gimbal_ctrl.h)(0x609A99C8)
+I (..\Core\Inc\Algorithm\pid_alg.h)(0x609A99C8)
+I (..\Core\Inc\Algorithm\math_alg.h)(0x609F9C58)
+I (..\Drivers\CMSIS\DSP\Include\arm_math.h)(0x600A8FCE)
+I (G:\Keil_5\ARM\ARMCC\include\string.h)(0x5475F300)
+I (G:\Keil_5\ARM\ARMCC\include\math.h)(0x5475F2FE)
+I (..\Core\Inc\Algorithm\filter_alg.h)(0x609A99C8)
+I (..\Core\Inc\Peripheral\motor_periph.h)(0x609DF4FA)
+I (..\Core\Inc\Utility\can_util.h)(0x60A02E49)
+I (../Core/Inc/can.h)(0x60A12586)
+I (..\Core\Inc\Utility\pwm_util.h)(0x609A99C8)
+I (../Core/Inc/tim.h)(0x60A12587)
+I (..\Core\Inc\Peripheral\imu_periph.h)(0x609A99C8)
+I (..\Core\Inc\Utility\uart_util.h)(0x609A99C8)
+I (../Core/Inc/usart.h)(0x60A12588)
+I (..\Core\Inc\Peripheral\remote_periph.h)(0x609A99C8)
+I (G:\Keil_5\ARM\ARMCC\include\stdlib.h)(0x5475F300)
 I (..\Core\Inc\Gimbal_Control\gim_miniPC_ctrl.h)(0x60A11104)
+I (..\Core\Inc\Peripheral\minipc_periph.h)(0x609A99C8)
+I (..\Core\Inc\Library\buff_lib.h)(0x609A99C8)
+I (..\Core\Inc\Algorithm\kalman_alg.h)(0x60A2B6D8)
 I (..\Core\Inc\Gimbal_Control\gim_shoot_ctrl.h)(0x609CB2E4)
+I (..\Core\Inc\Utility\gpio_util.h)(0x609A99C8)
 I (..\Core\Inc\Gimbal_Control\gim_remote_ctrl.h)(0x609A99C8)
+I (..\Core\Inc\Peripheral\servo_periph.h)(0x609A99C8)
 I (..\Core\Inc\Chassis_Control\cha_referee_ctrl.h)(0x60A00C12)
 I (..\Core\Inc\Chassis_Control\cha_chassis_ctrl.h)(0x609A99C8)
 I (..\Core\Inc\Chassis_Control\cha_gimbal_ctrl.h)(0x609A99C8)
 I (..\Core\Inc\Chassis_Control\cha_power_ctrl.h)(0x609A99C8)
 I (..\Core\Inc\SuperCap_Control\supercap_ctrl.h)(0x609DFCE5)
-I (..\Core\Inc\Peripheral\sensor_periph.h)(0x609A99C8)
-I (..\Core\Inc\Utility\adc_util.h)(0x609A99C8)
-I (../Core/Inc/adc.h)(0x60A12585)
-I (G:\Keil_5\ARM\ARMCC\include\string.h)(0x5475F300)
-I (..\Core\Inc\Algorithm\filter_alg.h)(0x609A99C8)
-I (..\Core\Inc\Algorithm\math_alg.h)(0x609F9C58)
-I (..\Drivers\CMSIS\DSP\Include\arm_math.h)(0x600A8FCE)
-I (G:\Keil_5\ARM\ARMCC\include\math.h)(0x5475F2FE)
-I (..\Core\Inc\Peripheral\led_periph.h)(0x609A99C8)
-I (../Core/Inc/gpio.h)(0x60A12580)
-I (..\Core\Inc\Utility\dac_util.h)(0x609A99C8)
-I (../Core/Inc/dac.h)(0x60A12586)
-I (..\Core\Inc\Utility\gpio_util.h)(0x609A99C8)
 I (..\Core\Inc\Common_Contrrol\buscomm_ctrl.h)(0x60A02E46)
-I (..\Core\Inc\Utility\can_util.h)(0x60A02E49)
-I (../Core/Inc/can.h)(0x60A12586)
-I (..\Core\Inc\Library\buff_lib.h)(0x609A99C8)
 I (..\Core\Inc\Common_Contrrol\watchdog_ctrl.h)(0x609A99C8)
 I (..\Core\Inc\SuperCap_Control\supercap_comm.h)(0x609DFEB9)
-I (..\Core\Inc\Utility\uart_util.h)(0x609A99C8)
-I (../Core/Inc/usart.h)(0x60A12588)
 F (../Core/Src/adc.c)(0x60A12585)(--c99 -c --cpu Cortex-M4.fp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I..\Drivers\CMSIS\DSP\Include -I..\Core\Inc -I..\Core\Inc\Algorithm -I..\Core\Inc\Library -I..\Core\Inc\Peripheral -I..\Core\Inc\Utility -I..\Core\Inc\Chassis_Control -I..\Core\Inc\Gimbal_Control -I..\Core\Inc\SuperCap_Control -I..\Core\Inc\Common_Contrrol-I D:\LEEKA\RM2020\[2021]CODE\Infantry_Momentum5_17\Infantry_Momentum\MDK-ARM\RTE-I G:\Keil_5\ARM\PACK\ARM\CMSIS\4.2.0\CMSIS\Include-I G:\Keil_5\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Device\Include-D__UVISION_VERSION="514" -D_RTE_ -DSTM32F40_41xxx -DUSE_HAL_DRIVER -DSTM32F405xx -DARM_MATH_CM4 -D__TARGET_FPU_VFP -D__CC_ARM-o infantry_momentum\adc.o --omf_browse infantry_momentum\adc.crf --depend infantry_momentum\adc.d)
 I (../Core/Inc/adc.h)(0x60A12585)
 I (../Core/Inc/main.h)(0x60A1258A)
@@ -450,7 +453,7 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x600A9025)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x600A9025)
 I (../Core/Inc/stm32f4xx_it.h)(0x60A12588)
 I (..\Core\Inc\Utility\uart_util.h)(0x609A99C8)
-I (../Core/Inc/configure.h)(0x60A2395E)
+I (../Core/Inc/configure.h)(0x60A2CEC7)
 I (../Core/Inc/Code_specification.h)(0x609A99C8)
 I (../Core/Inc/usart.h)(0x60A12588)
 F (../Core/Src/stm32f4xx_hal_msp.c)(0x60A12589)(--c99 -c --cpu Cortex-M4.fp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I..\Drivers\CMSIS\DSP\Include -I..\Core\Inc -I..\Core\Inc\Algorithm -I..\Core\Inc\Library -I..\Core\Inc\Peripheral -I..\Core\Inc\Utility -I..\Core\Inc\Chassis_Control -I..\Core\Inc\Gimbal_Control -I..\Core\Inc\SuperCap_Control -I..\Core\Inc\Common_Contrrol-I D:\LEEKA\RM2020\[2021]CODE\Infantry_Momentum5_17\Infantry_Momentum\MDK-ARM\RTE-I G:\Keil_5\ARM\PACK\ARM\CMSIS\4.2.0\CMSIS\Include-I G:\Keil_5\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Device\Include-D__UVISION_VERSION="514" -D_RTE_ -DSTM32F40_41xxx -DUSE_HAL_DRIVER -DSTM32F405xx -DARM_MATH_CM4 -D__TARGET_FPU_VFP -D__CC_ARM-o infantry_momentum\stm32f4xx_hal_msp.o --omf_browse infantry_momentum\stm32f4xx_hal_msp.crf --depend infantry_momentum\stm32f4xx_hal_msp.d)
@@ -1465,7 +1468,7 @@ I (../Middlewares/Third_Party/FreeRTOS/Source/include/task.h)(0x600A8FD4)
 I (../Middlewares/Third_Party/FreeRTOS/Source/include/list.h)(0x600A8FD4)
 F (..\Core\Src\Utility\can_util.c)(0x60A0FDDE)(--c99 -c --cpu Cortex-M4.fp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I..\Drivers\CMSIS\DSP\Include -I..\Core\Inc -I..\Core\Inc\Algorithm -I..\Core\Inc\Library -I..\Core\Inc\Peripheral -I..\Core\Inc\Utility -I..\Core\Inc\Chassis_Control -I..\Core\Inc\Gimbal_Control -I..\Core\Inc\SuperCap_Control -I..\Core\Inc\Common_Contrrol-I D:\LEEKA\RM2020\[2021]CODE\Infantry_Momentum5_17\Infantry_Momentum\MDK-ARM\RTE-I G:\Keil_5\ARM\PACK\ARM\CMSIS\4.2.0\CMSIS\Include-I G:\Keil_5\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Device\Include-D__UVISION_VERSION="514" -D_RTE_ -DSTM32F40_41xxx -DUSE_HAL_DRIVER -DSTM32F405xx -DARM_MATH_CM4 -D__TARGET_FPU_VFP -D__CC_ARM-o infantry_momentum\can_util.o --omf_browse infantry_momentum\can_util.crf --depend infantry_momentum\can_util.d)
 I (..\Core\Inc\Utility\can_util.h)(0x60A02E49)
-I (../Core/Inc/configure.h)(0x60A2395E)
+I (../Core/Inc/configure.h)(0x60A2CEC7)
 I (../Core/Inc/Code_specification.h)(0x609A99C8)
 I (../Core/Inc/can.h)(0x60A12586)
 I (../Core/Inc/main.h)(0x60A1258A)
@@ -1505,6 +1508,14 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h)(0x600A9025)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x600A9025)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x600A9025)
 I (..\Core\Inc\Peripheral\motor_periph.h)(0x609DF4FA)
+I (..\Core\Inc\Utility\pwm_util.h)(0x609A99C8)
+I (../Core/Inc/tim.h)(0x60A12587)
+I (..\Core\Inc\Algorithm\pid_alg.h)(0x609A99C8)
+I (..\Core\Inc\Algorithm\math_alg.h)(0x609F9C58)
+I (..\Drivers\CMSIS\DSP\Include\arm_math.h)(0x600A8FCE)
+I (G:\Keil_5\ARM\ARMCC\include\string.h)(0x5475F300)
+I (G:\Keil_5\ARM\ARMCC\include\math.h)(0x5475F2FE)
+I (..\Core\Inc\Algorithm\filter_alg.h)(0x609A99C8)
 I (..\Core\Inc\Common_Contrrol\buscomm_ctrl.h)(0x60A02E46)
 I (../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h)(0x600A8FD4)
 I (../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h)(0x600A8FD4)
@@ -1521,14 +1532,9 @@ I (../Middlewares/Third_Party/FreeRTOS/Source/include/queue.h)(0x600A8FD4)
 I (../Middlewares/Third_Party/FreeRTOS/Source/include/semphr.h)(0x600A8FD4)
 I (../Middlewares/Third_Party/FreeRTOS/Source/include/event_groups.h)(0x600A8FD4)
 I (..\Core\Inc\Library\buff_lib.h)(0x609A99C8)
-I (G:\Keil_5\ARM\ARMCC\include\string.h)(0x5475F300)
-I (..\Core\Inc\Algorithm\filter_alg.h)(0x609A99C8)
-I (..\Core\Inc\Algorithm\math_alg.h)(0x609F9C58)
-I (..\Drivers\CMSIS\DSP\Include\arm_math.h)(0x600A8FCE)
-I (G:\Keil_5\ARM\ARMCC\include\math.h)(0x5475F2FE)
 F (..\Core\Src\Utility\uart_util.c)(0x60A1E1BB)(--c99 -c --cpu Cortex-M4.fp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I..\Drivers\CMSIS\DSP\Include -I..\Core\Inc -I..\Core\Inc\Algorithm -I..\Core\Inc\Library -I..\Core\Inc\Peripheral -I..\Core\Inc\Utility -I..\Core\Inc\Chassis_Control -I..\Core\Inc\Gimbal_Control -I..\Core\Inc\SuperCap_Control -I..\Core\Inc\Common_Contrrol-I D:\LEEKA\RM2020\[2021]CODE\Infantry_Momentum5_17\Infantry_Momentum\MDK-ARM\RTE-I G:\Keil_5\ARM\PACK\ARM\CMSIS\4.2.0\CMSIS\Include-I G:\Keil_5\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Device\Include-D__UVISION_VERSION="514" -D_RTE_ -DSTM32F40_41xxx -DUSE_HAL_DRIVER -DSTM32F405xx -DARM_MATH_CM4 -D__TARGET_FPU_VFP -D__CC_ARM-o infantry_momentum\uart_util.o --omf_browse infantry_momentum\uart_util.crf --depend infantry_momentum\uart_util.d)
 I (..\Core\Inc\Utility\uart_util.h)(0x609A99C8)
-I (../Core/Inc/configure.h)(0x60A2395E)
+I (../Core/Inc/configure.h)(0x60A2CEC7)
 I (../Core/Inc/Code_specification.h)(0x609A99C8)
 I (../Core/Inc/usart.h)(0x60A12588)
 I (../Core/Inc/main.h)(0x60A1258A)
@@ -1574,18 +1580,12 @@ I (..\Drivers\CMSIS\DSP\Include\arm_math.h)(0x600A8FCE)
 I (G:\Keil_5\ARM\ARMCC\include\string.h)(0x5475F300)
 I (G:\Keil_5\ARM\ARMCC\include\math.h)(0x5475F2FE)
 I (..\Core\Inc\Peripheral\remote_periph.h)(0x609A99C8)
+I (G:\Keil_5\ARM\ARMCC\include\stdlib.h)(0x5475F300)
 I (..\Core\Inc\Peripheral\minipc_periph.h)(0x609A99C8)
+I (..\Core\Inc\Library\buff_lib.h)(0x609A99C8)
 I (..\Core\Inc\Peripheral\imu_periph.h)(0x609A99C8)
 I (..\Core\Inc\Peripheral\referee_periph.h)(0x60A00AC2)
 I (..\Core\Inc\SuperCap_Control\supercap_ctrl.h)(0x609DFCE5)
-I (..\Core\Inc\Peripheral\sensor_periph.h)(0x609A99C8)
-I (..\Core\Inc\Utility\adc_util.h)(0x609A99C8)
-I (../Core/Inc/adc.h)(0x60A12585)
-I (..\Core\Inc\Peripheral\led_periph.h)(0x609A99C8)
-I (../Core/Inc/gpio.h)(0x60A12580)
-I (..\Core\Inc\Utility\dac_util.h)(0x609A99C8)
-I (../Core/Inc/dac.h)(0x60A12586)
-I (..\Core\Inc\Utility\gpio_util.h)(0x609A99C8)
 I (..\Core\Inc\Common_Contrrol\buscomm_ctrl.h)(0x60A02E46)
 I (../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h)(0x600A8FD4)
 I (../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h)(0x600A8FD4)
@@ -1603,11 +1603,10 @@ I (../Middlewares/Third_Party/FreeRTOS/Source/include/semphr.h)(0x600A8FD4)
 I (../Middlewares/Third_Party/FreeRTOS/Source/include/event_groups.h)(0x600A8FD4)
 I (..\Core\Inc\Utility\can_util.h)(0x60A02E49)
 I (../Core/Inc/can.h)(0x60A12586)
-I (..\Core\Inc\Library\buff_lib.h)(0x609A99C8)
 I (..\Core\Inc\SuperCap_Control\supercap_comm.h)(0x609DFEB9)
 F (..\Core\Src\Utility\pwm_util.c)(0x609A99CA)(--c99 -c --cpu Cortex-M4.fp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I..\Drivers\CMSIS\DSP\Include -I..\Core\Inc -I..\Core\Inc\Algorithm -I..\Core\Inc\Library -I..\Core\Inc\Peripheral -I..\Core\Inc\Utility -I..\Core\Inc\Chassis_Control -I..\Core\Inc\Gimbal_Control -I..\Core\Inc\SuperCap_Control -I..\Core\Inc\Common_Contrrol-I D:\LEEKA\RM2020\[2021]CODE\Infantry_Momentum5_17\Infantry_Momentum\MDK-ARM\RTE-I G:\Keil_5\ARM\PACK\ARM\CMSIS\4.2.0\CMSIS\Include-I G:\Keil_5\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Device\Include-D__UVISION_VERSION="514" -D_RTE_ -DSTM32F40_41xxx -DUSE_HAL_DRIVER -DSTM32F405xx -DARM_MATH_CM4 -D__TARGET_FPU_VFP -D__CC_ARM-o infantry_momentum\pwm_util.o --omf_browse infantry_momentum\pwm_util.crf --depend infantry_momentum\pwm_util.d)
 I (..\Core\Inc\Utility\pwm_util.h)(0x609A99C8)
-I (../Core/Inc/configure.h)(0x60A2395E)
+I (../Core/Inc/configure.h)(0x60A2CEC7)
 I (../Core/Inc/Code_specification.h)(0x609A99C8)
 I (../Core/Inc/tim.h)(0x60A12587)
 I (../Core/Inc/main.h)(0x60A1258A)
@@ -1648,7 +1647,7 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x600A9025)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x600A9025)
 F (..\Core\Src\Utility\gpio_util.c)(0x609A99CA)(--c99 -c --cpu Cortex-M4.fp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I..\Drivers\CMSIS\DSP\Include -I..\Core\Inc -I..\Core\Inc\Algorithm -I..\Core\Inc\Library -I..\Core\Inc\Peripheral -I..\Core\Inc\Utility -I..\Core\Inc\Chassis_Control -I..\Core\Inc\Gimbal_Control -I..\Core\Inc\SuperCap_Control -I..\Core\Inc\Common_Contrrol-I D:\LEEKA\RM2020\[2021]CODE\Infantry_Momentum5_17\Infantry_Momentum\MDK-ARM\RTE-I G:\Keil_5\ARM\PACK\ARM\CMSIS\4.2.0\CMSIS\Include-I G:\Keil_5\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Device\Include-D__UVISION_VERSION="514" -D_RTE_ -DSTM32F40_41xxx -DUSE_HAL_DRIVER -DSTM32F405xx -DARM_MATH_CM4 -D__TARGET_FPU_VFP -D__CC_ARM-o infantry_momentum\gpio_util.o --omf_browse infantry_momentum\gpio_util.crf --depend infantry_momentum\gpio_util.d)
 I (..\Core\Inc\Utility\gpio_util.h)(0x609A99C8)
-I (../Core/Inc/configure.h)(0x60A2395E)
+I (../Core/Inc/configure.h)(0x60A2CEC7)
 I (../Core/Inc/Code_specification.h)(0x609A99C8)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x600A9025)
 I (../Core/Inc/stm32f4xx_hal_conf.h)(0x60A12589)
@@ -1687,56 +1686,18 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x600A9025)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x600A9025)
 F (..\Core\Src\Utility\adc_util.c)(0x609A99CA)(--c99 -c --cpu Cortex-M4.fp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I..\Drivers\CMSIS\DSP\Include -I..\Core\Inc -I..\Core\Inc\Algorithm -I..\Core\Inc\Library -I..\Core\Inc\Peripheral -I..\Core\Inc\Utility -I..\Core\Inc\Chassis_Control -I..\Core\Inc\Gimbal_Control -I..\Core\Inc\SuperCap_Control -I..\Core\Inc\Common_Contrrol-I D:\LEEKA\RM2020\[2021]CODE\Infantry_Momentum5_17\Infantry_Momentum\MDK-ARM\RTE-I G:\Keil_5\ARM\PACK\ARM\CMSIS\4.2.0\CMSIS\Include-I G:\Keil_5\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Device\Include-D__UVISION_VERSION="514" -D_RTE_ -DSTM32F40_41xxx -DUSE_HAL_DRIVER -DSTM32F405xx -DARM_MATH_CM4 -D__TARGET_FPU_VFP -D__CC_ARM-o infantry_momentum\adc_util.o --omf_browse infantry_momentum\adc_util.crf --depend infantry_momentum\adc_util.d)
 I (..\Core\Inc\Utility\adc_util.h)(0x609A99C8)
-I (../Core/Inc/configure.h)(0x60A2395E)
+I (../Core/Inc/configure.h)(0x60A2CEC7)
 I (../Core/Inc/Code_specification.h)(0x609A99C8)
-I (../Core/Inc/adc.h)(0x60A12585)
-I (../Core/Inc/main.h)(0x60A1258A)
-I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x600A9025)
-I (../Core/Inc/stm32f4xx_hal_conf.h)(0x60A12589)
-I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h)(0x600A9025)
-I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h)(0x600A9025)
-I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h)(0x600A8FC6)
-I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f405xx.h)(0x600A8FC6)
-I (../Drivers/CMSIS/Include/core_cm4.h)(0x600A8FCF)
-I (G:\Keil_5\ARM\ARMCC\include\stdint.h)(0x5475F300)
-I (../Drivers/CMSIS/Include/cmsis_version.h)(0x600A8FCF)
-I (../Drivers/CMSIS/Include/cmsis_compiler.h)(0x600A8FCF)
-I (../Drivers/CMSIS/Include/cmsis_armcc.h)(0x600A8FCF)
-I (../Drivers/CMSIS/Include/mpu_armv7.h)(0x600A8FCF)
-I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h)(0x600A8FC6)
-I (../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h)(0x600A9025)
-I (G:\Keil_5\ARM\ARMCC\include\stddef.h)(0x5475F300)
-I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h)(0x600A9025)
-I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio.h)(0x600A9025)
-I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio_ex.h)(0x600A9025)
-I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_exti.h)(0x600A9025)
-I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h)(0x600A9025)
-I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma_ex.h)(0x600A9025)
-I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_cortex.h)(0x600A9025)
-I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc.h)(0x600A9025)
-I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc_ex.h)(0x600A9025)
-I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_can.h)(0x600A9025)
-I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dac.h)(0x600A9025)
-I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dac_ex.h)(0x600A9025)
-I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash.h)(0x600A9025)
-I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h)(0x600A9025)
-I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h)(0x600A9025)
-I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h)(0x600A9025)
-I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h)(0x600A9025)
-I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h)(0x600A9025)
-I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x600A9025)
-I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x600A9025)
-I (G:\Keil_5\ARM\ARMCC\include\string.h)(0x5475F300)
-I (..\Core\Inc\Library\const_lib.h)(0x609DFD95)
-I (..\Core\Inc\Algorithm\filter_alg.h)(0x609A99C8)
-I (..\Core\Inc\Algorithm\math_alg.h)(0x609F9C58)
-I (..\Drivers\CMSIS\DSP\Include\arm_math.h)(0x600A8FCE)
-I (G:\Keil_5\ARM\ARMCC\include\math.h)(0x5475F2FE)
 F (..\Core\Src\Utility\dac_util.c)(0x609A99CA)(--c99 -c --cpu Cortex-M4.fp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I..\Drivers\CMSIS\DSP\Include -I..\Core\Inc -I..\Core\Inc\Algorithm -I..\Core\Inc\Library -I..\Core\Inc\Peripheral -I..\Core\Inc\Utility -I..\Core\Inc\Chassis_Control -I..\Core\Inc\Gimbal_Control -I..\Core\Inc\SuperCap_Control -I..\Core\Inc\Common_Contrrol-I D:\LEEKA\RM2020\[2021]CODE\Infantry_Momentum5_17\Infantry_Momentum\MDK-ARM\RTE-I G:\Keil_5\ARM\PACK\ARM\CMSIS\4.2.0\CMSIS\Include-I G:\Keil_5\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Device\Include-D__UVISION_VERSION="514" -D_RTE_ -DSTM32F40_41xxx -DUSE_HAL_DRIVER -DSTM32F405xx -DARM_MATH_CM4 -D__TARGET_FPU_VFP -D__CC_ARM-o infantry_momentum\dac_util.o --omf_browse infantry_momentum\dac_util.crf --depend infantry_momentum\dac_util.d)
 I (..\Core\Inc\Utility\dac_util.h)(0x609A99C8)
-I (../Core/Inc/configure.h)(0x60A2395E)
+I (../Core/Inc/configure.h)(0x60A2CEC7)
 I (../Core/Inc/Code_specification.h)(0x609A99C8)
-I (../Core/Inc/dac.h)(0x60A12586)
+F (..\Core\Src\Peripheral\imu_periph.c)(0x609A99CA)(--c99 -c --cpu Cortex-M4.fp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I..\Drivers\CMSIS\DSP\Include -I..\Core\Inc -I..\Core\Inc\Algorithm -I..\Core\Inc\Library -I..\Core\Inc\Peripheral -I..\Core\Inc\Utility -I..\Core\Inc\Chassis_Control -I..\Core\Inc\Gimbal_Control -I..\Core\Inc\SuperCap_Control -I..\Core\Inc\Common_Contrrol-I D:\LEEKA\RM2020\[2021]CODE\Infantry_Momentum5_17\Infantry_Momentum\MDK-ARM\RTE-I G:\Keil_5\ARM\PACK\ARM\CMSIS\4.2.0\CMSIS\Include-I G:\Keil_5\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Device\Include-D__UVISION_VERSION="514" -D_RTE_ -DSTM32F40_41xxx -DUSE_HAL_DRIVER -DSTM32F405xx -DARM_MATH_CM4 -D__TARGET_FPU_VFP -D__CC_ARM-o infantry_momentum\imu_periph.o --omf_browse infantry_momentum\imu_periph.crf --depend infantry_momentum\imu_periph.d)
+I (..\Core\Inc\Peripheral\imu_periph.h)(0x609A99C8)
+I (../Core/Inc/configure.h)(0x60A2CEC7)
+I (../Core/Inc/Code_specification.h)(0x609A99C8)
+I (..\Core\Inc\Utility\uart_util.h)(0x609A99C8)
+I (../Core/Inc/usart.h)(0x60A12588)
 I (../Core/Inc/main.h)(0x60A1258A)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x600A9025)
 I (../Core/Inc/stm32f4xx_hal_conf.h)(0x60A12589)
@@ -1773,19 +1734,16 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h)(0x600A9025)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h)(0x600A9025)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x600A9025)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x600A9025)
+I (..\Core\Inc\Algorithm\crc_alg.h)(0x609A99C8)
 I (..\Core\Inc\Library\const_lib.h)(0x609DFD95)
 I (..\Core\Inc\Algorithm\filter_alg.h)(0x609A99C8)
 I (..\Core\Inc\Algorithm\math_alg.h)(0x609F9C58)
 I (..\Drivers\CMSIS\DSP\Include\arm_math.h)(0x600A8FCE)
 I (G:\Keil_5\ARM\ARMCC\include\string.h)(0x5475F300)
 I (G:\Keil_5\ARM\ARMCC\include\math.h)(0x5475F2FE)
-F (..\Core\Src\Peripheral\imu_periph.c)(0x609A99CA)(--c99 -c --cpu Cortex-M4.fp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I..\Drivers\CMSIS\DSP\Include -I..\Core\Inc -I..\Core\Inc\Algorithm -I..\Core\Inc\Library -I..\Core\Inc\Peripheral -I..\Core\Inc\Utility -I..\Core\Inc\Chassis_Control -I..\Core\Inc\Gimbal_Control -I..\Core\Inc\SuperCap_Control -I..\Core\Inc\Common_Contrrol-I D:\LEEKA\RM2020\[2021]CODE\Infantry_Momentum5_17\Infantry_Momentum\MDK-ARM\RTE-I G:\Keil_5\ARM\PACK\ARM\CMSIS\4.2.0\CMSIS\Include-I G:\Keil_5\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Device\Include-D__UVISION_VERSION="514" -D_RTE_ -DSTM32F40_41xxx -DUSE_HAL_DRIVER -DSTM32F405xx -DARM_MATH_CM4 -D__TARGET_FPU_VFP -D__CC_ARM-o infantry_momentum\imu_periph.o --omf_browse infantry_momentum\imu_periph.crf --depend infantry_momentum\imu_periph.d)
-I (..\Core\Inc\Peripheral\imu_periph.h)(0x609A99C8)
-I (../Core/Inc/configure.h)(0x60A2395E)
-I (../Core/Inc/Code_specification.h)(0x609A99C8)
 F (..\Core\Src\Peripheral\led_periph.c)(0x609A99CA)(--c99 -c --cpu Cortex-M4.fp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I..\Drivers\CMSIS\DSP\Include -I..\Core\Inc -I..\Core\Inc\Algorithm -I..\Core\Inc\Library -I..\Core\Inc\Peripheral -I..\Core\Inc\Utility -I..\Core\Inc\Chassis_Control -I..\Core\Inc\Gimbal_Control -I..\Core\Inc\SuperCap_Control -I..\Core\Inc\Common_Contrrol-I D:\LEEKA\RM2020\[2021]CODE\Infantry_Momentum5_17\Infantry_Momentum\MDK-ARM\RTE-I G:\Keil_5\ARM\PACK\ARM\CMSIS\4.2.0\CMSIS\Include-I G:\Keil_5\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Device\Include-D__UVISION_VERSION="514" -D_RTE_ -DSTM32F40_41xxx -DUSE_HAL_DRIVER -DSTM32F405xx -DARM_MATH_CM4 -D__TARGET_FPU_VFP -D__CC_ARM-o infantry_momentum\led_periph.o --omf_browse infantry_momentum\led_periph.crf --depend infantry_momentum\led_periph.d)
 I (..\Core\Inc\Peripheral\led_periph.h)(0x609A99C8)
-I (../Core/Inc/configure.h)(0x60A2395E)
+I (../Core/Inc/configure.h)(0x60A2CEC7)
 I (../Core/Inc/Code_specification.h)(0x609A99C8)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x600A9025)
 I (../Core/Inc/stm32f4xx_hal_conf.h)(0x60A12589)
@@ -1826,26 +1784,10 @@ I (../Core/Inc/gpio.h)(0x60A12580)
 I (../Core/Inc/main.h)(0x60A1258A)
 F (..\Core\Src\Peripheral\miniPC_periph.c)(0x609DEC8C)(--c99 -c --cpu Cortex-M4.fp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I..\Drivers\CMSIS\DSP\Include -I..\Core\Inc -I..\Core\Inc\Algorithm -I..\Core\Inc\Library -I..\Core\Inc\Peripheral -I..\Core\Inc\Utility -I..\Core\Inc\Chassis_Control -I..\Core\Inc\Gimbal_Control -I..\Core\Inc\SuperCap_Control -I..\Core\Inc\Common_Contrrol-I D:\LEEKA\RM2020\[2021]CODE\Infantry_Momentum5_17\Infantry_Momentum\MDK-ARM\RTE-I G:\Keil_5\ARM\PACK\ARM\CMSIS\4.2.0\CMSIS\Include-I G:\Keil_5\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Device\Include-D__UVISION_VERSION="514" -D_RTE_ -DSTM32F40_41xxx -DUSE_HAL_DRIVER -DSTM32F405xx -DARM_MATH_CM4 -D__TARGET_FPU_VFP -D__CC_ARM-o infantry_momentum\minipc_periph.o --omf_browse infantry_momentum\minipc_periph.crf --depend infantry_momentum\minipc_periph.d)
 I (..\Core\Inc\Peripheral\minipc_periph.h)(0x609A99C8)
-I (../Core/Inc/configure.h)(0x60A2395E)
+I (../Core/Inc/configure.h)(0x60A2CEC7)
 I (../Core/Inc/Code_specification.h)(0x609A99C8)
-F (..\Core\Src\Peripheral\motor_periph.c)(0x609DF52F)(--c99 -c --cpu Cortex-M4.fp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I..\Drivers\CMSIS\DSP\Include -I..\Core\Inc -I..\Core\Inc\Algorithm -I..\Core\Inc\Library -I..\Core\Inc\Peripheral -I..\Core\Inc\Utility -I..\Core\Inc\Chassis_Control -I..\Core\Inc\Gimbal_Control -I..\Core\Inc\SuperCap_Control -I..\Core\Inc\Common_Contrrol-I D:\LEEKA\RM2020\[2021]CODE\Infantry_Momentum5_17\Infantry_Momentum\MDK-ARM\RTE-I G:\Keil_5\ARM\PACK\ARM\CMSIS\4.2.0\CMSIS\Include-I G:\Keil_5\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Device\Include-D__UVISION_VERSION="514" -D_RTE_ -DSTM32F40_41xxx -DUSE_HAL_DRIVER -DSTM32F405xx -DARM_MATH_CM4 -D__TARGET_FPU_VFP -D__CC_ARM-o infantry_momentum\motor_periph.o --omf_browse infantry_momentum\motor_periph.crf --depend infantry_momentum\motor_periph.d)
-I (..\Core\Inc\Peripheral\motor_periph.h)(0x609DF4FA)
-I (../Core/Inc/configure.h)(0x60A2395E)
-I (../Core/Inc/Code_specification.h)(0x609A99C8)
-F (..\Core\Src\Peripheral\referee_periph.c)(0x60A0FE06)(--c99 -c --cpu Cortex-M4.fp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I..\Drivers\CMSIS\DSP\Include -I..\Core\Inc -I..\Core\Inc\Algorithm -I..\Core\Inc\Library -I..\Core\Inc\Peripheral -I..\Core\Inc\Utility -I..\Core\Inc\Chassis_Control -I..\Core\Inc\Gimbal_Control -I..\Core\Inc\SuperCap_Control -I..\Core\Inc\Common_Contrrol-I D:\LEEKA\RM2020\[2021]CODE\Infantry_Momentum5_17\Infantry_Momentum\MDK-ARM\RTE-I G:\Keil_5\ARM\PACK\ARM\CMSIS\4.2.0\CMSIS\Include-I G:\Keil_5\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Device\Include-D__UVISION_VERSION="514" -D_RTE_ -DSTM32F40_41xxx -DUSE_HAL_DRIVER -DSTM32F405xx -DARM_MATH_CM4 -D__TARGET_FPU_VFP -D__CC_ARM-o infantry_momentum\referee_periph.o --omf_browse infantry_momentum\referee_periph.crf --depend infantry_momentum\referee_periph.d)
-I (..\Core\Inc\Peripheral\referee_periph.h)(0x60A00AC2)
-I (../Core/Inc/configure.h)(0x60A2395E)
-I (../Core/Inc/Code_specification.h)(0x609A99C8)
-F (..\Core\Src\Peripheral\remote_periph.c)(0x609DF576)(--c99 -c --cpu Cortex-M4.fp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I..\Drivers\CMSIS\DSP\Include -I..\Core\Inc -I..\Core\Inc\Algorithm -I..\Core\Inc\Library -I..\Core\Inc\Peripheral -I..\Core\Inc\Utility -I..\Core\Inc\Chassis_Control -I..\Core\Inc\Gimbal_Control -I..\Core\Inc\SuperCap_Control -I..\Core\Inc\Common_Contrrol-I D:\LEEKA\RM2020\[2021]CODE\Infantry_Momentum5_17\Infantry_Momentum\MDK-ARM\RTE-I G:\Keil_5\ARM\PACK\ARM\CMSIS\4.2.0\CMSIS\Include-I G:\Keil_5\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Device\Include-D__UVISION_VERSION="514" -D_RTE_ -DSTM32F40_41xxx -DUSE_HAL_DRIVER -DSTM32F405xx -DARM_MATH_CM4 -D__TARGET_FPU_VFP -D__CC_ARM-o infantry_momentum\remote_periph.o --omf_browse infantry_momentum\remote_periph.crf --depend infantry_momentum\remote_periph.d)
-I (..\Core\Inc\Peripheral\remote_periph.h)(0x609A99C8)
-I (../Core/Inc/configure.h)(0x60A2395E)
-I (../Core/Inc/Code_specification.h)(0x609A99C8)
-F (..\Core\Src\Peripheral\sensor_periph.c)(0x609A99CA)(--c99 -c --cpu Cortex-M4.fp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I..\Drivers\CMSIS\DSP\Include -I..\Core\Inc -I..\Core\Inc\Algorithm -I..\Core\Inc\Library -I..\Core\Inc\Peripheral -I..\Core\Inc\Utility -I..\Core\Inc\Chassis_Control -I..\Core\Inc\Gimbal_Control -I..\Core\Inc\SuperCap_Control -I..\Core\Inc\Common_Contrrol-I D:\LEEKA\RM2020\[2021]CODE\Infantry_Momentum5_17\Infantry_Momentum\MDK-ARM\RTE-I G:\Keil_5\ARM\PACK\ARM\CMSIS\4.2.0\CMSIS\Include-I G:\Keil_5\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Device\Include-D__UVISION_VERSION="514" -D_RTE_ -DSTM32F40_41xxx -DUSE_HAL_DRIVER -DSTM32F405xx -DARM_MATH_CM4 -D__TARGET_FPU_VFP -D__CC_ARM-o infantry_momentum\sensor_periph.o --omf_browse infantry_momentum\sensor_periph.crf --depend infantry_momentum\sensor_periph.d)
-I (..\Core\Inc\Peripheral\sensor_periph.h)(0x609A99C8)
-I (../Core/Inc/configure.h)(0x60A2395E)
-I (../Core/Inc/Code_specification.h)(0x609A99C8)
-I (..\Core\Inc\Utility\adc_util.h)(0x609A99C8)
-I (../Core/Inc/adc.h)(0x60A12585)
+I (..\Core\Inc\Utility\uart_util.h)(0x609A99C8)
+I (../Core/Inc/usart.h)(0x60A12588)
 I (../Core/Inc/main.h)(0x60A1258A)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x600A9025)
 I (../Core/Inc/stm32f4xx_hal_conf.h)(0x60A12589)
@@ -1882,19 +1824,198 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h)(0x600A9025)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h)(0x600A9025)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x600A9025)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x600A9025)
+I (..\Core\Inc\Library\buff_lib.h)(0x609A99C8)
 I (G:\Keil_5\ARM\ARMCC\include\string.h)(0x5475F300)
+I (..\Core\Inc\Library\const_lib.h)(0x609DFD95)
 I (..\Core\Inc\Algorithm\filter_alg.h)(0x609A99C8)
 I (..\Core\Inc\Algorithm\math_alg.h)(0x609F9C58)
 I (..\Drivers\CMSIS\DSP\Include\arm_math.h)(0x600A8FCE)
 I (G:\Keil_5\ARM\ARMCC\include\math.h)(0x5475F2FE)
+I (..\Core\Inc\Common_Contrrol\buscomm_ctrl.h)(0x60A02E46)
+I (../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h)(0x600A8FD4)
+I (../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h)(0x600A8FD4)
+I (../Core/Inc/FreeRTOSConfig.h)(0x60A12584)
+I (../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h)(0x600A8FD4)
+I (../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h)(0x600A8FD4)
+I (../Middlewares/Third_Party/FreeRTOS/Source/include/deprecated_definitions.h)(0x600A8FD4)
+I (../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F/portmacro.h)(0x600A8FD4)
+I (../Middlewares/Third_Party/FreeRTOS/Source/include/mpu_wrappers.h)(0x600A8FD4)
+I (../Middlewares/Third_Party/FreeRTOS/Source/include/task.h)(0x600A8FD4)
+I (../Middlewares/Third_Party/FreeRTOS/Source/include/list.h)(0x600A8FD4)
+I (../Middlewares/Third_Party/FreeRTOS/Source/include/timers.h)(0x600A8FD4)
+I (../Middlewares/Third_Party/FreeRTOS/Source/include/queue.h)(0x600A8FD4)
+I (../Middlewares/Third_Party/FreeRTOS/Source/include/semphr.h)(0x600A8FD4)
+I (../Middlewares/Third_Party/FreeRTOS/Source/include/event_groups.h)(0x600A8FD4)
+I (..\Core\Inc\Utility\can_util.h)(0x60A02E49)
+I (../Core/Inc/can.h)(0x60A12586)
+I (..\Core\Inc\Gimbal_Control\gim_miniPC_ctrl.h)(0x60A11104)
+I (..\Core\Inc\Algorithm\kalman_alg.h)(0x60A2B6D8)
+F (..\Core\Src\Peripheral\motor_periph.c)(0x609DF52F)(--c99 -c --cpu Cortex-M4.fp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I..\Drivers\CMSIS\DSP\Include -I..\Core\Inc -I..\Core\Inc\Algorithm -I..\Core\Inc\Library -I..\Core\Inc\Peripheral -I..\Core\Inc\Utility -I..\Core\Inc\Chassis_Control -I..\Core\Inc\Gimbal_Control -I..\Core\Inc\SuperCap_Control -I..\Core\Inc\Common_Contrrol-I D:\LEEKA\RM2020\[2021]CODE\Infantry_Momentum5_17\Infantry_Momentum\MDK-ARM\RTE-I G:\Keil_5\ARM\PACK\ARM\CMSIS\4.2.0\CMSIS\Include-I G:\Keil_5\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Device\Include-D__UVISION_VERSION="514" -D_RTE_ -DSTM32F40_41xxx -DUSE_HAL_DRIVER -DSTM32F405xx -DARM_MATH_CM4 -D__TARGET_FPU_VFP -D__CC_ARM-o infantry_momentum\motor_periph.o --omf_browse infantry_momentum\motor_periph.crf --depend infantry_momentum\motor_periph.d)
+I (..\Core\Inc\Peripheral\motor_periph.h)(0x609DF4FA)
+I (../Core/Inc/configure.h)(0x60A2CEC7)
+I (../Core/Inc/Code_specification.h)(0x609A99C8)
+I (..\Core\Inc\Utility\can_util.h)(0x60A02E49)
+I (../Core/Inc/can.h)(0x60A12586)
+I (../Core/Inc/main.h)(0x60A1258A)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x600A9025)
+I (../Core/Inc/stm32f4xx_hal_conf.h)(0x60A12589)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h)(0x600A9025)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h)(0x600A9025)
+I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h)(0x600A8FC6)
+I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f405xx.h)(0x600A8FC6)
+I (../Drivers/CMSIS/Include/core_cm4.h)(0x600A8FCF)
+I (G:\Keil_5\ARM\ARMCC\include\stdint.h)(0x5475F300)
+I (../Drivers/CMSIS/Include/cmsis_version.h)(0x600A8FCF)
+I (../Drivers/CMSIS/Include/cmsis_compiler.h)(0x600A8FCF)
+I (../Drivers/CMSIS/Include/cmsis_armcc.h)(0x600A8FCF)
+I (../Drivers/CMSIS/Include/mpu_armv7.h)(0x600A8FCF)
+I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h)(0x600A8FC6)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h)(0x600A9025)
+I (G:\Keil_5\ARM\ARMCC\include\stddef.h)(0x5475F300)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h)(0x600A9025)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio.h)(0x600A9025)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio_ex.h)(0x600A9025)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_exti.h)(0x600A9025)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h)(0x600A9025)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma_ex.h)(0x600A9025)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_cortex.h)(0x600A9025)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc.h)(0x600A9025)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc_ex.h)(0x600A9025)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_can.h)(0x600A9025)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dac.h)(0x600A9025)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dac_ex.h)(0x600A9025)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash.h)(0x600A9025)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h)(0x600A9025)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h)(0x600A9025)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h)(0x600A9025)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h)(0x600A9025)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h)(0x600A9025)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x600A9025)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x600A9025)
+I (..\Core\Inc\Utility\pwm_util.h)(0x609A99C8)
+I (../Core/Inc/tim.h)(0x60A12587)
+I (..\Core\Inc\Algorithm\pid_alg.h)(0x609A99C8)
+I (..\Core\Inc\Algorithm\math_alg.h)(0x609F9C58)
+I (..\Drivers\CMSIS\DSP\Include\arm_math.h)(0x600A8FCE)
+I (G:\Keil_5\ARM\ARMCC\include\string.h)(0x5475F300)
+I (G:\Keil_5\ARM\ARMCC\include\math.h)(0x5475F2FE)
+I (..\Core\Inc\Algorithm\filter_alg.h)(0x609A99C8)
 I (..\Core\Inc\Library\const_lib.h)(0x609DFD95)
+I (G:\Keil_5\ARM\ARMCC\include\stdio.h)(0x5475F300)
+I (G:\Keil_5\ARM\ARMCC\include\stdlib.h)(0x5475F300)
+F (..\Core\Src\Peripheral\referee_periph.c)(0x60A0FE06)(--c99 -c --cpu Cortex-M4.fp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I..\Drivers\CMSIS\DSP\Include -I..\Core\Inc -I..\Core\Inc\Algorithm -I..\Core\Inc\Library -I..\Core\Inc\Peripheral -I..\Core\Inc\Utility -I..\Core\Inc\Chassis_Control -I..\Core\Inc\Gimbal_Control -I..\Core\Inc\SuperCap_Control -I..\Core\Inc\Common_Contrrol-I D:\LEEKA\RM2020\[2021]CODE\Infantry_Momentum5_17\Infantry_Momentum\MDK-ARM\RTE-I G:\Keil_5\ARM\PACK\ARM\CMSIS\4.2.0\CMSIS\Include-I G:\Keil_5\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Device\Include-D__UVISION_VERSION="514" -D_RTE_ -DSTM32F40_41xxx -DUSE_HAL_DRIVER -DSTM32F405xx -DARM_MATH_CM4 -D__TARGET_FPU_VFP -D__CC_ARM-o infantry_momentum\referee_periph.o --omf_browse infantry_momentum\referee_periph.crf --depend infantry_momentum\referee_periph.d)
+I (..\Core\Inc\Peripheral\referee_periph.h)(0x60A00AC2)
+I (../Core/Inc/configure.h)(0x60A2CEC7)
+I (../Core/Inc/Code_specification.h)(0x609A99C8)
+F (..\Core\Src\Peripheral\remote_periph.c)(0x609DF576)(--c99 -c --cpu Cortex-M4.fp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I..\Drivers\CMSIS\DSP\Include -I..\Core\Inc -I..\Core\Inc\Algorithm -I..\Core\Inc\Library -I..\Core\Inc\Peripheral -I..\Core\Inc\Utility -I..\Core\Inc\Chassis_Control -I..\Core\Inc\Gimbal_Control -I..\Core\Inc\SuperCap_Control -I..\Core\Inc\Common_Contrrol-I D:\LEEKA\RM2020\[2021]CODE\Infantry_Momentum5_17\Infantry_Momentum\MDK-ARM\RTE-I G:\Keil_5\ARM\PACK\ARM\CMSIS\4.2.0\CMSIS\Include-I G:\Keil_5\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Device\Include-D__UVISION_VERSION="514" -D_RTE_ -DSTM32F40_41xxx -DUSE_HAL_DRIVER -DSTM32F405xx -DARM_MATH_CM4 -D__TARGET_FPU_VFP -D__CC_ARM-o infantry_momentum\remote_periph.o --omf_browse infantry_momentum\remote_periph.crf --depend infantry_momentum\remote_periph.d)
+I (..\Core\Inc\Peripheral\remote_periph.h)(0x609A99C8)
+I (../Core/Inc/configure.h)(0x60A2CEC7)
+I (../Core/Inc/Code_specification.h)(0x609A99C8)
+I (..\Core\Inc\Utility\uart_util.h)(0x609A99C8)
+I (../Core/Inc/usart.h)(0x60A12588)
+I (../Core/Inc/main.h)(0x60A1258A)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x600A9025)
+I (../Core/Inc/stm32f4xx_hal_conf.h)(0x60A12589)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h)(0x600A9025)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h)(0x600A9025)
+I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h)(0x600A8FC6)
+I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f405xx.h)(0x600A8FC6)
+I (../Drivers/CMSIS/Include/core_cm4.h)(0x600A8FCF)
+I (G:\Keil_5\ARM\ARMCC\include\stdint.h)(0x5475F300)
+I (../Drivers/CMSIS/Include/cmsis_version.h)(0x600A8FCF)
+I (../Drivers/CMSIS/Include/cmsis_compiler.h)(0x600A8FCF)
+I (../Drivers/CMSIS/Include/cmsis_armcc.h)(0x600A8FCF)
+I (../Drivers/CMSIS/Include/mpu_armv7.h)(0x600A8FCF)
+I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h)(0x600A8FC6)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h)(0x600A9025)
+I (G:\Keil_5\ARM\ARMCC\include\stddef.h)(0x5475F300)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h)(0x600A9025)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio.h)(0x600A9025)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio_ex.h)(0x600A9025)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_exti.h)(0x600A9025)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h)(0x600A9025)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma_ex.h)(0x600A9025)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_cortex.h)(0x600A9025)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc.h)(0x600A9025)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc_ex.h)(0x600A9025)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_can.h)(0x600A9025)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dac.h)(0x600A9025)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dac_ex.h)(0x600A9025)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash.h)(0x600A9025)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h)(0x600A9025)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h)(0x600A9025)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h)(0x600A9025)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h)(0x600A9025)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h)(0x600A9025)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x600A9025)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x600A9025)
+I (G:\Keil_5\ARM\ARMCC\include\stdlib.h)(0x5475F300)
+I (..\Core\Inc\Library\const_lib.h)(0x609DFD95)
+I (..\Core\Inc\Algorithm\filter_alg.h)(0x609A99C8)
+I (..\Core\Inc\Algorithm\math_alg.h)(0x609F9C58)
+I (..\Drivers\CMSIS\DSP\Include\arm_math.h)(0x600A8FCE)
+I (G:\Keil_5\ARM\ARMCC\include\string.h)(0x5475F300)
+I (G:\Keil_5\ARM\ARMCC\include\math.h)(0x5475F2FE)
+I (..\Core\Inc\Gimbal_Control\gim_remote_ctrl.h)(0x609A99C8)
+I (..\Core\Inc\Peripheral\imu_periph.h)(0x609A99C8)
+I (..\Core\Inc\Peripheral\servo_periph.h)(0x609A99C8)
+I (..\Core\Inc\Utility\pwm_util.h)(0x609A99C8)
+I (../Core/Inc/tim.h)(0x60A12587)
+F (..\Core\Src\Peripheral\sensor_periph.c)(0x609A99CA)(--c99 -c --cpu Cortex-M4.fp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I..\Drivers\CMSIS\DSP\Include -I..\Core\Inc -I..\Core\Inc\Algorithm -I..\Core\Inc\Library -I..\Core\Inc\Peripheral -I..\Core\Inc\Utility -I..\Core\Inc\Chassis_Control -I..\Core\Inc\Gimbal_Control -I..\Core\Inc\SuperCap_Control -I..\Core\Inc\Common_Contrrol-I D:\LEEKA\RM2020\[2021]CODE\Infantry_Momentum5_17\Infantry_Momentum\MDK-ARM\RTE-I G:\Keil_5\ARM\PACK\ARM\CMSIS\4.2.0\CMSIS\Include-I G:\Keil_5\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Device\Include-D__UVISION_VERSION="514" -D_RTE_ -DSTM32F40_41xxx -DUSE_HAL_DRIVER -DSTM32F405xx -DARM_MATH_CM4 -D__TARGET_FPU_VFP -D__CC_ARM-o infantry_momentum\sensor_periph.o --omf_browse infantry_momentum\sensor_periph.crf --depend infantry_momentum\sensor_periph.d)
+I (..\Core\Inc\Peripheral\sensor_periph.h)(0x609A99C8)
+I (../Core/Inc/configure.h)(0x60A2CEC7)
+I (../Core/Inc/Code_specification.h)(0x609A99C8)
 F (..\Core\Src\Peripheral\servo_periph.c)(0x60A0FE13)(--c99 -c --cpu Cortex-M4.fp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I..\Drivers\CMSIS\DSP\Include -I..\Core\Inc -I..\Core\Inc\Algorithm -I..\Core\Inc\Library -I..\Core\Inc\Peripheral -I..\Core\Inc\Utility -I..\Core\Inc\Chassis_Control -I..\Core\Inc\Gimbal_Control -I..\Core\Inc\SuperCap_Control -I..\Core\Inc\Common_Contrrol-I D:\LEEKA\RM2020\[2021]CODE\Infantry_Momentum5_17\Infantry_Momentum\MDK-ARM\RTE-I G:\Keil_5\ARM\PACK\ARM\CMSIS\4.2.0\CMSIS\Include-I G:\Keil_5\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Device\Include-D__UVISION_VERSION="514" -D_RTE_ -DSTM32F40_41xxx -DUSE_HAL_DRIVER -DSTM32F405xx -DARM_MATH_CM4 -D__TARGET_FPU_VFP -D__CC_ARM-o infantry_momentum\servo_periph.o --omf_browse infantry_momentum\servo_periph.crf --depend infantry_momentum\servo_periph.d)
 I (..\Core\Inc\Peripheral\servo_periph.h)(0x609A99C8)
-I (../Core/Inc/configure.h)(0x60A2395E)
+I (../Core/Inc/configure.h)(0x60A2CEC7)
 I (../Core/Inc/Code_specification.h)(0x609A99C8)
-F (..\Core\Src\Library\const_lib.c)(0x60A1FD75)(--c99 -c --cpu Cortex-M4.fp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I..\Drivers\CMSIS\DSP\Include -I..\Core\Inc -I..\Core\Inc\Algorithm -I..\Core\Inc\Library -I..\Core\Inc\Peripheral -I..\Core\Inc\Utility -I..\Core\Inc\Chassis_Control -I..\Core\Inc\Gimbal_Control -I..\Core\Inc\SuperCap_Control -I..\Core\Inc\Common_Contrrol-I D:\LEEKA\RM2020\[2021]CODE\Infantry_Momentum5_17\Infantry_Momentum\MDK-ARM\RTE-I G:\Keil_5\ARM\PACK\ARM\CMSIS\4.2.0\CMSIS\Include-I G:\Keil_5\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Device\Include-D__UVISION_VERSION="514" -D_RTE_ -DSTM32F40_41xxx -DUSE_HAL_DRIVER -DSTM32F405xx -DARM_MATH_CM4 -D__TARGET_FPU_VFP -D__CC_ARM-o infantry_momentum\const_lib.o --omf_browse infantry_momentum\const_lib.crf --depend infantry_momentum\const_lib.d)
+I (..\Core\Inc\Utility\pwm_util.h)(0x609A99C8)
+I (../Core/Inc/tim.h)(0x60A12587)
+I (../Core/Inc/main.h)(0x60A1258A)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x600A9025)
+I (../Core/Inc/stm32f4xx_hal_conf.h)(0x60A12589)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h)(0x600A9025)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h)(0x600A9025)
+I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h)(0x600A8FC6)
+I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f405xx.h)(0x600A8FC6)
+I (../Drivers/CMSIS/Include/core_cm4.h)(0x600A8FCF)
+I (G:\Keil_5\ARM\ARMCC\include\stdint.h)(0x5475F300)
+I (../Drivers/CMSIS/Include/cmsis_version.h)(0x600A8FCF)
+I (../Drivers/CMSIS/Include/cmsis_compiler.h)(0x600A8FCF)
+I (../Drivers/CMSIS/Include/cmsis_armcc.h)(0x600A8FCF)
+I (../Drivers/CMSIS/Include/mpu_armv7.h)(0x600A8FCF)
+I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h)(0x600A8FC6)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h)(0x600A9025)
+I (G:\Keil_5\ARM\ARMCC\include\stddef.h)(0x5475F300)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h)(0x600A9025)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio.h)(0x600A9025)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio_ex.h)(0x600A9025)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_exti.h)(0x600A9025)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h)(0x600A9025)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma_ex.h)(0x600A9025)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_cortex.h)(0x600A9025)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc.h)(0x600A9025)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc_ex.h)(0x600A9025)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_can.h)(0x600A9025)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dac.h)(0x600A9025)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dac_ex.h)(0x600A9025)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash.h)(0x600A9025)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h)(0x600A9025)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h)(0x600A9025)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h)(0x600A9025)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h)(0x600A9025)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h)(0x600A9025)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x600A9025)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x600A9025)
 I (..\Core\Inc\Library\const_lib.h)(0x609DFD95)
-I (../Core/Inc/configure.h)(0x60A2395E)
+I (..\Core\Inc\Algorithm\filter_alg.h)(0x609A99C8)
+I (..\Core\Inc\Algorithm\math_alg.h)(0x609F9C58)
+I (..\Drivers\CMSIS\DSP\Include\arm_math.h)(0x600A8FCE)
+I (G:\Keil_5\ARM\ARMCC\include\string.h)(0x5475F300)
+I (G:\Keil_5\ARM\ARMCC\include\math.h)(0x5475F2FE)
+F (..\Core\Src\Library\const_lib.c)(0x60A2DC05)(--c99 -c --cpu Cortex-M4.fp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I..\Drivers\CMSIS\DSP\Include -I..\Core\Inc -I..\Core\Inc\Algorithm -I..\Core\Inc\Library -I..\Core\Inc\Peripheral -I..\Core\Inc\Utility -I..\Core\Inc\Chassis_Control -I..\Core\Inc\Gimbal_Control -I..\Core\Inc\SuperCap_Control -I..\Core\Inc\Common_Contrrol-I D:\LEEKA\RM2020\[2021]CODE\Infantry_Momentum5_17\Infantry_Momentum\MDK-ARM\RTE-I G:\Keil_5\ARM\PACK\ARM\CMSIS\4.2.0\CMSIS\Include-I G:\Keil_5\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Device\Include-D__UVISION_VERSION="514" -D_RTE_ -DSTM32F40_41xxx -DUSE_HAL_DRIVER -DSTM32F405xx -DARM_MATH_CM4 -D__TARGET_FPU_VFP -D__CC_ARM-o infantry_momentum\const_lib.o --omf_browse infantry_momentum\const_lib.crf --depend infantry_momentum\const_lib.d)
+I (..\Core\Inc\Library\const_lib.h)(0x609DFD95)
+I (../Core/Inc/configure.h)(0x60A2CEC7)
 I (../Core/Inc/Code_specification.h)(0x609A99C8)
 I (..\Core\Inc\Algorithm\filter_alg.h)(0x609A99C8)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x600A9025)
@@ -1940,20 +2061,20 @@ I (../Core/Inc/can.h)(0x60A12586)
 I (../Core/Inc/main.h)(0x60A1258A)
 I (../Core/Inc/usart.h)(0x60A12588)
 I (..\Core\Inc\Peripheral\motor_periph.h)(0x609DF4FA)
+I (..\Core\Inc\Utility\can_util.h)(0x60A02E49)
+I (..\Core\Inc\Utility\pwm_util.h)(0x609A99C8)
+I (../Core/Inc/tim.h)(0x60A12587)
+I (..\Core\Inc\Algorithm\pid_alg.h)(0x609A99C8)
 I (..\Core\Inc\Chassis_Control\cha_chassis_ctrl.h)(0x609A99C8)
 I (..\Core\Inc\SuperCap_Control\supercap_ctrl.h)(0x609DFCE5)
-I (..\Core\Inc\Peripheral\sensor_periph.h)(0x609A99C8)
-I (..\Core\Inc\Utility\adc_util.h)(0x609A99C8)
-I (../Core/Inc/adc.h)(0x60A12585)
-I (..\Core\Inc\Peripheral\led_periph.h)(0x609A99C8)
-I (../Core/Inc/gpio.h)(0x60A12580)
-I (..\Core\Inc\Utility\dac_util.h)(0x609A99C8)
-I (../Core/Inc/dac.h)(0x60A12586)
-I (..\Core\Inc\Utility\gpio_util.h)(0x609A99C8)
-I (..\Core\Inc\Algorithm\pid_alg.h)(0x609A99C8)
 I (..\Core\Inc\Gimbal_Control\gim_gimbal_ctrl.h)(0x609A99C8)
+I (..\Core\Inc\Peripheral\imu_periph.h)(0x609A99C8)
+I (..\Core\Inc\Utility\uart_util.h)(0x609A99C8)
+I (..\Core\Inc\Peripheral\remote_periph.h)(0x609A99C8)
+I (G:\Keil_5\ARM\ARMCC\include\stdlib.h)(0x5475F300)
 I (..\Core\Inc\Chassis_Control\cha_gimbal_ctrl.h)(0x609A99C8)
 I (..\Core\Inc\Gimbal_Control\gim_shoot_ctrl.h)(0x609CB2E4)
+I (..\Core\Inc\Utility\gpio_util.h)(0x609A99C8)
 F (..\Core\Src\Library\log_lib.c)(0x609A99CA)(--c99 -c --cpu Cortex-M4.fp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I..\Drivers\CMSIS\DSP\Include -I..\Core\Inc -I..\Core\Inc\Algorithm -I..\Core\Inc\Library -I..\Core\Inc\Peripheral -I..\Core\Inc\Utility -I..\Core\Inc\Chassis_Control -I..\Core\Inc\Gimbal_Control -I..\Core\Inc\SuperCap_Control -I..\Core\Inc\Common_Contrrol-I D:\LEEKA\RM2020\[2021]CODE\Infantry_Momentum5_17\Infantry_Momentum\MDK-ARM\RTE-I G:\Keil_5\ARM\PACK\ARM\CMSIS\4.2.0\CMSIS\Include-I G:\Keil_5\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Device\Include-D__UVISION_VERSION="514" -D_RTE_ -DSTM32F40_41xxx -DUSE_HAL_DRIVER -DSTM32F405xx -DARM_MATH_CM4 -D__TARGET_FPU_VFP -D__CC_ARM-o infantry_momentum\log_lib.o --omf_browse infantry_momentum\log_lib.crf --depend infantry_momentum\log_lib.d)
 I (..\Core\Inc\Library\log_lib.h)(0x609A99C8)
 I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h)(0x600A8FC6)
@@ -2031,7 +2152,7 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x600A9025)
 I (G:\Keil_5\ARM\ARMCC\include\string.h)(0x5475F300)
 F (..\Core\Src\Algorithm\pid_alg.c)(0x609A99CA)(--c99 -c --cpu Cortex-M4.fp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I..\Drivers\CMSIS\DSP\Include -I..\Core\Inc -I..\Core\Inc\Algorithm -I..\Core\Inc\Library -I..\Core\Inc\Peripheral -I..\Core\Inc\Utility -I..\Core\Inc\Chassis_Control -I..\Core\Inc\Gimbal_Control -I..\Core\Inc\SuperCap_Control -I..\Core\Inc\Common_Contrrol-I D:\LEEKA\RM2020\[2021]CODE\Infantry_Momentum5_17\Infantry_Momentum\MDK-ARM\RTE-I G:\Keil_5\ARM\PACK\ARM\CMSIS\4.2.0\CMSIS\Include-I G:\Keil_5\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Device\Include-D__UVISION_VERSION="514" -D_RTE_ -DSTM32F40_41xxx -DUSE_HAL_DRIVER -DSTM32F405xx -DARM_MATH_CM4 -D__TARGET_FPU_VFP -D__CC_ARM-o infantry_momentum\pid_alg.o --omf_browse infantry_momentum\pid_alg.crf --depend infantry_momentum\pid_alg.d)
 I (..\Core\Inc\Algorithm\pid_alg.h)(0x609A99C8)
-I (../Core/Inc/configure.h)(0x60A2395E)
+I (../Core/Inc/configure.h)(0x60A2CEC7)
 I (../Core/Inc/Code_specification.h)(0x609A99C8)
 I (..\Core\Inc\Algorithm\math_alg.h)(0x609F9C58)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x600A9025)
@@ -2155,10 +2276,10 @@ I (..\Drivers\CMSIS\DSP\Include\arm_math.h)(0x600A8FCE)
 I (G:\Keil_5\ARM\ARMCC\include\string.h)(0x5475F300)
 I (G:\Keil_5\ARM\ARMCC\include\math.h)(0x5475F2FE)
 I (..\Core\Inc\Library\const_lib.h)(0x609DFD95)
-I (../Core/Inc/configure.h)(0x60A2395E)
+I (../Core/Inc/configure.h)(0x60A2CEC7)
 I (../Core/Inc/Code_specification.h)(0x609A99C8)
-F (..\Core\Src\Algorithm\kalman_alg.c)(0x60A27899)(--c99 -c --cpu Cortex-M4.fp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I..\Drivers\CMSIS\DSP\Include -I..\Core\Inc -I..\Core\Inc\Algorithm -I..\Core\Inc\Library -I..\Core\Inc\Peripheral -I..\Core\Inc\Utility -I..\Core\Inc\Chassis_Control -I..\Core\Inc\Gimbal_Control -I..\Core\Inc\SuperCap_Control -I..\Core\Inc\Common_Contrrol-I D:\LEEKA\RM2020\[2021]CODE\Infantry_Momentum5_17\Infantry_Momentum\MDK-ARM\RTE-I G:\Keil_5\ARM\PACK\ARM\CMSIS\4.2.0\CMSIS\Include-I G:\Keil_5\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Device\Include-D__UVISION_VERSION="514" -D_RTE_ -DSTM32F40_41xxx -DUSE_HAL_DRIVER -DSTM32F405xx -DARM_MATH_CM4 -D__TARGET_FPU_VFP -D__CC_ARM-o infantry_momentum\kalman_alg.o --omf_browse infantry_momentum\kalman_alg.crf --depend infantry_momentum\kalman_alg.d)
-I (..\Core\Inc\Algorithm\kalman_alg.h)(0x60A277E5)
+F (..\Core\Src\Algorithm\kalman_alg.c)(0x60A2DC76)(--c99 -c --cpu Cortex-M4.fp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I..\Drivers\CMSIS\DSP\Include -I..\Core\Inc -I..\Core\Inc\Algorithm -I..\Core\Inc\Library -I..\Core\Inc\Peripheral -I..\Core\Inc\Utility -I..\Core\Inc\Chassis_Control -I..\Core\Inc\Gimbal_Control -I..\Core\Inc\SuperCap_Control -I..\Core\Inc\Common_Contrrol-I D:\LEEKA\RM2020\[2021]CODE\Infantry_Momentum5_17\Infantry_Momentum\MDK-ARM\RTE-I G:\Keil_5\ARM\PACK\ARM\CMSIS\4.2.0\CMSIS\Include-I G:\Keil_5\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Device\Include-D__UVISION_VERSION="514" -D_RTE_ -DSTM32F40_41xxx -DUSE_HAL_DRIVER -DSTM32F405xx -DARM_MATH_CM4 -D__TARGET_FPU_VFP -D__CC_ARM-o infantry_momentum\kalman_alg.o --omf_browse infantry_momentum\kalman_alg.crf --depend infantry_momentum\kalman_alg.d)
+I (..\Core\Inc\Algorithm\kalman_alg.h)(0x60A2B6D8)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x600A9025)
 I (../Core/Inc/stm32f4xx_hal_conf.h)(0x60A12589)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h)(0x600A9025)
@@ -2237,118 +2358,343 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x600A9025)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x600A9025)
 F (..\Core\Src\Gimbal_Control\gim_gimbal_ctrl.c)(0x60A1DB6F)(--c99 -c --cpu Cortex-M4.fp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I..\Drivers\CMSIS\DSP\Include -I..\Core\Inc -I..\Core\Inc\Algorithm -I..\Core\Inc\Library -I..\Core\Inc\Peripheral -I..\Core\Inc\Utility -I..\Core\Inc\Chassis_Control -I..\Core\Inc\Gimbal_Control -I..\Core\Inc\SuperCap_Control -I..\Core\Inc\Common_Contrrol-I D:\LEEKA\RM2020\[2021]CODE\Infantry_Momentum5_17\Infantry_Momentum\MDK-ARM\RTE-I G:\Keil_5\ARM\PACK\ARM\CMSIS\4.2.0\CMSIS\Include-I G:\Keil_5\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Device\Include-D__UVISION_VERSION="514" -D_RTE_ -DSTM32F40_41xxx -DUSE_HAL_DRIVER -DSTM32F405xx -DARM_MATH_CM4 -D__TARGET_FPU_VFP -D__CC_ARM-o infantry_momentum\gim_gimbal_ctrl.o --omf_browse infantry_momentum\gim_gimbal_ctrl.crf --depend infantry_momentum\gim_gimbal_ctrl.d)
 I (..\Core\Inc\Gimbal_Control\gim_gimbal_ctrl.h)(0x609A99C8)
-I (../Core/Inc/configure.h)(0x60A2395E)
+I (../Core/Inc/configure.h)(0x60A2CEC7)
 I (../Core/Inc/Code_specification.h)(0x609A99C8)
-F (..\Core\Src\Gimbal_Control\gim_miniPC_ctrl.c)(0x60A27FEB)(--c99 -c --cpu Cortex-M4.fp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I..\Drivers\CMSIS\DSP\Include -I..\Core\Inc -I..\Core\Inc\Algorithm -I..\Core\Inc\Library -I..\Core\Inc\Peripheral -I..\Core\Inc\Utility -I..\Core\Inc\Chassis_Control -I..\Core\Inc\Gimbal_Control -I..\Core\Inc\SuperCap_Control -I..\Core\Inc\Common_Contrrol-I D:\LEEKA\RM2020\[2021]CODE\Infantry_Momentum5_17\Infantry_Momentum\MDK-ARM\RTE-I G:\Keil_5\ARM\PACK\ARM\CMSIS\4.2.0\CMSIS\Include-I G:\Keil_5\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Device\Include-D__UVISION_VERSION="514" -D_RTE_ -DSTM32F40_41xxx -DUSE_HAL_DRIVER -DSTM32F405xx -DARM_MATH_CM4 -D__TARGET_FPU_VFP -D__CC_ARM-o infantry_momentum\gim_minipc_ctrl.o --omf_browse infantry_momentum\gim_minipc_ctrl.crf --depend infantry_momentum\gim_minipc_ctrl.d)
+I (..\Core\Inc\Algorithm\pid_alg.h)(0x609A99C8)
+I (..\Core\Inc\Algorithm\math_alg.h)(0x609F9C58)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x600A9025)
+I (../Core/Inc/stm32f4xx_hal_conf.h)(0x60A12589)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h)(0x600A9025)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h)(0x600A9025)
+I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h)(0x600A8FC6)
+I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f405xx.h)(0x600A8FC6)
+I (../Drivers/CMSIS/Include/core_cm4.h)(0x600A8FCF)
+I (G:\Keil_5\ARM\ARMCC\include\stdint.h)(0x5475F300)
+I (../Drivers/CMSIS/Include/cmsis_version.h)(0x600A8FCF)
+I (../Drivers/CMSIS/Include/cmsis_compiler.h)(0x600A8FCF)
+I (../Drivers/CMSIS/Include/cmsis_armcc.h)(0x600A8FCF)
+I (../Drivers/CMSIS/Include/mpu_armv7.h)(0x600A8FCF)
+I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h)(0x600A8FC6)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h)(0x600A9025)
+I (G:\Keil_5\ARM\ARMCC\include\stddef.h)(0x5475F300)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h)(0x600A9025)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio.h)(0x600A9025)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio_ex.h)(0x600A9025)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_exti.h)(0x600A9025)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h)(0x600A9025)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma_ex.h)(0x600A9025)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_cortex.h)(0x600A9025)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc.h)(0x600A9025)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc_ex.h)(0x600A9025)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_can.h)(0x600A9025)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dac.h)(0x600A9025)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dac_ex.h)(0x600A9025)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash.h)(0x600A9025)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h)(0x600A9025)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h)(0x600A9025)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h)(0x600A9025)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h)(0x600A9025)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h)(0x600A9025)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x600A9025)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x600A9025)
+I (..\Drivers\CMSIS\DSP\Include\arm_math.h)(0x600A8FCE)
+I (G:\Keil_5\ARM\ARMCC\include\string.h)(0x5475F300)
+I (G:\Keil_5\ARM\ARMCC\include\math.h)(0x5475F2FE)
+I (..\Core\Inc\Algorithm\filter_alg.h)(0x609A99C8)
+I (..\Core\Inc\Peripheral\motor_periph.h)(0x609DF4FA)
+I (..\Core\Inc\Utility\can_util.h)(0x60A02E49)
+I (../Core/Inc/can.h)(0x60A12586)
+I (../Core/Inc/main.h)(0x60A1258A)
+I (..\Core\Inc\Utility\pwm_util.h)(0x609A99C8)
+I (../Core/Inc/tim.h)(0x60A12587)
+I (..\Core\Inc\Peripheral\imu_periph.h)(0x609A99C8)
+I (..\Core\Inc\Utility\uart_util.h)(0x609A99C8)
+I (../Core/Inc/usart.h)(0x60A12588)
+I (..\Core\Inc\Peripheral\remote_periph.h)(0x609A99C8)
+I (G:\Keil_5\ARM\ARMCC\include\stdlib.h)(0x5475F300)
+I (..\Core\Inc\Library\const_lib.h)(0x609DFD95)
+I (..\Core\Inc\Gimbal_Control\gim_remote_ctrl.h)(0x609A99C8)
+I (..\Core\Inc\Peripheral\servo_periph.h)(0x609A99C8)
+I (..\Core\Inc\Gimbal_Control\gim_shoot_ctrl.h)(0x609CB2E4)
+I (..\Core\Inc\Utility\gpio_util.h)(0x609A99C8)
+I (..\Core\Inc\Common_Contrrol\buscomm_ctrl.h)(0x60A02E46)
+I (../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h)(0x600A8FD4)
+I (../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h)(0x600A8FD4)
+I (../Core/Inc/FreeRTOSConfig.h)(0x60A12584)
+I (../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h)(0x600A8FD4)
+I (../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h)(0x600A8FD4)
+I (../Middlewares/Third_Party/FreeRTOS/Source/include/deprecated_definitions.h)(0x600A8FD4)
+I (../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F/portmacro.h)(0x600A8FD4)
+I (../Middlewares/Third_Party/FreeRTOS/Source/include/mpu_wrappers.h)(0x600A8FD4)
+I (../Middlewares/Third_Party/FreeRTOS/Source/include/task.h)(0x600A8FD4)
+I (../Middlewares/Third_Party/FreeRTOS/Source/include/list.h)(0x600A8FD4)
+I (../Middlewares/Third_Party/FreeRTOS/Source/include/timers.h)(0x600A8FD4)
+I (../Middlewares/Third_Party/FreeRTOS/Source/include/queue.h)(0x600A8FD4)
+I (../Middlewares/Third_Party/FreeRTOS/Source/include/semphr.h)(0x600A8FD4)
+I (../Middlewares/Third_Party/FreeRTOS/Source/include/event_groups.h)(0x600A8FD4)
+I (..\Core\Inc\Library\buff_lib.h)(0x609A99C8)
 I (..\Core\Inc\Gimbal_Control\gim_miniPC_ctrl.h)(0x60A11104)
-I (../Core/Inc/configure.h)(0x60A2395E)
+I (..\Core\Inc\Peripheral\minipc_periph.h)(0x609A99C8)
+I (..\Core\Inc\Algorithm\kalman_alg.h)(0x60A2B6D8)
+F (..\Core\Src\Gimbal_Control\gim_miniPC_ctrl.c)(0x60A2DD53)(--c99 -c --cpu Cortex-M4.fp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I..\Drivers\CMSIS\DSP\Include -I..\Core\Inc -I..\Core\Inc\Algorithm -I..\Core\Inc\Library -I..\Core\Inc\Peripheral -I..\Core\Inc\Utility -I..\Core\Inc\Chassis_Control -I..\Core\Inc\Gimbal_Control -I..\Core\Inc\SuperCap_Control -I..\Core\Inc\Common_Contrrol-I D:\LEEKA\RM2020\[2021]CODE\Infantry_Momentum5_17\Infantry_Momentum\MDK-ARM\RTE-I G:\Keil_5\ARM\PACK\ARM\CMSIS\4.2.0\CMSIS\Include-I G:\Keil_5\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Device\Include-D__UVISION_VERSION="514" -D_RTE_ -DSTM32F40_41xxx -DUSE_HAL_DRIVER -DSTM32F405xx -DARM_MATH_CM4 -D__TARGET_FPU_VFP -D__CC_ARM-o infantry_momentum\gim_minipc_ctrl.o --omf_browse infantry_momentum\gim_minipc_ctrl.crf --depend infantry_momentum\gim_minipc_ctrl.d)
+I (..\Core\Inc\Gimbal_Control\gim_miniPC_ctrl.h)(0x60A11104)
+I (../Core/Inc/configure.h)(0x60A2CEC7)
 I (../Core/Inc/Code_specification.h)(0x609A99C8)
+I (..\Core\Inc\Peripheral\minipc_periph.h)(0x609A99C8)
+I (..\Core\Inc\Utility\uart_util.h)(0x609A99C8)
+I (../Core/Inc/usart.h)(0x60A12588)
+I (../Core/Inc/main.h)(0x60A1258A)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x600A9025)
+I (../Core/Inc/stm32f4xx_hal_conf.h)(0x60A12589)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h)(0x600A9025)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h)(0x600A9025)
+I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h)(0x600A8FC6)
+I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f405xx.h)(0x600A8FC6)
+I (../Drivers/CMSIS/Include/core_cm4.h)(0x600A8FCF)
+I (G:\Keil_5\ARM\ARMCC\include\stdint.h)(0x5475F300)
+I (../Drivers/CMSIS/Include/cmsis_version.h)(0x600A8FCF)
+I (../Drivers/CMSIS/Include/cmsis_compiler.h)(0x600A8FCF)
+I (../Drivers/CMSIS/Include/cmsis_armcc.h)(0x600A8FCF)
+I (../Drivers/CMSIS/Include/mpu_armv7.h)(0x600A8FCF)
+I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h)(0x600A8FC6)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h)(0x600A9025)
+I (G:\Keil_5\ARM\ARMCC\include\stddef.h)(0x5475F300)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h)(0x600A9025)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio.h)(0x600A9025)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio_ex.h)(0x600A9025)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_exti.h)(0x600A9025)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h)(0x600A9025)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma_ex.h)(0x600A9025)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_cortex.h)(0x600A9025)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc.h)(0x600A9025)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc_ex.h)(0x600A9025)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_can.h)(0x600A9025)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dac.h)(0x600A9025)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dac_ex.h)(0x600A9025)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash.h)(0x600A9025)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h)(0x600A9025)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h)(0x600A9025)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h)(0x600A9025)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h)(0x600A9025)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h)(0x600A9025)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x600A9025)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x600A9025)
+I (..\Core\Inc\Library\buff_lib.h)(0x609A99C8)
+I (G:\Keil_5\ARM\ARMCC\include\string.h)(0x5475F300)
+I (..\Core\Inc\Algorithm\math_alg.h)(0x609F9C58)
+I (..\Drivers\CMSIS\DSP\Include\arm_math.h)(0x600A8FCE)
+I (G:\Keil_5\ARM\ARMCC\include\math.h)(0x5475F2FE)
+I (..\Core\Inc\Algorithm\filter_alg.h)(0x609A99C8)
+I (..\Core\Inc\Algorithm\kalman_alg.h)(0x60A2B6D8)
+I (..\Core\Inc\Common_Contrrol\buscomm_ctrl.h)(0x60A02E46)
+I (../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h)(0x600A8FD4)
+I (../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h)(0x600A8FD4)
+I (../Core/Inc/FreeRTOSConfig.h)(0x60A12584)
+I (../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h)(0x600A8FD4)
+I (../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h)(0x600A8FD4)
+I (../Middlewares/Third_Party/FreeRTOS/Source/include/deprecated_definitions.h)(0x600A8FD4)
+I (../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F/portmacro.h)(0x600A8FD4)
+I (../Middlewares/Third_Party/FreeRTOS/Source/include/mpu_wrappers.h)(0x600A8FD4)
+I (../Middlewares/Third_Party/FreeRTOS/Source/include/task.h)(0x600A8FD4)
+I (../Middlewares/Third_Party/FreeRTOS/Source/include/list.h)(0x600A8FD4)
+I (../Middlewares/Third_Party/FreeRTOS/Source/include/timers.h)(0x600A8FD4)
+I (../Middlewares/Third_Party/FreeRTOS/Source/include/queue.h)(0x600A8FD4)
+I (../Middlewares/Third_Party/FreeRTOS/Source/include/semphr.h)(0x600A8FD4)
+I (../Middlewares/Third_Party/FreeRTOS/Source/include/event_groups.h)(0x600A8FD4)
+I (..\Core\Inc\Utility\can_util.h)(0x60A02E49)
+I (../Core/Inc/can.h)(0x60A12586)
+I (..\Core\Inc\Library\const_lib.h)(0x609DFD95)
+I (..\Core\Inc\Gimbal_Control\gim_gimbal_ctrl.h)(0x609A99C8)
+I (..\Core\Inc\Algorithm\pid_alg.h)(0x609A99C8)
+I (..\Core\Inc\Peripheral\motor_periph.h)(0x609DF4FA)
+I (..\Core\Inc\Utility\pwm_util.h)(0x609A99C8)
+I (../Core/Inc/tim.h)(0x60A12587)
+I (..\Core\Inc\Peripheral\imu_periph.h)(0x609A99C8)
+I (..\Core\Inc\Peripheral\remote_periph.h)(0x609A99C8)
+I (G:\Keil_5\ARM\ARMCC\include\stdlib.h)(0x5475F300)
 F (..\Core\Src\Gimbal_Control\gim_remote_ctrl.c)(0x60A23743)(--c99 -c --cpu Cortex-M4.fp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I..\Drivers\CMSIS\DSP\Include -I..\Core\Inc -I..\Core\Inc\Algorithm -I..\Core\Inc\Library -I..\Core\Inc\Peripheral -I..\Core\Inc\Utility -I..\Core\Inc\Chassis_Control -I..\Core\Inc\Gimbal_Control -I..\Core\Inc\SuperCap_Control -I..\Core\Inc\Common_Contrrol-I D:\LEEKA\RM2020\[2021]CODE\Infantry_Momentum5_17\Infantry_Momentum\MDK-ARM\RTE-I G:\Keil_5\ARM\PACK\ARM\CMSIS\4.2.0\CMSIS\Include-I G:\Keil_5\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Device\Include-D__UVISION_VERSION="514" -D_RTE_ -DSTM32F40_41xxx -DUSE_HAL_DRIVER -DSTM32F405xx -DARM_MATH_CM4 -D__TARGET_FPU_VFP -D__CC_ARM-o infantry_momentum\gim_remote_ctrl.o --omf_browse infantry_momentum\gim_remote_ctrl.crf --depend infantry_momentum\gim_remote_ctrl.d)
 I (..\Core\Inc\Gimbal_Control\gim_remote_ctrl.h)(0x609A99C8)
-I (../Core/Inc/configure.h)(0x60A2395E)
+I (../Core/Inc/configure.h)(0x60A2CEC7)
 I (../Core/Inc/Code_specification.h)(0x609A99C8)
-F (..\Core\Src\Gimbal_Control\gim_shoot_ctrl.c)(0x609DE012)(--c99 -c --cpu Cortex-M4.fp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I..\Drivers\CMSIS\DSP\Include -I..\Core\Inc -I..\Core\Inc\Algorithm -I..\Core\Inc\Library -I..\Core\Inc\Peripheral -I..\Core\Inc\Utility -I..\Core\Inc\Chassis_Control -I..\Core\Inc\Gimbal_Control -I..\Core\Inc\SuperCap_Control -I..\Core\Inc\Common_Contrrol-I D:\LEEKA\RM2020\[2021]CODE\Infantry_Momentum5_17\Infantry_Momentum\MDK-ARM\RTE-I G:\Keil_5\ARM\PACK\ARM\CMSIS\4.2.0\CMSIS\Include-I G:\Keil_5\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Device\Include-D__UVISION_VERSION="514" -D_RTE_ -DSTM32F40_41xxx -DUSE_HAL_DRIVER -DSTM32F405xx -DARM_MATH_CM4 -D__TARGET_FPU_VFP -D__CC_ARM-o infantry_momentum\gim_shoot_ctrl.o --omf_browse infantry_momentum\gim_shoot_ctrl.crf --depend infantry_momentum\gim_shoot_ctrl.d)
+I (..\Core\Inc\Peripheral\remote_periph.h)(0x609A99C8)
+I (..\Core\Inc\Utility\uart_util.h)(0x609A99C8)
+I (../Core/Inc/usart.h)(0x60A12588)
+I (../Core/Inc/main.h)(0x60A1258A)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x600A9025)
+I (../Core/Inc/stm32f4xx_hal_conf.h)(0x60A12589)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h)(0x600A9025)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h)(0x600A9025)
+I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h)(0x600A8FC6)
+I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f405xx.h)(0x600A8FC6)
+I (../Drivers/CMSIS/Include/core_cm4.h)(0x600A8FCF)
+I (G:\Keil_5\ARM\ARMCC\include\stdint.h)(0x5475F300)
+I (../Drivers/CMSIS/Include/cmsis_version.h)(0x600A8FCF)
+I (../Drivers/CMSIS/Include/cmsis_compiler.h)(0x600A8FCF)
+I (../Drivers/CMSIS/Include/cmsis_armcc.h)(0x600A8FCF)
+I (../Drivers/CMSIS/Include/mpu_armv7.h)(0x600A8FCF)
+I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h)(0x600A8FC6)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h)(0x600A9025)
+I (G:\Keil_5\ARM\ARMCC\include\stddef.h)(0x5475F300)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h)(0x600A9025)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio.h)(0x600A9025)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio_ex.h)(0x600A9025)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_exti.h)(0x600A9025)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h)(0x600A9025)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma_ex.h)(0x600A9025)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_cortex.h)(0x600A9025)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc.h)(0x600A9025)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc_ex.h)(0x600A9025)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_can.h)(0x600A9025)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dac.h)(0x600A9025)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dac_ex.h)(0x600A9025)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash.h)(0x600A9025)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h)(0x600A9025)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h)(0x600A9025)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h)(0x600A9025)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h)(0x600A9025)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h)(0x600A9025)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x600A9025)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x600A9025)
+I (G:\Keil_5\ARM\ARMCC\include\stdlib.h)(0x5475F300)
+I (..\Core\Inc\Peripheral\imu_periph.h)(0x609A99C8)
+I (..\Core\Inc\Peripheral\servo_periph.h)(0x609A99C8)
+I (..\Core\Inc\Utility\pwm_util.h)(0x609A99C8)
+I (../Core/Inc/tim.h)(0x60A12587)
+I (..\Core\Inc\Algorithm\math_alg.h)(0x609F9C58)
+I (..\Drivers\CMSIS\DSP\Include\arm_math.h)(0x600A8FCE)
+I (G:\Keil_5\ARM\ARMCC\include\string.h)(0x5475F300)
+I (G:\Keil_5\ARM\ARMCC\include\math.h)(0x5475F2FE)
+I (..\Core\Inc\Common_Contrrol\buscomm_ctrl.h)(0x60A02E46)
+I (../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h)(0x600A8FD4)
+I (../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h)(0x600A8FD4)
+I (../Core/Inc/FreeRTOSConfig.h)(0x60A12584)
+I (../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h)(0x600A8FD4)
+I (../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h)(0x600A8FD4)
+I (../Middlewares/Third_Party/FreeRTOS/Source/include/deprecated_definitions.h)(0x600A8FD4)
+I (../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F/portmacro.h)(0x600A8FD4)
+I (../Middlewares/Third_Party/FreeRTOS/Source/include/mpu_wrappers.h)(0x600A8FD4)
+I (../Middlewares/Third_Party/FreeRTOS/Source/include/task.h)(0x600A8FD4)
+I (../Middlewares/Third_Party/FreeRTOS/Source/include/list.h)(0x600A8FD4)
+I (../Middlewares/Third_Party/FreeRTOS/Source/include/timers.h)(0x600A8FD4)
+I (../Middlewares/Third_Party/FreeRTOS/Source/include/queue.h)(0x600A8FD4)
+I (../Middlewares/Third_Party/FreeRTOS/Source/include/semphr.h)(0x600A8FD4)
+I (../Middlewares/Third_Party/FreeRTOS/Source/include/event_groups.h)(0x600A8FD4)
+I (..\Core\Inc\Utility\can_util.h)(0x60A02E49)
+I (../Core/Inc/can.h)(0x60A12586)
+I (..\Core\Inc\Library\buff_lib.h)(0x609A99C8)
+I (..\Core\Inc\Algorithm\filter_alg.h)(0x609A99C8)
+I (..\Core\Inc\Gimbal_Control\gim_gimbal_ctrl.h)(0x609A99C8)
+I (..\Core\Inc\Algorithm\pid_alg.h)(0x609A99C8)
+I (..\Core\Inc\Peripheral\motor_periph.h)(0x609DF4FA)
+I (..\Core\Inc\Library\const_lib.h)(0x609DFD95)
+I (..\Core\Inc\Gimbal_Control\gim_miniPC_ctrl.h)(0x60A11104)
+I (..\Core\Inc\Peripheral\minipc_periph.h)(0x609A99C8)
+I (..\Core\Inc\Algorithm\kalman_alg.h)(0x60A2B6D8)
 I (..\Core\Inc\Gimbal_Control\gim_shoot_ctrl.h)(0x609CB2E4)
-I (../Core/Inc/configure.h)(0x60A2395E)
+I (..\Core\Inc\Utility\gpio_util.h)(0x609A99C8)
+F (..\Core\Src\Gimbal_Control\gim_shoot_ctrl.c)(0x60A2DC05)(--c99 -c --cpu Cortex-M4.fp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I..\Drivers\CMSIS\DSP\Include -I..\Core\Inc -I..\Core\Inc\Algorithm -I..\Core\Inc\Library -I..\Core\Inc\Peripheral -I..\Core\Inc\Utility -I..\Core\Inc\Chassis_Control -I..\Core\Inc\Gimbal_Control -I..\Core\Inc\SuperCap_Control -I..\Core\Inc\Common_Contrrol-I D:\LEEKA\RM2020\[2021]CODE\Infantry_Momentum5_17\Infantry_Momentum\MDK-ARM\RTE-I G:\Keil_5\ARM\PACK\ARM\CMSIS\4.2.0\CMSIS\Include-I G:\Keil_5\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Device\Include-D__UVISION_VERSION="514" -D_RTE_ -DSTM32F40_41xxx -DUSE_HAL_DRIVER -DSTM32F405xx -DARM_MATH_CM4 -D__TARGET_FPU_VFP -D__CC_ARM-o infantry_momentum\gim_shoot_ctrl.o --omf_browse infantry_momentum\gim_shoot_ctrl.crf --depend infantry_momentum\gim_shoot_ctrl.d)
+I (..\Core\Inc\Gimbal_Control\gim_shoot_ctrl.h)(0x609CB2E4)
+I (../Core/Inc/configure.h)(0x60A2CEC7)
 I (../Core/Inc/Code_specification.h)(0x609A99C8)
+I (..\Core\Inc\Algorithm\pid_alg.h)(0x609A99C8)
+I (..\Core\Inc\Algorithm\math_alg.h)(0x609F9C58)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x600A9025)
+I (../Core/Inc/stm32f4xx_hal_conf.h)(0x60A12589)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h)(0x600A9025)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h)(0x600A9025)
+I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h)(0x600A8FC6)
+I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f405xx.h)(0x600A8FC6)
+I (../Drivers/CMSIS/Include/core_cm4.h)(0x600A8FCF)
+I (G:\Keil_5\ARM\ARMCC\include\stdint.h)(0x5475F300)
+I (../Drivers/CMSIS/Include/cmsis_version.h)(0x600A8FCF)
+I (../Drivers/CMSIS/Include/cmsis_compiler.h)(0x600A8FCF)
+I (../Drivers/CMSIS/Include/cmsis_armcc.h)(0x600A8FCF)
+I (../Drivers/CMSIS/Include/mpu_armv7.h)(0x600A8FCF)
+I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h)(0x600A8FC6)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h)(0x600A9025)
+I (G:\Keil_5\ARM\ARMCC\include\stddef.h)(0x5475F300)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h)(0x600A9025)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio.h)(0x600A9025)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio_ex.h)(0x600A9025)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_exti.h)(0x600A9025)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h)(0x600A9025)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma_ex.h)(0x600A9025)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_cortex.h)(0x600A9025)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc.h)(0x600A9025)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc_ex.h)(0x600A9025)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_can.h)(0x600A9025)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dac.h)(0x600A9025)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dac_ex.h)(0x600A9025)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash.h)(0x600A9025)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h)(0x600A9025)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h)(0x600A9025)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h)(0x600A9025)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h)(0x600A9025)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h)(0x600A9025)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x600A9025)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x600A9025)
+I (..\Drivers\CMSIS\DSP\Include\arm_math.h)(0x600A8FCE)
+I (G:\Keil_5\ARM\ARMCC\include\string.h)(0x5475F300)
+I (G:\Keil_5\ARM\ARMCC\include\math.h)(0x5475F2FE)
+I (..\Core\Inc\Algorithm\filter_alg.h)(0x609A99C8)
+I (..\Core\Inc\Peripheral\motor_periph.h)(0x609DF4FA)
+I (..\Core\Inc\Utility\can_util.h)(0x60A02E49)
+I (../Core/Inc/can.h)(0x60A12586)
+I (../Core/Inc/main.h)(0x60A1258A)
+I (..\Core\Inc\Utility\pwm_util.h)(0x609A99C8)
+I (../Core/Inc/tim.h)(0x60A12587)
+I (..\Core\Inc\Utility\gpio_util.h)(0x609A99C8)
+I (..\Core\Inc\Gimbal_Control\gim_remote_ctrl.h)(0x609A99C8)
+I (..\Core\Inc\Peripheral\remote_periph.h)(0x609A99C8)
+I (..\Core\Inc\Utility\uart_util.h)(0x609A99C8)
+I (../Core/Inc/usart.h)(0x60A12588)
+I (G:\Keil_5\ARM\ARMCC\include\stdlib.h)(0x5475F300)
+I (..\Core\Inc\Peripheral\imu_periph.h)(0x609A99C8)
+I (..\Core\Inc\Peripheral\servo_periph.h)(0x609A99C8)
+I (..\Core\Inc\Common_Contrrol\buscomm_ctrl.h)(0x60A02E46)
+I (../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h)(0x600A8FD4)
+I (../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h)(0x600A8FD4)
+I (../Core/Inc/FreeRTOSConfig.h)(0x60A12584)
+I (../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h)(0x600A8FD4)
+I (../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h)(0x600A8FD4)
+I (../Middlewares/Third_Party/FreeRTOS/Source/include/deprecated_definitions.h)(0x600A8FD4)
+I (../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F/portmacro.h)(0x600A8FD4)
+I (../Middlewares/Third_Party/FreeRTOS/Source/include/mpu_wrappers.h)(0x600A8FD4)
+I (../Middlewares/Third_Party/FreeRTOS/Source/include/task.h)(0x600A8FD4)
+I (../Middlewares/Third_Party/FreeRTOS/Source/include/list.h)(0x600A8FD4)
+I (../Middlewares/Third_Party/FreeRTOS/Source/include/timers.h)(0x600A8FD4)
+I (../Middlewares/Third_Party/FreeRTOS/Source/include/queue.h)(0x600A8FD4)
+I (../Middlewares/Third_Party/FreeRTOS/Source/include/semphr.h)(0x600A8FD4)
+I (../Middlewares/Third_Party/FreeRTOS/Source/include/event_groups.h)(0x600A8FD4)
+I (..\Core\Inc\Library\buff_lib.h)(0x609A99C8)
+I (..\Core\Inc\Gimbal_Control\gim_gimbal_ctrl.h)(0x609A99C8)
+I (..\Core\Inc\Library\const_lib.h)(0x609DFD95)
 F (..\Core\Src\Chassis_Control\cha_gimbal_ctrl.c)(0x609A99CA)(--c99 -c --cpu Cortex-M4.fp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I..\Drivers\CMSIS\DSP\Include -I..\Core\Inc -I..\Core\Inc\Algorithm -I..\Core\Inc\Library -I..\Core\Inc\Peripheral -I..\Core\Inc\Utility -I..\Core\Inc\Chassis_Control -I..\Core\Inc\Gimbal_Control -I..\Core\Inc\SuperCap_Control -I..\Core\Inc\Common_Contrrol-I D:\LEEKA\RM2020\[2021]CODE\Infantry_Momentum5_17\Infantry_Momentum\MDK-ARM\RTE-I G:\Keil_5\ARM\PACK\ARM\CMSIS\4.2.0\CMSIS\Include-I G:\Keil_5\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Device\Include-D__UVISION_VERSION="514" -D_RTE_ -DSTM32F40_41xxx -DUSE_HAL_DRIVER -DSTM32F405xx -DARM_MATH_CM4 -D__TARGET_FPU_VFP -D__CC_ARM-o infantry_momentum\cha_gimbal_ctrl.o --omf_browse infantry_momentum\cha_gimbal_ctrl.crf --depend infantry_momentum\cha_gimbal_ctrl.d)
 I (..\Core\Inc\Chassis_Control\cha_gimbal_ctrl.h)(0x609A99C8)
-I (../Core/Inc/configure.h)(0x60A2395E)
+I (../Core/Inc/configure.h)(0x60A2CEC7)
 I (../Core/Inc/Code_specification.h)(0x609A99C8)
 F (..\Core\Src\Chassis_Control\cha_chassis_ctrl.c)(0x609F6A13)(--c99 -c --cpu Cortex-M4.fp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I..\Drivers\CMSIS\DSP\Include -I..\Core\Inc -I..\Core\Inc\Algorithm -I..\Core\Inc\Library -I..\Core\Inc\Peripheral -I..\Core\Inc\Utility -I..\Core\Inc\Chassis_Control -I..\Core\Inc\Gimbal_Control -I..\Core\Inc\SuperCap_Control -I..\Core\Inc\Common_Contrrol-I D:\LEEKA\RM2020\[2021]CODE\Infantry_Momentum5_17\Infantry_Momentum\MDK-ARM\RTE-I G:\Keil_5\ARM\PACK\ARM\CMSIS\4.2.0\CMSIS\Include-I G:\Keil_5\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Device\Include-D__UVISION_VERSION="514" -D_RTE_ -DSTM32F40_41xxx -DUSE_HAL_DRIVER -DSTM32F405xx -DARM_MATH_CM4 -D__TARGET_FPU_VFP -D__CC_ARM-o infantry_momentum\cha_chassis_ctrl.o --omf_browse infantry_momentum\cha_chassis_ctrl.crf --depend infantry_momentum\cha_chassis_ctrl.d)
 I (..\Core\Inc\Chassis_Control\cha_chassis_ctrl.h)(0x609A99C8)
-I (../Core/Inc/configure.h)(0x60A2395E)
+I (../Core/Inc/configure.h)(0x60A2CEC7)
 I (../Core/Inc/Code_specification.h)(0x609A99C8)
 F (..\Core\Src\Chassis_Control\cha_power_ctrl.c)(0x609A99CA)(--c99 -c --cpu Cortex-M4.fp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I..\Drivers\CMSIS\DSP\Include -I..\Core\Inc -I..\Core\Inc\Algorithm -I..\Core\Inc\Library -I..\Core\Inc\Peripheral -I..\Core\Inc\Utility -I..\Core\Inc\Chassis_Control -I..\Core\Inc\Gimbal_Control -I..\Core\Inc\SuperCap_Control -I..\Core\Inc\Common_Contrrol-I D:\LEEKA\RM2020\[2021]CODE\Infantry_Momentum5_17\Infantry_Momentum\MDK-ARM\RTE-I G:\Keil_5\ARM\PACK\ARM\CMSIS\4.2.0\CMSIS\Include-I G:\Keil_5\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Device\Include-D__UVISION_VERSION="514" -D_RTE_ -DSTM32F40_41xxx -DUSE_HAL_DRIVER -DSTM32F405xx -DARM_MATH_CM4 -D__TARGET_FPU_VFP -D__CC_ARM-o infantry_momentum\cha_power_ctrl.o --omf_browse infantry_momentum\cha_power_ctrl.crf --depend infantry_momentum\cha_power_ctrl.d)
 I (..\Core\Inc\Chassis_Control\cha_power_ctrl.h)(0x609A99C8)
-I (../Core/Inc/configure.h)(0x60A2395E)
+I (../Core/Inc/configure.h)(0x60A2CEC7)
 I (../Core/Inc/Code_specification.h)(0x609A99C8)
 F (..\Core\Src\Chassis_Control\cha_referee_ctrl.c)(0x60A00C12)(--c99 -c --cpu Cortex-M4.fp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I..\Drivers\CMSIS\DSP\Include -I..\Core\Inc -I..\Core\Inc\Algorithm -I..\Core\Inc\Library -I..\Core\Inc\Peripheral -I..\Core\Inc\Utility -I..\Core\Inc\Chassis_Control -I..\Core\Inc\Gimbal_Control -I..\Core\Inc\SuperCap_Control -I..\Core\Inc\Common_Contrrol-I D:\LEEKA\RM2020\[2021]CODE\Infantry_Momentum5_17\Infantry_Momentum\MDK-ARM\RTE-I G:\Keil_5\ARM\PACK\ARM\CMSIS\4.2.0\CMSIS\Include-I G:\Keil_5\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Device\Include-D__UVISION_VERSION="514" -D_RTE_ -DSTM32F40_41xxx -DUSE_HAL_DRIVER -DSTM32F405xx -DARM_MATH_CM4 -D__TARGET_FPU_VFP -D__CC_ARM-o infantry_momentum\cha_referee_ctrl.o --omf_browse infantry_momentum\cha_referee_ctrl.crf --depend infantry_momentum\cha_referee_ctrl.d)
 I (..\Core\Inc\Chassis_Control\cha_referee_ctrl.h)(0x60A00C12)
-I (../Core/Inc/configure.h)(0x60A2395E)
+I (../Core/Inc/configure.h)(0x60A2CEC7)
 I (../Core/Inc/Code_specification.h)(0x609A99C8)
 F (..\Core\Src\SuperCap_Control\supercap_ctrl.c)(0x60A24B1C)(--c99 -c --cpu Cortex-M4.fp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I..\Drivers\CMSIS\DSP\Include -I..\Core\Inc -I..\Core\Inc\Algorithm -I..\Core\Inc\Library -I..\Core\Inc\Peripheral -I..\Core\Inc\Utility -I..\Core\Inc\Chassis_Control -I..\Core\Inc\Gimbal_Control -I..\Core\Inc\SuperCap_Control -I..\Core\Inc\Common_Contrrol-I D:\LEEKA\RM2020\[2021]CODE\Infantry_Momentum5_17\Infantry_Momentum\MDK-ARM\RTE-I G:\Keil_5\ARM\PACK\ARM\CMSIS\4.2.0\CMSIS\Include-I G:\Keil_5\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Device\Include-D__UVISION_VERSION="514" -D_RTE_ -DSTM32F40_41xxx -DUSE_HAL_DRIVER -DSTM32F405xx -DARM_MATH_CM4 -D__TARGET_FPU_VFP -D__CC_ARM-o infantry_momentum\supercap_ctrl.o --omf_browse infantry_momentum\supercap_ctrl.crf --depend infantry_momentum\supercap_ctrl.d)
 I (..\Core\Inc\SuperCap_Control\supercap_ctrl.h)(0x609DFCE5)
-I (../Core/Inc/configure.h)(0x60A2395E)
+I (../Core/Inc/configure.h)(0x60A2CEC7)
 I (../Core/Inc/Code_specification.h)(0x609A99C8)
-I (..\Core\Inc\Peripheral\sensor_periph.h)(0x609A99C8)
-I (..\Core\Inc\Utility\adc_util.h)(0x609A99C8)
-I (../Core/Inc/adc.h)(0x60A12585)
-I (../Core/Inc/main.h)(0x60A1258A)
-I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x600A9025)
-I (../Core/Inc/stm32f4xx_hal_conf.h)(0x60A12589)
-I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h)(0x600A9025)
-I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h)(0x600A9025)
-I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h)(0x600A8FC6)
-I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f405xx.h)(0x600A8FC6)
-I (../Drivers/CMSIS/Include/core_cm4.h)(0x600A8FCF)
-I (G:\Keil_5\ARM\ARMCC\include\stdint.h)(0x5475F300)
-I (../Drivers/CMSIS/Include/cmsis_version.h)(0x600A8FCF)
-I (../Drivers/CMSIS/Include/cmsis_compiler.h)(0x600A8FCF)
-I (../Drivers/CMSIS/Include/cmsis_armcc.h)(0x600A8FCF)
-I (../Drivers/CMSIS/Include/mpu_armv7.h)(0x600A8FCF)
-I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h)(0x600A8FC6)
-I (../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h)(0x600A9025)
-I (G:\Keil_5\ARM\ARMCC\include\stddef.h)(0x5475F300)
-I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h)(0x600A9025)
-I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio.h)(0x600A9025)
-I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio_ex.h)(0x600A9025)
-I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_exti.h)(0x600A9025)
-I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h)(0x600A9025)
-I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma_ex.h)(0x600A9025)
-I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_cortex.h)(0x600A9025)
-I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc.h)(0x600A9025)
-I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc_ex.h)(0x600A9025)
-I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_can.h)(0x600A9025)
-I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dac.h)(0x600A9025)
-I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dac_ex.h)(0x600A9025)
-I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash.h)(0x600A9025)
-I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h)(0x600A9025)
-I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h)(0x600A9025)
-I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h)(0x600A9025)
-I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h)(0x600A9025)
-I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h)(0x600A9025)
-I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x600A9025)
-I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x600A9025)
-I (G:\Keil_5\ARM\ARMCC\include\string.h)(0x5475F300)
-I (..\Core\Inc\Algorithm\filter_alg.h)(0x609A99C8)
-I (..\Core\Inc\Algorithm\math_alg.h)(0x609F9C58)
-I (..\Drivers\CMSIS\DSP\Include\arm_math.h)(0x600A8FCE)
-I (G:\Keil_5\ARM\ARMCC\include\math.h)(0x5475F2FE)
-I (..\Core\Inc\Peripheral\led_periph.h)(0x609A99C8)
-I (../Core/Inc/gpio.h)(0x60A12580)
-I (..\Core\Inc\Utility\dac_util.h)(0x609A99C8)
-I (../Core/Inc/dac.h)(0x60A12586)
-I (..\Core\Inc\Utility\gpio_util.h)(0x609A99C8)
-I (..\Core\Inc\SuperCap_Control\supercap_comm.h)(0x609DFEB9)
-I (..\Core\Inc\Utility\uart_util.h)(0x609A99C8)
-I (../Core/Inc/usart.h)(0x60A12588)
-I (..\Core\Inc\Common_Contrrol\buscomm_ctrl.h)(0x60A02E46)
-I (../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h)(0x600A8FD4)
-I (../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h)(0x600A8FD4)
-I (../Core/Inc/FreeRTOSConfig.h)(0x60A12584)
-I (../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h)(0x600A8FD4)
-I (../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h)(0x600A8FD4)
-I (../Middlewares/Third_Party/FreeRTOS/Source/include/deprecated_definitions.h)(0x600A8FD4)
-I (../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F/portmacro.h)(0x600A8FD4)
-I (../Middlewares/Third_Party/FreeRTOS/Source/include/mpu_wrappers.h)(0x600A8FD4)
-I (../Middlewares/Third_Party/FreeRTOS/Source/include/task.h)(0x600A8FD4)
-I (../Middlewares/Third_Party/FreeRTOS/Source/include/list.h)(0x600A8FD4)
-I (../Middlewares/Third_Party/FreeRTOS/Source/include/timers.h)(0x600A8FD4)
-I (../Middlewares/Third_Party/FreeRTOS/Source/include/queue.h)(0x600A8FD4)
-I (../Middlewares/Third_Party/FreeRTOS/Source/include/semphr.h)(0x600A8FD4)
-I (../Middlewares/Third_Party/FreeRTOS/Source/include/event_groups.h)(0x600A8FD4)
-I (..\Core\Inc\Utility\can_util.h)(0x60A02E49)
-I (../Core/Inc/can.h)(0x60A12586)
-I (..\Core\Inc\Library\buff_lib.h)(0x609A99C8)
-I (..\Core\Inc\Library\const_lib.h)(0x609DFD95)
 F (..\Core\Src\SuperCap_Control\supercap_comm.c)(0x60A11133)(--c99 -c --cpu Cortex-M4.fp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I..\Drivers\CMSIS\DSP\Include -I..\Core\Inc -I..\Core\Inc\Algorithm -I..\Core\Inc\Library -I..\Core\Inc\Peripheral -I..\Core\Inc\Utility -I..\Core\Inc\Chassis_Control -I..\Core\Inc\Gimbal_Control -I..\Core\Inc\SuperCap_Control -I..\Core\Inc\Common_Contrrol-I D:\LEEKA\RM2020\[2021]CODE\Infantry_Momentum5_17\Infantry_Momentum\MDK-ARM\RTE-I G:\Keil_5\ARM\PACK\ARM\CMSIS\4.2.0\CMSIS\Include-I G:\Keil_5\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Device\Include-D__UVISION_VERSION="514" -D_RTE_ -DSTM32F40_41xxx -DUSE_HAL_DRIVER -DSTM32F405xx -DARM_MATH_CM4 -D__TARGET_FPU_VFP -D__CC_ARM-o infantry_momentum\supercap_comm.o --omf_browse infantry_momentum\supercap_comm.crf --depend infantry_momentum\supercap_comm.d)
 I (..\Core\Inc\SuperCap_Control\supercap_comm.h)(0x609DFEB9)
-I (../Core/Inc/configure.h)(0x60A2395E)
+I (../Core/Inc/configure.h)(0x60A2CEC7)
 I (../Core/Inc/Code_specification.h)(0x609A99C8)
-I (..\Core\Inc\Utility\uart_util.h)(0x609A99C8)
-I (../Core/Inc/usart.h)(0x60A12588)
-I (../Core/Inc/main.h)(0x60A1258A)
+I (..\Core\Inc\Library\const_lib.h)(0x609DFD95)
+I (..\Core\Inc\Algorithm\filter_alg.h)(0x609A99C8)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x600A9025)
 I (../Core/Inc/stm32f4xx_hal_conf.h)(0x60A12589)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h)(0x600A9025)
@@ -2384,42 +2730,13 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h)(0x600A9025)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h)(0x600A9025)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x600A9025)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x600A9025)
-I (..\Core\Inc\Peripheral\sensor_periph.h)(0x609A99C8)
-I (..\Core\Inc\Utility\adc_util.h)(0x609A99C8)
-I (../Core/Inc/adc.h)(0x60A12585)
-I (G:\Keil_5\ARM\ARMCC\include\string.h)(0x5475F300)
-I (..\Core\Inc\Algorithm\filter_alg.h)(0x609A99C8)
 I (..\Core\Inc\Algorithm\math_alg.h)(0x609F9C58)
 I (..\Drivers\CMSIS\DSP\Include\arm_math.h)(0x600A8FCE)
+I (G:\Keil_5\ARM\ARMCC\include\string.h)(0x5475F300)
 I (G:\Keil_5\ARM\ARMCC\include\math.h)(0x5475F2FE)
-I (..\Core\Inc\Common_Contrrol\buscomm_ctrl.h)(0x60A02E46)
-I (../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h)(0x600A8FD4)
-I (../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h)(0x600A8FD4)
-I (../Core/Inc/FreeRTOSConfig.h)(0x60A12584)
-I (../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h)(0x600A8FD4)
-I (../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h)(0x600A8FD4)
-I (../Middlewares/Third_Party/FreeRTOS/Source/include/deprecated_definitions.h)(0x600A8FD4)
-I (../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F/portmacro.h)(0x600A8FD4)
-I (../Middlewares/Third_Party/FreeRTOS/Source/include/mpu_wrappers.h)(0x600A8FD4)
-I (../Middlewares/Third_Party/FreeRTOS/Source/include/task.h)(0x600A8FD4)
-I (../Middlewares/Third_Party/FreeRTOS/Source/include/list.h)(0x600A8FD4)
-I (../Middlewares/Third_Party/FreeRTOS/Source/include/timers.h)(0x600A8FD4)
-I (../Middlewares/Third_Party/FreeRTOS/Source/include/queue.h)(0x600A8FD4)
-I (../Middlewares/Third_Party/FreeRTOS/Source/include/semphr.h)(0x600A8FD4)
-I (../Middlewares/Third_Party/FreeRTOS/Source/include/event_groups.h)(0x600A8FD4)
-I (..\Core\Inc\Utility\can_util.h)(0x60A02E49)
-I (../Core/Inc/can.h)(0x60A12586)
-I (..\Core\Inc\Library\buff_lib.h)(0x609A99C8)
-I (..\Core\Inc\SuperCap_Control\supercap_ctrl.h)(0x609DFCE5)
-I (..\Core\Inc\Peripheral\led_periph.h)(0x609A99C8)
-I (../Core/Inc/gpio.h)(0x60A12580)
-I (..\Core\Inc\Utility\dac_util.h)(0x609A99C8)
-I (../Core/Inc/dac.h)(0x60A12586)
-I (..\Core\Inc\Utility\gpio_util.h)(0x609A99C8)
-I (..\Core\Inc\Library\const_lib.h)(0x609DFD95)
 F (..\Core\Src\Common_Contrrol\buscomm_ctrl.c)(0x60A05299)(--c99 -c --cpu Cortex-M4.fp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I..\Drivers\CMSIS\DSP\Include -I..\Core\Inc -I..\Core\Inc\Algorithm -I..\Core\Inc\Library -I..\Core\Inc\Peripheral -I..\Core\Inc\Utility -I..\Core\Inc\Chassis_Control -I..\Core\Inc\Gimbal_Control -I..\Core\Inc\SuperCap_Control -I..\Core\Inc\Common_Contrrol-I D:\LEEKA\RM2020\[2021]CODE\Infantry_Momentum5_17\Infantry_Momentum\MDK-ARM\RTE-I G:\Keil_5\ARM\PACK\ARM\CMSIS\4.2.0\CMSIS\Include-I G:\Keil_5\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Device\Include-D__UVISION_VERSION="514" -D_RTE_ -DSTM32F40_41xxx -DUSE_HAL_DRIVER -DSTM32F405xx -DARM_MATH_CM4 -D__TARGET_FPU_VFP -D__CC_ARM-o infantry_momentum\buscomm_ctrl.o --omf_browse infantry_momentum\buscomm_ctrl.crf --depend infantry_momentum\buscomm_ctrl.d)
 I (..\Core\Inc\Common_Contrrol\buscomm_ctrl.h)(0x60A02E46)
-I (../Core/Inc/configure.h)(0x60A2395E)
+I (../Core/Inc/configure.h)(0x60A2CEC7)
 I (../Core/Inc/Code_specification.h)(0x609A99C8)
 I (../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h)(0x600A8FD4)
 I (../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h)(0x600A8FD4)
@@ -2481,21 +2798,24 @@ I (..\Drivers\CMSIS\DSP\Include\arm_math.h)(0x600A8FCE)
 I (G:\Keil_5\ARM\ARMCC\include\math.h)(0x5475F2FE)
 I (..\Core\Inc\Common_Contrrol\buscomm_cmd.h)(0x60A035E9)
 I (..\Core\Inc\Library\const_lib.h)(0x609DFD95)
-I (..\Core\Inc\SuperCap_Control\supercap_ctrl.h)(0x609DFCE5)
-I (..\Core\Inc\Peripheral\sensor_periph.h)(0x609A99C8)
-I (..\Core\Inc\Utility\adc_util.h)(0x609A99C8)
-I (../Core/Inc/adc.h)(0x60A12585)
-I (..\Core\Inc\Peripheral\led_periph.h)(0x609A99C8)
-I (../Core/Inc/gpio.h)(0x60A12580)
-I (..\Core\Inc\Utility\dac_util.h)(0x609A99C8)
-I (../Core/Inc/dac.h)(0x60A12586)
-I (..\Core\Inc\Utility\gpio_util.h)(0x609A99C8)
+I (..\Core\Inc\Gimbal_Control\gim_gimbal_ctrl.h)(0x609A99C8)
+I (..\Core\Inc\Algorithm\pid_alg.h)(0x609A99C8)
+I (..\Core\Inc\Peripheral\motor_periph.h)(0x609DF4FA)
+I (..\Core\Inc\Utility\pwm_util.h)(0x609A99C8)
+I (../Core/Inc/tim.h)(0x60A12587)
+I (..\Core\Inc\Peripheral\imu_periph.h)(0x609A99C8)
+I (..\Core\Inc\Utility\uart_util.h)(0x609A99C8)
+I (../Core/Inc/usart.h)(0x60A12588)
+I (..\Core\Inc\Peripheral\remote_periph.h)(0x609A99C8)
+I (G:\Keil_5\ARM\ARMCC\include\stdlib.h)(0x5475F300)
 F (..\Core\Src\Common_Contrrol\init_ctrl.c)(0x60A148E7)(--c99 -c --cpu Cortex-M4.fp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I..\Drivers\CMSIS\DSP\Include -I..\Core\Inc -I..\Core\Inc\Algorithm -I..\Core\Inc\Library -I..\Core\Inc\Peripheral -I..\Core\Inc\Utility -I..\Core\Inc\Chassis_Control -I..\Core\Inc\Gimbal_Control -I..\Core\Inc\SuperCap_Control -I..\Core\Inc\Common_Contrrol-I D:\LEEKA\RM2020\[2021]CODE\Infantry_Momentum5_17\Infantry_Momentum\MDK-ARM\RTE-I G:\Keil_5\ARM\PACK\ARM\CMSIS\4.2.0\CMSIS\Include-I G:\Keil_5\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Device\Include-D__UVISION_VERSION="514" -D_RTE_ -DSTM32F40_41xxx -DUSE_HAL_DRIVER -DSTM32F405xx -DARM_MATH_CM4 -D__TARGET_FPU_VFP -D__CC_ARM-o infantry_momentum\init_ctrl.o --omf_browse infantry_momentum\init_ctrl.crf --depend infantry_momentum\init_ctrl.d)
 I (..\Core\Inc\Common_Contrrol\init_ctrl.h)(0x609A99C8)
-I (../Core/Inc/configure.h)(0x60A2395E)
+I (../Core/Inc/configure.h)(0x60A2CEC7)
 I (../Core/Inc/Code_specification.h)(0x609A99C8)
 I (..\Core\Inc\Peripheral\imu_periph.h)(0x609A99C8)
-I (..\Core\Inc\Peripheral\led_periph.h)(0x609A99C8)
+I (..\Core\Inc\Utility\uart_util.h)(0x609A99C8)
+I (../Core/Inc/usart.h)(0x60A12588)
+I (../Core/Inc/main.h)(0x60A1258A)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x600A9025)
 I (../Core/Inc/stm32f4xx_hal_conf.h)(0x60A12589)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h)(0x600A9025)
@@ -2531,20 +2851,25 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h)(0x600A9025)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h)(0x600A9025)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x600A9025)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x600A9025)
+I (..\Core\Inc\Peripheral\led_periph.h)(0x609A99C8)
 I (../Core/Inc/gpio.h)(0x60A12580)
-I (../Core/Inc/main.h)(0x60A1258A)
 I (..\Core\Inc\Peripheral\minipc_periph.h)(0x609A99C8)
-I (..\Core\Inc\Peripheral\motor_periph.h)(0x609DF4FA)
-I (..\Core\Inc\Peripheral\referee_periph.h)(0x60A00AC2)
-I (..\Core\Inc\Peripheral\remote_periph.h)(0x609A99C8)
-I (..\Core\Inc\Peripheral\sensor_periph.h)(0x609A99C8)
-I (..\Core\Inc\Utility\adc_util.h)(0x609A99C8)
-I (../Core/Inc/adc.h)(0x60A12585)
+I (..\Core\Inc\Library\buff_lib.h)(0x609A99C8)
 I (G:\Keil_5\ARM\ARMCC\include\string.h)(0x5475F300)
-I (..\Core\Inc\Algorithm\filter_alg.h)(0x609A99C8)
+I (..\Core\Inc\Peripheral\motor_periph.h)(0x609DF4FA)
+I (..\Core\Inc\Utility\can_util.h)(0x60A02E49)
+I (../Core/Inc/can.h)(0x60A12586)
+I (..\Core\Inc\Utility\pwm_util.h)(0x609A99C8)
+I (../Core/Inc/tim.h)(0x60A12587)
+I (..\Core\Inc\Algorithm\pid_alg.h)(0x609A99C8)
 I (..\Core\Inc\Algorithm\math_alg.h)(0x609F9C58)
 I (..\Drivers\CMSIS\DSP\Include\arm_math.h)(0x600A8FCE)
 I (G:\Keil_5\ARM\ARMCC\include\math.h)(0x5475F2FE)
+I (..\Core\Inc\Algorithm\filter_alg.h)(0x609A99C8)
+I (..\Core\Inc\Peripheral\referee_periph.h)(0x60A00AC2)
+I (..\Core\Inc\Peripheral\remote_periph.h)(0x609A99C8)
+I (G:\Keil_5\ARM\ARMCC\include\stdlib.h)(0x5475F300)
+I (..\Core\Inc\Peripheral\sensor_periph.h)(0x609A99C8)
 I (..\Core\Inc\Peripheral\servo_periph.h)(0x609A99C8)
 I (..\Core\Inc\Chassis_Control\cha_chassis_ctrl.h)(0x609A99C8)
 I (..\Core\Inc\Chassis_Control\cha_power_ctrl.h)(0x609A99C8)
@@ -2553,11 +2878,10 @@ I (..\Core\Inc\Chassis_Control\cha_referee_ctrl.h)(0x60A00C12)
 I (..\Core\Inc\Gimbal_Control\gim_gimbal_ctrl.h)(0x609A99C8)
 I (..\Core\Inc\Gimbal_Control\gim_remote_ctrl.h)(0x609A99C8)
 I (..\Core\Inc\Gimbal_Control\gim_miniPC_ctrl.h)(0x60A11104)
+I (..\Core\Inc\Algorithm\kalman_alg.h)(0x60A2B6D8)
 I (..\Core\Inc\Gimbal_Control\gim_shoot_ctrl.h)(0x609CB2E4)
-I (..\Core\Inc\SuperCap_Control\supercap_ctrl.h)(0x609DFCE5)
-I (..\Core\Inc\Utility\dac_util.h)(0x609A99C8)
-I (../Core/Inc/dac.h)(0x60A12586)
 I (..\Core\Inc\Utility\gpio_util.h)(0x609A99C8)
+I (..\Core\Inc\SuperCap_Control\supercap_ctrl.h)(0x609DFCE5)
 I (..\Core\Inc\Common_Contrrol\buscomm_ctrl.h)(0x60A02E46)
 I (../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h)(0x600A8FD4)
 I (../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h)(0x600A8FD4)
@@ -2573,17 +2897,12 @@ I (../Middlewares/Third_Party/FreeRTOS/Source/include/timers.h)(0x600A8FD4)
 I (../Middlewares/Third_Party/FreeRTOS/Source/include/queue.h)(0x600A8FD4)
 I (../Middlewares/Third_Party/FreeRTOS/Source/include/semphr.h)(0x600A8FD4)
 I (../Middlewares/Third_Party/FreeRTOS/Source/include/event_groups.h)(0x600A8FD4)
-I (..\Core\Inc\Utility\can_util.h)(0x60A02E49)
-I (../Core/Inc/can.h)(0x60A12586)
-I (..\Core\Inc\Library\buff_lib.h)(0x609A99C8)
 I (..\Core\Inc\Common_Contrrol\watchdog_ctrl.h)(0x609A99C8)
 I (..\Core\Inc\Library\const_lib.h)(0x609DFD95)
 I (..\Core\Inc\SuperCap_Control\supercap_comm.h)(0x609DFEB9)
-I (..\Core\Inc\Utility\uart_util.h)(0x609A99C8)
-I (../Core/Inc/usart.h)(0x60A12588)
 F (..\Core\Src\Common_Contrrol\watchdog_ctrl.c)(0x609A99CA)(--c99 -c --cpu Cortex-M4.fp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I..\Drivers\CMSIS\DSP\Include -I..\Core\Inc -I..\Core\Inc\Algorithm -I..\Core\Inc\Library -I..\Core\Inc\Peripheral -I..\Core\Inc\Utility -I..\Core\Inc\Chassis_Control -I..\Core\Inc\Gimbal_Control -I..\Core\Inc\SuperCap_Control -I..\Core\Inc\Common_Contrrol-I D:\LEEKA\RM2020\[2021]CODE\Infantry_Momentum5_17\Infantry_Momentum\MDK-ARM\RTE-I G:\Keil_5\ARM\PACK\ARM\CMSIS\4.2.0\CMSIS\Include-I G:\Keil_5\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Device\Include-D__UVISION_VERSION="514" -D_RTE_ -DSTM32F40_41xxx -DUSE_HAL_DRIVER -DSTM32F405xx -DARM_MATH_CM4 -D__TARGET_FPU_VFP -D__CC_ARM-o infantry_momentum\watchdog_ctrl.o --omf_browse infantry_momentum\watchdog_ctrl.crf --depend infantry_momentum\watchdog_ctrl.d)
 I (..\Core\Inc\Common_Contrrol\watchdog_ctrl.h)(0x609A99C8)
-I (../Core/Inc/configure.h)(0x60A2395E)
+I (../Core/Inc/configure.h)(0x60A2CEC7)
 I (../Core/Inc/Code_specification.h)(0x609A99C8)
 I (..\Core\Inc\Common_Contrrol\buscomm_ctrl.h)(0x60A02E46)
 I (../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h)(0x600A8FD4)
@@ -2645,24 +2964,22 @@ I (..\Core\Inc\Algorithm\math_alg.h)(0x609F9C58)
 I (..\Drivers\CMSIS\DSP\Include\arm_math.h)(0x600A8FCE)
 I (G:\Keil_5\ARM\ARMCC\include\math.h)(0x5475F2FE)
 I (..\Core\Inc\SuperCap_Control\supercap_ctrl.h)(0x609DFCE5)
-I (..\Core\Inc\Peripheral\sensor_periph.h)(0x609A99C8)
-I (..\Core\Inc\Utility\adc_util.h)(0x609A99C8)
-I (../Core/Inc/adc.h)(0x60A12585)
-I (..\Core\Inc\Peripheral\led_periph.h)(0x609A99C8)
-I (../Core/Inc/gpio.h)(0x60A12580)
-I (..\Core\Inc\Utility\dac_util.h)(0x609A99C8)
-I (../Core/Inc/dac.h)(0x60A12586)
-I (..\Core\Inc\Utility\gpio_util.h)(0x609A99C8)
 I (..\Core\Inc\Peripheral\remote_periph.h)(0x609A99C8)
+I (..\Core\Inc\Utility\uart_util.h)(0x609A99C8)
+I (../Core/Inc/usart.h)(0x60A12588)
+I (G:\Keil_5\ARM\ARMCC\include\stdlib.h)(0x5475F300)
 I (..\Core\Inc\Peripheral\referee_periph.h)(0x60A00AC2)
 I (..\Core\Inc\Peripheral\motor_periph.h)(0x609DF4FA)
+I (..\Core\Inc\Utility\pwm_util.h)(0x609A99C8)
+I (../Core/Inc/tim.h)(0x60A12587)
+I (..\Core\Inc\Algorithm\pid_alg.h)(0x609A99C8)
 I (..\Core\Inc\Peripheral\miniPC_periph.h)(0x609A99C8)
 I (..\Core\Inc\Peripheral\imu_periph.h)(0x609A99C8)
 I (..\Core\Inc\Chassis_Control\cha_gimbal_ctrl.h)(0x609A99C8)
 I (..\Core\Inc\Chassis_Control\cha_chassis_ctrl.h)(0x609A99C8)
 F (..\Core\Src\Common_Contrrol\buscomm_cmd.c)(0x60A03C13)(--c99 -c --cpu Cortex-M4.fp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I..\Drivers\CMSIS\DSP\Include -I..\Core\Inc -I..\Core\Inc\Algorithm -I..\Core\Inc\Library -I..\Core\Inc\Peripheral -I..\Core\Inc\Utility -I..\Core\Inc\Chassis_Control -I..\Core\Inc\Gimbal_Control -I..\Core\Inc\SuperCap_Control -I..\Core\Inc\Common_Contrrol-I D:\LEEKA\RM2020\[2021]CODE\Infantry_Momentum5_17\Infantry_Momentum\MDK-ARM\RTE-I G:\Keil_5\ARM\PACK\ARM\CMSIS\4.2.0\CMSIS\Include-I G:\Keil_5\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Device\Include-D__UVISION_VERSION="514" -D_RTE_ -DSTM32F40_41xxx -DUSE_HAL_DRIVER -DSTM32F405xx -DARM_MATH_CM4 -D__TARGET_FPU_VFP -D__CC_ARM-o infantry_momentum\buscomm_cmd.o --omf_browse infantry_momentum\buscomm_cmd.crf --depend infantry_momentum\buscomm_cmd.d)
 I (..\Core\Inc\Common_Contrrol\buscomm_cmd.h)(0x60A035E9)
-I (../Core/Inc/configure.h)(0x60A2395E)
+I (../Core/Inc/configure.h)(0x60A2CEC7)
 I (../Core/Inc/Code_specification.h)(0x609A99C8)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x600A9025)
 I (../Core/Inc/stm32f4xx_hal_conf.h)(0x60A12589)
@@ -2724,13 +3041,14 @@ I (..\Core\Inc\Algorithm\math_alg.h)(0x609F9C58)
 I (..\Drivers\CMSIS\DSP\Include\arm_math.h)(0x600A8FCE)
 I (G:\Keil_5\ARM\ARMCC\include\math.h)(0x5475F2FE)
 I (..\Core\Inc\Library\const_lib.h)(0x609DFD95)
-I (..\Core\Inc\SuperCap_Control\supercap_ctrl.h)(0x609DFCE5)
-I (..\Core\Inc\Peripheral\sensor_periph.h)(0x609A99C8)
-I (..\Core\Inc\Utility\adc_util.h)(0x609A99C8)
-I (../Core/Inc/adc.h)(0x60A12585)
-I (..\Core\Inc\Peripheral\led_periph.h)(0x609A99C8)
-I (../Core/Inc/gpio.h)(0x60A12580)
-I (..\Core\Inc\Utility\dac_util.h)(0x609A99C8)
-I (../Core/Inc/dac.h)(0x60A12586)
-I (..\Core\Inc\Utility\gpio_util.h)(0x609A99C8)
+I (..\Core\Inc\Gimbal_Control\gim_gimbal_ctrl.h)(0x609A99C8)
+I (..\Core\Inc\Algorithm\pid_alg.h)(0x609A99C8)
+I (..\Core\Inc\Peripheral\motor_periph.h)(0x609DF4FA)
+I (..\Core\Inc\Utility\pwm_util.h)(0x609A99C8)
+I (../Core/Inc/tim.h)(0x60A12587)
+I (..\Core\Inc\Peripheral\imu_periph.h)(0x609A99C8)
+I (..\Core\Inc\Utility\uart_util.h)(0x609A99C8)
+I (../Core/Inc/usart.h)(0x60A12588)
+I (..\Core\Inc\Peripheral\remote_periph.h)(0x609A99C8)
+I (G:\Keil_5\ARM\ARMCC\include\stdlib.h)(0x5475F300)
 F (G:\Keil_5\ARM\PACK\ARM\CMSIS\4.2.0\CMSIS\Lib\ARM\arm_cortexM4lf_math.lib)(0x540CF30A)()

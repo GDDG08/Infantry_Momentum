@@ -20,9 +20,10 @@
 MiniPC_MiniPCContrlTypeDef MiniPC_MiniPCContrlData;
 
 //CVKF Predict nT For Aiming
-int CVKF_NT_YAW = 0;
-int CVKF_NT_PITCH = 0;
-
+int CVKF_NT_YAW = 220;
+int CVKF_NT_PITCH = 30;
+float before_cvkf_yaw =0.0f;
+float before_cvkf_pitch = 0.0f;
 
 /**
   * @brief      Gets the pointer to the MiniPC data object
@@ -51,14 +52,14 @@ void MiniPC_InitControl() {
 	minipc->cvkf_control.basicprocess = 1;
 	minipc->cvkf_control.jumpjudge = 0;
 	minipc->cvkf_control.limit = 0;
-	minipc->cvkf_control.output = 0;
-	minipc->cvkf_control.predict = 0;
+	minipc->cvkf_control.output = 1;
+	minipc->cvkf_control.predict = 1;
 
 	//CVKF for Yaw Angle:
-	Kalman_CVKalmanInitYawParam(&minipc->cvkf_data_yaw, 1/1000.0f ,0.0f);
+	Kalman_CVKalmanInitYawParam(&minipc->cvkf_data_yaw, 1/1000.0f ,1.0f);
 	Kalman_CVKalmanInit(&minipc->cvkf_yaw, &minipc->cvkf_data_yaw);
 	//CVKF for Pitch Angle:
-	Kalman_CVKalmanInitPitchParam(&minipc->cvkf_data_pitch, 1/1000.0f, 0.0f);
+	Kalman_CVKalmanInitPitchParam(&minipc->cvkf_data_pitch, 1/1000.0f, 1.0f);
 	Kalman_CVKalmanInit(&minipc->cvkf_pitch, &minipc->cvkf_data_pitch);
 
 }
@@ -190,6 +191,7 @@ void MiniPC_KalmanPrediction() {
 		if (minipc->cvkf_yaw.measure_mode == 1) {
 			
 			float _yaw_angle = imu->angle.yaw - minipc->yaw_angle;
+			before_cvkf_yaw = _yaw_angle;
 			if (minipc->cvkf_control.jumpjudge == 1)
 				_yaw_angle = Kalman_JudgeChange(&minipc->cvkf_yaw, _yaw_angle);
 			if ((minipc->cvkf_yaw.targer_change == 1) && (minipc->cvkf_control.jumpjudge == 1)) {
@@ -209,6 +211,7 @@ void MiniPC_KalmanPrediction() {
 		if (minipc->cvkf_pitch.measure_mode == 1) {
 			
 			float _pitch_angle = imu->angle.pitch + minipc->pitch_angle;
+			before_cvkf_pitch = _pitch_angle;
 			if (minipc->cvkf_control.jumpjudge == 1)
 				_pitch_angle = Kalman_JudgeChange(&minipc->cvkf_pitch, _pitch_angle);
 			
@@ -303,6 +306,7 @@ void MiniPC_SetGimbalRef() {
 			if (minipc->cvkf_control.predict == 1) {
 				//根据误差角进行提前预测:
 				int yaw_predict = fabs(yaw_ref/50*1000);	//云台相应速度50degree/s
+				yaw_predict = 0;
 				//int pitch_predict = fabs(pitch_ref/);
 				cvkf_yaw_angle   = Kalman_Predict_nT(&minipc->cvkf_yaw, CVKF_NT_YAW + yaw_predict);
 				cvkf_pitch_angle = Kalman_Predict_nT(&minipc->cvkf_pitch, CVKF_NT_PITCH);
@@ -316,8 +320,8 @@ void MiniPC_SetGimbalRef() {
 			}
 			// TRY TODO: Using LowPassFilter After CVKF:
 			// Set Gimbal Angle:
-			Gimbal_SetYawAutoRef(cvkf_yaw_angle);
-			Gimbal_SetPitchAutoRef(cvkf_pitch_angle);
+			Gimbal_SetYawAutoRef(cvkf_yaw_angle+0.5f);
+			Gimbal_SetPitchAutoRef(cvkf_pitch_angle-0.5f);
 	    }
         else {				
 	    	// Set_Gambal_Angle:

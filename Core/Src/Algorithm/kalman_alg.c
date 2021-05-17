@@ -17,34 +17,29 @@
   * @param      init_angle_yaw: Initialized yaw axis angle
   * @retval     NULL
   */
-void Kalman_CVKalmanInitYawParam(Kalman_CVKalmanInitDataTypeDef *cvkf_data, const float KF_T, const float init_angle_yaw) {
-	static float KF_A[4]  = {1.0f, 0.0f,
+void Kalman_CVKalmanInitYawParam(Kalman_CVKalmanInitDataTypeDef *cvkf_data, float KF_T, float init_angle_yaw) {
+	float KF_A[4]  = {1.0f, 0.0f,
 							 0.0f, 1.0f};
 		         KF_A[1]  = KF_T;
-	static float KF_C[2]  = {1.0f, 0.0f};
-	static float XLast[2] = {0.0f};
+	float KF_C[2]  = {1.0f, 0.0f};
+	float XLast[2] = {0.0f};
 		         XLast[0] = init_angle_yaw;
-	static float Xpre[2]  = {0.0f};
-		         XLast[0] = init_angle_yaw;
-	static float Xopt[2]  = {0.0f};
-		         XLast[0] = init_angle_yaw;
-
-	static float PLast[4] = {1.0f, 0.0f,
+	float PLast[4] = {1.0f, 0.0f,
 							 0.0f, 1.0f};
-	static float Ppre[4]  = {0.0f};
-	static float Popt[4]  = {0.0f};
-	static float Q[4]     = {1.0f, 0.0f,
+	float Ppre[4]  = {0.0f};
+	float Popt[4]  = {0.0f};
+	float Q[4]     = {10.0f, 0.0f,
 						     0.0f, 1.0f};
-	static float R[1]     = {1.0f};
-	static float Kf[2]    = {0.0f};
+	float R[1]     = {0.5f};
+	float Kf[2]    = {0.0f};
 	
 	for (int i = 0; i < 4; i++) {
 		cvkf_data->KF_A[i] = KF_A[i];
 		if (i < 2) {
 			cvkf_data->KF_C[i]  = KF_C[i];
 			cvkf_data->XLast[i] = XLast[i];
-			cvkf_data->Xpre[i]  = Xpre[i];
-			cvkf_data->Xopt[i]  = Xopt[i];
+			cvkf_data->Xpre[i]  = XLast[i];
+			cvkf_data->Xopt[i]  = XLast[i];
 			
 			cvkf_data->Kf[i] = Kf[i];
 		}
@@ -64,33 +59,29 @@ void Kalman_CVKalmanInitYawParam(Kalman_CVKalmanInitDataTypeDef *cvkf_data, cons
   * @param      init_angle_pitch: Initialized pitch axis angle
   * @retval     NULL
   */
-void Kalman_CVKalmanInitPitchParam(Kalman_CVKalmanInitDataTypeDef *cvkf_data, const float KF_T, const float init_angle_pitch) {
-	static float KF_A[4]  = {1.0f, 0.0f,
+void Kalman_CVKalmanInitPitchParam(Kalman_CVKalmanInitDataTypeDef *cvkf_data, float KF_T, float init_angle_pitch) {
+	float KF_A[4]  = {1.0f, 0.0f,
 			          0.0f, 1.0f};
 		         KF_A[1]  = KF_T;
-	static float KF_C[2]  = {1.0f, 0.0f};
-	static float XLast[2] = {0.0f};
+	float KF_C[2]  = {1.0f, 0.0f};
+	float XLast[2] = {0.0f};
 		         XLast[0] = init_angle_pitch;
-	static float Xpre[2]  = {0.0f};
-		         XLast[0] = init_angle_pitch;
-	static float Xopt[2]  = {0.0f};
-		         XLast[0] = init_angle_pitch;
-	static float PLast[4] = {1.0f, 0.0f,
+	float PLast[4] = {1.0f, 0.0f,
 					         0.0f, 1.0f};
-	static float Ppre[4]  = {0.0f};
-	static float Popt[4]  = {0.0f};
-	static float Q[4]     = {1.0f, 0.0f,
+	float Ppre[4]  = {0.0f};
+	float Popt[4]  = {0.0f};
+	float Q[4]     = {1.0f, 0.0f,
 				             0.0f, 1.0f};
-	static float R[1]    = {1.0f};
-	static float Kf[2]   = {0.0f};
+	float R[1]    = {1.0f};
+	float Kf[2]   = {0.0f};
 
 	for (int i = 0; i < 4; i++) {
 		cvkf_data->KF_A[i] = KF_A[i];
 		if (i < 2) {
 			cvkf_data->KF_C[i]  = KF_C[i];
 			cvkf_data->XLast[i] = XLast[i];
-			cvkf_data->Xpre[i]  = Xpre[i];
-			cvkf_data->Xopt[i]  = Xopt[i];
+			cvkf_data->Xpre[i]  = XLast[i];
+			cvkf_data->Xopt[i]  = XLast[i];
 			
 			cvkf_data->Kf[i] = Kf[i];
 		}
@@ -109,23 +100,20 @@ void Kalman_CVKalmanInitPitchParam(Kalman_CVKalmanInitDataTypeDef *cvkf_data, co
   * @param      init_angle_yaw: Initialized yaw angle
   * @retval     NULL
   */
-void Kalman_CVInitSetYaw(Kalman_CVKalmanInitDataTypeDef *cvkf_data, const float init_angle_yaw) {
-	static float XLast[2] = {0.0f};
+void Kalman_CVInitSetYaw(Kalman_CVKalmanInitDataTypeDef *cvkf_data, float init_angle_yaw) {
+	float XLast[2] = {0.0f};
 		         XLast[0] = init_angle_yaw;
-	static float Xpre[2]  = {0.0f};
-		         XLast[0] = init_angle_yaw;
-	static float Xopt[2]  = {0.0f};
-		         XLast[0] = init_angle_yaw;
-	static float PLast[4] = {1.0f, 0.0f,
-							 0.0f, 1.0f};	
+	float PLast[4] = {10.0f, 0.0f,
+							 0.0f, 10.0f};	
 	for (int i = 0; i < 4; i++) {
 		if (i < 2) {
 			cvkf_data->XLast[i] = XLast[i];
-			cvkf_data->Xpre[i]  = Xpre[i];
-			cvkf_data->Xopt[i]  = Xopt[i];
+			cvkf_data->Xpre[i]  = XLast[i];
+			cvkf_data->Xopt[i]  = XLast[i];
 		}
 		cvkf_data->PLast[i] = PLast[i];
 	}
+
 }
 
 
@@ -135,20 +123,16 @@ void Kalman_CVInitSetYaw(Kalman_CVKalmanInitDataTypeDef *cvkf_data, const float 
   * @param      init_angle_pitch: Initialized pitch angle
   * @retval     NULL
   */
-void Kalman_CVInitSetPitch(Kalman_CVKalmanInitDataTypeDef *cvkf_data, const float init_angle_pitch) {
-	static float XLast[2] = {0.0f};
+void Kalman_CVInitSetPitch(Kalman_CVKalmanInitDataTypeDef *cvkf_data, float init_angle_pitch) {
+	float XLast[2] = {0.0f};
 		         XLast[0] = init_angle_pitch;
-	static float Xpre[2]  = {0.0f};
-		         XLast[0] = init_angle_pitch;
-	static float Xopt[2]  = {0.0f};
-		         XLast[0] = init_angle_pitch;
-	static float PLast[4] = {1.0f, 0.0f,
-							 0.0f, 1.0f};	
+	float PLast[4] = {10.0f, 0.0f,
+							 0.0f, 10.0f};	
 	for (int i = 0; i < 4; i++) {
 		if (i < 2) {
 			cvkf_data->XLast[i] = XLast[i];
-			cvkf_data->Xpre[i]  = Xpre[i];
-			cvkf_data->Xopt[i]  = Xopt[i];
+			cvkf_data->Xpre[i]  = XLast[i];
+			cvkf_data->Xopt[i]  = XLast[i];
 		}
 		cvkf_data->PLast[i] = PLast[i];
 	}
@@ -171,7 +155,7 @@ void Kalman_CVKalmanInit(Kalman_CVKalmanTypeDef *cvkf, Kalman_CVKalmanInitDataTy
 	mat_init(&cvkf->Ppre,	2,2,(float *)cvkf_data->Ppre);
 	mat_init(&cvkf->Popt,	2,2,(float *)cvkf_data->Popt);
 	mat_init(&cvkf->Q,		2,2,(float *)cvkf_data->Q);
-	mat_init(&cvkf->R,		1,1,(float *)cvkf_data->Q);
+	mat_init(&cvkf->R,		1,1,(float *)cvkf_data->R);
 	mat_init(&cvkf->Kf,		2,1,(float *)cvkf_data->Kf);
 	// cvkf->cvkf_t = cvkf_data->cvkf_t;
 	cvkf->angle = cvkf_data->Xopt[0];
@@ -179,7 +163,7 @@ void Kalman_CVKalmanInit(Kalman_CVKalmanTypeDef *cvkf, Kalman_CVKalmanInitDataTy
 	cvkf->switch_mode   = 1;	        // Default: OPEN
 	cvkf->measure_mode  = 0;            // Default: None Update Measurement
 	cvkf->targer_change = 0;            // Default: Target Follow no change
-	cvkf->max_speed = 1000.0f;
+	cvkf->max_speed =20.0f;
 }
 
 
@@ -219,11 +203,11 @@ void Kalman_TurnOnMeasureUpdate(Kalman_CVKalmanTypeDef *cvkf) {
   * @retval     NULL
   */
 void Kalman_CalcPredict(Kalman_CVKalmanTypeDef *cvkf) {
-	static float _temp1[4] = {0.0f};
-	static float _temp2[4] = {0.0f};
+	float _temp1[4] = {0.0f};
+	float _temp2[4] = {0.0f};
 	mat _t1, _t2;
-	mat_init(&_t1, 2, 2, _temp1);
-	mat_init(&_t2, 2, 2, _temp2);
+	mat_init(&_t1, 2, 2, (float *)_temp1);
+	mat_init(&_t2, 2, 2, (float *)_temp2);
 
 	// X_pre = A*X_last
 	mat_mult(&cvkf->KF_A, &cvkf->XLast, &cvkf->Xpre);
@@ -245,17 +229,17 @@ void Kalman_CalcPredict(Kalman_CVKalmanTypeDef *cvkf) {
   * @retval     NULL
   */
 void Kalman_CalcKFGain(Kalman_CVKalmanTypeDef *cvkf) {
-	static float _temp1[2] = {0.0f};
-	static float _temp2[2] = {0.0f};
-	static float _temp3[1] = {0.0f};
-	static float _temp4[1] = {0.0f};
-	static float _temp5[2] = {0.0f};
+	float _temp1[2] = {0.0f};
+	float _temp2[2] = {0.0f};
+	float _temp3[1] = {0.0f};
+	float _temp4[1] = {0.0f};
+	float _temp5[2] = {0.0f};
 	mat _t1, _t2, _t3, _t4, _t5;
-	mat_init(&_t1, 1, 2, _temp1);
-	mat_init(&_t2, 2, 1, _temp2);
-	mat_init(&_t3, 1, 1, _temp3);
-	mat_init(&_t4, 1, 1, _temp4);
-	mat_init(&_t5, 2, 1, _temp5);
+	mat_init(&_t1, 1, 2, (float *)_temp1);
+	mat_init(&_t2, 2, 1, (float *)_temp2);
+	mat_init(&_t3, 1, 1, (float *)_temp3);
+	mat_init(&_t4, 1, 1, (float *)_temp4);
+	mat_init(&_t5, 2, 1, (float *)_temp5);
 
 	// Kf = PPre*C'/(C*PPre*C'+ R);
 	mat_mult(&cvkf->KF_C, &cvkf->Ppre, &_t1);   // PLast = C*Ppre
@@ -275,7 +259,7 @@ void Kalman_CalcKFGain(Kalman_CVKalmanTypeDef *cvkf) {
   * @param      angle: Measured angle
   * @retval     NULL
   */
-void Kalman_CalcCorrect(Kalman_CVKalmanTypeDef * cvkf, const float angle) {
+void Kalman_CalcCorrect(Kalman_CVKalmanTypeDef * cvkf, float angle) {
 	// Init Measurement Mat:
 	static float _ym[1]    = {0.0f};
                  _ym[0]    = angle;
@@ -283,23 +267,23 @@ void Kalman_CalcCorrect(Kalman_CVKalmanTypeDef * cvkf, const float angle) {
 	static float _temp2[1] = {0.0f};
 	static float _temp3[2] = {0.0f};
 	mat Ym, _t1, _t2, _t3;
-	mat_init(&Ym, 1, 1, _ym);
-	mat_init(&_t1, 1, 1, _temp1);
-	mat_init(&_t2, 1, 1, _temp2);
-	mat_init(&_t3, 1, 1, _temp3);
+	mat_init(&Ym, 1, 1, (float *)_ym);
+	mat_init(&_t1, 1, 1, (float *)_temp1);
+	mat_init(&_t2, 1, 1, (float *)_temp2);
+	mat_init(&_t3, 2, 1, (float *)_temp3);
 
 	// XOpt = XPre + Kf*(Ym - C*XPre):
 	mat_mult(&cvkf->KF_C, &cvkf->Xpre, &_t1);
 	mat_sub(&Ym, &_t1, &_t2);
 	mat_mult(&cvkf->Kf, &_t2, &_t3);
-	mat_add(&cvkf->XLast, &_t3, &cvkf->Xopt);
+	mat_add(&cvkf->Xpre, &_t3, &cvkf->Xopt);
 	
 	// Init Eye:
-	static float _eye[] = {1, 0, 0, 1};
+	static float _eye[] = {1.0f, 0.0f, 0.0f, 1.0f};
 	static float _temp4[4] = {0.0f};
 	mat Eye, _t4;
-	mat_init(&Eye, 2, 2, _eye);
-	mat_init(&_t4, 2, 2, _temp4);
+	mat_init(&Eye, 2, 2, (float *)_eye);
+	mat_init(&_t4, 2, 2, (float *)_temp4);
 
 	//POpt = (eye(length(XOpt))-Kf*C)*PPre:
 	mat_mult(&cvkf->Kf, &cvkf->KF_C, &cvkf->Popt);
@@ -337,11 +321,11 @@ void Kalman_Update(Kalman_CVKalmanTypeDef *cvkf) {
   * @param      angle: Measured angle
   * @retval     NULL
   */
-void Kalman_MeasurementCalc(Kalman_CVKalmanTypeDef *cvkf, const float angle) {
+void Kalman_MeasurementCalc(Kalman_CVKalmanTypeDef *cvkf, float angle) {
 	Kalman_CalcPredict(cvkf);
 	Kalman_CalcKFGain(cvkf);
 	Kalman_CalcCorrect(cvkf, angle);
-	Kalman_CV_Limit_Speed(cvkf);
+	//Kalman_CV_Limit_Speed(cvkf);
 	Kalman_Update(cvkf);
 	cvkf->measure_mode = 0;         // After Correction: Measurement used
 }
@@ -371,8 +355,8 @@ float Kalman_Predict_nT(Kalman_CVKalmanTypeDef * cvkf, int nT) {
 	float _temp1[2] = {0.0f};
 	float _temp2[2] = {0.0f};
 	mat _t1, _t2;
-	mat_init(&_t1, 2, 1, _temp1);
-	mat_init(&_t2, 2, 1, _temp2);
+	mat_init(&_t1, 2, 1, (float *)_temp1);
+	mat_init(&_t2, 2, 1, (float *)_temp2);
 	
 	mat_mult(&cvkf->KF_A, &cvkf->XLast, &_t1);
 	for (int i = 0; i < nT-1 ; i++) {
@@ -391,7 +375,7 @@ float Kalman_Predict_nT(Kalman_CVKalmanTypeDef * cvkf, int nT) {
   * @param      m_angle: Forecast period
   * @retval     last_target: last terget angle
   */
-float Kalman_JudgeChange(Kalman_CVKalmanTypeDef *cvkf, const float m_angle) {
+float Kalman_JudgeChange(Kalman_CVKalmanTypeDef *cvkf, float m_angle) {
 	int nT = 10;
 	static uint32_t target_change_time = 0;
 	static float last_target = 0.0f;

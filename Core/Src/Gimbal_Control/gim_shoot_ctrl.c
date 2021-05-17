@@ -62,7 +62,7 @@ void Shooter_Control() {
     
     Shooter_FeederControl();
 
-    Shooter_ShooterMotorOutput();
+ //   Shooter_ShooterMotorOutput();
 }
 
 
