@@ -34,6 +34,7 @@
 "infantry_momentum\stm32f4xx_hal_tim_ex.o"
 "infantry_momentum\stm32f4xx_hal_uart.o"
 "infantry_momentum\system_stm32f4xx.o"
+"..\Drivers\CMSIS\arm_cortexM4lf_math.lib"
 "infantry_momentum\croutine.o"
 "infantry_momentum\event_groups.o"
 "infantry_momentum\list.o"

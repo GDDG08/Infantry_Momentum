@@ -5,7 +5,7 @@
  *  Description  : This file contains Gimbal control function
  *  LastEditors  : 动情丶卜灬动心
  *  Date         : 2021-05-04 20:53:31
- *  LastEditTime : 2021-05-16 00:25:54
+ *  LastEditTime : 2021-05-16 20:32:30
  */
 
 #include "gim_gimbal_ctrl.h"
@@ -223,8 +223,16 @@ void Gimbal_SetPitchAutoRef(float ref) {
     Gimbal_GimbalTypeDef *gimbal = Gimbal_GetGimbalControlPtr();
     IMU_IMUDataTypeDef *imu = IMU_GetIMUDataPtr();
     MiniPC_MiniPCDataTypeDef *minipc_data = MiniPC_GetMiniPCDataPtr();
-    
-    gimbal->angle.pitch_angle_ref = Gimbal_LimitPitch(imu->angle.pitch + ref - 1.0f);
+	
+		float limited_ref;
+    if (ref > Const_PITCH_UMAXANGLE)
+			limited_ref = Const_PITCH_UMAXANGLE;
+    else if (ref < Const_PITCH_DMAXANGLE)
+			limited_ref = Const_PITCH_DMAXANGLE;
+    else    
+			limited_ref = ref;
+        // Out of depression set maximum ref
+    gimbal->angle.pitch_angle_ref = limited_ref; //imu->angle.pitch + ref
 }
 
 
@@ -250,7 +258,7 @@ void Gimbal_SetYawAutoRef(float ref) {
     IMU_IMUDataTypeDef *imu = IMU_GetIMUDataPtr();
     MiniPC_MiniPCDataTypeDef *minipc_data = MiniPC_GetMiniPCDataPtr();
     
-    gimbal->angle.yaw_angle_ref = Gimbal_LimitYaw(imu->angle.yaw - ref);   
+    gimbal->angle.yaw_angle_ref = Gimbal_LimitYaw(ref);   //imu->angle.yaw - ref
 }
 
 

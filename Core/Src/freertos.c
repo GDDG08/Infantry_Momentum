@@ -313,7 +313,7 @@ void SuperCap_Task(void const * argument)
         #endif
         CapComm_SendCapCommData();
     #endif
-    osDelay(10);
+    osDelay(100);
   }
   /* USER CODE END SuperCap_Task */
 }

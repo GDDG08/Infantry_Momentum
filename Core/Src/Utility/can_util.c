@@ -5,7 +5,7 @@
  *  Description  : This file contains the CAN funtions
  *  LastEditors  : 动情丶卜灬动心
  *  Date         : 2021-05-04 20:53:31
- *  LastEditTime : 2021-05-16 04:25:36
+ *  LastEditTime : 2021-05-16 19:11:26
  */
 
 #include "can_util.h"
@@ -29,7 +29,7 @@ uint8_t Can_RxData[Const_Can_RX_BUFF_LEN];
 void Can_ErrorHandler(uint32_t ret) {
     //Log_DebugPrintf("Error: CAN Error!\n");
     while (1) {
-        
+        return;
     }
 }
 

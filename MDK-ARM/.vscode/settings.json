@@ -56,6 +56,7 @@
         "freertos.h": "c",
         "cmsis_os.h": "c",
         "type_traits": "c",
-        "xtr1common": "c"
+        "xtr1common": "c",
+        "arm_math.h": "c"
     }
 }

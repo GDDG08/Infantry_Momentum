@@ -5,7 +5,7 @@
  *  Description  : This file contains all functions enable
  *  LastEditors  : 动情丶卜灬动心
  *  Date         : 2021-05-04 20:53:31
- *  LastEditTime : 2021-05-14 12:23:20
+ *  LastEditTime : 2021-05-16 20:33:08
  */
 
 // #if 你觉得这份代码写的很好
@@ -30,14 +30,14 @@ extern "C" {
 
 /* Main Control program       */
 
-#define __FN_BOARD_TYPE             __FN_BOARD_TYPE_GIMBAL
+#define __FN_BOARD_TYPE             __FN_BOARD_TYPE_SUPERCAP
 
 #define __FN_BOARD_TYPE_CHASSIS     1
 #define __FN_BOARD_TYPE_GIMBAL      2
 #define __FN_BOARD_TYPE_SUPERCAP    3
 
 
-#define __FN_INFANTRY_TYPE          1
+#define __FN_INFANTRY_TYPE          2
 
 #if (__FN_INFANTRY_TYPE == 1)
     #define __FN_INFANTRY_NEW_ONE       __FN_ENABLE

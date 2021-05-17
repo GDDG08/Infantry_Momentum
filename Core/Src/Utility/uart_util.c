@@ -56,7 +56,7 @@ void Uart_RxIdleCallback(UART_HandleTypeDef* huart) {
     }
 #endif
 
-#if __FN_IF_ENABLE(__FN_CTRL_COM_CAP)
+#if __FN_IF_ENABLE(__FN_CTRL_CAP_COMM)
     if (huart == Const_SuperCap_UART_HANDLER) {
         CapComm_RXCallback(huart);
     }

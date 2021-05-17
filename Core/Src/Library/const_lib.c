@@ -5,7 +5,7 @@
  *  Description  : This file contains all necessary constants
  *  LastEditors  : 动情丶卜灬动心
  *  Date         : 2021-05-04 20:53:31
- *  LastEditTime : 2021-05-16 00:34:48
+ *  LastEditTime : 2021-05-16 19:18:58
  */
 
 #include "const_lib.h"
@@ -40,10 +40,10 @@ const float Const_DAC_DetectRES                     = 0.004f;	    // DAC current
 
 /*          CAN Handle definition              */
 // CAN_HandleTypeDef* Const_BusComm_CAN_HANDLER        = &hcan2;
-UART_HandleTypeDef* Const_SuperCap_UART_HANDLER         = &huart5;
+UART_HandleTypeDef* Const_SuperCap_UART_HANDLER     = &huart5;
 
 /*          Super Cap control const             */
-const float Cap_MinVoltage                          = 10.0f;        // Cap min voltage
+const float Cap_MinVoltage                          = 11.0f;        // Cap min voltage
 const float Cap_ChargeReservedPower                 = 5.0f;         // Cap charge reserved power
 const float Cap_AvailableVoltage                    = 16.0f;        // Cap restart voltage
 

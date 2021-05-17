@@ -78,7 +78,7 @@ int main(void)
   /* MCU Configuration--------------------------------------------------------*/
 
   /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
-  HAL_Init();
+   HAL_Init();
 
   /* USER CODE BEGIN Init */
 
@@ -95,8 +95,10 @@ int main(void)
   MX_GPIO_Init();
   MX_DMA_Init();
   MX_ADC1_Init();
+  #if __FN_IF_ENABLE(__FN_INFANTRY)
   MX_CAN1_Init();
   MX_CAN2_Init();
+  #endif
   MX_DAC_Init();
   MX_UART5_Init();
   MX_USART1_UART_Init();

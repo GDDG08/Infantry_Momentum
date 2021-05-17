@@ -5,7 +5,7 @@
  *  Description  : This file contains cap control function
  *  LastEditors  : 动情丶卜灬动心
  *  Date         : 2021-05-04 20:53:31
- *  LastEditTime : 2021-05-14 12:35:03
+ *  LastEditTime : 2021-05-16 20:44:15
  */
 
 #include "supercap_ctrl.h"
@@ -26,18 +26,12 @@ void Cap_SetChargeCurrent(float cur)
 {
     /* Set charging dead zone */
     float current = cur;
-    if (current <= 0.1f)
-    {
+    if (current <= 0.1f) 
         DAC_SetCurrent(0.0f);
-    }
-    else if (current >= 5.0f)
-    {
+    else if (current >= 5.0f) 
         DAC_SetCurrent(5.0f);
-    }
-    else
-    {
+    else 
         DAC_SetCurrent(current);
-    }
 }
 
 /**
@@ -45,13 +39,13 @@ void Cap_SetChargeCurrent(float cur)
  * @param      NULL
  * @retval     NULL
  */
-void Cap_Init()
-{
+void Cap_Init() {
     CAP_ControlValueTypeDef *capvalue = Cap_GetCapControlPtr();
 
     Cap_SetChargeCurrent(0);
     /* set init current */
     GPIO_Close(CAP);
+	
     GPIO_Close(BUCK);
     GPIO_Close(BOOST);
     /* set init state   */
@@ -69,8 +63,7 @@ void Cap_Init()
   * @param      NULL
   * @retval     Pointer to cap control data object
   */
-CAP_ControlValueTypeDef *Cap_GetCapControlPtr()
-{
+CAP_ControlValueTypeDef *Cap_GetCapControlPtr() {
     return &Cap_ControlState;
 }
 
@@ -79,8 +72,7 @@ CAP_ControlValueTypeDef *Cap_GetCapControlPtr()
  * @param      NULL
  * @retval     NULL
  */
-void Cap_JudgeCapState()
-{
+void Cap_JudgeCapState() {
     Sen_CAPBasisValueTypeDef *basisvalue = Sen_GetBasisDataPtr();
     CAP_ControlValueTypeDef *capvalue = Cap_GetCapControlPtr();
     CapComm_CapCommDataTypeDef *capcomm = CapComm_GetCapDataPty();
@@ -104,32 +96,30 @@ void Cap_JudgeCapState()
  * @param      NULL
  * @retval     NULL
  */
-void Cap_CapCharge()
-{
+void Cap_CapCharge() {
     CAP_ControlValueTypeDef *capvalue = Cap_GetCapControlPtr();
     Sen_PowerValueTypeDef *sendata = Sen_GetPowerDataPtr();
     Sen_CAPBasisValueTypeDef *basisdata = Sen_GetBasisDataPtr();
     CapComm_CapCommDataTypeDef *capcomm = CapComm_GetCapDataPty();
 
-    if (capcomm->cap_charge_mode == SUPERCAP_UNCHARGE)
-    {
+    if (capcomm->cap_charge_mode == SUPERCAP_UNCHARGE) {
         GPIO_Close(BUCK);
         Cap_SetChargeCurrent(0);
     }
-    else if (capcomm->cap_charge_mode == SUPERCAP_CHARGE)
-    {
-        capvalue->power_limit = 0.6f * (float)capcomm->power_limit;
+    else if (capcomm->cap_charge_mode == SUPERCAP_CHARGE) {
+        capvalue->power_limit = 0.7f * (float)capcomm->power_limit;
 
-        if (basisdata->CapVoltage <= 10.0f)
-        {
-            Cap_SetChargeCurrent(3.5f);
+        if (basisdata->CapVoltage <= 10.0f) {
+            Cap_SetChargeCurrent(4.0f);
         }
-        else
-        {
+				else if (basisdata->CapVoltage >= 25.2f) {
+						Cap_SetChargeCurrent(0);
+				}
+        else {
             Cap_SetChargeCurrent(capvalue->power_limit / basisdata->CapVoltage);
         }
         GPIO_Open(BUCK);
-    }
+     }
 }
 
 /**

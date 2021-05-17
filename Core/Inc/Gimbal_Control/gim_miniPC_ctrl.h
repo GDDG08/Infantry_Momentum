@@ -5,7 +5,7 @@
  *  Description  : This file contains MiniPC control function
  *  LastEditors  : 动情丶卜灬动心
  *  Date         : 2021-05-04 20:53:31
- *  LastEditTime : 2021-05-08 11:02:28
+ *  LastEditTime : 2021-05-16 20:01:45
  */
 
 #ifndef GIM_MINIPC_CTRL_H
@@ -22,6 +22,7 @@ extern "C" {
 #include "minipc_periph.h"
 #include "math_alg.h"
 #include "filter_alg.h"
+#include "kalman_alg.h"
 
 typedef enum {
 	MiniPC_TARGET_LOST       = 0u,
@@ -49,6 +50,10 @@ typedef struct {
     Filter_LowPassParamTypeDef pitch_fil_param;
     Filter_LowPassTypeDef pitch_fil;
     
+	Kalman_CVKalmanInitDataTypeDef cvkf_data_yaw, cvkf_data_pitch;      //For CVKF:
+	Kalman_CVKalmanTypeDef cvkf_yaw, cvkf_pitch;
+	Kalman_CVKalmanControlTypeDef cvkf_control;            //For Debug: Start Which Function
+
 	uint32_t get_target_time;
 	MiniPC_AutoAimModeEnum aim_mode;
 	MiniPC_TargetFollowModeEnum target_state;

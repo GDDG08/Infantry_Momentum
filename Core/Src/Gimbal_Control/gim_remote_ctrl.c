@@ -185,7 +185,7 @@ void Remote_RemoteProcess() {
     if (data->remote.ch[4] <= 500.0f)
         Servo_SetServoAngle(&Servo_ammoContainerCapServo, 0);
     
-    
+    buscomm->cap_charge_mode = SUPERCAP_UNCHARGE;
     /*      remote chassis reference value bessel filter    */
     float yaw_ref,
           pitch_ref;

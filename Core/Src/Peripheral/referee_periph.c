@@ -5,10 +5,8 @@
  *  Description  : This document contains the data receiving and sending of the referee system
  *  LastEditors  : 动情丶卜灬动心
  *  Date         : 2021-05-04 20:53:31
- *  LastEditTime : 2021-05-16 00:44:07
+ *  LastEditTime : 2021-05-16 19:12:06
  */
-
-
 
 #include "referee_periph.h"
 
