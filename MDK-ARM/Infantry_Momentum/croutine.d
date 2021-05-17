@@ -1,7 +1,7 @@
 infantry_momentum\croutine.o: ../Middlewares/Third_Party/FreeRTOS/Source/croutine.c
 infantry_momentum\croutine.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h
-infantry_momentum\croutine.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
-infantry_momentum\croutine.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+infantry_momentum\croutine.o: G:\Keil_5\ARM\ARMCC\Bin\..\include\stddef.h
+infantry_momentum\croutine.o: G:\Keil_5\ARM\ARMCC\Bin\..\include\stdint.h
 infantry_momentum\croutine.o: ../Core/Inc/FreeRTOSConfig.h
 infantry_momentum\croutine.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h
 infantry_momentum\croutine.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h

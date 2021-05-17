@@ -254,12 +254,12 @@ void MiniPC_UpdateControlData() {
         minipc->get_target_time = HAL_GetTick();
 		//Update data when get target
 		//Otherwise keep last data
-//		minipc->yaw_angle = minipc_data->yaw_angle;
-//		minipc->pitch_angle = minipc_data->pitch_angle;
-    }
-
 		minipc->yaw_angle = minipc_data->yaw_angle;
 		minipc->pitch_angle = minipc_data->pitch_angle;
+    }
+
+//		minipc->yaw_angle = minipc_data->yaw_angle;
+//		minipc->pitch_angle = minipc_data->pitch_angle;
 		
 	if (minipc->cvkf_yaw.switch_mode == 1 && minipc->cvkf_pitch.switch_mode == 1){
 		//TODO: CVKF with measurements.
@@ -301,7 +301,10 @@ void MiniPC_SetGimbalRef() {
         if ((minipc->cvkf_control.output == 1) && (minipc->cvkf_control.total == 1)
             && (minipc->cvkf_control.basicprocess == 1)) {
 			if (minipc->cvkf_control.predict == 1) {
-				cvkf_yaw_angle   = Kalman_Predict_nT(&minipc->cvkf_yaw, CVKF_NT_YAW);
+				//根据误差角进行提前预测:
+				int yaw_predict = fabs(yaw_ref/50*1000);	//云台相应速度50degree/s
+				//int pitch_predict = fabs(pitch_ref/);
+				cvkf_yaw_angle   = Kalman_Predict_nT(&minipc->cvkf_yaw, CVKF_NT_YAW + yaw_predict);
 				cvkf_pitch_angle = Kalman_Predict_nT(&minipc->cvkf_pitch, CVKF_NT_PITCH);
 			}
             else {

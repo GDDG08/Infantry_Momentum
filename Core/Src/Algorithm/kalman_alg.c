@@ -179,6 +179,7 @@ void Kalman_CVKalmanInit(Kalman_CVKalmanTypeDef *cvkf, Kalman_CVKalmanInitDataTy
 	cvkf->switch_mode   = 1;	        // Default: OPEN
 	cvkf->measure_mode  = 0;            // Default: None Update Measurement
 	cvkf->targer_change = 0;            // Default: Target Follow no change
+	cvkf->max_speed = 1000.0f;
 }
 
 
@@ -340,8 +341,9 @@ void Kalman_MeasurementCalc(Kalman_CVKalmanTypeDef *cvkf, const float angle) {
 	Kalman_CalcPredict(cvkf);
 	Kalman_CalcKFGain(cvkf);
 	Kalman_CalcCorrect(cvkf, angle);
+	Kalman_CV_Limit_Speed(cvkf);
 	Kalman_Update(cvkf);
-	cvkf->measure_mode = 0;         // After Correction
+	cvkf->measure_mode = 0;         // After Correction: Measurement used
 }
 
 
@@ -409,7 +411,17 @@ float Kalman_JudgeChange(Kalman_CVKalmanTypeDef *cvkf, const float m_angle) {
 	
 	return last_target;
 }
+/*
 
+*/
+void Kalman_CV_Limit_Speed(Kalman_CVKalmanTypeDef * cvkf){
+	float max_angle_speed = cvkf->max_speed;
+	if(cvkf->Xopt.pData[1] > max_angle_speed){
+		cvkf->Xopt.pData[1] = max_angle_speed;
+	}else if(cvkf->Xopt.pData[1] < -max_angle_speed){
+		cvkf->Xopt.pData[1] = -max_angle_speed;
+	}
+}
 
 
 

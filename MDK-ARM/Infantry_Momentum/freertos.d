@@ -1,7 +1,7 @@
 infantry_momentum\freertos.o: ../Core/Src/freertos.c
 infantry_momentum\freertos.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h
-infantry_momentum\freertos.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
-infantry_momentum\freertos.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+infantry_momentum\freertos.o: G:\Keil_5\ARM\ARMCC\Bin\..\include\stddef.h
+infantry_momentum\freertos.o: G:\Keil_5\ARM\ARMCC\Bin\..\include\stdint.h
 infantry_momentum\freertos.o: ../Core/Inc/FreeRTOSConfig.h
 infantry_momentum\freertos.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h
 infantry_momentum\freertos.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h
@@ -86,12 +86,12 @@ infantry_momentum\freertos.o: ..\Core\Inc\Utility\adc_util.h
 infantry_momentum\freertos.o: ../Core/Inc/configure.h
 infantry_momentum\freertos.o: ../Core/Inc/Code_specification.h
 infantry_momentum\freertos.o: ../Core/Inc/adc.h
-infantry_momentum\freertos.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+infantry_momentum\freertos.o: G:\Keil_5\ARM\ARMCC\Bin\..\include\string.h
 infantry_momentum\freertos.o: ..\Core\Inc\Algorithm\filter_alg.h
 infantry_momentum\freertos.o: ..\Core\Inc\Algorithm\math_alg.h
 infantry_momentum\freertos.o: ..\Drivers\CMSIS\DSP\Include\arm_math.h
 infantry_momentum\freertos.o: ../Drivers/CMSIS/Include/core_cm4.h
-infantry_momentum\freertos.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
+infantry_momentum\freertos.o: G:\Keil_5\ARM\ARMCC\Bin\..\include\math.h
 infantry_momentum\freertos.o: ..\Core\Inc\Peripheral\led_periph.h
 infantry_momentum\freertos.o: ../Core/Inc/configure.h
 infantry_momentum\freertos.o: ../Core/Inc/Code_specification.h

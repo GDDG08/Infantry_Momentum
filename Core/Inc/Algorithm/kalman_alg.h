@@ -29,7 +29,7 @@ typedef struct {
 
 	// Cycle Time
 	//float cvkf_t;
-	float angle, angle_p_err;
+	float angle, angle_p_err,max_speed;
 	int switch_mode,
 		measure_mode,
 		targer_change;
@@ -60,6 +60,7 @@ void Kalman_CVKalmanInitPitchParam(Kalman_CVKalmanInitDataTypeDef *cvkf_data, co
 void Kalman_CVInitSetYaw(Kalman_CVKalmanInitDataTypeDef *cvkf_data, const float init_angle_yaw);
 void Kalman_CVInitSetPitch(Kalman_CVKalmanInitDataTypeDef *cvkf_data, const float init_angle_pitch);
 void Kalman_CVKalmanInit(Kalman_CVKalmanTypeDef *cvkf, Kalman_CVKalmanInitDataTypeDef *cvkf_data);
+void Kalman_CV_Limit_Speed(Kalman_CVKalmanTypeDef * cvkf);
 void Kalman_TurnOffCVKF(Kalman_CVKalmanTypeDef *cvkf);
 void Kalman_TurnOnCVKF(Kalman_CVKalmanTypeDef *cvkf);
 void Kalman_TurnOnMeasureUpdate(Kalman_CVKalmanTypeDef *cvkf);
@@ -70,6 +71,7 @@ void Kalman_Update(Kalman_CVKalmanTypeDef *cvkf);
 void Kalman_MeasurementCalc(Kalman_CVKalmanTypeDef *cvkf, const float angle);
 void Kalman_NonMeasurementCalc(Kalman_CVKalmanTypeDef * cvkf);
 float Kalman_Predict_nT(Kalman_CVKalmanTypeDef * cvkf, int nT);
+
 float Kalman_JudgeChange(Kalman_CVKalmanTypeDef *cvkf, const float m_angle);
 
 

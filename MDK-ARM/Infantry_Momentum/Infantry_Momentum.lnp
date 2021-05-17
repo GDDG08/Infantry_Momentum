@@ -81,6 +81,7 @@
 "infantry_momentum\init_ctrl.o"
 "infantry_momentum\watchdog_ctrl.o"
 "infantry_momentum\buscomm_cmd.o"
+"G:\Keil_5\ARM\PACK\ARM\CMSIS\4.2.0\CMSIS\Lib\ARM\arm_cortexM4lf_math.lib"
 --library_type=microlib --strict --scatter "Infantry_Momentum\Infantry_Momentum.sct"
 --summary_stderr --info summarysizes --map --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers
