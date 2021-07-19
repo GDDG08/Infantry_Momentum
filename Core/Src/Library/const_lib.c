@@ -153,7 +153,7 @@ const float Const_PITCH_MOTOR_INIT_OFFSET = -31.0f;
 const float Const_SERVO_INIT_OFFSET = 0.05f;
 
 #if __FN_IF_ENABLE(__FN_INFANTRY_NEW_ONE)
-const float Const_YAW_MOTOR_INIT_OFFSET = 23.0f;
+const float Const_YAW_MOTOR_INIT_OFFSET = -150.0f;
 #endif
 
 #if __FN_IF_ENABLE(__FN_INFANTRY_NEW_TWO)
@@ -210,9 +210,9 @@ float Const_ShooterLockedReverseSpeed = 0.0f;
 float Const_ShooterSlowSpeed = 150.0f;
 float Const_ShooterFastSpeed = 230.0f;
 
-float Const_Shooter15mpers = 280.0f;
-float Const_Shooter18mpers = 300.0f;
-float Const_Shooter30mpers = 442.0f;
+float Const_Shooter15mpers = 210.0f;  //280: infantry3,12~14
+float Const_Shooter18mpers = 250.0f;  //300: infantry3,15~17
+float Const_Shooter30mpers = 300.0f;
 
 float Const_FeederSlowSpeed = 50.0f;
 float Const_FeederFastSpeed = 100.0f;

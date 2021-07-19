@@ -223,16 +223,46 @@ void Remote_KeyMouseProcess() {
     if (data->key.c == 1) {
     }
 
+    static int big_energy_flag = 0, big_energy_state = 0;
+    static int small_energy_flag = 0, small_energy_state = 0;
+    if (data->key.b == 1) {
+        if ((big_energy_state == 0) && (big_energy_flag == 1)) {
+            big_energy_state = 1;
+            big_energy_flag = 0;
+        } else if ((big_energy_state == 1) && (big_energy_flag == 1)) {
+            big_energy_state = 0;
+            big_energy_flag = 0;
+        }
+    } else
+        big_energy_flag = 1;
+
     if (data->key.v == 1) {
-        // Gimbal_ChangeAimMode(Gimbal_BIG_ENERGY);
-        // MiniPC_ChangeAimMode(MiniPC_BIG_BUFF);
-        // chassis stop
+        if ((small_energy_state == 0) && (small_energy_flag == 1)) {
+            small_energy_state = 1;
+            small_energy_flag = 0;
+        } else if ((small_energy_state == 1) && (small_energy_flag == 1)) {
+            small_energy_state = 0;
+            small_energy_flag = 0;
+        }
+    } else
+        small_energy_flag = 1;
+
+    if (big_energy_state == 1 && small_energy_state == 0) {
+        Gimbal_ChangeMode(Gimbal_BIG_ENERGY);
+        MiniPC_ChangeAimMode(MiniPC_BIG_BUFF);
+        //chassis stop
+        Remote_ChangeChassisState(CHASSIS_CTRL_STOP);
     }
 
-    if (data->key.b == 1) {
-        // Gimbal_ChangeAimMode(Gimbal_SMALL_ENERGY);
-        // MiniPC_ChangeAimMode(MiniPC_LITTLE_BUFF);
+    else if (big_energy_state == 0 && small_energy_state == 1) {
+        Gimbal_ChangeMode(Gimbal_SMALL_ENERGY);
+        MiniPC_ChangeAimMode(MiniPC_SMALL_BUFF);
         // chassis stop
+        Remote_ChangeChassisState(CHASSIS_CTRL_STOP);
+    } else {
+        Gimbal_ChangeMode(Gimbal_NOAUTO);
+        MiniPC_ChangeAimMode(MiniPC_ARMOR);
+        Remote_ChangeChassisState(CHASSIS_CTRL_NORMAL);
     }
 
     /*if you move you will exit the auto mode*/
@@ -280,8 +310,11 @@ void Remote_KeyMouseProcess() {
     if (data->mouse.r == 1) {
         Gimbal_ChangeMode(Gimbal_ARMOR);
         MiniPC_ChangeAimMode(MiniPC_ARMOR);
-    } else
-        Gimbal_ChangeMode(Gimbal_NOAUTO);
+    } else if (data->mouse.r == 0) {
+        if (big_energy_state == 0 && small_energy_state == 0) {
+            Gimbal_ChangeMode(Gimbal_NOAUTO);
+        }
+    }
 
     /*******State control of friction wheel*********/
     if (data->key.q == 1)  //Q Press to open the friction wheel

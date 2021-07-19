@@ -9,8 +9,8 @@
  */
 
 #include "kalman_alg.h"
-float Pinit_0 = 10.0f;
-float Pinit_1 = 4000.0f;
+float Pinit_0 = 8.0f;
+float Pinit_1 = 3000.0f;
 float MAX_SPEED_KF = 60.0f;
 
 /**
@@ -166,7 +166,7 @@ void Kalman_CVKalmanInit(Kalman_CVKalmanTypeDef* cvkf, Kalman_CVKalmanInitDataTy
     cvkf->measure_mode = 0;   // Default: None Update Measurement
     cvkf->targer_change = 0;  // Default: Target Follow no change
     cvkf->max_speed = MAX_SPEED_KF;
-    cvkf->min_speed = 2.5f;  //For Prediction AngleSpeed Dead Region
+    cvkf->min_speed = 3.5f;  //For Prediction AngleSpeed Dead Region
 }
 
 /**
@@ -428,9 +428,9 @@ float Kalman_CV_CalInitSpeed(float delta_err_angle) {
     if (fabs(delta_err_angle) <= delta_angle) {
         return 0.0f;
     } else if (delta_err_angle > delta_angle) {
-        return 5.0f;
+        return 10.0f;
     } else if (delta_err_angle < -delta_angle) {
-        return -5.0f;
+        return -10.0f;
     }
     return 0.0f;
 }

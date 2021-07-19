@@ -195,7 +195,7 @@ void MiniPC_ArmorPacketDecode(uint8_t* buff, uint16_t rxdatalen) {
 
     minipc->yaw_angle = (float)buff2i16(buff + 9) / 100.0f;
     minipc->pitch_angle = (float)buff2i16(buff + 11) / 100.0f;
-    minipc->distance = (float)buff2i16(buff + 13) / 1000.0f;
+    minipc->distance = (float)buff2i16(buff + 13);
 
     minipc->state = MiniPC_CONNECTED;
 }
