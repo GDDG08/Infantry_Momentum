@@ -1,8 +1,8 @@
---cpu Cortex-M4.fp
+--cpu=Cortex-M4.fp.sp
 "infantry_momentum\startup_stm32f405xx.o"
+"infantry_momentum\freertos.o"
 "infantry_momentum\main.o"
 "infantry_momentum\gpio.o"
-"infantry_momentum\freertos.o"
 "infantry_momentum\adc.o"
 "infantry_momentum\can.o"
 "infantry_momentum\dac.o"
@@ -60,8 +60,8 @@
 "infantry_momentum\sensor_periph.o"
 "infantry_momentum\servo_periph.o"
 "infantry_momentum\const_lib.o"
-"infantry_momentum\log_lib.o"
 "infantry_momentum\buff_lib.o"
+"infantry_momentum\log_lib.o"
 "infantry_momentum\pid_alg.o"
 "infantry_momentum\math_alg.o"
 "infantry_momentum\filter_alg.o"
@@ -81,8 +81,8 @@
 "infantry_momentum\init_ctrl.o"
 "infantry_momentum\watchdog_ctrl.o"
 "infantry_momentum\buscomm_cmd.o"
-"G:\Keil_5\ARM\PACK\ARM\CMSIS\4.2.0\CMSIS\Lib\ARM\arm_cortexM4lf_math.lib"
+"D:\Program Files\Keil_v5\ARM\PACK\ARM\CMSIS\5.5.1\CMSIS\DSP\Lib\ARM\arm_cortexM4lf_math.lib"
 --library_type=microlib --strict --scatter "Infantry_Momentum\Infantry_Momentum.sct"
---summary_stderr --info summarysizes --map --xref --callgraph --symbols
+--summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers
 --list "Infantry_Momentum.map" -o Infantry_Momentum\Infantry_Momentum.axf

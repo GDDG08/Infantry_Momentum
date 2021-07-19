@@ -8,13 +8,12 @@
  *  LastEditTime : 2021-05-07 02:48:40
  */
 
-
 #ifndef ADC_UTIL_H
 #define ADC_UTIL_H
 
 #ifdef __cplusplus
 extern "C" {
-#endif 
+#endif
 
 #include "configure.h"
 
@@ -23,15 +22,13 @@ extern "C" {
 #include "adc.h"
 #include "string.h"
 
-    
-extern uint32_t ADC_valueBuf[3];                
-extern float    ADC_decodeBuf[3];
+extern uint32_t ADC_valueBuf[3];
+extern float ADC_decodeBuf[3];
 
 void ADC_Init(void);
 void ADC_GetData(void);
 void ADC_Decode(void);
-    
-    
+
 #endif
 
 #ifdef __cplusplus

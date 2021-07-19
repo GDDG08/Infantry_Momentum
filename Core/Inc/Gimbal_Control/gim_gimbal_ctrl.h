@@ -13,51 +13,51 @@
 
 #ifdef __cplusplus
 extern "C" {
-#endif 
+#endif
 
 #include "configure.h"
 
 #if __FN_IF_ENABLE(__FN_CTRL_GIMBAL_GIM)
 
-#include "pid_alg.h"
-#include "motor_periph.h"
 #include "imu_periph.h"
+#include "motor_periph.h"
+#include "pid_alg.h"
 #include "remote_periph.h"
 
 typedef enum {
-	Gimbal_NOAUTO        = 0u,
-	Gimbal_ARMOR         = 1u,
-	Gimbal_IMU_DEBUG     = 2u,
-    Gimbal_BIG_ENERGY    = 3u,
-    Gimbal_SMALL_ENERGY  = 4u
-}Gimbal_ModeEnum;
+    Gimbal_NOAUTO = 0u,
+    Gimbal_ARMOR = 1u,
+    Gimbal_IMU_DEBUG = 2u,
+    Gimbal_BIG_ENERGY = 3u,
+    Gimbal_SMALL_ENERGY = 4u
+} Gimbal_ModeEnum;
 
 typedef enum {
-    GimbalYaw_MODE_NULL             = 0u,
-    GimbalYaw_MODE_NO_AUTO          = 1u,
-    GimbalYaw_MODE_ARMOR            = 2u,
-    GimbalYaw_MODE_IMU_DEBUG        = 3u,
-    GimbalYaw_MODE_BIG_ENERGY       = 4u,
-    GimbalYaw_MODE_SMALL_ENERGY     = 5u        
+    GimbalYaw_MODE_NULL = 0u,
+    GimbalYaw_MODE_NO_AUTO = 1u,
+    GimbalYaw_MODE_ARMOR = 2u,
+    GimbalYaw_MODE_IMU_DEBUG = 3u,
+    GimbalYaw_MODE_BIG_ENERGY = 4u,
+    GimbalYaw_MODE_SMALL_ENERGY = 5u
 } GimbalYaw_GimbalYawModeEnum;
 
 typedef struct {
-  Gimbal_ModeEnum present_mode;
-  Gimbal_ModeEnum last_mode;
-  uint8_t mode_change_flag;
-}Gimbal_ModeTypeDef;
+    Gimbal_ModeEnum present_mode;
+    Gimbal_ModeEnum last_mode;
+    uint8_t mode_change_flag;
+} Gimbal_ModeTypeDef;
 
 typedef struct {
     float pitch_angle_ref;
     float yaw_angle_ref;
-}Gimbal_AngleRefTypeDef;
+} Gimbal_AngleRefTypeDef;
 
 typedef struct {
-    uint8_t control_state;                        // Whether to enable control 1 Yes 0 No 
-    uint8_t output_state;                         // Whether to enable output 1 Yes 0 No 
+    uint8_t control_state;  // Whether to enable control 1 Yes 0 No
+    uint8_t output_state;   // Whether to enable output 1 Yes 0 No
 
-    float pitch_position_fdb;                     // Gimbal pitch IMU angle feedback value 
-    float pitch_speed_fdb;                        // Gimbal pitch IMU angular velocity feedback value 
+    float pitch_position_fdb;  // Gimbal pitch IMU angle feedback value
+    float pitch_speed_fdb;     // Gimbal pitch IMU angular velocity feedback value
 
     Gimbal_AngleRefTypeDef angle;
     Gimbal_ModeTypeDef mode;

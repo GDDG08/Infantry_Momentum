@@ -24,27 +24,26 @@ const int Const_CURRENT_PID_FREQ_DIV = 5;
   * @param      pmotor: Pointer to motor object
   * @retval     NULL
   */
-void chassis_encoder_callback(Motor_MotorTypeDef *pmotor) {
+void chassis_encoder_callback(Motor_MotorTypeDef* pmotor) {
     Motor_SetMotorFdb(pmotor, 1, (float)pmotor->encoder.speed / 19.0f);
 }
-
 
 /**
   * @brief      Gimbal motor encoder callback
   * @param      pmotor: Pointer to motor object
   * @retval     NULL
   */
-void gimbal_encoder_callback(Motor_MotorTypeDef *pmotor) {
+void gimbal_encoder_callback(Motor_MotorTypeDef* pmotor) {
     Motor_SetMotorFdb(pmotor, 0, Filter_LowPass((float)pmotor->encoder.current, &pmotor->fdb_fil_param, &pmotor->fdb_fil));
     // Calculate angle difference and number of cycles
-    int diff = pmotor->encoder.angle - pmotor->encoder.last_angle;      //The increase of mechanical angle is positive
-    if (diff < -5500)           // Make a positive turn
+    int diff = pmotor->encoder.angle - pmotor->encoder.last_angle;  //The increase of mechanical angle is positive
+    if (diff < -5500)                                               // Make a positive turn
         pmotor->encoder.round_count++;
-    else if (diff > 5500)       // Turn around in the opposite direction
+    else if (diff > 5500)  // Turn around in the opposite direction
         pmotor->encoder.round_count--;
 
     // Calculate continuous angle
-    pmotor->encoder.consequent_angle = (float)pmotor->encoder.round_count * 360.0f + 
+    pmotor->encoder.consequent_angle = (float)pmotor->encoder.round_count * 360.0f +
                                        (float)pmotor->encoder.angle / 8192.0f * 360.0f;
     pmotor->encoder.limited_angle = (float)pmotor->encoder.angle / 8192.0f * 360.0f;
     // For yaw axis processing, the small gyroscope is rotated to the same position as the PTZ according to the nearest distance after stopping
@@ -56,7 +55,6 @@ void gimbal_encoder_callback(Motor_MotorTypeDef *pmotor) {
     }
 }
 
-
 /**
   * @brief      Feeder motor encoder callback
   * @param      pmotor: Pointer to motor object
@@ -66,22 +64,22 @@ void feeder_encoder_callback(Motor_MotorTypeDef* pmotor) {
     Motor_SetMotorFdb(pmotor, 1, (float)pmotor->encoder.speed / 36.0f);
     Motor_SetMotorFdb(pmotor, 2, (float)pmotor->encoder.consequent_angle);
     // Calculate the angle difference and the number of turns
-    int diff = pmotor->encoder.angle - pmotor->encoder.last_angle;      
-    if (diff < -5500)           
+    int diff = pmotor->encoder.angle - pmotor->encoder.last_angle;
+    if (diff < -5500)
         pmotor->encoder.round_count++;
-    else if (diff > 5500)       
+    else if (diff > 5500)
         pmotor->encoder.round_count--;
     // Calculate the shaft angle because the reduction ratio needs to be divided by 36
-    pmotor->encoder.consequent_angle = (float)pmotor->encoder.round_count * 10.0f + 
+    pmotor->encoder.consequent_angle = (float)pmotor->encoder.round_count * 10.0f +
                                        (float)pmotor->encoder.angle / 8192.0f * 10.0f;
     // over
     if (pmotor->encoder.round_count > 10000) {
-        pmotor->encoder.consequent_angle -= 10 * pmotor->encoder.round_count; 
+        pmotor->encoder.consequent_angle -= 10 * pmotor->encoder.round_count;
         PID_AddPIDRef(&(pmotor->pid_pos), -10 * pmotor->encoder.round_count);
         pmotor->encoder.round_count = 0;
     }
     if (pmotor->encoder.round_count < -10000) {
-        pmotor->encoder.consequent_angle += 10 * pmotor->encoder.round_count; 
+        pmotor->encoder.consequent_angle += 10 * pmotor->encoder.round_count;
         PID_AddPIDRef(&(pmotor->pid_pos), 10 * pmotor->encoder.round_count);
         pmotor->encoder.round_count = 0;
     }
@@ -92,14 +90,12 @@ void feeder_encoder_callback(Motor_MotorTypeDef* pmotor) {
     }
 }
 
-
 /**
   * @brief      Shooter encoder callback (pwm motor)
   * @param      pmotor: Pointer to motor object
   * @retval     NULL
   */
 void shooter_encoder_callback(Motor_MotorTypeDef* pmotor) {
-    
 }
 
 /********** VOLATILE USER CODE **********/
@@ -109,7 +105,7 @@ const uint32_t Const_Motor_MOTOR_TX_EXTID = 0x01;
 const uint32_t Const_Motor_MOTOR_TX_DLC = 8;
 const uint32_t Const_Motor_MOTOR_RX_DLC = 8;
 
-Motor_MotorGroupTypeDef *Motor_groupHandle[4];
+Motor_MotorGroupTypeDef* Motor_groupHandle[4];
 
 Motor_MotorGroupTypeDef Motor_chassisMotors;
 Motor_MotorGroupTypeDef Motor_gimbalMotors;
@@ -120,15 +116,14 @@ Motor_MotorTypeDef Motor_chassisMotor1;
 Motor_MotorTypeDef Motor_chassisMotor2;
 Motor_MotorTypeDef Motor_chassisMotor3;
 Motor_MotorTypeDef Motor_chassisMotor4;
-                           
+
 Motor_MotorTypeDef Motor_gimbalMotorYaw;
 Motor_MotorTypeDef Motor_gimbalMotorPitch;
-           
+
 Motor_MotorTypeDef Motor_feederMotor;
 
-Motor_MotorTypeDef Motor_shooterMotorLeft; 
+Motor_MotorTypeDef Motor_shooterMotorLeft;
 Motor_MotorTypeDef Motor_shooterMotorRight;
-
 
 /**
   * @brief      Motor encoder decoding callback function
@@ -138,10 +133,9 @@ Motor_MotorTypeDef Motor_shooterMotorRight;
   * @retval     NULL
   */
 void Motor_EncoderDecodeCallback(CAN_HandleTypeDef* phcan, uint32_t stdid, uint8_t rxdata[], uint32_t len) {
-    
-    #if __FN_IF_ENABLE(__FN_INFANTRY_CHASSIS)
+#if __FN_IF_ENABLE(__FN_INFANTRY_CHASSIS)
     if (phcan == &hcan1) {
-        switch(stdid) {
+        switch (stdid) {
             case 0x201: {
                 Motor_DecodeEncoder(rxdata, &Motor_chassisMotor1);
                 break;
@@ -167,11 +161,11 @@ void Motor_EncoderDecodeCallback(CAN_HandleTypeDef* phcan, uint32_t stdid, uint8
             }
         }
     }
-    #endif
+#endif
 
-    #if __FN_IF_ENABLE(__FN_INFANTRY_GIMBAL)
+#if __FN_IF_ENABLE(__FN_INFANTRY_GIMBAL)
     if (phcan == &hcan1) {
-        switch(stdid) {
+        switch (stdid) {
             case 0x204: {
                 Motor_DecodeEncoder(rxdata, &Motor_feederMotor);
                 break;
@@ -183,15 +177,12 @@ void Motor_EncoderDecodeCallback(CAN_HandleTypeDef* phcan, uint32_t stdid, uint8
             default: {
                 break;
             }
-        }    
+        }
     }
-    #endif
+#endif
 }
 
-
-
 /********** VOLATILE USER CODE END **********/
-
 
 /**
   * @brief      Initialize all motors
@@ -199,10 +190,8 @@ void Motor_EncoderDecodeCallback(CAN_HandleTypeDef* phcan, uint32_t stdid, uint8
   * @retval     NULL
   */
 void Motor_InitAllMotors() {
-	
-
     Motor_groupHandle[0] = &Motor_chassisMotors;
-    Motor_InitMotorGroup(&Motor_chassisMotors, Motor_TYPE_CAN_MOTOR, 4, &hcan1, 0x200); 
+    Motor_InitMotorGroup(&Motor_chassisMotors, Motor_TYPE_CAN_MOTOR, 4, &hcan1, 0x200);
     Motor_InitMotor(&Motor_chassisMotor1, Motor_TYPE_CAN_MOTOR, 1, 0, -1, NULL, 0, NULL, chassis_encoder_callback);
     Motor_InitMotor(&Motor_chassisMotor2, Motor_TYPE_CAN_MOTOR, 1, 0, -1, NULL, 0, NULL, chassis_encoder_callback);
     Motor_InitMotor(&Motor_chassisMotor3, Motor_TYPE_CAN_MOTOR, 1, 0, -1, NULL, 0, NULL, chassis_encoder_callback);
@@ -211,7 +200,7 @@ void Motor_InitAllMotors() {
     Motor_chassisMotors.motor_handle[1] = &Motor_chassisMotor2;
     Motor_chassisMotors.motor_handle[2] = &Motor_chassisMotor3;
     Motor_chassisMotors.motor_handle[3] = &Motor_chassisMotor4;
-    
+
     Motor_groupHandle[1] = &Motor_gimbalMotors;
     Motor_InitMotorGroup(&Motor_gimbalMotors, Motor_TYPE_CAN_MOTOR, 2, &hcan1, 0x1FF);
     Motor_InitMotor(&Motor_gimbalMotorYaw, Motor_TYPE_CAN_MOTOR, 2, 1, -1, NULL, 0, NULL, gimbal_encoder_callback);
@@ -226,12 +215,11 @@ void Motor_InitAllMotors() {
 
     Motor_groupHandle[3] = &Motor_shooterMotors;
     Motor_InitMotorGroup(&Motor_shooterMotors, Motor_TYPE_PWM_MOTOR, 2, NULL, 0);
-    Motor_InitMotor(&Motor_shooterMotorLeft, Motor_TYPE_PWM_MOTOR, 1, 0, 0.3, &htim3, TIM_CHANNEL_1, &htim4, shooter_encoder_callback);
-    Motor_InitMotor(&Motor_shooterMotorRight, Motor_TYPE_PWM_MOTOR, 1, 0, 0.3, &htim3, TIM_CHANNEL_4, &htim5, shooter_encoder_callback);
+    Motor_InitMotor(&Motor_shooterMotorLeft, Motor_TYPE_PWM_MOTOR, 1, 0, 0.05, &htim3, TIM_CHANNEL_1, &htim4, shooter_encoder_callback);
+    Motor_InitMotor(&Motor_shooterMotorRight, Motor_TYPE_PWM_MOTOR, 1, 0, 0.05, &htim3, TIM_CHANNEL_4, &htim5, shooter_encoder_callback);
     Motor_shooterMotors.motor_handle[0] = &Motor_shooterMotorLeft;
     Motor_shooterMotors.motor_handle[1] = &Motor_shooterMotorRight;
 }
-
 
 /**
   * @brief      Initialize motor parameters
@@ -243,12 +231,12 @@ void Motor_InitAllMotors() {
   * @retval     NULL
   */
 void Motor_InitMotorParam(Motor_MotorParamTypeDef* pparam, const float pidpara[][4][5], PID_ModeEnum cur_mode, PID_ModeEnum spd_mode, PID_ModeEnum pos_mode) {
-    if (pparam == NULL) return;
+    if (pparam == NULL)
+        return;
     PID_InitPIDParam(&(pparam->pid_param_cur), pidpara[0][0][0], pidpara[0][0][1], pidpara[0][0][2], pidpara[0][0][3], pidpara[0][0][4], pidpara[0][1][0], pidpara[0][1][1], pidpara[0][2][0], pidpara[0][2][1], pidpara[0][3][0], pidpara[0][3][1], cur_mode);
     PID_InitPIDParam(&(pparam->pid_param_spd), pidpara[1][0][0], pidpara[1][0][1], pidpara[1][0][2], pidpara[1][0][3], pidpara[1][0][4], pidpara[1][1][0], pidpara[1][1][1], pidpara[1][2][0], pidpara[1][2][1], pidpara[1][3][0], pidpara[1][3][1], spd_mode);
     PID_InitPIDParam(&(pparam->pid_param_pos), pidpara[2][0][0], pidpara[2][0][1], pidpara[2][0][2], pidpara[2][0][3], pidpara[2][0][4], pidpara[2][1][0], pidpara[2][1][1], pidpara[2][2][0], pidpara[2][2][1], pidpara[2][3][0], pidpara[2][3][1], pos_mode);
 }
-
 
 /**
   * @brief      Initialize the motor
@@ -262,9 +250,9 @@ void Motor_InitMotorParam(Motor_MotorParamTypeDef* pparam, const float pidpara[]
   * @param      callback: Motor callback function
   * @retval     NULL
   */
-void Motor_InitMotor(Motor_MotorTypeDef* pmotor, Motor_MotorTypeEnum type, uint8_t pid_num, uint8_t cur_pid, float fdb_param, TIM_HandleTypeDef* htim, 
-                     uint32_t ch, TIM_HandleTypeDef* htim_enc, Motor_EncoderCallbackFuncTypeDef callback) {
-    if (pmotor == NULL) return;
+void Motor_InitMotor(Motor_MotorTypeDef* pmotor, Motor_MotorTypeEnum type, uint8_t pid_num, uint8_t cur_pid, float fdb_param, TIM_HandleTypeDef* htim, uint32_t ch, TIM_HandleTypeDef* htim_enc, Motor_EncoderCallbackFuncTypeDef callback) {
+    if (pmotor == NULL)
+        return;
     pmotor->encoder.last_update_time = HAL_GetTick();
     pmotor->type = type;
     pmotor->pid_num = pid_num;
@@ -287,7 +275,6 @@ void Motor_InitMotor(Motor_MotorTypeDef* pmotor, Motor_MotorTypeEnum type, uint8
     }
 }
 
-
 /**
   * @brief      Initialization of motor group
   * @param      pgroup: Pointer to motor group
@@ -298,11 +285,13 @@ void Motor_InitMotor(Motor_MotorTypeDef* pmotor, Motor_MotorTypeEnum type, uint8
   * @retval     NULL
   */
 void Motor_InitMotorGroup(Motor_MotorGroupTypeDef* pgroup, Motor_MotorTypeEnum type, uint8_t motor_num, CAN_HandleTypeDef* phcan, uint16_t stdid) {
-    if (pgroup == NULL) return;
+    if (pgroup == NULL)
+        return;
     pgroup->motor_num = motor_num;
     pgroup->type = type;
     if (type == Motor_TYPE_CAN_MOTOR) {
-        if (phcan == NULL) return;
+        if (phcan == NULL)
+            return;
         pgroup->can_handle = phcan;
         Can_InitTxHeader(&(pgroup->can_header), stdid, Const_Motor_MOTOR_TX_EXTID, Const_Motor_MOTOR_TX_DLC);
     }
@@ -311,20 +300,20 @@ void Motor_InitMotorGroup(Motor_MotorGroupTypeDef* pgroup, Motor_MotorTypeEnum t
     }
 }
 
-
 /**
   * @brief      Reset motor PID
   * @param      pmotor: Pointer to motor object
   * @retval     NULL
   */
 void Motor_ResetMotorPID(Motor_MotorTypeDef* pmotor) {
-    if (pmotor == NULL) return;
-    if (pmotor->type == Motor_TYPE_NOT_CONNECTED) return;
+    if (pmotor == NULL)
+        return;
+    if (pmotor->type == Motor_TYPE_NOT_CONNECTED)
+        return;
     PID_ClearPID(&(pmotor->pid_cur));
     PID_ClearPID(&(pmotor->pid_spd));
     PID_ClearPID(&(pmotor->pid_pos));
 }
-
 
 /**
   * @brief      Empty motor group PID
@@ -332,12 +321,12 @@ void Motor_ResetMotorPID(Motor_MotorTypeDef* pmotor) {
   * @retval     NULL
   */
 void Motor_ResetMotorGroupPID(Motor_MotorGroupTypeDef* pmotor_group) {
-    if (pmotor_group == NULL) return;
+    if (pmotor_group == NULL)
+        return;
     for (int i = 0; i < pmotor_group->motor_num; ++i) {
         Motor_ResetMotorPID(pmotor_group->motor_handle[i]);
     }
 }
-
 
 /**
   * @brief      Get the target value of motor PID
@@ -345,17 +334,17 @@ void Motor_ResetMotorGroupPID(Motor_MotorGroupTypeDef* pmotor_group) {
   * @retval     tagart value
   */
 float Motor_GetMotorRef(Motor_MotorTypeDef* pmotor) {
-    if (pmotor == NULL) return 0.0f;
-    if (pmotor->type == Motor_TYPE_NOT_CONNECTED) return 0.0f;
+    if (pmotor == NULL)
+        return 0.0f;
+    if (pmotor->type == Motor_TYPE_NOT_CONNECTED)
+        return 0.0f;
     if (pmotor->pid_num == 1) {
         return PID_GetPIDRef(&(pmotor->pid_spd));
-    }
-    else if (pmotor->pid_num == 2) {
+    } else if (pmotor->pid_num == 2) {
         return PID_GetPIDRef(&(pmotor->pid_pos));
     }
     return 0;
 }
-
 
 /**
   * @brief      Get motor PID feedback value
@@ -363,17 +352,17 @@ float Motor_GetMotorRef(Motor_MotorTypeDef* pmotor) {
   * @retval     Feedback value
   */
 float Motor_GetMotorFdb(Motor_MotorTypeDef* pmotor) {
-    if (pmotor == NULL) return 0.0f;
-    if (pmotor->type == Motor_TYPE_NOT_CONNECTED) return 0.0f;
+    if (pmotor == NULL)
+        return 0.0f;
+    if (pmotor->type == Motor_TYPE_NOT_CONNECTED)
+        return 0.0f;
     if (pmotor->pid_num == 1) {
         return PID_GetPIDFdb(&(pmotor->pid_spd));
-    }
-    else if (pmotor->pid_num == 2) {
+    } else if (pmotor->pid_num == 2) {
         return PID_GetPIDFdb(&(pmotor->pid_pos));
     }
     return 0;
 }
-
 
 /**
   * @brief      Get motor PID output value
@@ -381,16 +370,16 @@ float Motor_GetMotorFdb(Motor_MotorTypeDef* pmotor) {
   * @retval     Output value
   */
 float Motor_GetMotorOutput(Motor_MotorTypeDef* pmotor) {
-    if (pmotor == NULL) return 0.0f;
-    if (pmotor->type == Motor_TYPE_NOT_CONNECTED) return 0.0f;
+    if (pmotor == NULL)
+        return 0.0f;
+    if (pmotor->type == Motor_TYPE_NOT_CONNECTED)
+        return 0.0f;
     if (pmotor->cur_pid) {
         return PID_GetPIDOutput(&(pmotor->pid_cur));
-    }
-    else {
+    } else {
         return PID_GetPIDOutput(&(pmotor->pid_spd));
     }
 }
-
 
 /**
   * @brief      Set motor PID feedback value
@@ -400,20 +389,19 @@ float Motor_GetMotorOutput(Motor_MotorTypeDef* pmotor) {
   * @retval     NULL
   */
 void Motor_SetMotorFdb(Motor_MotorTypeDef* pmotor, uint8_t pid_no, float fdb) {
-    if (pmotor == NULL) return;
-    if (pmotor->type == Motor_TYPE_NOT_CONNECTED) return;
+    if (pmotor == NULL)
+        return;
+    if (pmotor->type == Motor_TYPE_NOT_CONNECTED)
+        return;
 
     if (pid_no == 0) {
         PID_SetPIDFdb(&(pmotor->pid_cur), fdb);
-    }
-    else if (pid_no == 1) {
+    } else if (pid_no == 1) {
         PID_SetPIDFdb(&(pmotor->pid_spd), fdb);
-    }
-    else if (pid_no == 2) {
+    } else if (pid_no == 2) {
         PID_SetPIDFdb(&(pmotor->pid_pos), fdb);
     }
 }
-
 
 /**
   * @brief      Set motor PID target value (no slope function)
@@ -422,16 +410,16 @@ void Motor_SetMotorFdb(Motor_MotorTypeDef* pmotor, uint8_t pid_no, float fdb) {
   * @retval     NULL
   */
 void Motor_SetMotorRef(Motor_MotorTypeDef* pmotor, float ref) {
-    if (pmotor == NULL) return;
-    if (pmotor->type == Motor_TYPE_NOT_CONNECTED) return;
+    if (pmotor == NULL)
+        return;
+    if (pmotor->type == Motor_TYPE_NOT_CONNECTED)
+        return;
     if (pmotor->pid_num == 1) {
         PID_SetPIDRef(&(pmotor->pid_spd), ref);
-    }
-    else if (pmotor->pid_num == 2) {
+    } else if (pmotor->pid_num == 2) {
         PID_SetPIDRef(&(pmotor->pid_pos), ref);
     }
 }
-
 
 /**
   * @brief      Calculation of motor PID output
@@ -440,14 +428,15 @@ void Motor_SetMotorRef(Motor_MotorTypeDef* pmotor, float ref) {
   * @retval     NULL
   */
 void Motor_CalcMotorOutput(Motor_MotorTypeDef* pmotor, Motor_MotorParamTypeDef* pparam) {
-    if (pmotor == NULL || pparam == NULL) return;
-    if (pmotor->type == Motor_TYPE_NOT_CONNECTED) return;
-    
+    if (pmotor == NULL || pparam == NULL)
+        return;
+    if (pmotor->type == Motor_TYPE_NOT_CONNECTED)
+        return;
+
     if (!pmotor->cur_pid || pmotor->cur_pid_div >= Const_CURRENT_PID_FREQ_DIV) {
         if (pmotor->pid_num == 1) {
             PID_CalcPID(&(pmotor->pid_spd), &(pparam->pid_param_spd));
-        }
-        else if (pmotor->pid_num == 2) {
+        } else if (pmotor->pid_num == 2) {
             PID_CalcPID(&(pmotor->pid_pos), &(pparam->pid_param_pos));
             PID_SetPIDRef(&(pmotor->pid_spd), PID_GetPIDOutput(&(pmotor->pid_pos)));
             PID_CalcPID(&(pmotor->pid_spd), &(pparam->pid_param_spd));
@@ -455,13 +444,12 @@ void Motor_CalcMotorOutput(Motor_MotorTypeDef* pmotor, Motor_MotorParamTypeDef* 
         pmotor->cur_pid_div = 0;
     }
     pmotor->cur_pid_div++;
-    
+
     if (pmotor->cur_pid) {
         PID_SetPIDRef(&(pmotor->pid_cur), PID_GetPIDOutput(&(pmotor->pid_spd)));
         PID_CalcPID(&(pmotor->pid_cur), &(pparam->pid_param_cur));
     }
 }
-
 
 /**
   * @brief      Set motor PID target value overriding pid_num set
@@ -471,12 +459,13 @@ void Motor_CalcMotorOutput(Motor_MotorTypeDef* pmotor, Motor_MotorParamTypeDef* 
   * @retval     NULL
   */
 void Motor_CalcMotorOutputRingOverrided(Motor_MotorTypeDef* pmotor, uint8_t pid_no, Motor_MotorParamTypeDef* pparam) {
-    if (pmotor == NULL || pparam == NULL) return;
-    if (pmotor->type == Motor_TYPE_NOT_CONNECTED) return;
+    if (pmotor == NULL || pparam == NULL)
+        return;
+    if (pmotor->type == Motor_TYPE_NOT_CONNECTED)
+        return;
     if (pid_no == 1) {
         PID_CalcPID(&(pmotor->pid_spd), &(pparam->pid_param_spd));
-    }
-    else if (pid_no == 2) {
+    } else if (pid_no == 2) {
         PID_CalcPID(&(pmotor->pid_pos), &(pparam->pid_param_pos));
         PID_SetPIDRef(&(pmotor->pid_spd), PID_GetPIDOutput(&(pmotor->pid_pos)));
         PID_CalcPID(&(pmotor->pid_spd), &(pparam->pid_param_spd));
@@ -487,7 +476,6 @@ void Motor_CalcMotorOutputRingOverrided(Motor_MotorTypeDef* pmotor, uint8_t pid_
     }
 }
 
-
 /**
   * @brief      Calculate PID output of motor group
   * @param      pgroup: Pointer to motor group object
@@ -495,12 +483,12 @@ void Motor_CalcMotorOutputRingOverrided(Motor_MotorTypeDef* pmotor, uint8_t pid_
   * @retval     NULL
   */
 void Motor_CalcMotorGroupOutput(Motor_MotorGroupTypeDef* pgroup, Motor_MotorParamTypeDef* pparam) {
-    if (pgroup == NULL || pparam == NULL) return;
+    if (pgroup == NULL || pparam == NULL)
+        return;
     for (int i = 0; i < 4; ++i) {
         Motor_CalcMotorOutput(pgroup->motor_handle[i], pparam);
     }
 }
-
 
 /**
   * @brief      Sending motor PWM output
@@ -508,27 +496,31 @@ void Motor_CalcMotorGroupOutput(Motor_MotorGroupTypeDef* pgroup, Motor_MotorPara
   * @retval     NULL
   */
 void Motor_SendMotorPWMOutput(Motor_MotorTypeDef* pmotor) {
-    if (pmotor == NULL) return;
-    if (pmotor->type != Motor_TYPE_PWM_MOTOR) return;
+    if (pmotor == NULL)
+        return;
+    if (pmotor->type != Motor_TYPE_PWM_MOTOR)
+        return;
     float output = Motor_GetMotorOutput(pmotor);
     // satori
     //float duty = output * 0.00011136f + 0.53522f;
     float duty = output * 0.00011136f + 0.47522f;
     pmotor->duty = duty;
     //if (duty < 0.58f) duty = 0.58f;
-    if (duty < 0.5f) duty = 0.5f;
-    if (duty > 0.98f) duty = 0.98f;
+    if (duty < 0.5f)
+        duty = 0.5f;
+    if (duty > 0.98f)
+        duty = 0.98f;
     PWM_SetPWMDuty(&(pmotor->pwm), duty);
 }
-
 
 /**
   * @brief      Transmitter output
   * @param      pgroup: Pointer to the motor group to send
   * @retval     NULL
   */
-void Motor_SendMotorGroupOutput(Motor_MotorGroupTypeDef *pgroup) {
-    if (pgroup == NULL) return;
+void Motor_SendMotorGroupOutput(Motor_MotorGroupTypeDef* pgroup) {
+    if (pgroup == NULL)
+        return;
     if (pgroup->type == Motor_TYPE_CAN_MOTOR) {
         uint8_t txdata[8];
         txdata[0] = (uint8_t)((int16_t)Motor_GetMotorOutput(pgroup->motor_handle[0]) >> 8);
@@ -548,28 +540,31 @@ void Motor_SendMotorGroupOutput(Motor_MotorGroupTypeDef *pgroup) {
     }
 }
 
-
 /**
   * @brief      Read motor PWM encoder
   * @param      pmotor: The pointer points to the motor group to be sent
   * @retval     NULL
   */
 void Motor_ReadPWMEncoder(Motor_MotorTypeDef* pmotor) {
-    static int fdb = 0; 
-    
-    if (pmotor == NULL) return;
-    if (pmotor->type != Motor_TYPE_PWM_MOTOR) return;
+    static int fdb = 0;
+
+    if (pmotor == NULL)
+        return;
+    if (pmotor->type != Motor_TYPE_PWM_MOTOR)
+        return;
     pmotor->encoder.direction = __HAL_TIM_IS_TIM_COUNTING_DOWN(pmotor->encoder.htim);
     pmotor->encoder.counter = __HAL_TIM_GET_COUNTER(pmotor->encoder.htim);
-    
-    if (pmotor->encoder.direction == 0 /* 1? */) fdb = pmotor->encoder.counter;
-    else fdb = 65535 - pmotor->encoder.counter;
-    if (fdb == 65535) fdb = 0;
-    
+
+    if (pmotor->encoder.direction == 0 /* 1? */)
+        fdb = pmotor->encoder.counter;
+    else
+        fdb = 65535 - pmotor->encoder.counter;
+    if (fdb == 65535)
+        fdb = 0;
+
     __HAL_TIM_SET_COUNTER(pmotor->encoder.htim, 0);
     Motor_SetMotorFdb(pmotor, 1, Filter_LowPass(fdb, &pmotor->fdb_fil_param, &pmotor->fdb_fil));
 }
-
 
 /**
   * @brief      Judge whether any motor is offline
@@ -588,19 +583,19 @@ uint8_t Motor_IsAnyMotorOffline() {
     return 0;
 }
 
-
 /**
   * @brief      Judge whether the motor is offline
   * @param      pmotor: Pointer to motor object
   * @retval     Offline or not (1 is yes, 0 is no)
   */
 uint8_t Motor_IsMotorOffline(Motor_MotorTypeDef* pmotor) {
-    if (pmotor == NULL) return 0;
-    if (pmotor->type == Motor_TYPE_NOT_CONNECTED) return 0;
+    if (pmotor == NULL)
+        return 0;
+    if (pmotor->type == Motor_TYPE_NOT_CONNECTED)
+        return 0;
     uint32_t now = HAL_GetTick();
     return (now - pmotor->encoder.last_update_time) > Const_Motor_MOTOR_OFFLINE_TIME;
 }
-
 
 /**
   * @brief      Decoding motor encoder feedback data
@@ -609,19 +604,19 @@ uint8_t Motor_IsMotorOffline(Motor_MotorTypeDef* pmotor) {
   * @retval     NULL
   */
 void Motor_DecodeEncoder(uint8_t rxdata[], Motor_MotorTypeDef* pmotor) {
-    if (pmotor == NULL) return;
-    
+    if (pmotor == NULL)
+        return;
+
     // Assign a value to the previous angle and get the latest angle
     pmotor->encoder.last_angle = pmotor->encoder.angle;
-    pmotor->encoder.angle   = rxdata[0] << 8 | rxdata[1];
-    pmotor->encoder.speed   = rxdata[2] << 8 | rxdata[3];
+    pmotor->encoder.angle = rxdata[0] << 8 | rxdata[1];
+    pmotor->encoder.speed = rxdata[2] << 8 | rxdata[3];
     pmotor->encoder.current = rxdata[4] << 8 | rxdata[5];
-    pmotor->encoder.temp    = rxdata[6];
-    
-    pmotor->callback(pmotor);
-    
-    pmotor->encoder.last_update_time = HAL_GetTick(); 
-}
+    pmotor->encoder.temp = rxdata[6];
 
+    pmotor->callback(pmotor);
+
+    pmotor->encoder.last_update_time = HAL_GetTick();
+}
 
 #endif

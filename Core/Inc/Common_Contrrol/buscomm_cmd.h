@@ -13,7 +13,7 @@
 
 #ifdef __cplusplus
 extern "C" {
-#endif 
+#endif
 
 #include "configure.h"
 
@@ -40,9 +40,8 @@ typedef struct {
 
 extern BusCmd_TableEntry Buscmd_Receive[13];
 extern BusCmd_TableEntry Buscmd_GimSend[7];
-extern BusCmd_TableEntry Buscmd_ChaSend[4];
+extern BusCmd_TableEntry Buscmd_ChaSend[5];
 extern BusCmd_TableEntry Buscmd_CapSend[1];
-
 
 #endif
 

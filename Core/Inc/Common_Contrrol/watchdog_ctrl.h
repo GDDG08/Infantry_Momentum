@@ -13,14 +13,11 @@
 
 #ifdef __cplusplus
 extern "C" {
-#endif 
+#endif
 
 #include "configure.h"
-    
+
 void WatchDog_FeedDog(void);
-    
-
-
 
 #ifdef __cplusplus
 }

@@ -8,13 +8,12 @@
  *  LastEditTime : 2021-05-07 03:02:53
  */
 
-
 #ifndef GPIO_UTIL_H
 #define GPIO_UTIL_H
 
 #ifdef __cplusplus
 extern "C" {
-#endif 
+#endif
 
 #include "configure.h"
 
@@ -27,16 +26,16 @@ typedef struct {
 
 #if __FN_IF_ENABLE(__FN_INFANTRY_GIMBAL)
 
-extern GPIO_GPIOTypeDef *LASER;
-extern GPIO_GPIOTypeDef *BULLET_CHARGING;
+extern GPIO_GPIOTypeDef* LASER;
+extern GPIO_GPIOTypeDef* BULLET_CHARGING;
 
 #endif
 
 #if __FN_IF_ENABLE(__FN_SUPER_CAP)
 
-extern GPIO_GPIOTypeDef *BOOST;
-extern GPIO_GPIOTypeDef *BUCK;
-extern GPIO_GPIOTypeDef *CAP;
+extern GPIO_GPIOTypeDef* BOOST;
+extern GPIO_GPIOTypeDef* BUCK;
+extern GPIO_GPIOTypeDef* CAP;
 
 #endif
 

@@ -10,7 +10,7 @@
     <aExt>*.s*; *.src; *.a*</aExt>
     <oExt>*.obj; *.o</oExt>
     <lExt>*.lib</lExt>
-    <tExt>*.txt; *.h; *.inc</tExt>
+    <tExt>*.txt; *.h; *.inc; *.md</tExt>
     <pExt>*.plm</pExt>
     <CppX>*.cpp</CppX>
     <nMigrate>0</nMigrate>
@@ -78,53 +78,6 @@
         <IsCurrentTarget>1</IsCurrentTarget>
       </OPTFL>
       <CpuCode>18</CpuCode>
-      <Books>
-        <Book>
-          <Number>0</Number>
-          <Title>Getting Started (STM32F4-Discovery)</Title>
-          <Path>G:\Keil_5\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Documents\DM00037368.pdf</Path>
-        </Book>
-        <Book>
-          <Number>1</Number>
-          <Title>User Manual (STM32F4-Discovery)</Title>
-          <Path>G:\Keil_5\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Documents\DM00039084.pdf</Path>
-        </Book>
-        <Book>
-          <Number>2</Number>
-          <Title>User Manual (MCBSTM32F400)</Title>
-          <Path>G:\Keil_5\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Documents\mcbstm32f200.chm</Path>
-        </Book>
-        <Book>
-          <Number>3</Number>
-          <Title>Schematics (MCBSTM32F400)</Title>
-          <Path>G:\Keil_5\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Documents\mcbstm32f400-schematics.pdf</Path>
-        </Book>
-        <Book>
-          <Number>4</Number>
-          <Title>Bill of Materials (STM32F4-Discovery)</Title>
-          <Path>G:\Keil_5\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Documents\stm32f4discovery_bom.zip</Path>
-        </Book>
-        <Book>
-          <Number>5</Number>
-          <Title>Gerber Files (STM32F4-Discovery)</Title>
-          <Path>G:\Keil_5\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Documents\stm32f4discovery_gerber.zip</Path>
-        </Book>
-        <Book>
-          <Number>6</Number>
-          <Title>Schematics (STM32F4-Discovery)</Title>
-          <Path>G:\Keil_5\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Documents\stm32f4discovery_sch.zip</Path>
-        </Book>
-        <Book>
-          <Number>7</Number>
-          <Title>MCBSTM32F400 Evaluation Board Web Page (MCBSTM32F400)</Title>
-          <Path>http://www.keil.com/mcbstm32f400/</Path>
-        </Book>
-        <Book>
-          <Number>8</Number>
-          <Title>STM32F4-Discovery Web Page (STM32F4-Discovery)</Title>
-          <Path>http://www.st.com/web/catalog/tools/FM116/SC959/SS1532/LN1199/PF252419</Path>
-        </Book>
-      </Books>
       <DebugOpt>
         <uSim>0</uSim>
         <uTrg>1</uTrg>
@@ -147,7 +100,10 @@
         <tRSysVw>1</tRSysVw>
         <sRunDeb>0</sRunDeb>
         <sLrtime>0</sLrtime>
-        <nTsel>6</nTsel>
+        <bEvRecOn>1</bEvRecOn>
+        <bSchkAxf>0</bSchkAxf>
+        <bTchkAxf>0</bTchkAxf>
+        <nTsel>3</nTsel>
         <sDll></sDll>
         <sDllPa></sDllPa>
         <sDlgDll></sDlgDll>
@@ -184,12 +140,12 @@
         <SetRegEntry>
           <Number>0</Number>
           <Key>JL2CM3</Key>
-          <Name>-U50120677 -O78 -S2 -A0 -C0 -JU1 -JI127.0.0.1 -JP0 -RST0 -N00("ARM CoreSight SW-DP") -D00(2BA01477) -L00(0) -TO18 -TC10000000 -TP21 -TDS8001 -TDT0 -TDC1F -TIEFFFFFFFF -TIP8 -TB1 -TFE0 -FO15 -FD20000000 -FC1000 -FN1 -FF0STM32F4xx_1024.FLM -FS08000000 -FL0100000 -FP0($$Device:STM32F405RG$Flash\STM32F4xx_1024.FLM)</Name>
+          <Name>-U69660668 -O78 -S2 -ZTIFSpeedSel5000 -A0 -C0 -JU1 -JI127.0.0.1 -JP0 -RST0 -N00("ARM CoreSight SW-DP") -D00(2BA01477) -L00(0) -TO18 -TC10000000 -TP21 -TDS8001 -TDT0 -TDC1F -TIEFFFFFFFF -TIP8 -TB1 -TFE0 -FO15 -FD20000000 -FC1000 -FN3 -FF0STM32F40xxx_41xxx_OPT.FLM -FS01FFFC000 -FL04 -FP0($$Device:STM32F405RG$CMSIS\Flash\STM32F40xxx_41xxx_OPT.FLM) -FF1STM32F4xx_1024.FLM -FS18000000 -FL1100000 -FP1($$Device:STM32F405RG$CMSIS\Flash\STM32F4xx_1024.FLM) -FF2STM32F4xx_OTP.FLM -FS21FFF7800 -FL2210 -FP2($$Device:STM32F405RG$CMSIS\Flash\STM32F4xx_OTP.FLM)</Name>
         </SetRegEntry>
         <SetRegEntry>
           <Number>0</Number>
           <Key>UL2CM3</Key>
-          <Name>UL2CM3(-S0 -C0 -P0 ) -FN1 -FC1000 -FD20000000 -FF0STM32F4xx_1024 -FL0100000 -FS08000000 -FP0($$Device:STM32F405RG$Flash\STM32F4xx_1024.FLM)</Name>
+          <Name>UL2CM3(-S0 -C0 -P0 ) -FN1 -FC1000 -FD20000000 -FF0STM32F4xx_1024 -FL0100000 -FS08000000 -FP0($$Device:STM32F405RG$CMSIS\Flash\STM32F4xx_1024.FLM)</Name>
         </SetRegEntry>
         <SetRegEntry>
           <Number>0</Number>
@@ -202,182 +158,42 @@
         <Ww>
           <count>0</count>
           <WinNumber>1</WinNumber>
-          <ItemText>count6</ItemText>
+          <ItemText>MiniPC_MiniPCContrlData,0x0A</ItemText>
         </Ww>
         <Ww>
           <count>1</count>
           <WinNumber>1</WinNumber>
-          <ItemText>count7</ItemText>
+          <ItemText>BusComm_BusCommData,0x0A</ItemText>
         </Ww>
         <Ww>
           <count>2</count>
           <WinNumber>1</WinNumber>
-          <ItemText>count8</ItemText>
+          <ItemText>MiniPC_MiniPCData</ItemText>
         </Ww>
         <Ww>
           <count>3</count>
           <WinNumber>1</WinNumber>
-          <ItemText>count9</ItemText>
+          <ItemText>Motor_gimbalMotorYaw,0x0A</ItemText>
         </Ww>
         <Ww>
           <count>4</count>
           <WinNumber>1</WinNumber>
-          <ItemText>rate5</ItemText>
+          <ItemText>Gimbal_gambalControlData</ItemText>
         </Ww>
         <Ww>
           <count>5</count>
           <WinNumber>1</WinNumber>
-          <ItemText>rate6</ItemText>
+          <ItemText>GimbalYaw_gimbalYawControlData</ItemText>
         </Ww>
         <Ww>
           <count>6</count>
           <WinNumber>1</WinNumber>
-          <ItemText>rate7</ItemText>
+          <ItemText>ref_cvkf_yaw_angle</ItemText>
         </Ww>
         <Ww>
           <count>7</count>
           <WinNumber>1</WinNumber>
-          <ItemText>rate8</ItemText>
-        </Ww>
-        <Ww>
-          <count>8</count>
-          <WinNumber>1</WinNumber>
-          <ItemText>rate9</ItemText>
-        </Ww>
-        <Ww>
-          <count>9</count>
-          <WinNumber>1</WinNumber>
-          <ItemText>rate10</ItemText>
-        </Ww>
-        <Ww>
-          <count>10</count>
-          <WinNumber>1</WinNumber>
-          <ItemText>rate11</ItemText>
-        </Ww>
-        <Ww>
-          <count>11</count>
-          <WinNumber>1</WinNumber>
-          <ItemText>rate12</ItemText>
-        </Ww>
-        <Ww>
-          <count>12</count>
-          <WinNumber>1</WinNumber>
-          <ItemText>rate1a</ItemText>
-        </Ww>
-        <Ww>
-          <count>13</count>
-          <WinNumber>1</WinNumber>
-          <ItemText>rate2a</ItemText>
-        </Ww>
-        <Ww>
-          <count>14</count>
-          <WinNumber>1</WinNumber>
-          <ItemText>rate3a</ItemText>
-        </Ww>
-        <Ww>
-          <count>15</count>
-          <WinNumber>1</WinNumber>
-          <ItemText>rate4a</ItemText>
-        </Ww>
-        <Ww>
-          <count>16</count>
-          <WinNumber>1</WinNumber>
-          <ItemText>rate5a</ItemText>
-        </Ww>
-        <Ww>
-          <count>17</count>
-          <WinNumber>1</WinNumber>
-          <ItemText>rate6a</ItemText>
-        </Ww>
-        <Ww>
-          <count>18</count>
-          <WinNumber>1</WinNumber>
-          <ItemText>rate7a</ItemText>
-        </Ww>
-        <Ww>
-          <count>19</count>
-          <WinNumber>1</WinNumber>
-          <ItemText>rate8a</ItemText>
-        </Ww>
-        <Ww>
-          <count>20</count>
-          <WinNumber>1</WinNumber>
-          <ItemText>rate9a</ItemText>
-        </Ww>
-        <Ww>
-          <count>21</count>
-          <WinNumber>1</WinNumber>
-          <ItemText>rate10a</ItemText>
-        </Ww>
-        <Ww>
-          <count>22</count>
-          <WinNumber>1</WinNumber>
-          <ItemText>rate11a</ItemText>
-        </Ww>
-        <Ww>
-          <count>23</count>
-          <WinNumber>1</WinNumber>
-          <ItemText>rate12a</ItemText>
-        </Ww>
-        <Ww>
-          <count>24</count>
-          <WinNumber>1</WinNumber>
-          <ItemText>Const_BusComm_TX_BUFF_LEN</ItemText>
-        </Ww>
-        <Ww>
-          <count>25</count>
-          <WinNumber>1</WinNumber>
-          <ItemText>CapComm_CapCommData,0x0A</ItemText>
-        </Ww>
-        <Ww>
-          <count>26</count>
-          <WinNumber>1</WinNumber>
-          <ItemText>CapComm_TxData</ItemText>
-        </Ww>
-        <Ww>
-          <count>27</count>
-          <WinNumber>1</WinNumber>
-          <ItemText>CapComm_RxData,0x10</ItemText>
-        </Ww>
-        <Ww>
-          <count>28</count>
-          <WinNumber>1</WinNumber>
-          <ItemText>Referee_RefereeData</ItemText>
-        </Ww>
-        <Ww>
-          <count>29</count>
-          <WinNumber>1</WinNumber>
-          <ItemText>BusComm_BusCommData</ItemText>
-        </Ww>
-        <Ww>
-          <count>30</count>
-          <WinNumber>1</WinNumber>
-          <ItemText>GimbalPitch_gimbalPitchMotorParamArmor</ItemText>
-        </Ww>
-        <Ww>
-          <count>31</count>
-          <WinNumber>1</WinNumber>
-          <ItemText>MiniPC_MiniPCContrlData</ItemText>
-        </Ww>
-        <Ww>
-          <count>32</count>
-          <WinNumber>1</WinNumber>
-          <ItemText>Cap_ControlState</ItemText>
-        </Ww>
-        <Ww>
-          <count>33</count>
-          <WinNumber>1</WinNumber>
-          <ItemText>Sen_basisValue</ItemText>
-        </Ww>
-        <Ww>
-          <count>34</count>
-          <WinNumber>1</WinNumber>
-          <ItemText>CurrentDAC</ItemText>
-        </Ww>
-        <Ww>
-          <count>35</count>
-          <WinNumber>1</WinNumber>
-          <ItemText>CapComm_CapCommData</ItemText>
+          <ItemText>ref_cvkf_pitch_angle</ItemText>
         </Ww>
       </WatchWindow1>
       <WatchWindow2>
@@ -414,7 +230,52 @@
         <Ww>
           <count>6</count>
           <WinNumber>2</WinNumber>
-          <ItemText>\\Infantry_Momentum\../Core/Src/Gimbal_Control/gim_miniPC_ctrl.c\MiniPC_MiniPCContrlData.cvkf_pitch</ItemText>
+          <ItemText>after_predict_yaw,0x0A</ItemText>
+        </Ww>
+        <Ww>
+          <count>7</count>
+          <WinNumber>2</WinNumber>
+          <ItemText>after_predict_pitch,0x0A</ItemText>
+        </Ww>
+        <Ww>
+          <count>8</count>
+          <WinNumber>2</WinNumber>
+          <ItemText>\\Infantry_Momentum\../Core/Src/Gimbal_Control/gim_miniPC_ctrl.c\after_predict_yaw</ItemText>
+        </Ww>
+        <Ww>
+          <count>9</count>
+          <WinNumber>2</WinNumber>
+          <ItemText>debug_pitch_offset,0x0A</ItemText>
+        </Ww>
+        <Ww>
+          <count>10</count>
+          <WinNumber>2</WinNumber>
+          <ItemText>Const_Shooter15mpers</ItemText>
+        </Ww>
+        <Ww>
+          <count>11</count>
+          <WinNumber>2</WinNumber>
+          <ItemText>Const_Shooter18mpers</ItemText>
+        </Ww>
+        <Ww>
+          <count>12</count>
+          <WinNumber>2</WinNumber>
+          <ItemText>Const_Shooter30mpers</ItemText>
+        </Ww>
+        <Ww>
+          <count>13</count>
+          <WinNumber>2</WinNumber>
+          <ItemText>debug_pitch_offset</ItemText>
+        </Ww>
+        <Ww>
+          <count>14</count>
+          <WinNumber>2</WinNumber>
+          <ItemText>debug_yaw_offset</ItemText>
+        </Ww>
+        <Ww>
+          <count>15</count>
+          <WinNumber>2</WinNumber>
+          <ItemText>MAX_SPEED_KF</ItemText>
         </Ww>
       </WatchWindow2>
       <Tracepoint>
@@ -448,8 +309,20 @@
       </DebugFlag>
       <LintExecutable></LintExecutable>
       <LintConfigFile></LintConfigFile>
+      <bLintAuto>0</bLintAuto>
+      <bAutoGenD>0</bAutoGenD>
+      <LntExFlags>0</LntExFlags>
+      <pMisraName></pMisraName>
+      <pszMrule></pszMrule>
+      <pSingCmds></pSingCmds>
+      <pMultCmds></pMultCmds>
+      <pMisraNamep></pMisraNamep>
+      <pszMrulep></pszMrulep>
+      <pSingCmdsp></pSingCmdsp>
+      <pMultCmdsp></pMultCmdsp>
       <DebugDescription>
         <Enable>1</Enable>
+        <EnableFlashSeq>0</EnableFlashSeq>
         <EnableLog>0</EnableLog>
         <Protocol>2</Protocol>
         <DbgClock>10000000</DbgClock>
@@ -468,7 +341,6 @@
       <FileNumber>1</FileNumber>
       <FileType>2</FileType>
       <tvExp>0</tvExp>
-      <Focus>1</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>startup_stm32f405xx.s</PathWithFileName>
@@ -487,48 +359,8 @@
     <File>
       <GroupNumber>2</GroupNumber>
       <FileNumber>2</FileNumber>
-      <FileType>5</FileType>
-      <tvExp>0</tvExp>
-      <Focus>1</Focus>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <bDave2>0</bDave2>
-      <PathWithFileName>..\Core\Inc\configure.h</PathWithFileName>
-      <FilenameWithoutPath>configure.h</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
-    </File>
-    <File>
-      <GroupNumber>2</GroupNumber>
-      <FileNumber>3</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>1</Focus>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <bDave2>0</bDave2>
-      <PathWithFileName>../Core/Src/main.c</PathWithFileName>
-      <FilenameWithoutPath>main.c</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
-    </File>
-    <File>
-      <GroupNumber>2</GroupNumber>
-      <FileNumber>4</FileNumber>
-      <FileType>1</FileType>
-      <tvExp>0</tvExp>
-      <Focus>1</Focus>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <bDave2>0</bDave2>
-      <PathWithFileName>../Core/Src/gpio.c</PathWithFileName>
-      <FilenameWithoutPath>gpio.c</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
-    </File>
-    <File>
-      <GroupNumber>2</GroupNumber>
-      <FileNumber>5</FileNumber>
-      <FileType>1</FileType>
-      <tvExp>0</tvExp>
-      <Focus>1</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>../Core/Src/freertos.c</PathWithFileName>
@@ -538,10 +370,45 @@
     </File>
     <File>
       <GroupNumber>2</GroupNumber>
+      <FileNumber>3</FileNumber>
+      <FileType>5</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\Core\Inc\configure.h</PathWithFileName>
+      <FilenameWithoutPath>configure.h</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>2</GroupNumber>
+      <FileNumber>4</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>../Core/Src/main.c</PathWithFileName>
+      <FilenameWithoutPath>main.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>2</GroupNumber>
+      <FileNumber>5</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>../Core/Src/gpio.c</PathWithFileName>
+      <FilenameWithoutPath>gpio.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>2</GroupNumber>
       <FileNumber>6</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>1</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>../Core/Src/adc.c</PathWithFileName>
@@ -554,7 +421,6 @@
       <FileNumber>7</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>1</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>../Core/Src/can.c</PathWithFileName>
@@ -567,7 +433,6 @@
       <FileNumber>8</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>1</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>../Core/Src/dac.c</PathWithFileName>
@@ -580,7 +445,6 @@
       <FileNumber>9</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>1</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>../Core/Src/dma.c</PathWithFileName>
@@ -593,7 +457,6 @@
       <FileNumber>10</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>1</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>../Core/Src/tim.c</PathWithFileName>
@@ -606,7 +469,6 @@
       <FileNumber>11</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>1</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>../Core/Src/usart.c</PathWithFileName>
@@ -619,7 +481,6 @@
       <FileNumber>12</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>1</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>../Core/Src/stm32f4xx_it.c</PathWithFileName>
@@ -632,7 +493,6 @@
       <FileNumber>13</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>1</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>../Core/Src/stm32f4xx_hal_msp.c</PathWithFileName>
@@ -645,7 +505,6 @@
       <FileNumber>14</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>1</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>../Core/Src/stm32f4xx_hal_timebase_tim.c</PathWithFileName>
@@ -666,7 +525,6 @@
       <FileNumber>15</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>1</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_adc.c</PathWithFileName>
@@ -679,7 +537,6 @@
       <FileNumber>16</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>1</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_adc_ex.c</PathWithFileName>
@@ -692,7 +549,6 @@
       <FileNumber>17</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>1</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c</PathWithFileName>
@@ -705,7 +561,6 @@
       <FileNumber>18</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>1</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c</PathWithFileName>
@@ -718,7 +573,6 @@
       <FileNumber>19</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>1</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.c</PathWithFileName>
@@ -731,7 +585,6 @@
       <FileNumber>20</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>1</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c</PathWithFileName>
@@ -744,7 +597,6 @@
       <FileNumber>21</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>1</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ramfunc.c</PathWithFileName>
@@ -757,7 +609,6 @@
       <FileNumber>22</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>1</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c</PathWithFileName>
@@ -770,7 +621,6 @@
       <FileNumber>23</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>1</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.c</PathWithFileName>
@@ -783,7 +633,6 @@
       <FileNumber>24</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>1</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c</PathWithFileName>
@@ -796,7 +645,6 @@
       <FileNumber>25</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>1</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c</PathWithFileName>
@@ -809,7 +657,6 @@
       <FileNumber>26</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>1</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c</PathWithFileName>
@@ -822,7 +669,6 @@
       <FileNumber>27</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>1</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c</PathWithFileName>
@@ -835,7 +681,6 @@
       <FileNumber>28</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>1</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c</PathWithFileName>
@@ -848,7 +693,6 @@
       <FileNumber>29</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>1</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_exti.c</PathWithFileName>
@@ -861,7 +705,6 @@
       <FileNumber>30</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>1</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_can.c</PathWithFileName>
@@ -874,7 +717,6 @@
       <FileNumber>31</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>1</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dac.c</PathWithFileName>
@@ -887,7 +729,6 @@
       <FileNumber>32</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>1</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dac_ex.c</PathWithFileName>
@@ -900,7 +741,6 @@
       <FileNumber>33</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>1</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.c</PathWithFileName>
@@ -913,7 +753,6 @@
       <FileNumber>34</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>1</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.c</PathWithFileName>
@@ -926,7 +765,6 @@
       <FileNumber>35</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>1</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c</PathWithFileName>
@@ -947,7 +785,6 @@
       <FileNumber>36</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>1</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>../Core/Src/system_stm32f4xx.c</PathWithFileName>
@@ -960,7 +797,6 @@
       <FileNumber>37</FileNumber>
       <FileType>4</FileType>
       <tvExp>0</tvExp>
-      <Focus>1</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\Drivers\CMSIS\arm_cortexM4lf_math.lib</PathWithFileName>
@@ -981,7 +817,6 @@
       <FileNumber>38</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>1</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>../Middlewares/Third_Party/FreeRTOS/Source/croutine.c</PathWithFileName>
@@ -994,7 +829,6 @@
       <FileNumber>39</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>1</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>../Middlewares/Third_Party/FreeRTOS/Source/event_groups.c</PathWithFileName>
@@ -1007,7 +841,6 @@
       <FileNumber>40</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>1</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>../Middlewares/Third_Party/FreeRTOS/Source/list.c</PathWithFileName>
@@ -1020,7 +853,6 @@
       <FileNumber>41</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>1</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>../Middlewares/Third_Party/FreeRTOS/Source/queue.c</PathWithFileName>
@@ -1033,7 +865,6 @@
       <FileNumber>42</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>1</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>../Middlewares/Third_Party/FreeRTOS/Source/stream_buffer.c</PathWithFileName>
@@ -1046,7 +877,6 @@
       <FileNumber>43</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>1</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>../Middlewares/Third_Party/FreeRTOS/Source/tasks.c</PathWithFileName>
@@ -1059,7 +889,6 @@
       <FileNumber>44</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>1</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>../Middlewares/Third_Party/FreeRTOS/Source/timers.c</PathWithFileName>
@@ -1072,7 +901,6 @@
       <FileNumber>45</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>1</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c</PathWithFileName>
@@ -1085,7 +913,6 @@
       <FileNumber>46</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>1</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>../Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c</PathWithFileName>
@@ -1098,7 +925,6 @@
       <FileNumber>47</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>1</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F/port.c</PathWithFileName>
@@ -1119,7 +945,6 @@
       <FileNumber>48</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>1</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\Core\Src\Utility\can_util.c</PathWithFileName>
@@ -1132,7 +957,6 @@
       <FileNumber>49</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>1</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\Core\Src\Utility\uart_util.c</PathWithFileName>
@@ -1145,7 +969,6 @@
       <FileNumber>50</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>1</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\Core\Src\Utility\pwm_util.c</PathWithFileName>
@@ -1158,7 +981,6 @@
       <FileNumber>51</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>1</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\Core\Src\Utility\gpio_util.c</PathWithFileName>
@@ -1171,7 +993,6 @@
       <FileNumber>52</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>1</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\Core\Src\Utility\adc_util.c</PathWithFileName>
@@ -1184,7 +1005,6 @@
       <FileNumber>53</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>1</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\Core\Src\Utility\dac_util.c</PathWithFileName>
@@ -1205,7 +1025,6 @@
       <FileNumber>54</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>1</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\Core\Src\Peripheral\imu_periph.c</PathWithFileName>
@@ -1218,7 +1037,6 @@
       <FileNumber>55</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>1</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\Core\Src\Peripheral\led_periph.c</PathWithFileName>
@@ -1231,7 +1049,6 @@
       <FileNumber>56</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>1</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\Core\Src\Peripheral\miniPC_periph.c</PathWithFileName>
@@ -1244,7 +1061,6 @@
       <FileNumber>57</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>1</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\Core\Src\Peripheral\motor_periph.c</PathWithFileName>
@@ -1257,7 +1073,6 @@
       <FileNumber>58</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>1</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\Core\Src\Peripheral\referee_periph.c</PathWithFileName>
@@ -1270,7 +1085,6 @@
       <FileNumber>59</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>1</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\Core\Src\Peripheral\remote_periph.c</PathWithFileName>
@@ -1283,7 +1097,6 @@
       <FileNumber>60</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>1</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\Core\Src\Peripheral\sensor_periph.c</PathWithFileName>
@@ -1296,7 +1109,6 @@
       <FileNumber>61</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>1</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\Core\Src\Peripheral\servo_periph.c</PathWithFileName>
@@ -1317,7 +1129,6 @@
       <FileNumber>62</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>1</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\Core\Src\Library\const_lib.c</PathWithFileName>
@@ -1330,11 +1141,10 @@
       <FileNumber>63</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>1</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\Core\Src\Library\log_lib.c</PathWithFileName>
-      <FilenameWithoutPath>log_lib.c</FilenameWithoutPath>
+      <PathWithFileName>..\Core\Src\Library\buff_lib.c</PathWithFileName>
+      <FilenameWithoutPath>buff_lib.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -1343,11 +1153,10 @@
       <FileNumber>64</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>1</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\Core\Src\Library\buff_lib.c</PathWithFileName>
-      <FilenameWithoutPath>buff_lib.c</FilenameWithoutPath>
+      <PathWithFileName>..\Core\Src\Library\log_lib.c</PathWithFileName>
+      <FilenameWithoutPath>log_lib.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -1364,7 +1173,6 @@
       <FileNumber>65</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>1</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\Core\Src\Algorithm\pid_alg.c</PathWithFileName>
@@ -1377,7 +1185,6 @@
       <FileNumber>66</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>1</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\Core\Src\Algorithm\math_alg.c</PathWithFileName>
@@ -1390,7 +1197,6 @@
       <FileNumber>67</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>1</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\Core\Src\Algorithm\filter_alg.c</PathWithFileName>
@@ -1403,7 +1209,6 @@
       <FileNumber>68</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>1</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\Core\Src\Algorithm\kalman_alg.c</PathWithFileName>
@@ -1424,7 +1229,6 @@
       <FileNumber>69</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>1</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\Core\Src\Algorithm\crc_alg.c</PathWithFileName>
@@ -1437,7 +1241,6 @@
       <FileNumber>70</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>1</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\Core\Src\Gimbal_Control\gim_gimbal_ctrl.c</PathWithFileName>
@@ -1450,7 +1253,6 @@
       <FileNumber>71</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>1</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\Core\Src\Gimbal_Control\gim_miniPC_ctrl.c</PathWithFileName>
@@ -1463,7 +1265,6 @@
       <FileNumber>72</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>1</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\Core\Src\Gimbal_Control\gim_remote_ctrl.c</PathWithFileName>
@@ -1476,7 +1277,6 @@
       <FileNumber>73</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>1</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\Core\Src\Gimbal_Control\gim_shoot_ctrl.c</PathWithFileName>
@@ -1497,7 +1297,6 @@
       <FileNumber>74</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>1</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\Core\Src\Chassis_Control\cha_gimbal_ctrl.c</PathWithFileName>
@@ -1510,7 +1309,6 @@
       <FileNumber>75</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>1</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\Core\Src\Chassis_Control\cha_chassis_ctrl.c</PathWithFileName>
@@ -1523,7 +1321,6 @@
       <FileNumber>76</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>1</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\Core\Src\Chassis_Control\cha_power_ctrl.c</PathWithFileName>
@@ -1536,7 +1333,6 @@
       <FileNumber>77</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>1</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\Core\Src\Chassis_Control\cha_referee_ctrl.c</PathWithFileName>
@@ -1557,7 +1353,6 @@
       <FileNumber>78</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>1</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\Core\Src\SuperCap_Control\supercap_ctrl.c</PathWithFileName>
@@ -1570,7 +1365,6 @@
       <FileNumber>79</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>1</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\Core\Src\SuperCap_Control\supercap_comm.c</PathWithFileName>
@@ -1591,7 +1385,6 @@
       <FileNumber>80</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>1</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\Core\Src\Common_Contrrol\buscomm_ctrl.c</PathWithFileName>
@@ -1604,7 +1397,6 @@
       <FileNumber>81</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>1</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\Core\Src\Common_Contrrol\init_ctrl.c</PathWithFileName>
@@ -1617,7 +1409,6 @@
       <FileNumber>82</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>1</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\Core\Src\Common_Contrrol\watchdog_ctrl.c</PathWithFileName>
@@ -1630,7 +1421,6 @@
       <FileNumber>83</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>1</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\Core\Src\Common_Contrrol\buscomm_cmd.c</PathWithFileName>

@@ -10,7 +10,6 @@
 
 #include "math_alg.h"
 
-
 /**
   * @brief      Calculation differential (only two order)(To be improved)
   * @param      arr :point to be differential value
@@ -33,7 +32,6 @@ float Math_Differential(float arr[], uint8_t order) {
     return value;
 }
 
-
 /**
   * @brief      Initialize ramp function control parameters
   * @param      pparam: Pointer to ramp function control parameter
@@ -49,7 +47,6 @@ void Math_InitSlopeParam(Math_SlopeParamTypeDef* pparam, float acc, float dec) {
     pparam->dec = dec;
 }
 
-
 /**
   * @brief      Calculate slope function setting
   * @param      rawref: Current setting value
@@ -59,20 +56,17 @@ void Math_InitSlopeParam(Math_SlopeParamTypeDef* pparam, float acc, float dec) {
   */
 float Math_CalcSlopeRef(float rawref, float targetref, Math_SlopeParamTypeDef* pparam) {
     float newref;
-    if (pparam->acc == 0 | pparam->dec == 0) 
+    if (pparam->acc == 0 | pparam->dec == 0)
         return targetref;
     if (rawref < targetref - pparam->acc) {
         newref = rawref + pparam->acc;
-    }
-    else if (rawref > targetref + pparam->dec) {
+    } else if (rawref > targetref + pparam->dec) {
         newref = rawref - pparam->dec;
-    }
-    else {
+    } else {
         newref = targetref;
     }
     return newref;
 }
-
 
 /**
   * @brief      Calculate the absolute slope function setting value
@@ -83,27 +77,22 @@ float Math_CalcSlopeRef(float rawref, float targetref, Math_SlopeParamTypeDef* p
   */
 float Math_CalcAbsSlopeRef(float rawref, float targetref, Math_SlopeParamTypeDef* pparam) {
     float newref;
-    if (pparam->acc == 0 | pparam->dec == 0) 
+    if (pparam->acc == 0 | pparam->dec == 0)
         return targetref;
     if (rawref > 0) {
         if (rawref < targetref - pparam->acc) {
             newref = rawref + pparam->acc;
-        }
-        else if (rawref > targetref + pparam->dec) {
+        } else if (rawref > targetref + pparam->dec) {
             newref = rawref - pparam->dec;
-        }
-        else {
+        } else {
             newref = targetref;
         }
-    }
-    else {
+    } else {
         if (rawref > targetref + pparam->acc) {
             newref = rawref - pparam->acc;
-        }
-        else if (rawref < targetref - pparam->dec) {
+        } else if (rawref < targetref - pparam->dec) {
             newref = rawref + pparam->dec;
-        }
-        else {
+        } else {
             newref = targetref;
         }
     }

@@ -8,7 +8,6 @@
  *  LastEditTime : 2021-05-08 11:41:17
  */
 
-
 #ifndef GIM_REMOTE_CTRL_H
 #define GIM_REMOTE_CTRL_H
 
@@ -20,15 +19,15 @@ extern "C" {
 
 #if __FN_IF_ENABLE(__FN_CTRL_REMOTE)
 
-#include "remote_periph.h"
 #include "imu_periph.h"
-#include "servo_periph.h"
 #include "math_alg.h"
+#include "remote_periph.h"
+#include "servo_periph.h"
 
 typedef enum {
-    Chassis_OFF     = 0,
-    Chassis_ON      = 1
-}Chassis_ChassisStateEnum;
+    Chassis_OFF = 0,
+    Chassis_ON = 1
+} Chassis_ChassisStateEnum;
 
 typedef struct {
     uint8_t pending;

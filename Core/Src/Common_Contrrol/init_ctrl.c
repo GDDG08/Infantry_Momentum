@@ -20,13 +20,13 @@
 #include "servo_periph.h"
 
 #include "cha_chassis_ctrl.h"
-#include "cha_power_ctrl.h"
 #include "cha_gimbal_ctrl.h"
+#include "cha_power_ctrl.h"
 #include "cha_referee_ctrl.h"
 
 #include "gim_gimbal_ctrl.h"
-#include "gim_remote_ctrl.h"
 #include "gim_miniPC_ctrl.h"
+#include "gim_remote_ctrl.h"
 #include "gim_shoot_ctrl.h"
 
 #include "supercap_ctrl.h"
@@ -38,16 +38,14 @@
 
 #include "supercap_comm.h"
 
-
 /**
   * @brief      Initialize all peripherals
   * @param      NULL
   * @retval     NULL
   */
 void Init_InitAll() {
-    
 #if __FN_IF_ENABLE(__FN_SUPER_CAP)
-    
+
     Sen_Init();
     DAC_Init();
     /* basis periph init    */
@@ -56,13 +54,12 @@ void Init_InitAll() {
     Cap_Init();
     /* control function init    */
 
-    
 #endif
 
 #if __FN_IF_ENABLE(__FN_INFANTRY_GIMBAL)
     LED_InitAllLEDs();
     Servo_InitAllServos();
-    
+
     IMU_InitIMU();
     MiniPC_InitMiniPC();
 
@@ -74,10 +71,10 @@ void Init_InitAll() {
     Gimbal_Init_Offset();
     Shooter_InitShooter();
     MiniPC_InitControl();
-    
+
     Remote_InitRemote();
     Remotr_RemotrControlInit();
-    
+
 #endif
 
 #if __FN_IF_ENABLE(__FN_INFANTRY_CHASSIS)
@@ -90,14 +87,12 @@ void Init_InitAll() {
     CapComm_InitCapComm();
     Can_InitFilterAndStart(&hcan1);
     Can_InitFilterAndStart(&hcan2);
-    
+
     Chassis_InitChassis();
     Power_InitPower();
     GimbalYaw_InitGimbalYaw();
 #endif
-
 }
-
 
 /**
   * @brief      Initialization delay
@@ -105,5 +100,4 @@ void Init_InitAll() {
   * @retval     NULL
   */
 void Init_MainLoop() {
-   
 }

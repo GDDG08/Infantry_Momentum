@@ -37,17 +37,17 @@ extern "C" {
 #define __FN_BOARD_TYPE_SUPERCAP    3
 
 
-#define __FN_INFANTRY_TYPE          2
+#define __FN_INFANTRY_TYPE          4
 
-#if (__FN_INFANTRY_TYPE == 1)
+#if (__FN_INFANTRY_TYPE == 4)
     #define __FN_INFANTRY_NEW_ONE       __FN_ENABLE
 #endif
 
-#if (__FN_INFANTRY_TYPE == 2)
+#if (__FN_INFANTRY_TYPE == 3)
     #define __FN_INFANTRY_NEW_TWO       __FN_ENABLE
 #endif
 
-#if (__FN_INFANTRY_TYPE == 3)
+#if (__FN_INFANTRY_TYPE == 5)
     #define __FN_INFANTRY_NEW_THREE     __FN_ENABLE
 #endif
 

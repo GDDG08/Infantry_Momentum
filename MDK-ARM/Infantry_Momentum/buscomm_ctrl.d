@@ -4,8 +4,8 @@ infantry_momentum\buscomm_ctrl.o: ../Core/Inc/configure.h
 infantry_momentum\buscomm_ctrl.o: ../Core/Inc/Code_specification.h
 infantry_momentum\buscomm_ctrl.o: ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h
 infantry_momentum\buscomm_ctrl.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h
-infantry_momentum\buscomm_ctrl.o: G:\Keil_5\ARM\ARMCC\Bin\..\include\stddef.h
-infantry_momentum\buscomm_ctrl.o: G:\Keil_5\ARM\ARMCC\Bin\..\include\stdint.h
+infantry_momentum\buscomm_ctrl.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
+infantry_momentum\buscomm_ctrl.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 infantry_momentum\buscomm_ctrl.o: ../Core/Inc/FreeRTOSConfig.h
 infantry_momentum\buscomm_ctrl.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h
 infantry_momentum\buscomm_ctrl.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h
@@ -58,12 +58,12 @@ infantry_momentum\buscomm_ctrl.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_
 infantry_momentum\buscomm_ctrl.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h
 infantry_momentum\buscomm_ctrl.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h
 infantry_momentum\buscomm_ctrl.o: ..\Core\Inc\Library\buff_lib.h
-infantry_momentum\buscomm_ctrl.o: G:\Keil_5\ARM\ARMCC\Bin\..\include\string.h
+infantry_momentum\buscomm_ctrl.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 infantry_momentum\buscomm_ctrl.o: ..\Core\Inc\Algorithm\filter_alg.h
 infantry_momentum\buscomm_ctrl.o: ..\Core\Inc\Algorithm\math_alg.h
 infantry_momentum\buscomm_ctrl.o: ..\Drivers\CMSIS\DSP\Include\arm_math.h
 infantry_momentum\buscomm_ctrl.o: ../Drivers/CMSIS/Include/core_cm4.h
-infantry_momentum\buscomm_ctrl.o: G:\Keil_5\ARM\ARMCC\Bin\..\include\math.h
+infantry_momentum\buscomm_ctrl.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
 infantry_momentum\buscomm_ctrl.o: ..\Core\Inc\Common_Contrrol\buscomm_cmd.h
 infantry_momentum\buscomm_ctrl.o: ../Core/Inc/configure.h
 infantry_momentum\buscomm_ctrl.o: ../Core/Inc/Code_specification.h
@@ -93,4 +93,4 @@ infantry_momentum\buscomm_ctrl.o: ../Core/Inc/usart.h
 infantry_momentum\buscomm_ctrl.o: ..\Core\Inc\Peripheral\remote_periph.h
 infantry_momentum\buscomm_ctrl.o: ../Core/Inc/configure.h
 infantry_momentum\buscomm_ctrl.o: ../Core/Inc/Code_specification.h
-infantry_momentum\buscomm_ctrl.o: G:\Keil_5\ARM\ARMCC\Bin\..\include\stdlib.h
+infantry_momentum\buscomm_ctrl.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h

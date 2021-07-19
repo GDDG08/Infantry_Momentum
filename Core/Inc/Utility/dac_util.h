@@ -13,25 +13,25 @@
 
 #ifdef __cplusplus
 extern "C" {
-#endif 
+#endif
 
-#include"configure.h"
+#include "configure.h"
 
 #if __FN_IF_ENABLE(__FN_UTIL_DAC)
 
 #include "dac.h"
 
 typedef enum {
-        DAC_OFF = 0,
-        DAC_ON  = 1
+    DAC_OFF = 0,
+    DAC_ON = 1
 } DAC_DACStateEnum;
 
 typedef struct {
-        DAC_DACStateEnum state;
-        DAC_HandleTypeDef* hdac;
-        uint32_t ch;
-        float value;
-        uint32_t DAC_DecodeValue;
+    DAC_DACStateEnum state;
+    DAC_HandleTypeDef* hdac;
+    uint32_t ch;
+    float value;
+    uint32_t DAC_DecodeValue;
 } DAC_DACHandleTypeDef;
 
 extern DAC_DACHandleTypeDef CurrentDAC;

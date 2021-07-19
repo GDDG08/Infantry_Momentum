@@ -13,15 +13,15 @@
 
 #ifdef __cplusplus
 extern "C" {
-#endif 
+#endif
 
 #include "configure.h"
 
 #if __FN_IF_ENABLE(__FN_CTRL_POWER)
 
+#include "math_alg.h"
 #include "motor_periph.h"
 #include "referee_periph.h"
-#include "math_alg.h"
 
 typedef struct {
     float power_limit;
@@ -40,8 +40,8 @@ typedef struct {
 } Power_DataTypeDef;
 
 typedef enum {
-    POWER_UNLIMITED     = 0X00,
-    POWER_LIMIT         = 0X01,
+    POWER_UNLIMITED = 0X00,
+    POWER_LIMIT = 0X01,
 } Power_ControlModeMnum;
 
 extern Power_DataTypeDef Power_data;

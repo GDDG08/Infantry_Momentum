@@ -13,10 +13,10 @@
 
 #ifdef __cplusplus
 extern "C" {
-#endif 
+#endif
 
-#include "stm32f4xx_hal.h"
 #include "math_alg.h"
+#include "stm32f4xx_hal.h"
 
 #define MAX_LENGTH 10
 
@@ -37,15 +37,15 @@ typedef struct {
 } Filter_WindowTypeDef;
 
 typedef struct {
-	double ybuf[4];
-	double xbuf[4];
-	float filted_val;
+    double ybuf[4];
+    double xbuf[4];
+    float filted_val;
 } Filter_Bessel_TypeDef;
 
-void Filter_LowPassInit(float param, Filter_LowPassParamTypeDef *pparam);
-float Filter_LowPass(float val, Filter_LowPassParamTypeDef *fparam, Filter_LowPassTypeDef *filt);
-float Filter_Aver(float val, Filter_WindowTypeDef *filt);
-float Filter_Bessel(float val, Filter_Bessel_TypeDef *filt);
+void Filter_LowPassInit(float param, Filter_LowPassParamTypeDef* pparam);
+float Filter_LowPass(float val, Filter_LowPassParamTypeDef* fparam, Filter_LowPassTypeDef* filt);
+float Filter_Aver(float val, Filter_WindowTypeDef* filt);
+float Filter_Bessel(float val, Filter_Bessel_TypeDef* filt);
 
 #ifdef __cplusplus
 }

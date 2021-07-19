@@ -8,7 +8,6 @@
  *  LastEditTime : 2021-05-14 12:26:32
  */
 
-
 #ifndef SUPERCAP_COMM_H
 #define SUPERCAP_COMM_H
 
@@ -20,27 +19,29 @@ extern "C" {
 
 #if __FN_IF_ENABLE(__FN_SUPER_CAP_COMM)
 
-#include "uart_util.h"
-#include "sensor_periph.h"
 #include "buscomm_ctrl.h"
+#include "sensor_periph.h"
 #include "supercap_ctrl.h"
+#include "uart_util.h"
 
 typedef enum {
-    CapComm_STATE_NULL      = 0,
+    CapComm_STATE_NULL = 0,
     CapComm_STATE_CONNECTED = 1,
-    CapComm_STATE_LOST      = 2,
-    CapComm_STATE_ERROR     = 3,
-    CapComm_STATE_PENDING   = 4
+    CapComm_STATE_LOST = 2,
+    CapComm_STATE_ERROR = 3,
+    CapComm_STATE_PENDING = 4
 } CapComm_CapCommStateEnum;
 
 typedef struct {
     CapComm_CapCommStateEnum state;
     uint32_t last_update_time;
-    
+    uint32_t power_path_change_flag;
+
     // Chassis up stream
-    uint8_t power_limit;            // Super capacitor state
+    uint8_t power_limit;  // Super capacitor state
     uint8_t cap_charge_mode;
-    uint8_t cap_mode;               // Capacitance mode
+    uint8_t cap_mode;  // Capacitance mode
+    uint8_t last_cap_mode;
 
     // Super Cap up stream
     uint8_t cap_state;

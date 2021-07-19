@@ -8,24 +8,23 @@
  *  LastEditTime : 2021-05-08 10:57:05
  */
 
-
 #ifndef LED_PERIPH_H
 #define LED_PERIPH_H
 
 #ifdef __cplusplus
 extern "C" {
-#endif 
+#endif
 
 #include "configure.h"
 
 #if __FN_IF_ENABLE(__FN_PERIPH_LED)
 
-#include "stm32f4xx_hal.h"
 #include "gpio.h"
+#include "stm32f4xx_hal.h"
 
 typedef enum {
     LED_OFF = 0,
-    LED_ON  = 1
+    LED_ON = 1
 } LED_LEDStateEnum;
 
 typedef struct {
@@ -40,7 +39,6 @@ void LED_InitLED(LED_LEDTypeDef* led, GPIO_TypeDef* port, uint16_t pin, GPIO_Pin
 LED_LEDStateEnum LED_GetLEDState(LED_LEDTypeDef* led);
 void LED_SetLEDState(LED_LEDTypeDef* led, LED_LEDStateEnum state);
 void LED_AllOff(void);
-
 
 #endif
 

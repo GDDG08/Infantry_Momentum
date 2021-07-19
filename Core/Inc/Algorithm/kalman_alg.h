@@ -3,7 +3,7 @@
  * 
  *  file         : kalman_alg.h
  *  Description  : This file contains the kalman filter algorithm
- *  LastEditors  : 动情丶卜灬动心
+ *  LastEditors  : ???????
  *  Date         : 2021-05-04 20:53:31
  *  LastEditTime : 2021-05-16 20:05:58
  */
@@ -15,69 +15,73 @@
 extern "C" {
 #endif
 
-#include "stm32f4xx_hal.h"
 #include "math_alg.h"
-
+#include "stm32f4xx_hal.h"
 
 typedef struct {
-	// KF Filter Parameters:
-	mat KF_A, KF_C;
-	mat XLast, Xpre, Xopt;
-	mat PLast, Ppre, Popt;
-	mat Q, R;
-	mat Kf;
+    // KF Filter Parameters:
+    mat KF_A, KF_C;
+    mat XLast, Xpre, Xopt;
+    mat PLast, Ppre, Popt;
+    mat Q, R;
+    mat Kf;
 
-	// Cycle Time
-	//float cvkf_t;
-	float angle, angle_p_err,max_speed;
-	int switch_mode,
-		measure_mode,
-		targer_change;
+    // Cycle Time
+    //float cvkf_t;
+    float angle, angle_p_err, max_speed, min_speed;
+    int switch_mode,
+        measure_mode,
+        targer_change;
 } Kalman_CVKalmanTypeDef;
 
 typedef struct {
-	float KF_A[4], KF_C[2];
-	float XLast[2], Xpre[2], Xopt[2];
-	float PLast[4], Ppre[4], Popt[4];
-	float Q[4], R[1];
-	float Kf[2];
-	//float cvkf_t;
+    float KF_A[4], KF_C[2];
+    float XLast[2], Xpre[2], Xopt[2];
+    float PLast[4], Ppre[4], Popt[4];
+    float Q[4], R[1];
+    float Kf[2];
+    //float cvkf_t;
 } Kalman_CVKalmanInitDataTypeDef;
 
-typedef struct{
-	int total; 	                //总开关:整个功能是否运行
-	int basicprocess;	        //CVKF是否进行计算(没有输出)
-	int predict;                //使用模型进行预测作为瞄准数据
-	int limit;	                //是否开启对状态变量进行限幅
-	int jumpjudge;	            //跳变异常数据检测
-	int offset;
-	int output;                 //将输出加入云台控制中
+typedef struct {
+    int total;         //???:????????
+    int basicprocess;  //CVKF??????(????)
+    int predict;       //??????????????
+    int limit;         //?????????????
+    int jumpjudge;     //????????
+    int offset;
+    int output;                 //??????????
+    int lowfilter;              //?????????????
+    int dead_domain_delta_ref;  //?????????????
+
 } Kalman_CVKalmanControlTypeDef;
 
 //CVKF Inner Function:
-void Kalman_CVKalmanInitYawParam(Kalman_CVKalmanInitDataTypeDef *cvkf_data, float KF_T, float init_angle_yaw);
-void Kalman_CVKalmanInitPitchParam(Kalman_CVKalmanInitDataTypeDef *cvkf_data, float KF_T, float init_angle_pitch);
-void Kalman_CVInitSetYaw(Kalman_CVKalmanInitDataTypeDef *cvkf_data, float init_angle_yaw);
-void Kalman_CVInitSetPitch(Kalman_CVKalmanInitDataTypeDef *cvkf_data, float init_angle_pitch);
-void Kalman_CVKalmanInit(Kalman_CVKalmanTypeDef *cvkf, Kalman_CVKalmanInitDataTypeDef *cvkf_data);
-void Kalman_CV_Limit_Speed(Kalman_CVKalmanTypeDef * cvkf);
-void Kalman_TurnOffCVKF(Kalman_CVKalmanTypeDef *cvkf);
-void Kalman_TurnOnCVKF(Kalman_CVKalmanTypeDef *cvkf);
-void Kalman_TurnOnMeasureUpdate(Kalman_CVKalmanTypeDef *cvkf);
-void Kalman_CalcPredict(Kalman_CVKalmanTypeDef *cvkf);
-void Kalman_CalcKFGain(Kalman_CVKalmanTypeDef *cvkf);
-void Kalman_CalcCorrect(Kalman_CVKalmanTypeDef * cvkf, float angle);
-void Kalman_Update(Kalman_CVKalmanTypeDef *cvkf);
-void Kalman_MeasurementCalc(Kalman_CVKalmanTypeDef *cvkf, float angle);
-void Kalman_NonMeasurementCalc(Kalman_CVKalmanTypeDef * cvkf);
-float Kalman_Predict_nT(Kalman_CVKalmanTypeDef * cvkf, int nT);
+void Kalman_CVKalmanInitYawParam(Kalman_CVKalmanInitDataTypeDef* cvkf_data, float KF_T, float init_angle_yaw, float init_angle_speed);
+//void Kalman_CVKalmanInitYawParam(Kalman_CVKalmanInitDataTypeDef *cvkf_data, float KF_T, float init_angle_yaw);
+void Kalman_CVKalmanInitPitchParam(Kalman_CVKalmanInitDataTypeDef* cvkf_data, float KF_T, float init_angle_pitch, float init_angle_speed);
+//void Kalman_CVKalmanInitPitchParam(Kalman_CVKalmanInitDataTypeDef *cvkf_data, float KF_T, float init_angle_pitch);
+void Kalman_CVInitSetYaw(Kalman_CVKalmanInitDataTypeDef* cvkf_data, float init_angle_yaw, float init_angle_speed);
+void Kalman_CVInitSetPitch(Kalman_CVKalmanInitDataTypeDef* cvkf_data, float init_angle_pitch, float init_angle_speed);
+void Kalman_CVKalmanInit(Kalman_CVKalmanTypeDef* cvkf, Kalman_CVKalmanInitDataTypeDef* cvkf_data);
+void Kalman_CV_Limit_Speed(Kalman_CVKalmanTypeDef* cvkf);
+float Kalman_CV_CalInitSpeed(float delta_err_angle);
 
-float Kalman_JudgeChange(Kalman_CVKalmanTypeDef *cvkf, float m_angle);
+void Kalman_TurnOffCVKF(Kalman_CVKalmanTypeDef* cvkf);
+void Kalman_TurnOnCVKF(Kalman_CVKalmanTypeDef* cvkf);
+void Kalman_TurnOnMeasureUpdate(Kalman_CVKalmanTypeDef* cvkf);
+void Kalman_CalcPredict(Kalman_CVKalmanTypeDef* cvkf);
+void Kalman_CalcKFGain(Kalman_CVKalmanTypeDef* cvkf);
+void Kalman_CalcCorrect(Kalman_CVKalmanTypeDef* cvkf, float angle);
+void Kalman_Update(Kalman_CVKalmanTypeDef* cvkf);
+void Kalman_MeasurementCalc(Kalman_CVKalmanTypeDef* cvkf, float angle);
+void Kalman_NonMeasurementCalc(Kalman_CVKalmanTypeDef* cvkf);
+float Kalman_Predict_nT(Kalman_CVKalmanTypeDef* cvkf, int nT);
 
+float Kalman_JudgeChange(Kalman_CVKalmanTypeDef* cvkf, float m_angle);
 
 #ifdef __cplusplus
 }
 #endif
 
 #endif
-

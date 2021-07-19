@@ -8,7 +8,6 @@
  *  LastEditTime : 2021-05-08 10:56:28
  */
 
-
 #ifndef IMU_PERIPH_H
 #define IMU_PERIPH_H
 
@@ -22,11 +21,11 @@ extern "C" {
 #include "uart_util.h"
 
 typedef enum {
-    IMU_STATE_NULL      = 0,
+    IMU_STATE_NULL = 0,
     IMU_STATE_CONNECTED = 1,
-    IMU_STATE_LOST      = 2,
-    IMU_STATE_ERROR     = 3,
-    IMU_STATE_PENDING   = 4
+    IMU_STATE_LOST = 2,
+    IMU_STATE_ERROR = 3,
+    IMU_STATE_PENDING = 4
 } IMU_IMUStateEnum;
 
 typedef struct {
@@ -53,7 +52,7 @@ typedef struct {
 
     float yaw_angle_offset;
     float pitch_angle_offset;
-    
+
     IMU_IMUStateEnum state;
     uint32_t last_update_time;
 } IMU_IMUDataTypeDef;
@@ -64,11 +63,10 @@ extern const uint16_t Const_IMU_IMU_OFFLINE_TIME;
 IMU_IMUDataTypeDef* IMU_GetIMUDataPtr(void);
 void IMU_InitIMU(void);
 uint8_t IMU_IsIMUOffline(IMU_IMUDataTypeDef* imu);
-void IMU_InitAngelOffset(IMU_IMUDataTypeDef *imu);
+void IMU_InitAngelOffset(IMU_IMUDataTypeDef* imu);
 void IMU_RXCallback(UART_HandleTypeDef* huart);
 void IMU_ResetIMUData(IMU_IMUDataTypeDef* imu);
 void IMU_DecodeIMUData(IMU_IMUDataTypeDef* imu, uint8_t* buff, int rxdatalen);
-
 
 #endif
 

@@ -12,8 +12,8 @@
 
 #if __FN_IF_ENABLE(__FN_SUPER_CAP)
 
-#include "supercap_comm.h"
 #include "const_lib.h"
+#include "supercap_comm.h"
 
 CAP_ControlValueTypeDef Cap_ControlState;
 
@@ -22,15 +22,14 @@ CAP_ControlValueTypeDef Cap_ControlState;
  * @param      cur: cap charge current (ma)
  * @retval     NULL
  */
-void Cap_SetChargeCurrent(float cur)
-{
+void Cap_SetChargeCurrent(float cur) {
     /* Set charging dead zone */
     float current = cur;
-    if (current <= 0.1f) 
+    if (current <= 0.1f)
         DAC_SetCurrent(0.0f);
-    else if (current >= 5.0f) 
+    else if (current >= 5.0f)
         DAC_SetCurrent(5.0f);
-    else 
+    else
         DAC_SetCurrent(current);
 }
 
@@ -40,12 +39,12 @@ void Cap_SetChargeCurrent(float cur)
  * @retval     NULL
  */
 void Cap_Init() {
-    CAP_ControlValueTypeDef *capvalue = Cap_GetCapControlPtr();
+    CAP_ControlValueTypeDef* capvalue = Cap_GetCapControlPtr();
 
     Cap_SetChargeCurrent(0);
     /* set init current */
     GPIO_Close(CAP);
-	
+
     GPIO_Close(BUCK);
     GPIO_Close(BOOST);
     /* set init state   */
@@ -63,7 +62,7 @@ void Cap_Init() {
   * @param      NULL
   * @retval     Pointer to cap control data object
   */
-CAP_ControlValueTypeDef *Cap_GetCapControlPtr() {
+CAP_ControlValueTypeDef* Cap_GetCapControlPtr() {
     return &Cap_ControlState;
 }
 
@@ -73,19 +72,17 @@ CAP_ControlValueTypeDef *Cap_GetCapControlPtr() {
  * @retval     NULL
  */
 void Cap_JudgeCapState() {
-    Sen_CAPBasisValueTypeDef *basisvalue = Sen_GetBasisDataPtr();
-    CAP_ControlValueTypeDef *capvalue = Cap_GetCapControlPtr();
-    CapComm_CapCommDataTypeDef *capcomm = CapComm_GetCapDataPty();
+    Sen_CAPBasisValueTypeDef* basisvalue = Sen_GetBasisDataPtr();
+    CAP_ControlValueTypeDef* capvalue = Cap_GetCapControlPtr();
+    CapComm_CapCommDataTypeDef* capcomm = CapComm_GetCapDataPty();
 
     if (basisvalue->CapVoltage < Cap_MinVoltage && basisvalue->CapVoltage >= 0) {
         capvalue->cap_state = CAP_MODE_OFF;
         capcomm->cap_state = SUPERCAP_MODE_OFF;
-    }
-    else if (basisvalue->CapVoltage <= 0) {
+    } else if (basisvalue->CapVoltage <= 0) {
         capvalue->cap_state = CAP_MODE_ERROR;
         capcomm->cap_state = SUPERCAP_MODE_ERROR;
-    }
-    else if (basisvalue->CapVoltage >= Cap_AvailableVoltage) {
+    } else if (basisvalue->CapVoltage >= Cap_AvailableVoltage) {
         capvalue->cap_state = CAP_MODE_ON;
         capcomm->cap_state = SUPERCAP_MODE_ON;
     }
@@ -97,29 +94,32 @@ void Cap_JudgeCapState() {
  * @retval     NULL
  */
 void Cap_CapCharge() {
-    CAP_ControlValueTypeDef *capvalue = Cap_GetCapControlPtr();
-    Sen_PowerValueTypeDef *sendata = Sen_GetPowerDataPtr();
-    Sen_CAPBasisValueTypeDef *basisdata = Sen_GetBasisDataPtr();
-    CapComm_CapCommDataTypeDef *capcomm = CapComm_GetCapDataPty();
+    CAP_ControlValueTypeDef* capvalue = Cap_GetCapControlPtr();
+    Sen_PowerValueTypeDef* sendata = Sen_GetPowerDataPtr();
+    Sen_CAPBasisValueTypeDef* basisdata = Sen_GetBasisDataPtr();
+    CapComm_CapCommDataTypeDef* capcomm = CapComm_GetCapDataPty();
+
+    if (HAL_GetTick() - capcomm->power_path_change_flag <= 2000) {
+        GPIO_Close(BUCK);
+        Cap_SetChargeCurrent(0);
+        return;
+    }
 
     if (capcomm->cap_charge_mode == SUPERCAP_UNCHARGE) {
         GPIO_Close(BUCK);
         Cap_SetChargeCurrent(0);
-    }
-    else if (capcomm->cap_charge_mode == SUPERCAP_CHARGE) {
+    } else if (capcomm->cap_charge_mode == SUPERCAP_CHARGE) {
         capvalue->power_limit = 0.7f * (float)capcomm->power_limit;
 
         if (basisdata->CapVoltage <= 10.0f) {
             Cap_SetChargeCurrent(4.0f);
-        }
-				else if (basisdata->CapVoltage >= 25.2f) {
-						Cap_SetChargeCurrent(0);
-				}
-        else {
+        } else if (basisdata->CapVoltage >= 26.5f) {
+            Cap_SetChargeCurrent(0);
+        } else {
             Cap_SetChargeCurrent(capvalue->power_limit / basisdata->CapVoltage);
         }
         GPIO_Open(BUCK);
-     }
+    }
 }
 
 /**
@@ -127,9 +127,8 @@ void Cap_CapCharge() {
  * @param      NULL
  * @retval     success 1 fail 0
  */
-void Cap_ChangePowerPath(POWER_PathEnum path)
-{
-    CAP_ControlValueTypeDef *capvalue = Cap_GetCapControlPtr();
+void Cap_ChangePowerPath(POWER_PathEnum path) {
+    CAP_ControlValueTypeDef* capvalue = Cap_GetCapControlPtr();
 
     if (path == Power_PATH_CAP && (capvalue->cap_state == CAP_MODE_ERROR || capvalue->cap_state == CAP_MODE_OFF))
         GPIO_Close(CAP);
@@ -137,7 +136,6 @@ void Cap_ChangePowerPath(POWER_PathEnum path)
         GPIO_Open(CAP);
     else if (path == Power_PATH_REFEREE)
         GPIO_Close(CAP);
-
 }
 
 /**
@@ -145,9 +143,8 @@ void Cap_ChangePowerPath(POWER_PathEnum path)
  * @param      NULL
  * @retval     NULL
  */
-void Cap_Control()
-{
-    CapComm_CapCommDataTypeDef *capcomm = CapComm_GetCapDataPty();
+void Cap_Control() {
+    CapComm_CapCommDataTypeDef* capcomm = CapComm_GetCapDataPty();
 
     Sensor_Decode();
     // sensor data decode

@@ -18,59 +18,63 @@ extern "C" {
 #include "configure.h"
 
 #if __FN_IF_ENABLE(__FN_CTRL_SHOOTER)
- 
 
-#include "pid_alg.h"
+#include "gpio_util.h"
 #include "math_alg.h"
 #include "motor_periph.h"
-#include "gpio_util.h"
+#include "pid_alg.h"
 
 typedef enum {
-	Feeder_NULL             = 0u,
-	Feeder_SINGLE           = 1u,
-	Feeder_FAST_CONTINUE    = 2u,
-    Feeder_LOW_CONTINUE     = 3u,
-	Feeder_LOCKED_ROTOR     = 4u,
-    Feeder_REFEREE          = 5u,
-  	Feeder_FINISH           = 6u      
-}Shoot_FeederModeEnum;
+    Feeder_NULL = 0u,
+    Feeder_SINGLE = 1u,
+    Feeder_FAST_CONTINUE = 2u,
+    Feeder_LOW_CONTINUE = 3u,
+    Feeder_LOCKED_ROTOR = 4u,
+    Feeder_REFEREE = 5u,
+    Feeder_FINISH = 6u
+} Shoot_FeederModeEnum;
 
 typedef enum {
-	Shoot_NULL		= 0u,
-	Shoot_FAST  	= 1u,
-	Shoot_SLOW 	    = 2u,
-	Shoot_REFEREE 	= 3u 
-}Shoot_ShooterModeEnum;
+    Shoot_NULL = 0u,
+    Shoot_FAST = 1u,
+    Shoot_SLOW = 2u,
+    Shoot_REFEREE = 3u
+} Shoot_ShooterModeEnum;
 
 typedef struct {
-	float left_shoot_speed;
-  	float right_shoot_speed;
-  	float feeder_shoot_speed;
-}Shoot_ShootSpeedTypeDef; 
+    float left_shoot_speed;
+    float right_shoot_speed;
+    float feeder_shoot_speed;
+} Shoot_ShootSpeedTypeDef;
 
 typedef struct {
     float shooter_17mm_cooling_heat;
     float shooter_17mm_cooling_rate;
     float shooter_17mm_heat_remain;
-    
+
     float current_speed;
     uint8_t current_pidnum;
-    
+
     uint16_t heat_tracking;
-}Shooter_HeatCtrlTypeDef;
+} Shooter_HeatCtrlTypeDef;
 
 typedef struct {
     uint8_t shooter_control;
     Shoot_ShooterModeEnum shooter_mode;
-	Shoot_FeederModeEnum feeder_mode;
+    Shoot_FeederModeEnum feeder_mode;
     Shoot_FeederModeEnum last_feeder_mode;
-    
+
     uint8_t single_shoot_done;
 
-	Shoot_ShootSpeedTypeDef shoot_speed;
+    Shoot_ShootSpeedTypeDef shoot_speed;
 
+    float shooter_speed_15mpers;
+    float shooter_speed_18mpers;
+    float shooter_speed_30mpers;
+
+    float shooter_speed_offset;  // for sb referee system;
     Shooter_HeatCtrlTypeDef heat_ctrl;
-}Shoot_StatusTypeDef;
+} Shoot_StatusTypeDef;
 
 extern Motor_MotorParamTypeDef Shooter_shooterLeftMotorParam;
 extern Motor_MotorParamTypeDef Shooter_shooterRightMotorParam;
@@ -93,12 +97,14 @@ void Shooter_ForceChangeFeederMode(Shoot_FeederModeEnum mode);
 void Shooter_FeederMotorLockedJudge(void);
 void Shooter_MotorLockedHandle(void);
 void Shooter_AngleCorrect(void);
+void Shooter_RealAngleCorrect(void);
 uint8_t Shooter_HeatCtrl(void);
 void Shooter_ShootControl(void);
 void Shooter_SingleShootCtrl(void);
 void Shooter_SingleShootReset(void);
 void Shooter_FeederControl(void);
 void Shooter_ShooterMotorOutput(void);
+float* Shooter_GetRefereeSpeedPtr(void);
 
 #endif
 
