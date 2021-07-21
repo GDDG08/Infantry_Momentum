@@ -12,8 +12,8 @@
 
 #if __FN_IF_ENABLE(__FN_PERIPH_IMU)
 
-#include "const_lib.h"
 #include "crc_alg.h"
+#include "const_lib.h"
 
 const uint16_t Const_IMU_RX_BUFF_LEN = 20;
 const uint16_t Const_IMU_IMU_OFFLINE_TIME = 1000;

@@ -11,14 +11,14 @@
 #include "watchdog_ctrl.h"
 
 #include "buscomm_ctrl.h"
-#include "cha_chassis_ctrl.h"
-#include "cha_gimbal_ctrl.h"
-#include "imu_periph.h"
-#include "miniPC_periph.h"
-#include "motor_periph.h"
-#include "referee_periph.h"
-#include "remote_periph.h"
 #include "supercap_ctrl.h"
+#include "remote_periph.h"
+#include "referee_periph.h"
+#include "motor_periph.h"
+#include "miniPC_periph.h"
+#include "imu_periph.h"
+#include "cha_gimbal_ctrl.h"
+#include "cha_chassis_ctrl.h"
 
 void WatchDog_FeedDog() {
 #if __FN_IF_ENABLE(__FN_INFANTRY_CHASSIS)

@@ -19,9 +19,9 @@ extern "C" {
 
 #if __FN_IF_ENABLE(__FN_CTRL_CHASSIS)
 
-#include "math_alg.h"
 #include "motor_periph.h"
 #include "pid_alg.h"
+#include "math_alg.h"
 
 typedef enum {
     Chassis_MODE_NULL = 0,

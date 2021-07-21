@@ -12,10 +12,10 @@
 
 #if __FN_IF_ENABLE(__FN_CTRL_SHOOTER)
 
-#include "buscomm_ctrl.h"
-#include "const_lib.h"
-#include "gim_gimbal_ctrl.h"
 #include "gim_remote_ctrl.h"
+#include "buscomm_ctrl.h"
+#include "gim_gimbal_ctrl.h"
+#include "const_lib.h"
 
 Motor_MotorParamTypeDef Shooter_shooterLeftMotorParam;
 Motor_MotorParamTypeDef Shooter_shooterRightMotorParam;

@@ -19,9 +19,9 @@ extern "C" {
 
 #if __FN_IF_ENABLE(__FN_CTRL_POWER)
 
-#include "math_alg.h"
 #include "motor_periph.h"
 #include "referee_periph.h"
+#include "math_alg.h"
 
 typedef struct {
     float power_limit;

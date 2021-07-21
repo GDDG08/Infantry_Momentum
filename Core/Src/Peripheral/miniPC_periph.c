@@ -12,8 +12,8 @@
 
 #if __FN_IF_ENABLE(__FN_PERIPH_MINIPC)
 
-#include "buscomm_ctrl.h"
 #include "const_lib.h"
+#include "buscomm_ctrl.h"
 #include "gim_miniPC_ctrl.h"
 
 /*              Mini_PC control constant            */

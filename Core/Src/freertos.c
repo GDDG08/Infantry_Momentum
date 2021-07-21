@@ -20,25 +20,25 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "FreeRTOS.h"
-#include "cmsis_os.h"
-#include "main.h"
 #include "task.h"
+#include "main.h"
+#include "cmsis_os.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include "buscomm_ctrl.h"
-#include "cha_chassis_ctrl.h"
-#include "cha_gimbal_ctrl.h"
-#include "cha_power_ctrl.h"
-#include "cha_referee_ctrl.h"
 #include "configure.h"
 #include "gim_gimbal_ctrl.h"
 #include "gim_miniPC_ctrl.h"
-#include "gim_remote_ctrl.h"
 #include "gim_shoot_ctrl.h"
-#include "supercap_comm.h"
+#include "gim_remote_ctrl.h"
+#include "cha_referee_ctrl.h"
+#include "cha_chassis_ctrl.h"
+#include "cha_gimbal_ctrl.h"
+#include "cha_power_ctrl.h"
 #include "supercap_ctrl.h"
+#include "buscomm_ctrl.h"
 #include "watchdog_ctrl.h"
+#include "supercap_comm.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/

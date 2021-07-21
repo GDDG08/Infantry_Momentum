@@ -12,8 +12,8 @@
 
 #if __FN_IF_ENABLE(__FN_UTIL_CAN)
 
-#include "buscomm_ctrl.h"
 #include "motor_periph.h"
+#include "buscomm_ctrl.h"
 
 CAN_RxHeaderTypeDef Can_RxHeader;
 const uint16_t Const_Can_RX_BUFF_LEN = 200;

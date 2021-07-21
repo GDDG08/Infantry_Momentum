@@ -19,10 +19,10 @@ extern "C" {
 
 #if __FN_IF_ENABLE(__FN_SUPER_CAP_COMM)
 
-#include "buscomm_ctrl.h"
-#include "sensor_periph.h"
-#include "supercap_ctrl.h"
 #include "uart_util.h"
+#include "sensor_periph.h"
+#include "buscomm_ctrl.h"
+#include "supercap_ctrl.h"
 
 typedef enum {
     CapComm_STATE_NULL = 0,

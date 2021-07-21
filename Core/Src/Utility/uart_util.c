@@ -14,13 +14,13 @@
 
 #include "const_lib.h"
 
-#include "buscomm_ctrl.h"
-#include "imu_periph.h"
-#include "minipc_periph.h"
-#include "referee_periph.h"
 #include "remote_periph.h"
-#include "supercap_comm.h"
+#include "minipc_periph.h"
+#include "imu_periph.h"
+#include "referee_periph.h"
 #include "supercap_ctrl.h"
+#include "buscomm_ctrl.h"
+#include "supercap_comm.h"
 
 /********** VOLATILE USER CODE **********/
 

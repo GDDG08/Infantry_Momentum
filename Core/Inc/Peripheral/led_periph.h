@@ -19,8 +19,8 @@ extern "C" {
 
 #if __FN_IF_ENABLE(__FN_PERIPH_LED)
 
-#include "gpio.h"
 #include "stm32f4xx_hal.h"
+#include "gpio.h"
 
 typedef enum {
     LED_OFF = 0,

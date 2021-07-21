@@ -15,8 +15,8 @@
 #include "buscomm_ctrl.h"
 #include "const_lib.h"
 #include "gim_gimbal_ctrl.h"
-#include "gim_shoot_ctrl.h"
 #include "math_alg.h"
+#include "gim_shoot_ctrl.h"
 
 MiniPC_MiniPCContrlTypeDef MiniPC_MiniPCContrlData;
 

@@ -15,8 +15,8 @@
 extern "C" {
 #endif
 
-#include "math_alg.h"
 #include "stm32f4xx_hal.h"
+#include "math_alg.h"
 
 #define MAX_LENGTH 10
 

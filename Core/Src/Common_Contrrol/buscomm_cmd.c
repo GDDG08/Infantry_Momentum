@@ -15,8 +15,8 @@
 #if __FN_IF_ENABLE(__FN_INFANTRY_CHASSIS)
 #include "cha_chassis_ctrl.h"
 #include "cha_gimbal_ctrl.h"
-#include "cha_power_ctrl.h"
 #include "referee_periph.h"
+#include "cha_power_ctrl.h"
 #endif
 
 #if __FN_IF_ENABLE(__FN_INFANTRY_GIMBAL)

@@ -17,13 +17,13 @@ extern "C" {
 
 #include "configure.h"
 
-#include "FreeRTOS.h"
 #include "cmsis_os.h"
+#include "FreeRTOS.h"
 
-#include "buff_lib.h"
 #include "can_util.h"
-#include "filter_alg.h"
+#include "buff_lib.h"
 #include "string.h"
+#include "filter_alg.h"
 
 extern const uint8_t Const_BusComm_FRAME_HEADER_SOF;
 //      power limit mode

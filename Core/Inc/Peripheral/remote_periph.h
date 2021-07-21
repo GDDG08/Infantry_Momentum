@@ -18,8 +18,8 @@ extern "C" {
 #include "configure.h"
 #if __FN_IF_ENABLE(__FN_PERIPH_REMOTE)
 
-#include "stdlib.h"
 #include "uart_util.h"
+#include "stdlib.h"
 
 typedef enum {
     Remote_STATE_NULL = 0,

@@ -20,13 +20,13 @@
 #include "servo_periph.h"
 
 #include "cha_chassis_ctrl.h"
-#include "cha_gimbal_ctrl.h"
 #include "cha_power_ctrl.h"
+#include "cha_gimbal_ctrl.h"
 #include "cha_referee_ctrl.h"
 
 #include "gim_gimbal_ctrl.h"
-#include "gim_miniPC_ctrl.h"
 #include "gim_remote_ctrl.h"
+#include "gim_miniPC_ctrl.h"
 #include "gim_shoot_ctrl.h"
 
 #include "supercap_ctrl.h"

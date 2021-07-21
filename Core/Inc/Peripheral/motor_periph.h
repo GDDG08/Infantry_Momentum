@@ -19,10 +19,10 @@ extern "C" {
 #if __FN_IF_ENABLE(__FN_PERIPH_MOTOR)
 
 #include "can_util.h"
-#include "filter_alg.h"
-#include "math_alg.h"
-#include "pid_alg.h"
 #include "pwm_util.h"
+#include "pid_alg.h"
+#include "math_alg.h"
+#include "filter_alg.h"
 
 typedef enum {
     Motor_TYPE_NOT_CONNECTED = 0,

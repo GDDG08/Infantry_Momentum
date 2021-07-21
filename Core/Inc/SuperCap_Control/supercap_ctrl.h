@@ -19,10 +19,10 @@ extern "C" {
 
 #if __FN_IF_ENABLE(__FN_SUPER_CAP)
 
+#include "sensor_periph.h"
+#include "led_periph.h"
 #include "dac_util.h"
 #include "gpio_util.h"
-#include "led_periph.h"
-#include "sensor_periph.h"
 
 typedef enum {
     Power_PATH_NULL = 0,

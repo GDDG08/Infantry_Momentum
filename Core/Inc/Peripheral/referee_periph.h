@@ -18,9 +18,9 @@ extern "C" {
 #include "configure.h"
 #if __FN_IF_ENABLE(__FN_PERIPH_REFEREE)
 
+#include "uart_util.h"
 #include "crc_alg.h"
 #include "string.h"
-#include "uart_util.h"
 
 /********** START OF REFEREE CMD STRUCT DEFINITION **********/
 

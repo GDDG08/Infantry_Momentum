@@ -19,9 +19,9 @@ extern "C" {
 
 #if __FN_IF_ENABLE(__FN_CTRL_GIMBAL_YAW_CHA)
 
+#include "motor_periph.h"
 #include "filter_alg.h"
 #include "math_alg.h"
-#include "motor_periph.h"
 
 typedef enum {
     GimbalYaw_MODE_NULL = 0u,
@@ -48,10 +48,6 @@ typedef struct {
 
     Filter_LowPassParamTypeDef ref_fil_param;
     Filter_LowPassTypeDef ref_fil;
-
-    Filter_LowPassParamTypeDef fdb_fil_param;
-    Filter_LowPassTypeDef fdb_fil;
-
 } GimbalYaw_GimbalYawTypeDef;
 
 extern Motor_MotorParamTypeDef GimbalYaw_gimbalYawMotorParamBigEnergy;

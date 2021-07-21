@@ -19,10 +19,10 @@ extern "C" {
 
 #if __FN_IF_ENABLE(__FN_CTRL_MINIPC)
 
+#include "minipc_periph.h"
+#include "math_alg.h"
 #include "filter_alg.h"
 #include "kalman_alg.h"
-#include "math_alg.h"
-#include "minipc_periph.h"
 
 typedef enum {
     MiniPC_TARGET_LOST = 0u,

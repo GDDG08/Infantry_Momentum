@@ -13,8 +13,8 @@
 #if __FN_IF_ENABLE(__FN_CTRL_REMOTE)
 
 #include "buscomm_ctrl.h"
-#include "const_lib.h"
 #include "gim_gimbal_ctrl.h"
+#include "const_lib.h"
 #include "gim_miniPC_ctrl.h"
 #include "gim_shoot_ctrl.h"
 

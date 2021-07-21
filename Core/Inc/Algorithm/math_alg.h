@@ -15,8 +15,8 @@
 extern "C" {
 #endif
 
-#include "arm_math.h"
 #include "stm32f4xx_hal.h"
+#include "arm_math.h"
 
 #define mat arm_matrix_instance_f32
 #define mat_init arm_mat_init_f32

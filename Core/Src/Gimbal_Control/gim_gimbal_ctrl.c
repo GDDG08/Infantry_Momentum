@@ -12,11 +12,11 @@
 
 #if __FN_IF_ENABLE(__FN_CTRL_GIMBAL_GIM)
 
-#include "buscomm_ctrl.h"
 #include "const_lib.h"
-#include "gim_miniPC_ctrl.h"
 #include "gim_remote_ctrl.h"
 #include "gim_shoot_ctrl.h"
+#include "buscomm_ctrl.h"
+#include "gim_miniPC_ctrl.h"
 
 Motor_MotorParamTypeDef GimbalPitch_gimbalPitchMotorParamBigEnergy;
 Motor_MotorParamTypeDef GimbalPitch_gimbalPitchMotorParamSmallEnergy;

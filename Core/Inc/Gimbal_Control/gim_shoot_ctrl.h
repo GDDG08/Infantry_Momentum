@@ -19,10 +19,10 @@ extern "C" {
 
 #if __FN_IF_ENABLE(__FN_CTRL_SHOOTER)
 
-#include "gpio_util.h"
+#include "pid_alg.h"
 #include "math_alg.h"
 #include "motor_periph.h"
-#include "pid_alg.h"
+#include "gpio_util.h"
 
 typedef enum {
     Feeder_NULL = 0u,

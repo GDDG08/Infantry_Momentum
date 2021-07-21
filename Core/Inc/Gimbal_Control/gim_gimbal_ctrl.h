@@ -19,9 +19,9 @@ extern "C" {
 
 #if __FN_IF_ENABLE(__FN_CTRL_GIMBAL_GIM)
 
-#include "imu_periph.h"
-#include "motor_periph.h"
 #include "pid_alg.h"
+#include "motor_periph.h"
+#include "imu_periph.h"
 #include "remote_periph.h"
 
 typedef enum {

@@ -19,10 +19,10 @@ extern "C" {
 
 #if __FN_IF_ENABLE(__FN_CTRL_REMOTE)
 
-#include "imu_periph.h"
-#include "math_alg.h"
 #include "remote_periph.h"
+#include "imu_periph.h"
 #include "servo_periph.h"
+#include "math_alg.h"
 
 typedef enum {
     Chassis_OFF = 0,

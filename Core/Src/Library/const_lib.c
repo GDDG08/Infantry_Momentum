@@ -11,14 +11,14 @@
 #include "const_lib.h"
 
 #include "can.h"
-#include "cha_chassis_ctrl.h"
-#include "cha_gimbal_ctrl.h"
-#include "gim_gimbal_ctrl.h"
-#include "gim_shoot_ctrl.h"
-#include "motor_periph.h"
-#include "pid_alg.h"
-#include "supercap_ctrl.h"
 #include "usart.h"
+#include "motor_periph.h"
+#include "cha_chassis_ctrl.h"
+#include "supercap_ctrl.h"
+#include "pid_alg.h"
+#include "gim_gimbal_ctrl.h"
+#include "cha_gimbal_ctrl.h"
+#include "gim_shoot_ctrl.h"
 
 /*      Super Cap Const         */
 

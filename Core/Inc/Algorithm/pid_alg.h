@@ -17,8 +17,8 @@ extern "C" {
 
 #include "configure.h"
 
-#include "filter_alg.h"
 #include "math_alg.h"
+#include "filter_alg.h"
 #include "stddef.h"
 #include "string.h"
 

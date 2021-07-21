@@ -12,8 +12,8 @@
 
 #if __FN_IF_ENABLE(__FN_SUPER_CAP)
 
-#include "const_lib.h"
 #include "supercap_comm.h"
+#include "const_lib.h"
 
 CAP_ControlValueTypeDef Cap_ControlState;
 

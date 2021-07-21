@@ -19,8 +19,8 @@ extern "C" {
 
 #if __FN_IF_ENABLE(__FN_PERIPH_MINIPC)
 
-#include "buff_lib.h"
 #include "uart_util.h"
+#include "buff_lib.h"
 
 typedef enum {
     MiniPC_NULL = 0,
