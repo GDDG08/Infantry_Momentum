@@ -49,27 +49,9 @@ infantry_momentum\uart_util.o: ..\Drivers\CMSIS\DSP\Include\arm_math.h
 infantry_momentum\uart_util.o: ../Drivers/CMSIS/Include/core_cm4.h
 infantry_momentum\uart_util.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 infantry_momentum\uart_util.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
-infantry_momentum\uart_util.o: ..\Core\Inc\Peripheral\remote_periph.h
-infantry_momentum\uart_util.o: ../Core/Inc/configure.h
-infantry_momentum\uart_util.o: ../Core/Inc/Code_specification.h
-infantry_momentum\uart_util.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
-infantry_momentum\uart_util.o: ..\Core\Inc\Peripheral\minipc_periph.h
-infantry_momentum\uart_util.o: ../Core/Inc/configure.h
-infantry_momentum\uart_util.o: ../Core/Inc/Code_specification.h
-infantry_momentum\uart_util.o: ..\Core\Inc\Library\buff_lib.h
-infantry_momentum\uart_util.o: ..\Core\Inc\Peripheral\imu_periph.h
-infantry_momentum\uart_util.o: ../Core/Inc/configure.h
-infantry_momentum\uart_util.o: ../Core/Inc/Code_specification.h
-infantry_momentum\uart_util.o: ..\Core\Inc\Peripheral\referee_periph.h
-infantry_momentum\uart_util.o: ../Core/Inc/configure.h
-infantry_momentum\uart_util.o: ../Core/Inc/Code_specification.h
-infantry_momentum\uart_util.o: ..\Core\Inc\SuperCap_Control\supercap_ctrl.h
-infantry_momentum\uart_util.o: ../Core/Inc/configure.h
-infantry_momentum\uart_util.o: ../Core/Inc/Code_specification.h
 infantry_momentum\uart_util.o: ..\Core\Inc\Common_Contrrol\buscomm_ctrl.h
 infantry_momentum\uart_util.o: ../Core/Inc/configure.h
 infantry_momentum\uart_util.o: ../Core/Inc/Code_specification.h
-infantry_momentum\uart_util.o: ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h
 infantry_momentum\uart_util.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h
 infantry_momentum\uart_util.o: ../Core/Inc/FreeRTOSConfig.h
 infantry_momentum\uart_util.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h
@@ -77,16 +59,34 @@ infantry_momentum\uart_util.o: ../Middlewares/Third_Party/FreeRTOS/Source/includ
 infantry_momentum\uart_util.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/deprecated_definitions.h
 infantry_momentum\uart_util.o: ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F/portmacro.h
 infantry_momentum\uart_util.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/mpu_wrappers.h
+infantry_momentum\uart_util.o: ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h
 infantry_momentum\uart_util.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/task.h
 infantry_momentum\uart_util.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/list.h
 infantry_momentum\uart_util.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/timers.h
 infantry_momentum\uart_util.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/queue.h
 infantry_momentum\uart_util.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/semphr.h
 infantry_momentum\uart_util.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/event_groups.h
+infantry_momentum\uart_util.o: ..\Core\Inc\Library\buff_lib.h
 infantry_momentum\uart_util.o: ..\Core\Inc\Utility\can_util.h
 infantry_momentum\uart_util.o: ../Core/Inc/configure.h
 infantry_momentum\uart_util.o: ../Core/Inc/Code_specification.h
 infantry_momentum\uart_util.o: ../Core/Inc/can.h
+infantry_momentum\uart_util.o: ..\Core\Inc\Peripheral\imu_periph.h
+infantry_momentum\uart_util.o: ../Core/Inc/configure.h
+infantry_momentum\uart_util.o: ../Core/Inc/Code_specification.h
+infantry_momentum\uart_util.o: ..\Core\Inc\Peripheral\minipc_periph.h
+infantry_momentum\uart_util.o: ../Core/Inc/configure.h
+infantry_momentum\uart_util.o: ../Core/Inc/Code_specification.h
+infantry_momentum\uart_util.o: ..\Core\Inc\Peripheral\referee_periph.h
+infantry_momentum\uart_util.o: ../Core/Inc/configure.h
+infantry_momentum\uart_util.o: ../Core/Inc/Code_specification.h
+infantry_momentum\uart_util.o: ..\Core\Inc\Peripheral\remote_periph.h
+infantry_momentum\uart_util.o: ../Core/Inc/configure.h
+infantry_momentum\uart_util.o: ../Core/Inc/Code_specification.h
+infantry_momentum\uart_util.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 infantry_momentum\uart_util.o: ..\Core\Inc\SuperCap_Control\supercap_comm.h
+infantry_momentum\uart_util.o: ../Core/Inc/configure.h
+infantry_momentum\uart_util.o: ../Core/Inc/Code_specification.h
+infantry_momentum\uart_util.o: ..\Core\Inc\SuperCap_Control\supercap_ctrl.h
 infantry_momentum\uart_util.o: ../Core/Inc/configure.h
 infantry_momentum\uart_util.o: ../Core/Inc/Code_specification.h

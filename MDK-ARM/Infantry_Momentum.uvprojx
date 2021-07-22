@@ -844,11 +844,6 @@
               <FilePath>..\Core\Src\Common_Contrrol\buscomm_ctrl.c</FilePath>
             </File>
             <File>
-              <FileName>init_ctrl.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Core\Src\Common_Contrrol\init_ctrl.c</FilePath>
-            </File>
-            <File>
               <FileName>watchdog_ctrl.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\Core\Src\Common_Contrrol\watchdog_ctrl.c</FilePath>
@@ -857,6 +852,11 @@
               <FileName>buscomm_cmd.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\Core\Src\Common_Contrrol\buscomm_cmd.c</FilePath>
+            </File>
+            <File>
+              <FileName>init_ctrl.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Core\Src\Common_Contrrol\init_ctrl.c</FilePath>
             </File>
           </Files>
         </Group>

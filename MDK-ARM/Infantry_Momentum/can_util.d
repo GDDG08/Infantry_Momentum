@@ -40,26 +40,9 @@ infantry_momentum\can_util.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_
 infantry_momentum\can_util.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h
 infantry_momentum\can_util.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h
 infantry_momentum\can_util.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h
-infantry_momentum\can_util.o: ..\Core\Inc\Peripheral\motor_periph.h
-infantry_momentum\can_util.o: ../Core/Inc/configure.h
-infantry_momentum\can_util.o: ../Core/Inc/Code_specification.h
-infantry_momentum\can_util.o: ..\Core\Inc\Utility\pwm_util.h
-infantry_momentum\can_util.o: ../Core/Inc/configure.h
-infantry_momentum\can_util.o: ../Core/Inc/Code_specification.h
-infantry_momentum\can_util.o: ../Core/Inc/tim.h
-infantry_momentum\can_util.o: ..\Core\Inc\Algorithm\pid_alg.h
-infantry_momentum\can_util.o: ../Core/Inc/configure.h
-infantry_momentum\can_util.o: ../Core/Inc/Code_specification.h
-infantry_momentum\can_util.o: ..\Core\Inc\Algorithm\math_alg.h
-infantry_momentum\can_util.o: ..\Drivers\CMSIS\DSP\Include\arm_math.h
-infantry_momentum\can_util.o: ../Drivers/CMSIS/Include/core_cm4.h
-infantry_momentum\can_util.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
-infantry_momentum\can_util.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
-infantry_momentum\can_util.o: ..\Core\Inc\Algorithm\filter_alg.h
 infantry_momentum\can_util.o: ..\Core\Inc\Common_Contrrol\buscomm_ctrl.h
 infantry_momentum\can_util.o: ../Core/Inc/configure.h
 infantry_momentum\can_util.o: ../Core/Inc/Code_specification.h
-infantry_momentum\can_util.o: ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h
 infantry_momentum\can_util.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h
 infantry_momentum\can_util.o: ../Core/Inc/FreeRTOSConfig.h
 infantry_momentum\can_util.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h
@@ -67,6 +50,7 @@ infantry_momentum\can_util.o: ../Middlewares/Third_Party/FreeRTOS/Source/include
 infantry_momentum\can_util.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/deprecated_definitions.h
 infantry_momentum\can_util.o: ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F/portmacro.h
 infantry_momentum\can_util.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/mpu_wrappers.h
+infantry_momentum\can_util.o: ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h
 infantry_momentum\can_util.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/task.h
 infantry_momentum\can_util.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/list.h
 infantry_momentum\can_util.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/timers.h
@@ -74,3 +58,19 @@ infantry_momentum\can_util.o: ../Middlewares/Third_Party/FreeRTOS/Source/include
 infantry_momentum\can_util.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/semphr.h
 infantry_momentum\can_util.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/event_groups.h
 infantry_momentum\can_util.o: ..\Core\Inc\Library\buff_lib.h
+infantry_momentum\can_util.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+infantry_momentum\can_util.o: ..\Core\Inc\Algorithm\filter_alg.h
+infantry_momentum\can_util.o: ..\Core\Inc\Algorithm\math_alg.h
+infantry_momentum\can_util.o: ..\Drivers\CMSIS\DSP\Include\arm_math.h
+infantry_momentum\can_util.o: ../Drivers/CMSIS/Include/core_cm4.h
+infantry_momentum\can_util.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
+infantry_momentum\can_util.o: ..\Core\Inc\Peripheral\motor_periph.h
+infantry_momentum\can_util.o: ../Core/Inc/configure.h
+infantry_momentum\can_util.o: ../Core/Inc/Code_specification.h
+infantry_momentum\can_util.o: ..\Core\Inc\Algorithm\pid_alg.h
+infantry_momentum\can_util.o: ../Core/Inc/configure.h
+infantry_momentum\can_util.o: ../Core/Inc/Code_specification.h
+infantry_momentum\can_util.o: ..\Core\Inc\Utility\pwm_util.h
+infantry_momentum\can_util.o: ../Core/Inc/configure.h
+infantry_momentum\can_util.o: ../Core/Inc/Code_specification.h
+infantry_momentum\can_util.o: ../Core/Inc/tim.h

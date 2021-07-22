@@ -48,6 +48,10 @@ typedef struct {
 
     Filter_LowPassParamTypeDef ref_fil_param;
     Filter_LowPassTypeDef ref_fil;
+
+    Filter_LowPassParamTypeDef fdb_fil_param;
+    Filter_LowPassTypeDef fdb_fil;
+
 } GimbalYaw_GimbalYawTypeDef;
 
 extern Motor_MotorParamTypeDef GimbalYaw_gimbalYawMotorParamBigEnergy;

@@ -43,19 +43,19 @@ infantry_momentum\motor_periph.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_
 infantry_momentum\motor_periph.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h
 infantry_momentum\motor_periph.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h
 infantry_momentum\motor_periph.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h
-infantry_momentum\motor_periph.o: ..\Core\Inc\Utility\pwm_util.h
-infantry_momentum\motor_periph.o: ../Core/Inc/configure.h
-infantry_momentum\motor_periph.o: ../Core/Inc/Code_specification.h
-infantry_momentum\motor_periph.o: ../Core/Inc/tim.h
-infantry_momentum\motor_periph.o: ..\Core\Inc\Algorithm\pid_alg.h
-infantry_momentum\motor_periph.o: ../Core/Inc/configure.h
-infantry_momentum\motor_periph.o: ../Core/Inc/Code_specification.h
+infantry_momentum\motor_periph.o: ..\Core\Inc\Algorithm\filter_alg.h
 infantry_momentum\motor_periph.o: ..\Core\Inc\Algorithm\math_alg.h
 infantry_momentum\motor_periph.o: ..\Drivers\CMSIS\DSP\Include\arm_math.h
 infantry_momentum\motor_periph.o: ../Drivers/CMSIS/Include/core_cm4.h
 infantry_momentum\motor_periph.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 infantry_momentum\motor_periph.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
-infantry_momentum\motor_periph.o: ..\Core\Inc\Algorithm\filter_alg.h
+infantry_momentum\motor_periph.o: ..\Core\Inc\Algorithm\pid_alg.h
+infantry_momentum\motor_periph.o: ../Core/Inc/configure.h
+infantry_momentum\motor_periph.o: ../Core/Inc/Code_specification.h
+infantry_momentum\motor_periph.o: ..\Core\Inc\Utility\pwm_util.h
+infantry_momentum\motor_periph.o: ../Core/Inc/configure.h
+infantry_momentum\motor_periph.o: ../Core/Inc/Code_specification.h
+infantry_momentum\motor_periph.o: ../Core/Inc/tim.h
 infantry_momentum\motor_periph.o: ..\Core\Inc\Library\const_lib.h
 infantry_momentum\motor_periph.o: ../Core/Inc/configure.h
 infantry_momentum\motor_periph.o: ../Core/Inc/Code_specification.h

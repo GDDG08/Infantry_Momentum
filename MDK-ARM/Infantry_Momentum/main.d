@@ -36,6 +36,8 @@ infantry_momentum\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_
 infantry_momentum\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h
 infantry_momentum\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h
 infantry_momentum\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h
+infantry_momentum\main.o: ../Core/Inc/adc.h
+infantry_momentum\main.o: ../Core/Inc/can.h
 infantry_momentum\main.o: ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h
 infantry_momentum\main.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h
 infantry_momentum\main.o: ../Core/Inc/FreeRTOSConfig.h
@@ -50,13 +52,11 @@ infantry_momentum\main.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/tim
 infantry_momentum\main.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/queue.h
 infantry_momentum\main.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/semphr.h
 infantry_momentum\main.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/event_groups.h
-infantry_momentum\main.o: ../Core/Inc/adc.h
-infantry_momentum\main.o: ../Core/Inc/can.h
 infantry_momentum\main.o: ../Core/Inc/dac.h
 infantry_momentum\main.o: ../Core/Inc/dma.h
+infantry_momentum\main.o: ../Core/Inc/gpio.h
 infantry_momentum\main.o: ../Core/Inc/tim.h
 infantry_momentum\main.o: ../Core/Inc/usart.h
-infantry_momentum\main.o: ../Core/Inc/gpio.h
 infantry_momentum\main.o: ..\Core\Inc\Common_Contrrol\init_ctrl.h
 infantry_momentum\main.o: ../Core/Inc/configure.h
 infantry_momentum\main.o: ../Core/Inc/Code_specification.h

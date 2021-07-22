@@ -50,12 +50,6 @@ typedef struct {
     Filter_LowPassParamTypeDef pitch_fil_param;
     Filter_LowPassTypeDef pitch_fil;
 
-    Filter_LowPassParamTypeDef yaw_aim_param;
-    Filter_LowPassTypeDef yaw_aim;
-
-    Filter_LowPassParamTypeDef pitch_aim_param;
-    Filter_LowPassTypeDef pitch_aim;
-
     Kalman_CVKalmanInitDataTypeDef cvkf_data_yaw, cvkf_data_pitch;  //For CVKF:
     Kalman_CVKalmanTypeDef cvkf_yaw, cvkf_pitch;
     Kalman_CVKalmanControlTypeDef cvkf_control;  //For Debug: Start Which Function

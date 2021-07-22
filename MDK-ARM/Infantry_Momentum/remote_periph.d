@@ -2,6 +2,7 @@ infantry_momentum\remote_periph.o: ..\Core\Src\Peripheral\remote_periph.c
 infantry_momentum\remote_periph.o: ..\Core\Inc\Peripheral\remote_periph.h
 infantry_momentum\remote_periph.o: ../Core/Inc/configure.h
 infantry_momentum\remote_periph.o: ../Core/Inc/Code_specification.h
+infantry_momentum\remote_periph.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 infantry_momentum\remote_periph.o: ..\Core\Inc\Utility\uart_util.h
 infantry_momentum\remote_periph.o: ../Core/Inc/configure.h
 infantry_momentum\remote_periph.o: ../Core/Inc/Code_specification.h
@@ -43,7 +44,6 @@ infantry_momentum\remote_periph.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx
 infantry_momentum\remote_periph.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h
 infantry_momentum\remote_periph.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h
 infantry_momentum\remote_periph.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h
-infantry_momentum\remote_periph.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 infantry_momentum\remote_periph.o: ..\Core\Inc\Library\const_lib.h
 infantry_momentum\remote_periph.o: ../Core/Inc/configure.h
 infantry_momentum\remote_periph.o: ../Core/Inc/Code_specification.h

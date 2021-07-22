@@ -2,7 +2,7 @@ infantry_momentum\gim_remote_ctrl.o: ..\Core\Src\Gimbal_Control\gim_remote_ctrl.
 infantry_momentum\gim_remote_ctrl.o: ..\Core\Inc\Gimbal_Control\gim_remote_ctrl.h
 infantry_momentum\gim_remote_ctrl.o: ../Core/Inc/configure.h
 infantry_momentum\gim_remote_ctrl.o: ../Core/Inc/Code_specification.h
-infantry_momentum\gim_remote_ctrl.o: ..\Core\Inc\Peripheral\remote_periph.h
+infantry_momentum\gim_remote_ctrl.o: ..\Core\Inc\Peripheral\imu_periph.h
 infantry_momentum\gim_remote_ctrl.o: ../Core/Inc/configure.h
 infantry_momentum\gim_remote_ctrl.o: ../Core/Inc/Code_specification.h
 infantry_momentum\gim_remote_ctrl.o: ..\Core\Inc\Utility\uart_util.h
@@ -46,10 +46,15 @@ infantry_momentum\gim_remote_ctrl.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4
 infantry_momentum\gim_remote_ctrl.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h
 infantry_momentum\gim_remote_ctrl.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h
 infantry_momentum\gim_remote_ctrl.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h
-infantry_momentum\gim_remote_ctrl.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
-infantry_momentum\gim_remote_ctrl.o: ..\Core\Inc\Peripheral\imu_periph.h
+infantry_momentum\gim_remote_ctrl.o: ..\Core\Inc\Algorithm\math_alg.h
+infantry_momentum\gim_remote_ctrl.o: ..\Drivers\CMSIS\DSP\Include\arm_math.h
+infantry_momentum\gim_remote_ctrl.o: ../Drivers/CMSIS/Include/core_cm4.h
+infantry_momentum\gim_remote_ctrl.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+infantry_momentum\gim_remote_ctrl.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
+infantry_momentum\gim_remote_ctrl.o: ..\Core\Inc\Peripheral\remote_periph.h
 infantry_momentum\gim_remote_ctrl.o: ../Core/Inc/configure.h
 infantry_momentum\gim_remote_ctrl.o: ../Core/Inc/Code_specification.h
+infantry_momentum\gim_remote_ctrl.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 infantry_momentum\gim_remote_ctrl.o: ..\Core\Inc\Peripheral\servo_periph.h
 infantry_momentum\gim_remote_ctrl.o: ../Core/Inc/configure.h
 infantry_momentum\gim_remote_ctrl.o: ../Core/Inc/Code_specification.h
@@ -57,15 +62,9 @@ infantry_momentum\gim_remote_ctrl.o: ..\Core\Inc\Utility\pwm_util.h
 infantry_momentum\gim_remote_ctrl.o: ../Core/Inc/configure.h
 infantry_momentum\gim_remote_ctrl.o: ../Core/Inc/Code_specification.h
 infantry_momentum\gim_remote_ctrl.o: ../Core/Inc/tim.h
-infantry_momentum\gim_remote_ctrl.o: ..\Core\Inc\Algorithm\math_alg.h
-infantry_momentum\gim_remote_ctrl.o: ..\Drivers\CMSIS\DSP\Include\arm_math.h
-infantry_momentum\gim_remote_ctrl.o: ../Drivers/CMSIS/Include/core_cm4.h
-infantry_momentum\gim_remote_ctrl.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
-infantry_momentum\gim_remote_ctrl.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
 infantry_momentum\gim_remote_ctrl.o: ..\Core\Inc\Common_Contrrol\buscomm_ctrl.h
 infantry_momentum\gim_remote_ctrl.o: ../Core/Inc/configure.h
 infantry_momentum\gim_remote_ctrl.o: ../Core/Inc/Code_specification.h
-infantry_momentum\gim_remote_ctrl.o: ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h
 infantry_momentum\gim_remote_ctrl.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h
 infantry_momentum\gim_remote_ctrl.o: ../Core/Inc/FreeRTOSConfig.h
 infantry_momentum\gim_remote_ctrl.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h
@@ -73,37 +72,38 @@ infantry_momentum\gim_remote_ctrl.o: ../Middlewares/Third_Party/FreeRTOS/Source/
 infantry_momentum\gim_remote_ctrl.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/deprecated_definitions.h
 infantry_momentum\gim_remote_ctrl.o: ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F/portmacro.h
 infantry_momentum\gim_remote_ctrl.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/mpu_wrappers.h
+infantry_momentum\gim_remote_ctrl.o: ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h
 infantry_momentum\gim_remote_ctrl.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/task.h
 infantry_momentum\gim_remote_ctrl.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/list.h
 infantry_momentum\gim_remote_ctrl.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/timers.h
 infantry_momentum\gim_remote_ctrl.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/queue.h
 infantry_momentum\gim_remote_ctrl.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/semphr.h
 infantry_momentum\gim_remote_ctrl.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/event_groups.h
+infantry_momentum\gim_remote_ctrl.o: ..\Core\Inc\Library\buff_lib.h
 infantry_momentum\gim_remote_ctrl.o: ..\Core\Inc\Utility\can_util.h
 infantry_momentum\gim_remote_ctrl.o: ../Core/Inc/configure.h
 infantry_momentum\gim_remote_ctrl.o: ../Core/Inc/Code_specification.h
 infantry_momentum\gim_remote_ctrl.o: ../Core/Inc/can.h
-infantry_momentum\gim_remote_ctrl.o: ..\Core\Inc\Library\buff_lib.h
 infantry_momentum\gim_remote_ctrl.o: ..\Core\Inc\Algorithm\filter_alg.h
-infantry_momentum\gim_remote_ctrl.o: ..\Core\Inc\Gimbal_Control\gim_gimbal_ctrl.h
+infantry_momentum\gim_remote_ctrl.o: ..\Core\Inc\Library\const_lib.h
 infantry_momentum\gim_remote_ctrl.o: ../Core/Inc/configure.h
 infantry_momentum\gim_remote_ctrl.o: ../Core/Inc/Code_specification.h
-infantry_momentum\gim_remote_ctrl.o: ..\Core\Inc\Algorithm\pid_alg.h
+infantry_momentum\gim_remote_ctrl.o: ..\Core\Inc\Gimbal_Control\gim_gimbal_ctrl.h
 infantry_momentum\gim_remote_ctrl.o: ../Core/Inc/configure.h
 infantry_momentum\gim_remote_ctrl.o: ../Core/Inc/Code_specification.h
 infantry_momentum\gim_remote_ctrl.o: ..\Core\Inc\Peripheral\motor_periph.h
 infantry_momentum\gim_remote_ctrl.o: ../Core/Inc/configure.h
 infantry_momentum\gim_remote_ctrl.o: ../Core/Inc/Code_specification.h
-infantry_momentum\gim_remote_ctrl.o: ..\Core\Inc\Library\const_lib.h
+infantry_momentum\gim_remote_ctrl.o: ..\Core\Inc\Algorithm\pid_alg.h
 infantry_momentum\gim_remote_ctrl.o: ../Core/Inc/configure.h
 infantry_momentum\gim_remote_ctrl.o: ../Core/Inc/Code_specification.h
 infantry_momentum\gim_remote_ctrl.o: ..\Core\Inc\Gimbal_Control\gim_miniPC_ctrl.h
 infantry_momentum\gim_remote_ctrl.o: ../Core/Inc/configure.h
 infantry_momentum\gim_remote_ctrl.o: ../Core/Inc/Code_specification.h
+infantry_momentum\gim_remote_ctrl.o: ..\Core\Inc\Algorithm\kalman_alg.h
 infantry_momentum\gim_remote_ctrl.o: ..\Core\Inc\Peripheral\minipc_periph.h
 infantry_momentum\gim_remote_ctrl.o: ../Core/Inc/configure.h
 infantry_momentum\gim_remote_ctrl.o: ../Core/Inc/Code_specification.h
-infantry_momentum\gim_remote_ctrl.o: ..\Core\Inc\Algorithm\kalman_alg.h
 infantry_momentum\gim_remote_ctrl.o: ..\Core\Inc\Gimbal_Control\gim_shoot_ctrl.h
 infantry_momentum\gim_remote_ctrl.o: ../Core/Inc/configure.h
 infantry_momentum\gim_remote_ctrl.o: ../Core/Inc/Code_specification.h

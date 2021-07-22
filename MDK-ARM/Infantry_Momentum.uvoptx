@@ -936,7 +936,7 @@
 
   <Group>
     <GroupName>Utility</GroupName>
-    <tvExp>1</tvExp>
+    <tvExp>0</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
@@ -1016,7 +1016,7 @@
 
   <Group>
     <GroupName>Peripheral</GroupName>
-    <tvExp>1</tvExp>
+    <tvExp>0</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
@@ -1399,8 +1399,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\Core\Src\Common_Contrrol\init_ctrl.c</PathWithFileName>
-      <FilenameWithoutPath>init_ctrl.c</FilenameWithoutPath>
+      <PathWithFileName>..\Core\Src\Common_Contrrol\watchdog_ctrl.c</PathWithFileName>
+      <FilenameWithoutPath>watchdog_ctrl.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -1411,8 +1411,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\Core\Src\Common_Contrrol\watchdog_ctrl.c</PathWithFileName>
-      <FilenameWithoutPath>watchdog_ctrl.c</FilenameWithoutPath>
+      <PathWithFileName>..\Core\Src\Common_Contrrol\buscomm_cmd.c</PathWithFileName>
+      <FilenameWithoutPath>buscomm_cmd.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -1423,8 +1423,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\Core\Src\Common_Contrrol\buscomm_cmd.c</PathWithFileName>
-      <FilenameWithoutPath>buscomm_cmd.c</FilenameWithoutPath>
+      <PathWithFileName>..\Core\Src\Common_Contrrol\init_ctrl.c</PathWithFileName>
+      <FilenameWithoutPath>init_ctrl.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>

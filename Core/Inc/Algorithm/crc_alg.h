@@ -1,4 +1,4 @@
- /*
+/*
  *  Project      : Infantry_Momentum
  * 
  *  file         : crc_alg.h

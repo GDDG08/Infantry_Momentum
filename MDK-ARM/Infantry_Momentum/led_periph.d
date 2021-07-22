@@ -2,6 +2,8 @@ infantry_momentum\led_periph.o: ..\Core\Src\Peripheral\led_periph.c
 infantry_momentum\led_periph.o: ..\Core\Inc\Peripheral\led_periph.h
 infantry_momentum\led_periph.o: ../Core/Inc/configure.h
 infantry_momentum\led_periph.o: ../Core/Inc/Code_specification.h
+infantry_momentum\led_periph.o: ../Core/Inc/gpio.h
+infantry_momentum\led_periph.o: ../Core/Inc/main.h
 infantry_momentum\led_periph.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h
 infantry_momentum\led_periph.o: ../Core/Inc/stm32f4xx_hal_conf.h
 infantry_momentum\led_periph.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h
@@ -38,5 +40,3 @@ infantry_momentum\led_periph.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ha
 infantry_momentum\led_periph.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h
 infantry_momentum\led_periph.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h
 infantry_momentum\led_periph.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h
-infantry_momentum\led_periph.o: ../Core/Inc/gpio.h
-infantry_momentum\led_periph.o: ../Core/Inc/main.h

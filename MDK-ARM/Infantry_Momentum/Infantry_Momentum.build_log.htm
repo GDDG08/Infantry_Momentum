@@ -21,13 +21,38 @@ Target DLL:      Segger\JL2CM3.dll V2.99.40.0
 Dialog DLL:      TCM.DLL V1.53.0.0
  
 <h2>Project:</h2>
-D:\BITRobot\2021ROBOMASTER_Final\[5.23] Infantry_Momentum_Energy_V0.0\[5.22] Infantry_Momentum_only\MDK-ARM\Infantry_Momentum.uvprojx
-Project File Date:  07/10/2021
+D:\BITRobot\2021ROBOMASTER_Final\[5.23] Infantry_Momentum_Energy_V0.0_formated\[5.22] Infantry_Momentum_only\MDK-ARM\Infantry_Momentum.uvprojx
+Project File Date:  07/22/2021
 
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 7 (build 960)', folder: 'D:\Program Files\Keil_v5\ARM\ARMCC\Bin'
 Build target 'Infantry_Momentum'
-"Infantry_Momentum\Infantry_Momentum.axf" - 0 Error(s), 0 Warning(s).
+compiling math_alg.c...
+../Drivers/CMSIS/Include/core_cm4.h(81): error:  #35: #error directive: "Compiler generates FPU instructions for a device without an FPU (check __FPU_PRESENT)"
+        #error "Compiler generates FPU instructions for a device without an FPU (check __FPU_PRESENT)"
+..\Core\Src\Algorithm\math_alg.c: 0 warnings, 1 error
+compiling filter_alg.c...
+../Drivers/CMSIS/Include/core_cm4.h(81): error:  #35: #error directive: "Compiler generates FPU instructions for a device without an FPU (check __FPU_PRESENT)"
+        #error "Compiler generates FPU instructions for a device without an FPU (check __FPU_PRESENT)"
+..\Core\Src\Algorithm\filter_alg.c: 0 warnings, 1 error
+compiling pid_alg.c...
+../Drivers/CMSIS/Include/core_cm4.h(81): error:  #35: #error directive: "Compiler generates FPU instructions for a device without an FPU (check __FPU_PRESENT)"
+        #error "Compiler generates FPU instructions for a device without an FPU (check __FPU_PRESENT)"
+..\Core\Src\Algorithm\pid_alg.c: 0 warnings, 1 error
+compiling gim_miniPC_ctrl.c...
+../Drivers/CMSIS/Include/core_cm4.h(81): error:  #35: #error directive: "Compiler generates FPU instructions for a device without an FPU (check __FPU_PRESENT)"
+        #error "Compiler generates FPU instructions for a device without an FPU (check __FPU_PRESENT)"
+..\Core\Src\Gimbal_Control\gim_miniPC_ctrl.c: 0 warnings, 1 error
+compiling const_lib.c...
+../Drivers/CMSIS/Include/core_cm4.h(81): error:  #35: #error directive: "Compiler generates FPU instructions for a device without an FPU (check __FPU_PRESENT)"
+        #error "Compiler generates FPU instructions for a device without an FPU (check __FPU_PRESENT)"
+..\Core\Src\Library\const_lib.c: 0 warnings, 1 error
+compiling kalman_alg.c...
+../Drivers/CMSIS/Include/core_cm4.h(81): error:  #35: #error directive: "Compiler generates FPU instructions for a device without an FPU (check __FPU_PRESENT)"
+        #error "Compiler generates FPU instructions for a device without an FPU (check __FPU_PRESENT)"
+..\Core\Src\Algorithm\kalman_alg.c: 0 warnings, 1 error
+compiling init_ctrl.c...
+"Infantry_Momentum\Infantry_Momentum.axf" - 6 Error(s), 0 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -54,9 +79,10 @@ Package Vendor: Keil
    * Component: ARM::CMSIS:CORE:5.2.0
 
    * Component: ARM::CMSIS:DSP:Library:1.6.0
-      Library file:  CMSIS\DSP\Lib\ARM\arm_cortexM4lf_math.lib
       Include file:  CMSIS\DSP\Include\arm_math.h
-Build Time Elapsed:  00:00:01
+      Library file:  CMSIS\DSP\Lib\ARM\arm_cortexM4lf_math.lib
+Target not created.
+Build Time Elapsed:  00:00:03
 </pre>
 </body>
 </html>

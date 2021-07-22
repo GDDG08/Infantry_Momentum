@@ -1,4 +1,5 @@
 infantry_momentum\stm32f4xx_it.o: ../Core/Src/stm32f4xx_it.c
+infantry_momentum\stm32f4xx_it.o: ../Core/Inc/stm32f4xx_it.h
 infantry_momentum\stm32f4xx_it.o: ../Core/Inc/main.h
 infantry_momentum\stm32f4xx_it.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h
 infantry_momentum\stm32f4xx_it.o: ../Core/Inc/stm32f4xx_hal_conf.h
@@ -36,7 +37,6 @@ infantry_momentum\stm32f4xx_it.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_
 infantry_momentum\stm32f4xx_it.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h
 infantry_momentum\stm32f4xx_it.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h
 infantry_momentum\stm32f4xx_it.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h
-infantry_momentum\stm32f4xx_it.o: ../Core/Inc/stm32f4xx_it.h
 infantry_momentum\stm32f4xx_it.o: ..\Core\Inc\Utility\uart_util.h
 infantry_momentum\stm32f4xx_it.o: ../Core/Inc/configure.h
 infantry_momentum\stm32f4xx_it.o: ../Core/Inc/Code_specification.h

@@ -30,7 +30,7 @@ int CVKF_NT_YAW = 100;
 int CVKF_NT_YAW = 100;
 #endif
 
-int CVKF_NT_PITCH = 7;
+int CVKF_NT_PITCH = 0;
 
 float before_cvkf_yaw = 0.0f;
 float before_cvkf_pitch = 0.0f;
@@ -257,7 +257,9 @@ void MiniPC_UpdateControlData() {
             minipc->pitch_angle = -autoaim_pitch_limit;
         else
             minipc->pitch_angle = minipc_data->pitch_angle;
-    }else {
+    }
+
+    else {
         minipc->yaw_angle = minipc_data->yaw_angle;
         minipc->pitch_angle = minipc_data->pitch_angle;
     }
@@ -350,14 +352,15 @@ void MiniPC_SetGimbalRef() {
 
     if ((minipc->enable_aim_output) && (minipc->target_state == MiniPC_TARGET_FOLLOWING) && (gimbal->mode.present_mode == Gimbal_ARMOR)) {
         MiniPC_SetAutoAimRef();
-    } else if ((minipc->enable_aim_output) && (minipc->target_state == MiniPC_TARGET_FOLLOWING) && (gimbal->mode.present_mode == Gimbal_BIG_ENERGY)) {
+    }
+
+    else if ((minipc->enable_aim_output) && (minipc->target_state == MiniPC_TARGET_FOLLOWING) && (gimbal->mode.present_mode == Gimbal_BIG_ENERGY)) {
         Gimbal_SetYawAutoRef(imu->angle.yaw - minipc->yaw_ref_filtered + energy_yaw_offset);
         Gimbal_SetPitchAutoRef(imu->angle.pitch + minipc->pitch_ref_filtered + energy_pitch_offset);
     } else if ((minipc->enable_aim_output) && (minipc->target_state == MiniPC_TARGET_FOLLOWING) && (gimbal->mode.present_mode == Gimbal_SMALL_ENERGY)) {
         Gimbal_SetYawAutoRef(imu->angle.yaw - minipc->yaw_ref_filtered + energy_yaw_offset);
         Gimbal_SetPitchAutoRef(imu->angle.pitch + minipc->pitch_ref_filtered + energy_pitch_offset);
-    }
-    else
+    } else
         return;
 }
 

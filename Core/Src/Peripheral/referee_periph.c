@@ -283,7 +283,6 @@ void Referee_InitReferee() {
   * @retval     ¿Í»§¶ËID
   */
 uint16_t Referee_GetClientIDByRobotID(uint8_t robot_id) {
-    //ÉÚ±ø
     if (robot_id == 7 || robot_id == 107)
         return 0;
     if ((robot_id >= 1 && robot_id <= 6) || (robot_id >= 101 && robot_id <= 106))

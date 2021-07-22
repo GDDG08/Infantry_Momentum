@@ -41,7 +41,6 @@ infantry_momentum\buscomm_cmd.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_h
 infantry_momentum\buscomm_cmd.o: ..\Core\Inc\Common_Contrrol\buscomm_ctrl.h
 infantry_momentum\buscomm_cmd.o: ../Core/Inc/configure.h
 infantry_momentum\buscomm_cmd.o: ../Core/Inc/Code_specification.h
-infantry_momentum\buscomm_cmd.o: ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h
 infantry_momentum\buscomm_cmd.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h
 infantry_momentum\buscomm_cmd.o: ../Core/Inc/FreeRTOSConfig.h
 infantry_momentum\buscomm_cmd.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h
@@ -49,19 +48,20 @@ infantry_momentum\buscomm_cmd.o: ../Middlewares/Third_Party/FreeRTOS/Source/incl
 infantry_momentum\buscomm_cmd.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/deprecated_definitions.h
 infantry_momentum\buscomm_cmd.o: ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F/portmacro.h
 infantry_momentum\buscomm_cmd.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/mpu_wrappers.h
+infantry_momentum\buscomm_cmd.o: ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h
 infantry_momentum\buscomm_cmd.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/task.h
 infantry_momentum\buscomm_cmd.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/list.h
 infantry_momentum\buscomm_cmd.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/timers.h
 infantry_momentum\buscomm_cmd.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/queue.h
 infantry_momentum\buscomm_cmd.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/semphr.h
 infantry_momentum\buscomm_cmd.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/event_groups.h
+infantry_momentum\buscomm_cmd.o: ..\Core\Inc\Library\buff_lib.h
+infantry_momentum\buscomm_cmd.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 infantry_momentum\buscomm_cmd.o: ..\Core\Inc\Utility\can_util.h
 infantry_momentum\buscomm_cmd.o: ../Core/Inc/configure.h
 infantry_momentum\buscomm_cmd.o: ../Core/Inc/Code_specification.h
 infantry_momentum\buscomm_cmd.o: ../Core/Inc/can.h
 infantry_momentum\buscomm_cmd.o: ../Core/Inc/main.h
-infantry_momentum\buscomm_cmd.o: ..\Core\Inc\Library\buff_lib.h
-infantry_momentum\buscomm_cmd.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 infantry_momentum\buscomm_cmd.o: ..\Core\Inc\Algorithm\filter_alg.h
 infantry_momentum\buscomm_cmd.o: ..\Core\Inc\Algorithm\math_alg.h
 infantry_momentum\buscomm_cmd.o: ..\Drivers\CMSIS\DSP\Include\arm_math.h
@@ -73,16 +73,6 @@ infantry_momentum\buscomm_cmd.o: ../Core/Inc/Code_specification.h
 infantry_momentum\buscomm_cmd.o: ..\Core\Inc\Gimbal_Control\gim_gimbal_ctrl.h
 infantry_momentum\buscomm_cmd.o: ../Core/Inc/configure.h
 infantry_momentum\buscomm_cmd.o: ../Core/Inc/Code_specification.h
-infantry_momentum\buscomm_cmd.o: ..\Core\Inc\Algorithm\pid_alg.h
-infantry_momentum\buscomm_cmd.o: ../Core/Inc/configure.h
-infantry_momentum\buscomm_cmd.o: ../Core/Inc/Code_specification.h
-infantry_momentum\buscomm_cmd.o: ..\Core\Inc\Peripheral\motor_periph.h
-infantry_momentum\buscomm_cmd.o: ../Core/Inc/configure.h
-infantry_momentum\buscomm_cmd.o: ../Core/Inc/Code_specification.h
-infantry_momentum\buscomm_cmd.o: ..\Core\Inc\Utility\pwm_util.h
-infantry_momentum\buscomm_cmd.o: ../Core/Inc/configure.h
-infantry_momentum\buscomm_cmd.o: ../Core/Inc/Code_specification.h
-infantry_momentum\buscomm_cmd.o: ../Core/Inc/tim.h
 infantry_momentum\buscomm_cmd.o: ..\Core\Inc\Peripheral\imu_periph.h
 infantry_momentum\buscomm_cmd.o: ../Core/Inc/configure.h
 infantry_momentum\buscomm_cmd.o: ../Core/Inc/Code_specification.h
@@ -90,6 +80,16 @@ infantry_momentum\buscomm_cmd.o: ..\Core\Inc\Utility\uart_util.h
 infantry_momentum\buscomm_cmd.o: ../Core/Inc/configure.h
 infantry_momentum\buscomm_cmd.o: ../Core/Inc/Code_specification.h
 infantry_momentum\buscomm_cmd.o: ../Core/Inc/usart.h
+infantry_momentum\buscomm_cmd.o: ..\Core\Inc\Peripheral\motor_periph.h
+infantry_momentum\buscomm_cmd.o: ../Core/Inc/configure.h
+infantry_momentum\buscomm_cmd.o: ../Core/Inc/Code_specification.h
+infantry_momentum\buscomm_cmd.o: ..\Core\Inc\Algorithm\pid_alg.h
+infantry_momentum\buscomm_cmd.o: ../Core/Inc/configure.h
+infantry_momentum\buscomm_cmd.o: ../Core/Inc/Code_specification.h
+infantry_momentum\buscomm_cmd.o: ..\Core\Inc\Utility\pwm_util.h
+infantry_momentum\buscomm_cmd.o: ../Core/Inc/configure.h
+infantry_momentum\buscomm_cmd.o: ../Core/Inc/Code_specification.h
+infantry_momentum\buscomm_cmd.o: ../Core/Inc/tim.h
 infantry_momentum\buscomm_cmd.o: ..\Core\Inc\Peripheral\remote_periph.h
 infantry_momentum\buscomm_cmd.o: ../Core/Inc/configure.h
 infantry_momentum\buscomm_cmd.o: ../Core/Inc/Code_specification.h
