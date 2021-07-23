@@ -134,8 +134,8 @@ const float MOUSE_CHASSIS_SLOWDOWN = 0.5;
 const float MOUSE_CHASSIS_MAX_SPEED = 600;
 const float MOUSE_CHASSIS_MAX_GYRO_SPEED = 400;
 
-const uint32_t Const_MiniPC_Follow_Target_Time = 150;
-const uint32_t Const_MiniPC_Lost_Target_Time = 150;
+const uint32_t Const_MiniPC_Follow_Target_Time = 100;
+const uint32_t Const_MiniPC_Lost_Target_Time = 100;
 //const uint32_t Const_MiniPC_New_Target_Time           = 200;
 
 /*          Uart Handle definition              */
@@ -210,7 +210,7 @@ float Const_ShooterLockedReverseSpeed = 0.0f;
 float Const_ShooterSlowSpeed = 150.0f;
 float Const_ShooterFastSpeed = 230.0f;
 
-float Const_Shooter15mpers = 210.0f;  //280: infantry3,12~14
+float Const_Shooter15mpers = 200.0f;  //280: infantry3,12~14
 float Const_Shooter18mpers = 250.0f;  //300: infantry3,15~17
 float Const_Shooter30mpers = 300.0f;
 

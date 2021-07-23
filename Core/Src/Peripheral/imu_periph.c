@@ -56,7 +56,7 @@ void IMU_InitAngelOffset(IMU_IMUDataTypeDef* imu) {
     for (int i = 0; i < 100; i++)
         y += imu->angle.pitch;
     imu->yaw_angle_offset = imu->angle.yaw;
-    imu->pitch_angle_offset = y / 100;
+    // imu->pitch_angle_offset = - y / 100;
 }
 
 /**

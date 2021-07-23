@@ -36,7 +36,7 @@ extern "C" {
 #define __FN_BOARD_TYPE_GIMBAL 2
 #define __FN_BOARD_TYPE_SUPERCAP 3
 
-#define __FN_INFANTRY_TYPE 3
+#define __FN_INFANTRY_TYPE 4
 
 #if (__FN_INFANTRY_TYPE == 4)
 #define __FN_INFANTRY_NEW_ONE __FN_ENABLE

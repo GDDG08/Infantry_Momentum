@@ -30,22 +30,27 @@ int CVKF_NT_YAW = 100;
 int CVKF_NT_YAW = 100;
 #endif
 
-int CVKF_NT_PITCH = 0;
+int CVKF_NT_PITCH = 7;
 
 float before_cvkf_yaw = 0.0f;
 float before_cvkf_pitch = 0.0f;
 float after_predict_yaw = 0.0f;
 float after_predict_pitch = 0.0f;
 
-float autoaim_pitch_offset = -3.0f;
+float autoaim_pitch_offset = -5.0f;
 float autoaim_yaw_offset = 0.0f;
+
 float autoaim_pitch_dead = 0.05f;
 float autoaim_yaw_dead = 0.05f;
+
 float autoaim_pitch_limit = 5.0f;
 float autoaim_yaw_limit = 10.0f;
 
-float energy_yaw_offset = 0.9f;
-float energy_pitch_offset = 0.3f;
+float energy_yaw_offset = 1.0f;
+float energy_pitch_offset = 0.55f;
+
+float delta_predict = 0.0f;
+float pitch_angle = 0;
 
 /**
   * @brief      Gets the pointer to the MiniPC data object
@@ -67,18 +72,20 @@ void MiniPC_InitControl() {
     minipc->enable_aim_output = 1;
 
     Filter_LowPassInit(0.5, &minipc->yaw_fil_param);
-    Filter_LowPassInit(0.5, &minipc->pitch_fil_param);
+    Filter_LowPassInit(0.4, &minipc->pitch_fil_param);
+    Filter_LowPassInit(0.1, &minipc->yaw_cvkf_fil_param);
+    Filter_LowPassInit(0.01, &minipc->distance_fil_param);
 
     //CVKF Init Variables:
     minipc->cvkf_control.total = 1;
     minipc->cvkf_control.basicprocess = 1;
     minipc->cvkf_control.jumpjudge = 0;  //no function
-    minipc->cvkf_control.limit = 1;
+    minipc->cvkf_control.limit = 0;
+    minipc->cvkf_control.offset = 1;
     minipc->cvkf_control.output = 1;
     minipc->cvkf_control.predict = 1;
     minipc->cvkf_control.lowfilter = 1;
     minipc->cvkf_control.dead_domain_delta_ref = 1;
-    minipc->cvkf_control.offset = 1;
 
     //CVKF for Yaw Angle:
     Kalman_CVKalmanInitYawParam(&minipc->cvkf_data_yaw, 1 / 1000.0f, 0.0f, 0.0f);
@@ -211,7 +218,6 @@ void MiniPC_KalmanPrediction() {
             //Using CVKF Without Measurements For Tracking:
             Kalman_NonMeasurementCalc(&minipc->cvkf_pitch);
         }
-
     }
 
     else {
@@ -224,6 +230,7 @@ void MiniPC_KalmanPrediction() {
     //*******
 
     //********
+
     last_target_state = minipc->target_state;
     //********
 }
@@ -240,33 +247,35 @@ void MiniPC_UpdateControlData() {
 
     minipc->distance = minipc_data->distance / 1000.f;  // mm to m
 
-    if (minipc_data->is_get_target == 1)
+    minipc->distance_filtered = Filter_LowPass(minipc_data->distance, &minipc->distance_fil_param, &minipc->distance_fil);
+
+    if (minipc_data->is_get_target == 1) {
         minipc->get_target_time = HAL_GetTick();
 
-    if (minipc->cvkf_control.limit == 1) {
-        if (minipc_data->yaw_angle > autoaim_yaw_limit)
-            minipc->yaw_angle = autoaim_yaw_limit;
-        else if (minipc_data->yaw_angle < -autoaim_yaw_limit)
-            minipc->yaw_angle = -autoaim_yaw_limit;
-        else
+        if (minipc->cvkf_control.limit == 1) {
+            if (minipc_data->yaw_angle > autoaim_yaw_limit)
+                minipc->yaw_angle = autoaim_yaw_limit;
+            else if (minipc_data->yaw_angle < -autoaim_yaw_limit)
+                minipc->yaw_angle = -autoaim_yaw_limit;
+            else
+                minipc->yaw_angle = minipc_data->yaw_angle;
+
+            if (minipc_data->pitch_angle > autoaim_pitch_limit)
+                minipc->pitch_angle = autoaim_pitch_limit;
+            else if (minipc_data->pitch_angle < -autoaim_pitch_limit)
+                minipc->pitch_angle = -autoaim_pitch_limit;
+            else
+                minipc->pitch_angle = minipc_data->pitch_angle;
+        }
+
+        else {
             minipc->yaw_angle = minipc_data->yaw_angle;
-
-        if (minipc_data->pitch_angle > autoaim_pitch_limit)
-            minipc->pitch_angle = autoaim_pitch_limit;
-        else if (minipc_data->pitch_angle < -autoaim_pitch_limit)
-            minipc->pitch_angle = -autoaim_pitch_limit;
-        else
             minipc->pitch_angle = minipc_data->pitch_angle;
+        }
+
+        minipc->yaw_ref_filtered = Filter_LowPass(minipc->yaw_angle, &minipc->yaw_fil_param, &minipc->yaw_fil);
+        minipc->pitch_ref_filtered = Filter_LowPass(minipc->pitch_angle, &minipc->pitch_fil_param, &minipc->pitch_fil);
     }
-
-    else {
-        minipc->yaw_angle = minipc_data->yaw_angle;
-        minipc->pitch_angle = minipc_data->pitch_angle;
-    }
-
-    minipc->yaw_ref_filtered = Filter_LowPass(minipc->yaw_angle, &minipc->yaw_fil_param, &minipc->yaw_fil);
-    minipc->pitch_ref_filtered = Filter_LowPass(minipc->pitch_angle, &minipc->pitch_fil_param, &minipc->pitch_fil);
-
     if (minipc->cvkf_yaw.switch_mode == 1 && minipc->cvkf_pitch.switch_mode == 1) {
         Kalman_TurnOnMeasureUpdate(&minipc->cvkf_yaw);
         Kalman_TurnOnMeasureUpdate(&minipc->cvkf_pitch);
@@ -318,20 +327,24 @@ void MiniPC_SetAutoAimRef() {
         }
 
         if (minipc->cvkf_control.offset == 1) {
-            float delta_predict = after_predict_yaw - minipc->cvkf_yaw.angle;
+            pitch_angle = gimbal->pitch_position_fdb + minipc->pitch_angle;
+            //else pitch_angle =gimbal->pitch_position_fdb - autoaim_pitch_offset;
 
-            if (fabs(delta_predict) < 0.5f)
-                autoaim_yaw_offset = 0;
-            else if (delta_predict >= 3.0f)
-                autoaim_yaw_offset = 4.0f;
-            else if (delta_predict >= 1.0f)
-                autoaim_yaw_offset = (delta_predict - 1.0f) * 4.0f / 2.5f;
-            else if (delta_predict <= -3.0f)
-                autoaim_yaw_offset = -4.0;
-            else if (delta_predict <= -1.0f)
-                autoaim_yaw_offset = (delta_predict + 1.0f) * 4.0f / 2.5f;
-            else
-                autoaim_yaw_offset = 0;
+            if (pitch_angle >= 0.7f)
+                autoaim_pitch_offset = -5.0f;
+            else if (pitch_angle <= -0.7f && pitch_angle >= -1.1f)
+                autoaim_pitch_offset = -6.7f;
+            else if (pitch_angle <= -1.1f)
+                autoaim_pitch_offset = -8.0f;
+
+            //对静止影响很大
+            delta_predict = after_predict_yaw - minipc->cvkf_yaw.angle;
+
+            if (delta_predict >= 1.0f) {
+                autoaim_yaw_offset = 1.0f;
+            } else if (delta_predict <= -1.0f) {
+                autoaim_yaw_offset = -1.0f;
+            }
         }
 
         Gimbal_SetYawAutoRef(ref_cvkf_yaw_angle + autoaim_yaw_offset);

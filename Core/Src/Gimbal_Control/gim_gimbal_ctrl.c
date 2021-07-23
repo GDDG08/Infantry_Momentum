@@ -48,8 +48,8 @@ void Gimbal_Init_Offset() {
 
     Const_SetGimbalPitchMotorParam();
 
+    HAL_Delay(1000);
     IMU_InitAngelOffset(imu);
-    HAL_Delay(3000);
 
     Gimbal_ChangeMode(Gimbal_NOAUTO);
 }
