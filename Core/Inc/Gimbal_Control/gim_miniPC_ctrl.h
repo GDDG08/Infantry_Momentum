@@ -43,12 +43,20 @@ typedef struct {
     float pitch_angle;
 
     float yaw_ref_filtered, pitch_ref_filtered;
+    float yaw_cvkf_filtered;
+    float distance_filtered;
 
     Filter_LowPassParamTypeDef yaw_fil_param;
     Filter_LowPassTypeDef yaw_fil;
 
     Filter_LowPassParamTypeDef pitch_fil_param;
     Filter_LowPassTypeDef pitch_fil;
+
+    Filter_LowPassParamTypeDef yaw_cvkf_fil_param;
+    Filter_LowPassTypeDef yaw_cvkf_fil;
+
+    Filter_LowPassParamTypeDef distance_fil_param;
+    Filter_LowPassTypeDef distance_fil;
 
     Kalman_CVKalmanInitDataTypeDef cvkf_data_yaw, cvkf_data_pitch;  //For CVKF:
     Kalman_CVKalmanTypeDef cvkf_yaw, cvkf_pitch;

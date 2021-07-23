@@ -306,16 +306,21 @@ void Remote_KeyMouseProcess() {
             MiniPC_ChangeAimMode(MiniPC_SMALL_BUFF);
             // chassis stop
             Remote_ChangeChassisState(CHASSIS_CTRL_STOP);
-        } else if (big_energy_state == 1 && small_energy_state == 1) {
-            big_energy_state = 0;
-            small_energy_state = 0;
-            Gimbal_ChangeMode(Gimbal_NOAUTO);
-            MiniPC_ChangeAimMode(MiniPC_ARMOR);
-            Remote_ChangeChassisState(CHASSIS_CTRL_NORMAL);
         } else {
+            if (big_energy_state == 1 && small_energy_state == 1) {
+                big_energy_state = 0;
+                small_energy_state = 0;
+            }
             Gimbal_ChangeMode(Gimbal_NOAUTO);
             MiniPC_ChangeAimMode(MiniPC_ARMOR);
-            Remote_ChangeChassisState(CHASSIS_CTRL_NORMAL);
+
+            if (gyro_state == 1) {
+                Remote_ChangeChassisState(CHASSIS_CTRL_GYRO);
+                max_chassis_speed = MOUSE_CHASSIS_MAX_GYRO_SPEED;
+            } else {
+                Remote_ChangeChassisState(CHASSIS_CTRL_NORMAL);
+                max_chassis_speed = MOUSE_CHASSIS_MAX_SPEED;
+            }
         }
     }
 
