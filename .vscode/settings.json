@@ -1,8 +1,0 @@
-{
-    "files.associations": {
-        "buscomm_ctrl.h": "c",
-        "gim_gimbal_ctrl.h": "c",
-        "gim_shoot_ctrl.h": "c",
-        "cha_chassis_ctrl.h": "c"
-    }
-}
