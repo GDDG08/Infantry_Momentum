@@ -249,8 +249,11 @@ void MiniPC_UpdateControlData() {
 
     minipc->distance_filtered = Filter_LowPass(minipc_data->distance, &minipc->distance_fil_param, &minipc->distance_fil);
 
-    if (minipc_data->is_get_target == 1) {
+    if (minipc_data->is_get_target == 1)
         minipc->get_target_time = HAL_GetTick();
+
+    if (minipc_data->is_get_target == 1 && gimbal->mode.present_mode == Gimbal_ARMOR) {
+        //minipc->get_target_time = HAL_GetTick();
 
         if (minipc->cvkf_control.limit == 1) {
             if (minipc_data->yaw_angle > autoaim_yaw_limit)
@@ -275,7 +278,16 @@ void MiniPC_UpdateControlData() {
 
         minipc->yaw_ref_filtered = Filter_LowPass(minipc->yaw_angle, &minipc->yaw_fil_param, &minipc->yaw_fil);
         minipc->pitch_ref_filtered = Filter_LowPass(minipc->pitch_angle, &minipc->pitch_fil_param, &minipc->pitch_fil);
+
     }
+
+    else if (gimbal->mode.present_mode == Gimbal_SMALL_ENERGY || gimbal->mode.present_mode == Gimbal_BIG_ENERGY) {
+        minipc->yaw_angle = minipc_data->yaw_angle;
+        minipc->pitch_angle = minipc_data->pitch_angle;
+        minipc->yaw_ref_filtered = Filter_LowPass(minipc->yaw_angle, &minipc->yaw_fil_param, &minipc->yaw_fil);
+        minipc->pitch_ref_filtered = Filter_LowPass(minipc->pitch_angle, &minipc->pitch_fil_param, &minipc->pitch_fil);
+    }
+
     if (minipc->cvkf_yaw.switch_mode == 1 && minipc->cvkf_pitch.switch_mode == 1) {
         Kalman_TurnOnMeasureUpdate(&minipc->cvkf_yaw);
         Kalman_TurnOnMeasureUpdate(&minipc->cvkf_pitch);
