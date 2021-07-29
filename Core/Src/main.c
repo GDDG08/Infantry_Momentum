@@ -95,10 +95,8 @@ int main(void) {
     MX_GPIO_Init();
     MX_DMA_Init();
     MX_ADC1_Init();
-#if __FN_IF_ENABLE(__FN_INFANTRY)
     MX_CAN1_Init();
     MX_CAN2_Init();
-#endif
     MX_DAC_Init();
     MX_UART5_Init();
     MX_USART1_UART_Init();

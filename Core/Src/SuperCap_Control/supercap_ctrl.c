@@ -99,20 +99,15 @@ void Cap_CapCharge() {
     Sen_CAPBasisValueTypeDef* basisdata = Sen_GetBasisDataPtr();
     CapComm_CapCommDataTypeDef* capcomm = CapComm_GetCapDataPty();
 
-    if (HAL_GetTick() - capcomm->power_path_change_flag <= 2000) {
-        GPIO_Close(BUCK);
-        Cap_SetChargeCurrent(0);
-        return;
-    }
-
     if (capcomm->cap_charge_mode == SUPERCAP_UNCHARGE) {
         GPIO_Close(BUCK);
         Cap_SetChargeCurrent(0);
     } else if (capcomm->cap_charge_mode == SUPERCAP_CHARGE) {
         capvalue->power_limit = 0.7f * (float)capcomm->power_limit;
-
-        if (basisdata->CapVoltage <= 10.0f) {
+        if (basisdata->CapVoltage <= 8.0f) {
             Cap_SetChargeCurrent(4.0f);
+        } else if (basisdata->CapVoltage <= 10.0f) {
+            Cap_SetChargeCurrent(3.0f);
         } else if (basisdata->CapVoltage >= 26.5f) {
             Cap_SetChargeCurrent(0);
         } else {

@@ -67,9 +67,9 @@ void DAC_StopDAC() {
  * @retval     NULL
  */
 void DAC_DecodeValue() {
-    float voltage = CurrentDAC.value * Const_DAC_DetectRES * Const_DAC_GAIN;
-    if (voltage >= 1.1f) {
-        voltage = 1.1f;
+    float voltage = CurrentDAC.value * Const_DAC_DetectRES * Const_DAC_GAIN * 4.3f;
+    if (voltage >= 3.1f) {
+        voltage = 3.1f;
     }
     float decode = voltage * 4096 / 3.3f;
     CurrentDAC.DAC_DecodeValue = decode;

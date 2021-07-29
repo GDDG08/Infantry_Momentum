@@ -26,8 +26,6 @@ Motor_MotorParamTypeDef GimbalPitch_gimbalPitchMotorParamNoAuto;
 
 Gimbal_GimbalTypeDef Gimbal_gambalControlData;
 
-// float yaw_relative_angle_last = 0.0f;
-
 /**
 * @brief      Gimbal initialization offset and mode
 * @param      NULL
@@ -204,15 +202,6 @@ float Gimbal_LimitYaw(float ref) {
         return 0.0f;
     else
         return ref;
-
-    // else if (buscomm->yaw_relative_angle != yaw_relative_angle_last) {
-    //     if (buscomm->yaw_relative_angle < -Const_YAW_MAXANGLE)
-    //         ref = Const_YAW_MAXANGLE + buscomm->yaw_relative_angle - 1;
-    //     else if (buscomm->yaw_relative_angle > Const_YAW_MAXANGLE)
-    //         ref = buscomm->yaw_relative_angle - Const_YAW_MAXANGLE + 1;
-    //     yaw_relative_angle_last = buscomm->yaw_relative_angle;
-    // }
-    // return ref;
 }
 
 /**
