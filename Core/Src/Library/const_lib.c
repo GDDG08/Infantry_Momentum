@@ -35,7 +35,7 @@ const float Const_ADC_CurrentErrorVoltage = 0.0f;    // Current sensor error
 
 /*          DAC Control related constants       */
 const float Const_DAC_GAIN = 20.0f;        // DAC current set gain£¨LT3790£©
-const float Const_DAC_DetectRES = 0.004f;  // DAC current set resistor£¨LT3790£©
+const float Const_DAC_DetectRES = 0.002f;  // DAC current set resistor£¨LT3790£©
 
 /*          CAN Handle definition              */
 // CAN_HandleTypeDef* Const_BusComm_CAN_HANDLER        = &hcan2;
@@ -44,7 +44,7 @@ UART_HandleTypeDef* Const_SuperCap_UART_HANDLER = &huart5;
 /*          Super Cap control const             */
 const float Cap_MinVoltage = 15.0f;          // Cap min voltage
 const float Cap_ChargeReservedPower = 5.0f;  // Cap charge reserved power
-const float Cap_AvailableVoltage = 21.0f;    // Cap restart voltage
+const float Cap_AvailableVoltage = 19.0f;    // Cap restart voltage
 
 #endif
 
@@ -82,11 +82,11 @@ static const float Const_chassisMotorParam[4][3][4][5] = {
 };
 
 static const float Const_gimbalYawMotorParam[5][3][4][5] = {
-    {{{1.1, 0.1, 0, 10000, 26000}, {-1, -1}, {0, 0}, {-1, -1}}, {{320, 0.8, 10, 10000, 30000}, {0.3, -1}, {0, 0}, {-1, -1}}, {{11, 0.02, 0, 500, 1000}, {-1, -1}, {50, 100}, {0.8, 0.7}}},  // GimbalYaw_gimbalYawMotorParamAimBigEnergy
-    {{{1.1, 0.1, 0, 10000, 26000}, {-1, -1}, {0, 0}, {-1, -1}}, {{320, 0.8, 10, 10000, 30000}, {0.3, -1}, {0, 0}, {-1, -1}}, {{11, 0.02, 0, 500, 1000}, {-1, -1}, {50, 100}, {0.8, 0.7}}},  // GimbalYaw_gimbalYawMotorParamAimSmallEnergy
-    {{{1.1, 0.1, 0, 10000, 26000}, {-1, -1}, {0, 0}, {-1, -1}}, {{320, 0.8, 10, 10000, 30000}, {0.3, -1}, {0, 0}, {-1, -1}}, {{11, 0.02, 0, 500, 1000}, {-1, -1}, {50, 100}, {0.8, 0.7}}},  // GimbalYaw_gimbalYawMotorParamArmor
-    {{{1.1, 0.1, 0, 10000, 26000}, {-1, -1}, {0, 0}, {-1, -1}}, {{320, 0.8, 10, 10000, 30000}, {0.3, -1}, {0, 0}, {-1, -1}}, {{11, 0.02, 0, 500, 1000}, {-1, -1}, {50, 100}, {0.8, 0.7}}},  // GimbalYaw_gimbalYawMotorParamIMUDebug
-    {{{1.1, 0.1, 0, 10000, 26000}, {-1, -1}, {0, 0}, {-1, -1}}, {{320, 0.8, 10, 10000, 30000}, {0.3, -1}, {0, 0}, {-1, -1}}, {{11, 0.02, 0, 500, 1000}, {-1, -1}, {50, 100}, {0.8, 0.7}}}   // GimbalYaw_gimbalYawMotorParamNoAuto
+    {{{1.1, 0.1, 0, 10000, 26000}, {-1, -1}, {0, 0}, {-1, -1}}, {{300, 0.6, 50, 10000, 30000}, {0.3, -1}, {0, 0}, {-1, -1}}, {{9, 0.01, 0, 500, 1000}, {-1, -1}, {50, 100}, {0.8, 0.7}}},  // GimbalYaw_gimbalYawMotorParamAimBigEnergy
+    {{{1.1, 0.1, 0, 10000, 26000}, {-1, -1}, {0, 0}, {-1, -1}}, {{300, 0.6, 50, 10000, 30000}, {0.3, -1}, {0, 0}, {-1, -1}}, {{9, 0.01, 0, 500, 1000}, {-1, -1}, {50, 100}, {0.8, 0.7}}},  // GimbalYaw_gimbalYawMotorParamAimSmallEnergy
+    {{{1.1, 0.1, 0, 10000, 26000}, {-1, -1}, {0, 0}, {-1, -1}}, {{300, 0.6, 50, 10000, 30000}, {0.3, -1}, {0, 0}, {-1, -1}}, {{9, 0.01, 0, 500, 1000}, {-1, -1}, {50, 100}, {0.8, 0.7}}},  // GimbalYaw_gimbalYawMotorParamArmor
+    {{{1.1, 0.1, 0, 10000, 26000}, {-1, -1}, {0, 0}, {-1, -1}}, {{300, 0.6, 50, 10000, 30000}, {0.3, -1}, {0, 0}, {-1, -1}}, {{9, 0.01, 0, 500, 1000}, {-1, -1}, {50, 100}, {0.8, 0.7}}},  // GimbalYaw_gimbalYawMotorParamIMUDebug
+    {{{1.1, 0.1, 0, 10000, 26000}, {-1, -1}, {0, 0}, {-1, -1}}, {{300, 0.6, 50, 10000, 30000}, {0.3, -1}, {0, 0}, {-1, -1}}, {{9, 0.01, 0, 500, 1000}, {-1, -1}, {50, 100}, {0.8, 0.7}}}   // GimbalYaw_gimbalYawMotorParamNoAuto
     //  {           Current  PID                          }   {                 SPEED PID                       }  {                    POSITION PID                 }
     //  {Kp, Ki, Kd, SumMax, OutMax}, {d_fil,delta_fil},{kf_1,kf_2}, {kf1_fil_param,kf2_fil_param};
     //              PID Group            PID Filter    Feedforward      Feedforward Filter

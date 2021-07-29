@@ -22,8 +22,8 @@ extern "C" {
 #include "adc.h"
 #include "string.h"
 
-extern uint32_t ADC_valueBuf[3];
-extern float ADC_decodeBuf[3];
+extern uint32_t ADC_valueBuf[30];
+extern float ADC_decodeBuf[30];
 
 void ADC_Init(void);
 void ADC_GetData(void);
