@@ -3,15 +3,15 @@
  * 
  *  file         : configure.h
  *  Description  : This file contains all functions enable
- *  LastEditors  : ¶¯ÇéØ¼²·ìá¶¯ÐÄ
+ *  LastEditors  : ï¿½ï¿½ï¿½ï¿½Ø¼ï¿½ï¿½ï¿½á¶¯ï¿½ï¿½
  *  Date         : 2021-05-04 20:53:31
  *  LastEditTime : 2021-05-16 20:33:08
  */
 
-// #if Äã¾õµÃÕâ·Ý´úÂëÐ´µÄºÜºÃ
-//      ¿ò¼Ü¼°²¿·Ö´úÂëÓÉ20Èü¼¾µç¿Ø×é³¤ckbÉè¼Æ¼°Ö¸µ¼
+// #if ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý´ï¿½ï¿½ï¿½Ð´ï¿½ÄºÜºï¿½
+//      ï¿½ï¿½Ü¼ï¿½ï¿½ï¿½ï¿½Ö´ï¿½ï¿½ï¿½ï¿½ï¿½20ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½é³¤ckbï¿½ï¿½Æ¼ï¿½Ö¸ï¿½ï¿½
 // #else
-//      ÕâÊÇsyjÏ¹Ð´µÄ£¬±ð¿´ÁË
+//      ï¿½ï¿½ï¿½ï¿½syjÏ¹Ð´ï¿½Ä£ï¿½ï¿½ï¿½ï¿½ï¿½
 // #endif
 
 // Note:
@@ -19,7 +19,7 @@
 // if you want to change or add code function
 // please operate according to the following code specification
 #include "Code_specification.h"
-//        ¡ü¡ü¡ü¡ü¡ü¡ü¡ü¡ü¡ü¡ü¡ü¡ü¡ü¡ü¡ü¡ü¡ü¡ü
+//        ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
 #ifndef CONFIGURE_H
 #define CONFIGURE_H
@@ -30,7 +30,7 @@ extern "C" {
 
 /* Main Control program       */
 
-#define __FN_BOARD_TYPE __FN_BOARD_TYPE_CHASSIS
+#define __FN_BOARD_TYPE __FN_BOARD_TYPE_GIMBAL
 
 #define __FN_BOARD_TYPE_CHASSIS 1
 #define __FN_BOARD_TYPE_GIMBAL 2

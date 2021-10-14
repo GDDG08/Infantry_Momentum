@@ -1,9 +1,18 @@
 /*
+ * @Project      : RM_Infantry_Neptune_frame
+ * @FilePath     : \GITEE2\Core\Inc\Gimbal_Control\gim_gimbal_ctrl.h
+ * @Descripttion : 
+ * @Author       : GDDG08
+ * @Date         : 2021-07-24 11:39:13
+ * @LastEditors  : GDDG08
+ * @LastEditTime : 2021-10-14 20:13:15
+ */
+/*
  *  Project      : Infantry_Momentum
  * 
  *  file         : gim_gimbal_ctrl.h
  *  Description  : This file contains Gimbal control function
- *  LastEditors  : ¶¯ÇéØ¼²·ìá¶¯ÐÄ
+ *  LastEditors  : ï¿½ï¿½ï¿½ï¿½Ø¼ï¿½ï¿½ï¿½á¶¯ï¿½ï¿½
  *  Date         : 2021-05-04 20:53:31
  *  LastEditTime : 2021-05-08 04:31:49
  */
@@ -29,7 +38,8 @@ typedef enum {
     Gimbal_ARMOR = 1u,
     Gimbal_IMU_DEBUG = 2u,
     Gimbal_BIG_ENERGY = 3u,
-    Gimbal_SMALL_ENERGY = 4u
+    Gimbal_SMALL_ENERGY = 4u,
+    Gimbal_DANCE = 5u
 } Gimbal_ModeEnum;
 
 typedef enum {

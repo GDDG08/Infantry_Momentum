@@ -3,7 +3,7 @@
  * 
  *  file         : gim_gimbal_ctrl.c
  *  Description  : This file contains Gimbal control function
- *  LastEditors  : ¶¯ÇéØ¼²·ìá¶¯ÐÄ
+ *  LastEditors  : ï¿½ï¿½ï¿½ï¿½Ø¼ï¿½ï¿½ï¿½á¶¯ï¿½ï¿½
  *  Date         : 2021-05-04 20:53:31
  *  LastEditTime : 2021-05-16 20:32:30
  */
@@ -129,6 +129,7 @@ void Gimbal_CtrlPitch() {
     }
     switch (gimbal->mode.present_mode) {
         case Gimbal_NOAUTO:
+        case Gimbal_DANCE:
             pparam = &GimbalPitch_gimbalPitchMotorParamNoAuto;
             break;
         case Gimbal_ARMOR:
@@ -155,7 +156,10 @@ void Gimbal_CtrlPitch() {
         gimbal->pitch_speed_fdb = imu->speed.pitch;
     }
 
-    Motor_SetMotorRef(&Motor_gimbalMotorPitch, gimbal->angle.pitch_angle_ref);
+    if (gimbal->mode.present_mode == Gimbal_DANCE)
+        Motor_SetMotorRef(&Motor_gimbalMotorPitch, gimbal->angle.pitch_angle_ref + Gimbal_LimitPitch(4.0f * sin(2 * PI * 13 / 6 * HAL_GetTick() / 1000)));
+    else
+        Motor_SetMotorRef(&Motor_gimbalMotorPitch, gimbal->angle.pitch_angle_ref);
 
     Motor_SetMotorFdb(&Motor_gimbalMotorPitch, 2, gimbal->pitch_position_fdb);
     Motor_SetMotorFdb(&Motor_gimbalMotorPitch, 1, gimbal->pitch_speed_fdb);

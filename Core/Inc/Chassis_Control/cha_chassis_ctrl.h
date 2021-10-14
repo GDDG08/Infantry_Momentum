@@ -1,9 +1,18 @@
 /*
+ * @Project      : RM_Infantry_Neptune_frame
+ * @FilePath     : \GITEE2\Core\Inc\Chassis_Control\cha_chassis_ctrl.h
+ * @Descripttion : 
+ * @Author       : GDDG08
+ * @Date         : 2021-07-24 11:39:13
+ * @LastEditors  : GDDG08
+ * @LastEditTime : 2021-10-14 20:22:10
+ */
+/*
  *  Project      : Infantry_Momentum
  * 
  *  file         : cha_chassis_ctrl.h
  *  Description  : This file contains chassis control function
- *  LastEditors  : ¶¯ÇéØ¼²·ìá¶¯ÐÄ
+ *  LastEditors  : ï¿½ï¿½ï¿½ï¿½Ø¼ï¿½ï¿½ï¿½á¶¯ï¿½ï¿½
  *  Date         : 2021-05-04 20:53:31
  *  LastEditTime : 2021-05-08 08:28:51
  */
@@ -28,7 +37,8 @@ typedef enum {
     Chassis_MODE_INIT = 1,
     Chassis_MODE_STOP = 2,
     Chassis_MODE_NORMAL = 3,
-    Chassis_MODE_GYRO = 4
+    Chassis_MODE_GYRO = 4,
+    Chassis_MODE_DANCE = 5
 } Chassis_ChassisModeEnum;
 
 typedef struct {

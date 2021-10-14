@@ -1,9 +1,18 @@
 /*
+ * @Project      : RM_Infantry_Neptune_frame
+ * @FilePath     : \GITEE2\Core\Inc\Chassis_Control\cha_power_ctrl.h
+ * @Descripttion : 
+ * @Author       : GDDG08
+ * @Date         : 2021-07-24 11:39:13
+ * @LastEditors  : GDDG08
+ * @LastEditTime : 2021-10-14 20:08:29
+ */
+/*
  *  Project      : Infantry_Momentum
  * 
  *  file         : cha_power_ctrl.h
  *  Description  : This file contains power control function
- *  LastEditors  : ¶¯ÇéØ¼²·ìá¶¯ÐÄ
+ *  LastEditors  : ï¿½ï¿½ï¿½ï¿½Ø¼ï¿½ï¿½ï¿½á¶¯ï¿½ï¿½
  *  Date         : 2021-05-04 20:53:31
  *  LastEditTime : 2021-05-08 08:31:49
  */
