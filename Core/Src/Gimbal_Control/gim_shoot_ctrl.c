@@ -3,7 +3,7 @@
  * 
  *  file         : gim_shoot_ctrl.c
  *  Description  : This file contains Shooter control function
- *  LastEditors  : ¶¯ÇéØ¼²·ìá¶¯ÐÄ
+ *  LastEditors  : ï¿½ï¿½ï¿½ï¿½Ø¼ï¿½ï¿½ï¿½á¶¯ï¿½ï¿½
  *  Date         : 2021-05-04 20:53:31
  *  LastEditTime : 2021-05-09 03:55:15
  */
@@ -48,7 +48,7 @@ void Shooter_InitShooter() {
 
     shooter->shooter_speed_offset = 0;  // for sb referee systerm
 
-    Shooter_InitShooterMotor();
+    // Shooter_InitShooterMotor();
 
     Const_SetShooterPIDParam();
     // Initialization of motor parameters (including PID parameters)
@@ -64,7 +64,7 @@ void Shooter_Control() {
     Shooter_UpdataControlData();
 
     Shooter_ShootControl();
-
+    // Shooter_ShootDebug();
     Shooter_FeederControl();
 
     Shooter_ShooterMotorOutput();
@@ -119,15 +119,14 @@ void Shooter_ChangeFeederMode(Shoot_FeederModeEnum mode) {
   * @param      NULL
   * @retval     NULL
   */
-void Shooter_InitShooterMotor() {
-    HAL_Delay(2000);
-    for (int i = 0; i < 7; i++) {
-        Motor_shooterMotorLeft.pwm.duty = 0.1 * i;
-        Motor_shooterMotorRight.pwm.duty = 0.1 * i;
-        Motor_SendMotorGroupOutput(&Motor_shooterMotors);
-        HAL_Delay(200);
-    }
-}
+// void Shooter_InitShooterMotor() {
+//     for (int i = 0; i < 7; i++) {
+//         Motor_shooterMotorLeft.pwm.duty = 0.1 * i;
+//         Motor_shooterMotorRight.pwm.duty = 0.1 * i;
+//         Motor_SendMotorGroupOutput(&Motor_shooterMotors);
+//         HAL_Delay(200);
+//     }
+// }
 
 /**
   * @brief      Initialize Shooter heat control
@@ -359,6 +358,27 @@ void Shooter_ShootControl() {
 
     Motor_CalcMotorOutput(&Motor_shooterMotorRight, &Shooter_shooterRightMotorParam);
     Motor_CalcMotorOutput(&Motor_shooterMotorLeft, &Shooter_shooterLeftMotorParam);
+}
+
+/**
+  * @brief      Shooter debug
+  * @param      NULL
+  * @retval     NULL
+  */
+void Shooter_ShootDebug() {
+    Shoot_StatusTypeDef* shooter = Shooter_GetShooterControlPtr();
+
+    switch (shooter->shooter_mode) {
+        case Shoot_NULL:
+            PWM_SetPWMDuty(&(Motor_shooterMotorLeft.pwm), 0.98f);
+            PWM_SetPWMDuty(&(Motor_shooterMotorRight.pwm), 0.98f);
+            break;
+        case Shoot_REFEREE:
+            PWM_SetPWMDuty(&(Motor_shooterMotorLeft.pwm), 0.5f);
+            PWM_SetPWMDuty(&(Motor_shooterMotorRight.pwm), 0.5f);
+        default:
+            break;
+    }
 }
 
 /**

@@ -3,7 +3,7 @@
  * 
  *  file         : gim_shoot_ctrl.h
  *  Description  : This file contains Shooter control function
- *  LastEditors  : ¶¯ÇéØ¼²·ìá¶¯ÐÄ
+ *  LastEditors  : ï¿½ï¿½ï¿½ï¿½Ø¼ï¿½ï¿½ï¿½á¶¯ï¿½ï¿½
  *  Date         : 2021-05-04 20:53:31
  *  LastEditTime : 2021-05-08 11:47:07
  */
@@ -100,6 +100,7 @@ void Shooter_AngleCorrect(void);
 void Shooter_RealAngleCorrect(void);
 uint8_t Shooter_HeatCtrl(void);
 void Shooter_ShootControl(void);
+void Shooter_ShootDebug(void);
 void Shooter_SingleShootCtrl(void);
 void Shooter_SingleShootReset(void);
 void Shooter_FeederControl(void);

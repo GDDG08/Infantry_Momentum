@@ -3,7 +3,7 @@
  * 
  *  file         : motor_periph.c
  *  Description  : This file contains motor control function
- *  LastEditors  : ¶¯ÇéØ¼²·ìá¶¯ÐÄ
+ *  LastEditors  : ï¿½ï¿½ï¿½ï¿½Ø¼ï¿½ï¿½ï¿½á¶¯ï¿½ï¿½
  *  Date         : 2021-05-04 20:53:31
  *  LastEditTime : 2021-05-14 11:57:35
  */
@@ -506,8 +506,8 @@ void Motor_SendMotorPWMOutput(Motor_MotorTypeDef* pmotor) {
     float duty = output * 0.00011136f + 0.47522f;
     pmotor->duty = duty;
     //if (duty < 0.58f) duty = 0.58f;
-    if (duty < 0.5f)
-        duty = 0.5f;
+   if (duty < 0.5f)
+       duty = 0.5f;
     if (duty > 0.98f)
         duty = 0.98f;
     PWM_SetPWMDuty(&(pmotor->pwm), duty);

@@ -99,7 +99,15 @@ void BusComm_InitBusComm() {
   * @retval     Pointer to bus communication data object
   */
 BusComm_BusCommDataTypeDef* BusComm_GetBusDataPtr() {
-    return &BusComm_BusCommData;
+
+
+
+
+
+
+
+
+	return &BusComm_BusCommData;
 }
 
 /**

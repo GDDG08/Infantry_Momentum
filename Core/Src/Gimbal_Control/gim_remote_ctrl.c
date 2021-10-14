@@ -169,7 +169,7 @@ void Remote_RemoteProcess() {
     Remote_RemoteDataTypeDef* data = Remote_GetRemoteDataPtr();
 
     buscomm->chassis_fb_ref = Filter_Bessel((float)data->remote.ch[1], &Remote_forward_backFilter) * 0.5f;
-    buscomm->chassis_lr_ref = -Filter_Bessel((float)data->remote.ch[0], &Remote_right_leftFilter) * 0.5f;
+    buscomm->chassis_lr_ref = Filter_Bessel((float)data->remote.ch[0], &Remote_right_leftFilter) * 0.5f;
 
     if (data->remote.ch[4] <= -500.0f)
         Remote_ChangeChassisState(CHASSIS_CTRL_GYRO);
