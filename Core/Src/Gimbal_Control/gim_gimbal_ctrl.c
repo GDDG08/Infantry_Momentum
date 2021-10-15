@@ -157,7 +157,7 @@ void Gimbal_CtrlPitch() {
     }
 
     if (gimbal->mode.present_mode == Gimbal_DANCE)
-        Motor_SetMotorRef(&Motor_gimbalMotorPitch, gimbal->angle.pitch_angle_ref + Gimbal_LimitPitch(4.0f * sin(2 * PI * 13 / 6 * HAL_GetTick() / 1000)));
+        Motor_SetMotorRef(&Motor_gimbalMotorPitch, gimbal->angle.pitch_angle_ref + Gimbal_LimitPitch(4.0f * sin(2 * PI * 131.0f / 60.0f * HAL_GetTick() / 1000)));
     else
         Motor_SetMotorRef(&Motor_gimbalMotorPitch, gimbal->angle.pitch_angle_ref);
 

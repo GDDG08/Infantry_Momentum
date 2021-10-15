@@ -3,7 +3,7 @@
  * 
  *  file         : const_lib.c
  *  Description  : This file contains all necessary constants
- *  LastEditors  : ¶¯ÇéØ¼²·ìá¶¯ÐÄ
+ *  LastEditors  : ï¿½ï¿½ï¿½ï¿½Ø¼ï¿½ï¿½ï¿½á¶¯ï¿½ï¿½
  *  Date         : 2021-05-04 20:53:31
  *  LastEditTime : 2021-05-16 19:18:58
  */
@@ -26,16 +26,16 @@
 
 /*          ADC Control related constants       */
 const float Const_ADC_V_VGAIN = 11.0f;               // Voltage value division ratio 10:1
-const float Const_ADC_V_C_HolzerGAIN = 5.0f;         // Gain of Hall current sensor£¨chassis referee£©
-const float Const_ADC_V_C_BuckOutResGAIN = 6.25f;    // Buck output current sensing gain£¨LT3790£©
-const float Const_ADC_V_C_BuckInputResGAIN = 25.0f;  // Buck input current sensing gain£¨LT3790£©
+const float Const_ADC_V_C_HolzerGAIN = 5.0f;         // Gain of Hall current sensorï¿½ï¿½chassis refereeï¿½ï¿½
+const float Const_ADC_V_C_BuckOutResGAIN = 6.25f;    // Buck output current sensing gainï¿½ï¿½LT3790ï¿½ï¿½
+const float Const_ADC_V_C_BuckInputResGAIN = 25.0f;  // Buck input current sensing gainï¿½ï¿½LT3790ï¿½ï¿½
 const float Const_ADC_Cap_TotalEnergy = 2000.0f;     // Total capacitance energy
 const float Const_ADC_CapValue = 6.0f;               // Minimum voltage of capacitor
 const float Const_ADC_CurrentErrorVoltage = 0.0f;    // Current sensor error
 
 /*          DAC Control related constants       */
-const float Const_DAC_GAIN = 20.0f;        // DAC current set gain£¨LT3790£©
-const float Const_DAC_DetectRES = 0.002f;  // DAC current set resistor£¨LT3790£©
+const float Const_DAC_GAIN = 20.0f;        // DAC current set gainï¿½ï¿½LT3790ï¿½ï¿½
+const float Const_DAC_DetectRES = 0.002f;  // DAC current set resistorï¿½ï¿½LT3790ï¿½ï¿½
 
 /*          CAN Handle definition              */
 // CAN_HandleTypeDef* Const_BusComm_CAN_HANDLER        = &hcan2;
@@ -210,7 +210,7 @@ float Const_ShooterLockedReverseSpeed = 0.0f;
 float Const_ShooterSlowSpeed = 150.0f;
 float Const_ShooterFastSpeed = 230.0f;
 
-float Const_Shooter15mpers = 200.0f;  //280: infantry3,12~14
+float Const_Shooter15mpers = 160.0f;  //280: infantry3,12~14
 float Const_Shooter18mpers = 250.0f;  //300: infantry3,15~17
 float Const_Shooter30mpers = 300.0f;
 
