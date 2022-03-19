@@ -3,7 +3,7 @@
  * 
  *  file         : motor_periph.c
  *  Description  : This file contains motor control function
- *  LastEditors  : ¶¯ÇéØ¼²·ìá¶¯ĞÄ
+ *  LastEditors  : ï¿½ï¿½ï¿½ï¿½Ø¼ï¿½ï¿½ï¿½á¶¯ï¿½ï¿½
  *  Date         : 2021-05-04 20:53:31
  *  LastEditTime : 2021-05-14 11:57:35
  */
@@ -418,6 +418,24 @@ void Motor_SetMotorRef(Motor_MotorTypeDef* pmotor, float ref) {
         PID_SetPIDRef(&(pmotor->pid_spd), ref);
     } else if (pmotor->pid_num == 2) {
         PID_SetPIDRef(&(pmotor->pid_pos), ref);
+    }
+}
+
+/**
+  * @brief      Set motor PID output value
+  * @param      pmotor: Pointer to motor object
+  * @param      output: target value
+  * @retval     NULL
+  */
+void Motor_SetMotorOutput(Motor_MotorTypeDef* pmotor, float output) {
+    if (pmotor == NULL)
+        return;
+    if (pmotor->type == Motor_TYPE_NOT_CONNECTED)
+        return;
+    if (pmotor->cur_pid) {
+        pmotor->pid_cur.output = output;
+    } else {
+        pmotor->pid_spd.output = output;
     }
 }
 

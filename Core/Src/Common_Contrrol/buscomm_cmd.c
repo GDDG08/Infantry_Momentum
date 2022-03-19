@@ -1,9 +1,9 @@
 /*
  *  Project      : Infantry_Momentum
- * 
+ *
  *  file         : buscomm_cmd.c
  *  Description  : This file is for idiot Can communication
- *  LastEditors  : ¶¯ÇéØ¼²·ìá¶¯ÐÄ
+ *  LastEditors  : ï¿½ï¿½ï¿½ï¿½Ø¼ï¿½ï¿½ï¿½á¶¯ï¿½ï¿½
  *  Date         : 2021-05-09 03:52:32
  *  LastEditTime : 2021-05-16 01:14:35
  */
@@ -44,10 +44,16 @@ const uint8_t CMD_SET_UI_DATA = 0xB8;
 
 const uint8_t CMD_SEND_CAP_STATE = 0xC2;
 
+const uint32_t CMD_SET_CAP_MODE = 0x98;
+const uint32_t CMD_SET_CAP_STATE_1 = 0x299;
+const uint32_t CMD_SET_CAP_STATE_2 = 0x298;
+
 const uint8_t CMD_CHASSIS_SEND_PACK_1 = 0x01;
 const uint8_t CMD_CHASSIS_SEND_PACK_2 = 0x02;
 const uint8_t CMD_CHASSIS_SEND_PACK_3 = 0x03;
 const uint8_t CMD_CHASSIS_SEND_PACK_4 = 0x04;
+const uint8_t CMD_CHASSIS_SEND_PACK_5 = 0x05;
+const uint8_t CMD_CHASSIS_SEND_PACK_6 = 0x06;
 
 const uint8_t CMD_GIMBAL_SEND_PACK_1 = 0x01;
 const uint8_t CMD_GIMBAL_SEND_PACK_2 = 0x02;
@@ -71,6 +77,7 @@ static void _send_imu_spd(uint8_t buff[]);
 static void _send_chassis_fb(uint8_t buff[]);
 static void _send_chassis_lr(uint8_t buff[]);
 static void _send_cap_state(uint8_t buff[]);
+static void _send_cap_mode(uint8_t buff[]);
 static void _set_yaw_relative_angle(uint8_t buff[]);
 static void _set_robot_id_power_limit(uint8_t buff[]);
 static void _set_17mm_data(uint8_t buff[]);
@@ -83,8 +90,10 @@ static void _set_imu_spd(uint8_t buff[]);
 static void _set_cha_fb(uint8_t buff[]);
 static void _set_cha_lr(uint8_t buff[]);
 static void _set_cap_state(uint8_t buff[]);
+static void _set_cap_state_1(uint8_t buff[]);
+static void _set_cap_state_2(uint8_t buff[]);
 
-BusCmd_TableEntry Buscmd_Receive[13] = {
+BusCmd_TableEntry Buscmd_Receive[15] = {
     {0xff, NULL},
     {CMD_SET_YAW_RELATIVE_ANGLE, &_set_yaw_relative_angle},
     {CMD_SET_ROBOT_ID_POWER_LIMIT, &_set_robot_id_power_limit},
@@ -97,7 +106,8 @@ BusCmd_TableEntry Buscmd_Receive[13] = {
     {CMD_SET_CHA_FB, &_set_cha_fb},
     {CMD_SET_CHA_LR, &_set_cha_lr},
     {CMD_SEND_CAP_STATE, &_set_cap_state},
-    {CMD_SET_UI_DATA, &_set_ui_data}};
+    {CMD_SET_CAP_STATE_1, &_set_cap_state_1},
+    {CMD_SET_CAP_STATE_2, &_set_cap_state_2}};
 
 BusCmd_TableEntry Buscmd_GimSend[7] = {
     {CMD_GIMBAL_SEND_PACK_1, &_send_chassis_lr},
@@ -108,18 +118,19 @@ BusCmd_TableEntry Buscmd_GimSend[7] = {
     {CMD_GIMBAL_SEND_PACK_6, &_send_mode},
     {CMD_GIMBAL_SEND_PACK_7, &_send_ui_data}};
 
-BusCmd_TableEntry Buscmd_ChaSend[5] = {
+BusCmd_TableEntry Buscmd_ChaSend[6] = {
     {CMD_CHASSIS_SEND_PACK_1, &_send_cooling_data},
-    {CMD_CHASSIS_SEND_PACK_1, &_send_17mm_data},
-    {CMD_CHASSIS_SEND_PACK_1, &_send_robot_id_power_limit},
-    {CMD_CHASSIS_SEND_PACK_1, &_send_yaw_relative_angle},
-    {CMD_SUPERCAP_SEND_PACK_1, &_send_cap_state}};
+    {CMD_CHASSIS_SEND_PACK_2, &_send_17mm_data},
+    {CMD_CHASSIS_SEND_PACK_3, &_send_robot_id_power_limit},
+    {CMD_CHASSIS_SEND_PACK_4, &_send_yaw_relative_angle},
+    {CMD_CHASSIS_SEND_PACK_5, &_send_cap_state},
+    {CMD_CHASSIS_SEND_PACK_6, &_send_cap_mode}};
 
 BusCmd_TableEntry Buscmd_CapSend[1] = {
     {CMD_SUPERCAP_SEND_PACK_1, &_send_cap_state}};
 
-int count1a, count2a, count3a, count4a, count5a, count6a, count7a, count8a, count9a, count10a, count11a, count12a;
-float rate1a, rate2a, rate3a, rate4a, rate5a, rate6a, rate7a, rate8a, rate9a, rate10a, rate11a, rate12a;
+int count1a, count2a, count3a, count4a, count5a, count6a, count7a, count8a, count9a, count10a, count11a, count12a, count13a;
+float rate1a, rate2a, rate3a, rate4a, rate5a, rate6a, rate7a, rate8a, rate9a, rate10a, rate11a, rate12a, rate13a;
 
 /*      send functions driver       */
 static void _send_yaw_relative_angle(uint8_t buff[]) {
@@ -204,8 +215,8 @@ static void _send_mode(uint8_t buff[]) {
     buff[1] = CMD_SET_MODE;
     buff[2] = buscomm->gimbal_yaw_mode;
     buff[3] = buscomm->power_limit_mode;
-    buff[4] = buscomm->cap_charge_mode;
-    buff[5] = buscomm->cap_mode;
+    buff[4] = buscomm->cap_boost_mode_user;
+    buff[5] = buscomm->cap_mode_user;
     buff[6] = buscomm->chassis_mode;
     uint16_t checksum = 0;
     for (int i = 0; i < 7; ++i)
@@ -329,6 +340,21 @@ static void _send_cap_state(uint8_t buff[]) {
     Can_SendMessage(Const_BusComm_CAN_HANDLER, pheader, buff);
 }
 
+static void _send_cap_mode(uint8_t buff[]) {
+    BusComm_BusCommDataTypeDef* buscomm = BusComm_GetBusDataPtr();
+    CAN_TxHeaderTypeDef* pheader = &BusComm_CapMode;
+    count13a++;
+    rate13a = 1000 * count13a / HAL_GetTick();
+    memset(buff, 0, 8);
+    buff[0] = buscomm->cap_mode_fnl;
+    buff[1] = buscomm->cap_boost_mode_fnl;
+    buff[2] = buscomm->chassis_power_limit;
+    buff[3] = buscomm->chassis_power_buffer;
+    float2buff(buscomm->chassis_power, buff + 4);
+    Can_SendMessage(Const_BusComm_CAN_HANDLER, pheader, buff);
+}
+
+
 int count6;
 float rate6;
 /*          function driver      */
@@ -375,8 +401,8 @@ static void _set_mode(uint8_t buff[]) {
     BusComm_BusCommDataTypeDef* buscomm = BusComm_GetBusDataPtr();
     buscomm->gimbal_yaw_mode = buff[2];
     buscomm->power_limit_mode = buff[3];
-    buscomm->cap_charge_mode = buff[4];
-    buscomm->cap_mode = buff[5];
+    buscomm->cap_boost_mode_user = buff[4];
+    buscomm->cap_mode_user = buff[5];
     buscomm->chassis_mode = buff[6];
     _cmd_mode_control();
 }
@@ -442,6 +468,27 @@ static void _set_cap_state(uint8_t buff[]) {
     BusComm_BusCommDataTypeDef* buscomm = BusComm_GetBusDataPtr();
     buscomm->cap_state = buff[2];
     buscomm->cap_rest_energy = buff[3];
+}
+
+int count13;
+float rate13;
+static void _set_cap_state_1(uint8_t buff[]) {
+    count13++;
+    rate13 = 1000 * count13 / HAL_GetTick();
+    BusComm_BusCommDataTypeDef* buscomm = BusComm_GetBusDataPtr();
+
+    buscomm->Cap_power = buff2float(buff);
+    buscomm->cap_rest_energy = buff[4];
+}
+int count14;
+float rate14;
+static void _set_cap_state_2(uint8_t buff[]) {
+    count14++;
+    rate14 = 1000 * count14 / HAL_GetTick();
+    BusComm_BusCommDataTypeDef* buscomm = BusComm_GetBusDataPtr();
+
+    buscomm->Cap_voltage = buff2float(buff);
+    buscomm->Cap_current = buff2float(buff + 4);
 }
 
 #endif

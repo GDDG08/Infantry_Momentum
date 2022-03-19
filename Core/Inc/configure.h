@@ -30,8 +30,7 @@ extern "C" {
 
 /* Main Control program       */
 
-#define __FN_BOARD_TYPE __FN_BOARD_TYPE_GIMBAL
-
+#define __FN_BOARD_TYPE __FN_BOARD_TYPE_CHASSIS
 #define __FN_BOARD_TYPE_CHASSIS 1
 #define __FN_BOARD_TYPE_GIMBAL 2
 #define __FN_BOARD_TYPE_SUPERCAP 3
@@ -62,7 +61,7 @@ extern "C" {
 #if __FN_BOARD_TYPE == __FN_BOARD_TYPE_CHASSIS
 #define __FN_INFANTRY __FN_ENABLE
 #define __FN_INFANTRY_CHASSIS __FN_ENABLE
-#define __FN_SUPER_CAP_COMM __FN_ENABLE
+#define __FN_SUPER_CAP_COMM __FN_DISABLE
 #else
 #define __FN_INFANTRY_CHASSIS __FN_DISABLE
 #endif
@@ -77,7 +76,7 @@ extern "C" {
 #if __FN_BOARD_TYPE == __FN_BOARD_TYPE_SUPERCAP
 #define __FN_INFANTRY __FN_DISABLE
 #define __FN_SUPER_CAP __FN_ENABLE
-#define __FN_SUPER_CAP_COMM __FN_ENABLE
+#define __FN_SUPER_CAP_COMM __FN_DISABLE
 #else
 #define __FN_SUPER_CAP __FN_DISABLE
 #endif

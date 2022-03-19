@@ -1,15 +1,15 @@
 /*
  * @Project      : RM_Infantry_Neptune_frame
  * @FilePath     : \GITEE2\Core\Inc\Chassis_Control\cha_chassis_ctrl.h
- * @Descripttion : 
+ * @Descripttion :
  * @Author       : GDDG08
  * @Date         : 2021-07-24 11:39:13
  * @LastEditors  : GDDG08
- * @LastEditTime : 2021-10-14 20:22:10
+ * @LastEditTime : 2022-03-19 21:49:52
  */
 /*
  *  Project      : Infantry_Momentum
- * 
+ *
  *  file         : cha_chassis_ctrl.h
  *  Description  : This file contains chassis control function
  *  LastEditors  : ����ؼ���ᶯ��
@@ -52,6 +52,10 @@ typedef struct {
     Chassis_ChassisRefTypeDef raw_ref;        // Original headless speed target value
     Chassis_ChassisRefTypeDef raw_speed_ref;  // Original chassis speed target value
     Chassis_ChassisRefTypeDef power_ref;      // Target value after power control
+
+    float lastMotor_ref[4];  // Last target value for each motor
+    // PID_PIDTypeDef* speed_pid[4];   // Shortcut for PID spd
+    // PID_PIDTypeDef* current_pid[4];  // Shortcut for PID cur
 
     float last_yaw_ref;                // Last PTZ raw target value
     PID_PIDTypeDef Chassis_followPID;  // Chassis servo PID

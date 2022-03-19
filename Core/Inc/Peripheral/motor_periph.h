@@ -3,7 +3,7 @@
  * 
  *  file         : motor_periph.h
  *  Description  : This file contains motor control function
- *  LastEditors  : ¶¯ÇéØ¼²·ìá¶¯ÐÄ
+ *  LastEditors  : ï¿½ï¿½ï¿½ï¿½Ø¼ï¿½ï¿½ï¿½á¶¯ï¿½ï¿½
  *  Date         : 2021-05-04 20:53:31
  *  LastEditTime : 2021-05-14 11:56:42
  */
@@ -115,6 +115,7 @@ void Motor_CalcMotorOutputRingOverrided(Motor_MotorTypeDef* pmotor, uint8_t pid_
 void Motor_SetMotorRef(Motor_MotorTypeDef* pmotor, float ref);
 void Motor_SetMotorFdb(Motor_MotorTypeDef* pmotor, uint8_t pid_no, float fdb);
 void Motor_SetMotorSlopeRef(Motor_MotorTypeDef* pmotor, float ref, Motor_MotorParamTypeDef* pparam);
+void Motor_SetMotorOutput(Motor_MotorTypeDef* pmotor, float output);
 void Motor_CalcMotorOutput(Motor_MotorTypeDef* pmotor, Motor_MotorParamTypeDef* pparam);
 void Motor_CalcMotorGroupOutput(Motor_MotorGroupTypeDef* pmotor_group, Motor_MotorParamTypeDef* pparam);
 void Motor_SendMotorPWMOutput(Motor_MotorTypeDef* pmotor);

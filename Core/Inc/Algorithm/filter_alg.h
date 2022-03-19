@@ -1,9 +1,18 @@
 /*
+ * @Project      : RM_Infantry_Neptune_frame
+ * @FilePath     : \GITEE2\Core\Inc\Algorithm\filter_alg.h
+ * @Descripttion :
+ * @Author       : GDDG08
+ * @Date         : 2021-07-24 11:39:13
+ * @LastEditors  : GDDG08
+ * @LastEditTime : 2022-03-19 16:46:01
+ */
+/*
  *  Project      : Infantry_Momentum
- * 
+ *
  *  file         : filter_alg.h
  *  Description  : This file contains digital filter correlation function
- *  LastEditors  : ¶¯ÇéØ¼²·ìá¶¯ÐÄ
+ *  LastEditors  : ï¿½ï¿½ï¿½ï¿½Ø¼ï¿½ï¿½ï¿½á¶¯ï¿½ï¿½
  *  Date         : 2021-05-04 20:53:31
  *  LastEditTime : 2021-05-08 09:10:15
  */
@@ -18,7 +27,7 @@ extern "C" {
 #include "stm32f4xx_hal.h"
 #include "math_alg.h"
 
-#define MAX_LENGTH 10
+#define MAX_LENGTH 30
 
 typedef struct {
     float cut_off_frq;
@@ -32,6 +41,7 @@ typedef struct {
 } Filter_LowPassTypeDef;
 
 typedef struct {
+    uint8_t length;
     float val[MAX_LENGTH];
     float sum;
 } Filter_WindowTypeDef;
@@ -44,6 +54,7 @@ typedef struct {
 
 void Filter_LowPassInit(float param, Filter_LowPassParamTypeDef* pparam);
 float Filter_LowPass(float val, Filter_LowPassParamTypeDef* fparam, Filter_LowPassTypeDef* filt);
+void Filter_AverInit(Filter_WindowTypeDef* filt, uint8_t length);
 float Filter_Aver(float val, Filter_WindowTypeDef* filt);
 float Filter_Bessel(float val, Filter_Bessel_TypeDef* filt);
 

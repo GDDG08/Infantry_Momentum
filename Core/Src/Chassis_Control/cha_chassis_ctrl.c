@@ -1,6 +1,6 @@
 /*
  *  Project      : Infantry_Momentum
- * 
+ *
  *  file         : cha_chassis_ctrl.c
  *  Description  : This file contains chassis control function
  *  LastEditors  : ����ؼ���ᶯ��
@@ -26,10 +26,10 @@ PID_PIDParamTypeDef Chassis_followPIDParam;
 Chassis_ChassisTypeDef Chassis_chassisControlData;
 
 /**
-  * @brief      Chassis control initialization
-  * @param      NULL
-  * @retval     NULL
-  */
+ * @brief      Chassis control initialization
+ * @param      NULL
+ * @retval     NULL
+ */
 void Chassis_InitChassis() {
     Chassis_ChassisTypeDef* chassis = Chassis_GetChassisControlPtr();
 
@@ -42,48 +42,55 @@ void Chassis_InitChassis() {
     chassis->last_mode = Chassis_MODE_STOP;
     chassis->mode_changed = 0;
 
+    for (uint8_t i = 0; i < 4; i++) {
+        chassis->lastMotor_ref[i] = 0.0f;
+        // chassis->speed_pid[i] = &Motor_chassisMotors.motor_handle[i]->pid_spd;
+        // chassis->current_pid[i] = &Motor_chassisMotors.motor_handle[i]->pid_cur;
+    }
+
     Chassis_SetStopRef();
 
     // Initialization of motor parameters (including PID parameters)
     Const_SetChasisMotorParam();
 
+    PowerCtrl_Init(POWER_LIMIT, &Motor_chassisMotors);
     chassis->pending_state = 0;
 }
 
 /**
-  * @brief      Gets the pointer to the chassis control object
-  * @param      NULL
-  * @retval     The pointer points to the chassis control object
-  */
+ * @brief      Gets the pointer to the chassis control object
+ * @param      NULL
+ * @retval     The pointer points to the chassis control object
+ */
 Chassis_ChassisTypeDef* Chassis_GetChassisControlPtr() {
     return &Chassis_chassisControlData;
 }
 
 /**
-  * @brief      Set the chassis control output calculation enable state
-  * @param      state: Enabled, 1 is enabled, 0 is disabled
-  * @retval     NULL
-  */
+ * @brief      Set the chassis control output calculation enable state
+ * @param      state: Enabled, 1 is enabled, 0 is disabled
+ * @retval     NULL
+ */
 void Chassis_SetChassisControlState(uint8_t state) {
     Chassis_ChassisTypeDef* chassis = Chassis_GetChassisControlPtr();
     chassis->control_state = state;
 }
 
 /**
-  * @brief      Set chassis control output enable status
-  * @param      state: Enabled, 1 is enabled, 0 is disabled
-  * @retval     NULL
-  */
+ * @brief      Set chassis control output enable status
+ * @param      state: Enabled, 1 is enabled, 0 is disabled
+ * @retval     NULL
+ */
 void Chassis_SetChassisOutputState(uint8_t state) {
     Chassis_ChassisTypeDef* chassis = Chassis_GetChassisControlPtr();
     chassis->output_state = state;
 }
 
 /**
-  * @brief      Chassis front and rear motion control setting
-  * @param      ref: Front and rear motion control of chassis
-  * @retval     NULL
-  */
+ * @brief      Chassis front and rear motion control setting
+ * @param      ref: Front and rear motion control of chassis
+ * @retval     NULL
+ */
 void Chassis_SetForwardBackRef(float ref) {
     Chassis_ChassisTypeDef* chassis = Chassis_GetChassisControlPtr();
     chassis->last_ref.forward_back_ref = chassis->raw_ref.forward_back_ref;
@@ -91,10 +98,10 @@ void Chassis_SetForwardBackRef(float ref) {
 }
 
 /**
-  * @brief      Chassis left and right motion control setting
-  * @param      ref: Chassis left and right motion control
-  * @retval     NULL
-  */
+ * @brief      Chassis left and right motion control setting
+ * @param      ref: Chassis left and right motion control
+ * @retval     NULL
+ */
 void Chassis_SetLeftRightRef(float ref) {
     Chassis_ChassisTypeDef* chassis = Chassis_GetChassisControlPtr();
     chassis->last_ref.left_right_ref = chassis->raw_ref.left_right_ref;
@@ -102,10 +109,10 @@ void Chassis_SetLeftRightRef(float ref) {
 }
 
 /**
-  * @brief      Control quantity setting of chassis rotary motion
-  * @param      ref: Control quantity of chassis rotary motion
-  * @retval     NULL
-  */
+ * @brief      Control quantity setting of chassis rotary motion
+ * @param      ref: Control quantity of chassis rotary motion
+ * @retval     NULL
+ */
 void Chassis_SetRotateRef(float ref) {
     Chassis_ChassisTypeDef* chassis = Chassis_GetChassisControlPtr();
     chassis->last_ref.rotate_ref = chassis->raw_ref.rotate_ref;
@@ -113,10 +120,10 @@ void Chassis_SetRotateRef(float ref) {
 }
 
 /**
-  * @brief      Chassis mode setting
-  * @param      mode: Chassis mode
-  * @retval     NULL
-  */
+ * @brief      Chassis mode setting
+ * @param      mode: Chassis mode
+ * @retval     NULL
+ */
 void Chassis_SetMode(Chassis_ChassisModeEnum mode) {
     Chassis_ChassisTypeDef* chassis = Chassis_GetChassisControlPtr();
 
@@ -129,10 +136,10 @@ void Chassis_SetMode(Chassis_ChassisModeEnum mode) {
 }
 
 /**
-  * @brief      Set stop target value
-  * @param      NULL
-  * @retval     NULL
-  */
+ * @brief      Set stop target value
+ * @param      NULL
+ * @retval     NULL
+ */
 void Chassis_SetStopRef() {
     Chassis_ChassisTypeDef* chassis = Chassis_GetChassisControlPtr();
 
@@ -143,10 +150,10 @@ void Chassis_SetStopRef() {
 }
 
 /**
-  * @brief      Set stop target value
-  * @param      NULL
-  * @retval     NULL
-  */
+ * @brief      Set stop target value
+ * @param      NULL
+ * @retval     NULL
+ */
 void Chassis_CalcMoveRef() {
     Chassis_ChassisTypeDef* chassis = Chassis_GetChassisControlPtr();
 
@@ -164,10 +171,10 @@ void Chassis_CalcMoveRef() {
 }
 
 /**
-  * @brief      Chassis following solution
-  * @param      NULL
-  * @retval     NULL
-  */
+ * @brief      Chassis following solution
+ * @param      NULL
+ * @retval     NULL
+ */
 void Chassis_CalcFollowRef() {
     Chassis_ChassisTypeDef* chassis = Chassis_GetChassisControlPtr();
     GimbalYaw_GimbalYawTypeDef* gimbalyaw = GimbalYaw_GetGimbalYawPtr();
@@ -185,10 +192,10 @@ void Chassis_CalcFollowRef() {
 }
 
 /**
-  * @brief      Calculation of chassis small gyroscope
-  * @param      NULL
-  * @retval     NULL
-  */
+ * @brief      Calculation of chassis small gyroscope
+ * @param      NULL
+ * @retval     NULL
+ */
 float sqr(float x) {
     return x * x;
 }
@@ -240,10 +247,10 @@ void Chassis_CalcDanceRef() {
 }
 
 /**
-  * @brief      Mcnamm round solution
-  * @param      NULL
-  * @retval     NULL
-  */
+ * @brief      Mcnamm round solution
+ * @param      NULL
+ * @retval     NULL
+ */
 void Chassis_CalcMecanumRef() {
     Chassis_ChassisTypeDef* chassis = Chassis_GetChassisControlPtr();
 
@@ -258,11 +265,11 @@ void Chassis_CalcMecanumRef() {
 }
 
 /**
-  * @brief      Copy chassis motion speed object
-  * @param      dest: The pointer points to the target chassis movement speed object
-  * @param      src: The pointer points to the source chassis motion speed object
-  * @retval     NULL
-  */
+ * @brief      Copy chassis motion speed object
+ * @param      dest: The pointer points to the target chassis movement speed object
+ * @param      src: The pointer points to the source chassis motion speed object
+ * @retval     NULL
+ */
 void Chassis_CopyChassisRef(Chassis_ChassisRefTypeDef* dest, Chassis_ChassisRefTypeDef* src) {
     dest->forward_back_ref = src->forward_back_ref;
     dest->left_right_ref = src->left_right_ref;
@@ -270,10 +277,10 @@ void Chassis_CopyChassisRef(Chassis_ChassisRefTypeDef* dest, Chassis_ChassisRefT
 }
 
 /**
-  * @brief      Chassis movement speed object clear
-  * @param      pref: The pointer points to the chassis movement speed object
-  * @retval     NULL
-  */
+ * @brief      Chassis movement speed object clear
+ * @param      pref: The pointer points to the chassis movement speed object
+ * @retval     NULL
+ */
 void Chassis_ClearChassisRef(Chassis_ChassisRefTypeDef* pref) {
     pref->forward_back_ref = 0;
     pref->left_right_ref = 0;
@@ -281,10 +288,10 @@ void Chassis_ClearChassisRef(Chassis_ChassisRefTypeDef* pref) {
 }
 
 /**
-  * @brief      Calculation of chassis control quantity
-  * @param      NULL
-  * @retval     NULL
-  */
+ * @brief      Calculation of chassis control quantity
+ * @param      NULL
+ * @retval     NULL
+ */
 void Chassis_Control() {
     Chassis_ChassisTypeDef* chassis = Chassis_GetChassisControlPtr();
     if (chassis->control_state != 1)
@@ -325,17 +332,19 @@ void Chassis_Control() {
     Chassis_CalcMecanumRef();
     // Calculation of control quantity
 
-    Motor_CalcMotorGroupOutput(&Motor_chassisMotors, chassis->current_param);
+    // Motor_CalcMotorGroupOutput(&Motor_chassisMotors, chassis->current_param);
     // Power control
 
     // Power_PowerControl(&Motor_chassisMotors);
+    //Output Control
+    Output_Control();
 }
 
 /**
-  * @brief      Output chassis control quantity
-  * @param      NULL
-  * @retval     NULL
-  */
+ * @brief      Output chassis control quantity
+ * @param      NULL
+ * @retval     NULL
+ */
 void Chassis_Output() {
     Chassis_ChassisTypeDef* chassis = Chassis_GetChassisControlPtr();
     if (chassis->output_state != 1)

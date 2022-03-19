@@ -1,6 +1,6 @@
 /*
  *  Project      : Infantry_Momentum
- * 
+ *
  *  file         : buscomm_ctrl.c
  *  Description  : This file contains Bus communication control function
  *  LastEditors  : ����ؼ���ᶯ��
@@ -35,7 +35,7 @@ const uint16_t Const_BusComm_OFFLINE_TIME = 500;
 
 const uint8_t Const_BusComm_SIZE = 8;
 const uint8_t Const_BusComm_GIMBAL_BUFF_SIZE = 7;
-const uint8_t Const_BusComm_CHASSIS_BUFF_SIZE = 5;
+const uint8_t Const_BusComm_CHASSIS_BUFF_SIZE = 6;
 const uint8_t Const_BusComm_SUPERCAP_BUFF_SIZE = 1;
 
 const uint8_t Const_BusComm_FRAME_HEADER_SOF = 0x5A;
@@ -55,11 +55,11 @@ const uint8_t CHASSIS_CTRL_NORMAL = 0x09;
 const uint8_t CHASSIS_CTRL_GYRO = 0x0A;
 const uint8_t CHASSIS_CTRL_DANCE = 0x0B;
 //      cap mode
-const uint8_t SUPERCAP_CTRL_OFF = 0x31;
-const uint8_t SUPERCAP_CTRL_ON = 0x32;
-//      cap charge mode
-const uint8_t SUPERCAP_CHARGE = 0x41;
-const uint8_t SUPERCAP_UNCHARGE = 0x42;
+const uint8_t SUPERCAP_CTRL_OFF = 0x00;
+const uint8_t SUPERCAP_CTRL_ON = 0x01;
+//      cap boost mode
+const uint8_t SUPERCAP_BOOST = 0x01;
+const uint8_t SUPERCAP_UNBOOST = 0x00;
 //      cap state
 const uint8_t SUPERCAP_MODE_OFF = 0x51;
 const uint8_t SUPERCAP_MODE_ON = 0x52;
@@ -77,37 +77,42 @@ const uint32_t Const_BusComm_CAN_TX_GIMBAL_STDID = 0x011;
 const uint32_t Const_BusComm_CAN_TX_GIMBAL_EXTID = 0x01;
 const uint32_t Const_BusComm_CAN_TX_SUPERCAP_STDID = 0x013;
 const uint32_t Const_BusComm_CAN_TX_SUPERCAP_EXTID = 0x01;
+const uint32_t Const_BusComm_CAN_TX_EXTID = 0x01;
+
 CAN_TxHeaderTypeDef BusComm_ChassisCanTxHeader;
 CAN_TxHeaderTypeDef BusComm_GimbalCanTxHeader;
 CAN_TxHeaderTypeDef BusComm_SuperCapCanTxHeader;
 
+CAN_TxHeaderTypeDef BusComm_CapMode;
+
 #if __FN_IF_ENABLE(__FN_INFANTRY)
 /**
-  * @brief      Inter bus communication initialization
-  * @param      NULL
-  * @retval     NULL
-  */
+ * @brief      Inter bus communication initialization
+ * @param      NULL
+ * @retval     NULL
+ */
 void BusComm_InitBusComm() {
     BusComm_ResetBusCommData();
     Can_InitTxHeader(&BusComm_ChassisCanTxHeader, Const_BusComm_CAN_TX_CHASSIS_STDID, Const_BusComm_CAN_TX_CHASSIS_EXTID, Const_BusComm_SIZE);
     Can_InitTxHeader(&BusComm_GimbalCanTxHeader, Const_BusComm_CAN_TX_GIMBAL_STDID, Const_BusComm_CAN_TX_GIMBAL_EXTID, Const_BusComm_SIZE);
     Can_InitTxHeader(&BusComm_SuperCapCanTxHeader, Const_BusComm_CAN_TX_SUPERCAP_STDID, Const_BusComm_CAN_TX_SUPERCAP_EXTID, Const_BusComm_SIZE);
+    Can_InitTxHeader(&BusComm_CapMode, CMD_SET_CAP_MODE, Const_BusComm_CAN_TX_EXTID, Const_BusComm_SIZE);
 }
 
 /**
-  * @brief      Gets the pointer to the bus communication data object
-  * @param      NULL
-  * @retval     Pointer to bus communication data object
-  */
+ * @brief      Gets the pointer to the bus communication data object
+ * @param      NULL
+ * @retval     Pointer to bus communication data object
+ */
 BusComm_BusCommDataTypeDef* BusComm_GetBusDataPtr() {
     return &BusComm_BusCommData;
 }
 
 /**
-  * @brief      Check whether the dual bus communication is offline
-  * @param      NULL
-  * @retval     NULL
-  */
+ * @brief      Check whether the dual bus communication is offline
+ * @param      NULL
+ * @retval     NULL
+ */
 uint8_t BusComm_IsBusCommOffline() {
     BusComm_BusCommDataTypeDef* buscomm = BusComm_GetBusDataPtr();
     if (HAL_GetTick() - buscomm->last_update_time > Const_BusComm_OFFLINE_TIME) {
@@ -118,10 +123,10 @@ uint8_t BusComm_IsBusCommOffline() {
 }
 
 /**
-  * @brief      Data sending function of serial port in inter bus communication
-  * @param      NULL
-  * @retval     NULL
-  */
+ * @brief      Data sending function of serial port in inter bus communication
+ * @param      NULL
+ * @retval     NULL
+ */
 void BusComm_SendBusCommData() {
     /* up data struct data    */
     BusComm_Update();
@@ -166,11 +171,11 @@ void BusComm_SendBusCommData() {
 }
 
 /**
-  * @brief      Data check function of serial port in inter bus communication
-  * @param      buff: data buffer
-  * @param      rxdatalen: data length
-  * @retval     Verification result (1 is correct, 0 is failed)
-  */
+ * @brief      Data check function of serial port in inter bus communication
+ * @param      buff: data buffer
+ * @param      rxdatalen: data length
+ * @retval     Verification result (1 is correct, 0 is failed)
+ */
 uint8_t BusComm_VerifyBusCommData(uint8_t* buff, uint16_t rxdatalen) {
     const uint8_t FAILED = 0, SUCCEEDED = 1;
 
@@ -187,24 +192,24 @@ uint8_t BusComm_VerifyBusCommData(uint8_t* buff, uint16_t rxdatalen) {
 }
 
 /**
-  * @brief      Data decoding function of serial port in inter bus communication
-  * @param      buff: Data buffer
-  * @param      rxdatalen: data length
-  * @retval     NULL
-  */
-void BusComm_DecodeBusCommData(uint8_t buff[], uint16_t rxdatalen) {
+ * @brief      Data decoding function of serial port in inter bus communication
+ * @param      buff: Data buffer
+ * @param      rxdatalen: data length
+ * @retval     NULL
+ */
+void BusComm_DecodeBusCommData(uint8_t buff[], uint32_t stdid, uint16_t rxdatalen) {
     BusComm_BusCommDataTypeDef* buscomm = BusComm_GetBusDataPtr();
     buscomm->last_update_time = HAL_GetTick();
 
     memcpy(BusComm_RxData, buff, rxdatalen);
-
-    if (!BusComm_VerifyBusCommData(buff, rxdatalen)) {
-        buscomm->state = BusComm_STATE_ERROR;
-        return;
-    }
+    if (stdid != CMD_SET_CAP_STATE_1 && stdid != CMD_SET_CAP_STATE_2)
+        if (!BusComm_VerifyBusCommData(buff, rxdatalen)) {
+            buscomm->state = BusComm_STATE_ERROR;
+            return;
+        }
 
     for (int i = 0; i <= (Const_BusComm_SUPERCAP_BUFF_SIZE + Const_BusComm_CHASSIS_BUFF_SIZE + Const_BusComm_GIMBAL_BUFF_SIZE + 1); i++) {
-        if ((BusComm_RxData[1] == Buscmd_Receive[i].cmd_id) && (Buscmd_Receive[i].bus_func != NULL)) {
+        if (((stdid == Buscmd_Receive[i].cmd_id) || (BusComm_RxData[1] == Buscmd_Receive[i].cmd_id)) && (Buscmd_Receive[i].bus_func != NULL)) {
             Buscmd_Receive[i].bus_func(BusComm_RxData);
             return;
         }
@@ -212,10 +217,10 @@ void BusComm_DecodeBusCommData(uint8_t buff[], uint16_t rxdatalen) {
 }
 
 /**
-  * @brief      Reset inter bus communication data object
-  * @param      NULL
-  * @retval     NULL
-  */
+ * @brief      Reset inter bus communication data object
+ * @param      NULL
+ * @retval     NULL
+ */
 void BusComm_ResetBusCommData() {
     BusComm_BusCommDataTypeDef* buscomm = BusComm_GetBusDataPtr();
 
@@ -242,9 +247,9 @@ void BusComm_ResetBusCommData() {
     buscomm->chassis_mode = 0;
     buscomm->chassis_fb_ref = 0.0f;
     buscomm->chassis_lr_ref = 0.0f;
-    buscomm->cap_mode = SUPERCAP_CTRL_OFF;
+    buscomm->cap_mode_user = SUPERCAP_CTRL_OFF;
     buscomm->power_limit_mode = POWER_LIMITED;
-    buscomm->cap_charge_mode = SUPERCAP_UNCHARGE;
+    buscomm->cap_boost_mode_user = SUPERCAP_UNBOOST;
     buscomm->pitch_angle = 0.0f;
     buscomm->ui_cmd = 0;
 #endif
@@ -257,10 +262,10 @@ void BusComm_ResetBusCommData() {
 }
 
 /**
-  * @brief      Assignment of inter bus communication structure
-  * @param      NULL
-  * @retval     NULL
-  */
+ * @brief      Assignment of inter bus communication structure
+ * @param      NULL
+ * @retval     NULL
+ */
 void BusComm_Update() {
     BusComm_BusCommDataTypeDef* data = BusComm_GetBusDataPtr();
 
@@ -268,7 +273,7 @@ void BusComm_Update() {
 #if __FN_IF_ENABLE(__FN_INFANTRY_CHASSIS)
     GimbalYaw_GimbalYawTypeDef* gimbal = GimbalYaw_GetGimbalYawPtr();
     Referee_RefereeDataTypeDef* referee = Referee_GetRefereeDataPtr();
-    CapComm_CapCommDataTypeDef* capcomm = CapComm_GetCapDataPty();
+    // CapComm_CapCommDataTypeDef* capcomm = CapComm_GetCapDataPty();
 
     data->heat_speed_limit = referee->shooter_heat0_speed_limit;
     int mode = 0;
@@ -290,8 +295,8 @@ void BusComm_Update() {
     data->heat_cooling_rate = referee->shooter_heat0_cooling_rate;
     data->heat_cooling_limit = referee->shooter_heat0_cooling_limit;
     data->heat_speed_limit = referee->shooter_heat0_speed_limit;
-    data->cap_state = capcomm->cap_state;
-    data->cap_rest_energy = capcomm->cap_rest_energy;
+    // data->cap_state = capcomm->cap_state;
+    // data->cap_rest_energy = capcomm->cap_rest_energy;
     data->main_shooter_power = referee->mains_power_shooter_output;
 #endif
 
@@ -445,14 +450,14 @@ void _cmd_ui_mode_control() {
 }
 
 /**
-  * @brief      Interrupt callback function of can in inter Bus communication
-  * @param      
-  * @retval     NULL
-  */
+ * @brief      Interrupt callback function of can in inter Bus communication
+ * @param
+ * @retval     NULL
+ */
 void BusComm_CANRxCallback(CAN_HandleTypeDef* phcan, uint32_t stdid, uint8_t rxdata[], uint32_t len) {
 #if __FN_IF_ENABLE(__FN_INFANTRY)
     if (phcan == Const_BusComm_CAN_HANDLER) {
-        BusComm_DecodeBusCommData(rxdata, len);
+        BusComm_DecodeBusCommData(rxdata, stdid, len);
     }
 #endif
 }

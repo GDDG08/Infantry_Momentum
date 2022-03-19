@@ -1,9 +1,9 @@
 /*
  *  Project      : Infantry_Momentum
- * 
+ *
  *  file         : init_ctrl.c
  *  Description  : This file contains Initialize control function
- *  LastEditors  : ¶¯ÇéØ¼²·ìá¶¯ÐÄ
+ *  LastEditors  : ï¿½ï¿½ï¿½ï¿½Ø¼ï¿½ï¿½ï¿½á¶¯ï¿½ï¿½
  *  Date         : 2021-05-04 20:53:31
  *  LastEditTime : 2021-05-16 01:04:27
  */
@@ -39,10 +39,10 @@
 #include "supercap_comm.h"
 
 /**
-  * @brief      Initialize all peripherals
-  * @param      NULL
-  * @retval     NULL
-  */
+ * @brief      Initialize all peripherals
+ * @param      NULL
+ * @retval     NULL
+ */
 void Init_InitAll() {
 #if __FN_IF_ENABLE(__FN_SUPER_CAP)
 
@@ -84,20 +84,24 @@ void Init_InitAll() {
 
     Motor_InitAllMotors();
     BusComm_InitBusComm();
+    
+#if __FN_IF_ENABLE(__FN_SUPER_CAP_COMM)
     CapComm_InitCapComm();
+#endif
+
     Can_InitFilterAndStart(&hcan1);
     Can_InitFilterAndStart(&hcan2);
 
+    Cap_Init();
     Chassis_InitChassis();
-    Power_InitPower();
     GimbalYaw_InitGimbalYaw();
 #endif
 }
 
 /**
-  * @brief      Initialization delay
-  * @param      NULL
-  * @retval     NULL
-  */
+ * @brief      Initialization delay
+ * @param      NULL
+ * @retval     NULL
+ */
 void Init_MainLoop() {
 }

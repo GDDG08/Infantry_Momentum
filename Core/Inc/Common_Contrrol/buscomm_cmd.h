@@ -1,9 +1,18 @@
 /*
+ * @Project      : RM_Infantry_Neptune_frame
+ * @FilePath     : \GITEE2\Core\Inc\Common_Contrrol\buscomm_cmd.h
+ * @Descripttion :
+ * @Author       : GDDG08
+ * @Date         : 2021-07-24 11:39:13
+ * @LastEditors  : GDDG08
+ * @LastEditTime : 2022-03-19 20:06:53
+ */
+/*
  *  Project      : Infantry_Momentum
- * 
+ *
  *  file         : buscomm_cmd.h
  *  Description  : This file is for idiot Can communication
- *  LastEditors  : ¶¯ÇéØ¼²·ìá¶¯ÐÄ
+ *  LastEditors  : ï¿½ï¿½ï¿½ï¿½Ø¼ï¿½ï¿½ï¿½á¶¯ï¿½ï¿½
  *  Date         : 2021-05-09 03:52:53
  *  LastEditTime : 2021-05-16 01:27:20
  */
@@ -33,14 +42,18 @@ extern const uint8_t CMD_SET_CHA_LR;
 
 extern const uint8_t CMD_SENT_CAP_STATE;
 
+extern const uint32_t CMD_SET_CAP_MODE;
+extern const uint32_t CMD_SET_CAP_STATE_1;
+extern const uint32_t CMD_SET_CAP_STATE_2;
+
 typedef struct {
     int cmd_id;
     void (*bus_func)(uint8_t buff[]);
 } BusCmd_TableEntry;
 
-extern BusCmd_TableEntry Buscmd_Receive[13];
+extern BusCmd_TableEntry Buscmd_Receive[15];
 extern BusCmd_TableEntry Buscmd_GimSend[7];
-extern BusCmd_TableEntry Buscmd_ChaSend[5];
+extern BusCmd_TableEntry Buscmd_ChaSend[6];
 extern BusCmd_TableEntry Buscmd_CapSend[1];
 
 #endif

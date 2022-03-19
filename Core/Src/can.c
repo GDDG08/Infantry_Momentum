@@ -1,21 +1,21 @@
 /**
-  ******************************************************************************
-  * @file    can.c
-  * @brief   This file provides code for the configuration
-  *          of the CAN instances.
-  ******************************************************************************
-  * @attention
-  *
-  * <h2><center>&copy; Copyright (c) 2021 STMicroelectronics.
-  * All rights reserved.</center></h2>
-  *
-  * This software component is licensed by ST under Ultimate Liberty license
-  * SLA0044, the "License"; You may not use this file except in compliance with
-  * the License. You may obtain a copy of the License at:
-  *                             www.st.com/SLA0044
-  *
-  ******************************************************************************
-  */
+ ******************************************************************************
+ * @file    can.c
+ * @brief   This file provides code for the configuration
+ *          of the CAN instances.
+ ******************************************************************************
+ * @attention
+ *
+ * <h2><center>&copy; Copyright (c) 2022 STMicroelectronics.
+ * All rights reserved.</center></h2>
+ *
+ * This software component is licensed by ST under Ultimate Liberty license
+ * SLA0044, the "License"; You may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at:
+ *                             www.st.com/SLA0044
+ *
+ ******************************************************************************
+ */
 
 /* Includes ------------------------------------------------------------------*/
 #include "can.h"
@@ -48,11 +48,11 @@ void MX_CAN1_Init(void) {
 /* CAN2 init function */
 void MX_CAN2_Init(void) {
     hcan2.Instance = CAN2;
-    hcan2.Init.Prescaler = 3;
+    hcan2.Init.Prescaler = 7;
     hcan2.Init.Mode = CAN_MODE_NORMAL;
     hcan2.Init.SyncJumpWidth = CAN_SJW_1TQ;
-    hcan2.Init.TimeSeg1 = CAN_BS1_9TQ;
-    hcan2.Init.TimeSeg2 = CAN_BS2_4TQ;
+    hcan2.Init.TimeSeg1 = CAN_BS1_3TQ;
+    hcan2.Init.TimeSeg2 = CAN_BS2_2TQ;
     hcan2.Init.TimeTriggeredMode = DISABLE;
     hcan2.Init.AutoBusOff = DISABLE;
     hcan2.Init.AutoWakeUp = DISABLE;
@@ -80,9 +80,9 @@ void HAL_CAN_MspInit(CAN_HandleTypeDef* canHandle) {
 
         __HAL_RCC_GPIOA_CLK_ENABLE();
         /**CAN1 GPIO Configuration
-    PA11     ------> CAN1_RX
-    PA12     ------> CAN1_TX
-    */
+        PA11     ------> CAN1_RX
+        PA12     ------> CAN1_TX
+        */
         GPIO_InitStruct.Pin = GPIO_PIN_11 | GPIO_PIN_12;
         GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
         GPIO_InitStruct.Pull = GPIO_NOPULL;
@@ -109,9 +109,9 @@ void HAL_CAN_MspInit(CAN_HandleTypeDef* canHandle) {
 
         __HAL_RCC_GPIOB_CLK_ENABLE();
         /**CAN2 GPIO Configuration
-    PB12     ------> CAN2_RX
-    PB13     ------> CAN2_TX
-    */
+        PB12     ------> CAN2_RX
+        PB13     ------> CAN2_TX
+        */
         GPIO_InitStruct.Pin = GPIO_PIN_12 | GPIO_PIN_13;
         GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
         GPIO_InitStruct.Pull = GPIO_NOPULL;
@@ -140,9 +140,9 @@ void HAL_CAN_MspDeInit(CAN_HandleTypeDef* canHandle) {
         }
 
         /**CAN1 GPIO Configuration
-    PA11     ------> CAN1_RX
-    PA12     ------> CAN1_TX
-    */
+        PA11     ------> CAN1_RX
+        PA12     ------> CAN1_TX
+        */
         HAL_GPIO_DeInit(GPIOA, GPIO_PIN_11 | GPIO_PIN_12);
 
         /* CAN1 interrupt Deinit */
@@ -162,9 +162,9 @@ void HAL_CAN_MspDeInit(CAN_HandleTypeDef* canHandle) {
         }
 
         /**CAN2 GPIO Configuration
-    PB12     ------> CAN2_RX
-    PB13     ------> CAN2_TX
-    */
+        PB12     ------> CAN2_RX
+        PB13     ------> CAN2_TX
+        */
         HAL_GPIO_DeInit(GPIOB, GPIO_PIN_12 | GPIO_PIN_13);
 
         /* CAN2 interrupt Deinit */

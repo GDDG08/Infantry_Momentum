@@ -1,6 +1,6 @@
 /*
  *  Project      : Infantry_Momentum
- * 
+ *
  *  file         : buscomm_ctrl.h
  *  Description  : This file contains Bus bus communication control function
  *  LastEditors  : ����ؼ���ᶯ��
@@ -43,9 +43,9 @@ extern const uint8_t CHASSIS_CTRL_DANCE;
 //      cap mode
 extern const uint8_t SUPERCAP_CTRL_OFF;
 extern const uint8_t SUPERCAP_CTRL_ON;
-//      cap charge mode
-extern const uint8_t SUPERCAP_CHARGE;
-extern const uint8_t SUPERCAP_UNCHARGE;
+//      cap boost mode
+extern const uint8_t SUPERCAP_BOOST;
+extern const uint8_t SUPERCAP_UNBOOST;
 //      cap state
 extern const uint8_t SUPERCAP_MODE_OFF;
 extern const uint8_t SUPERCAP_MODE_ON;
@@ -54,6 +54,8 @@ extern const uint8_t SUPERCAP_MODE_ERROR;
 extern CAN_TxHeaderTypeDef BusComm_ChassisCanTxHeader;
 extern CAN_TxHeaderTypeDef BusComm_GimbalCanTxHeader;
 extern CAN_TxHeaderTypeDef BusComm_SuperCapCanTxHeader;
+
+extern CAN_TxHeaderTypeDef BusComm_CapMode;
 
 extern int yyy_love;
 
@@ -78,25 +80,35 @@ typedef struct {
     uint16_t heat_cooling_limit;
     uint16_t heat_speed_limit;
     uint8_t main_shooter_power;
+    uint8_t cap_mode_fnl;
+    uint8_t cap_boost_mode_fnl;
+    uint8_t chassis_power_limit;
+    uint8_t chassis_power_buffer;
+    float chassis_power;
 
     // Gimbal up stream
-    uint8_t gimbal_yaw_mode;   // Yaw mode of gimbal
-    float gimbal_yaw_ref;      // gimbal yaw target value
-    float gimbal_imu_pos;      // gimbal yaw IMU angle feedback value
-    float gimbal_imu_spd;      // Speed feedback value of gimbal yaw IMU
-    uint8_t chassis_mode;      // Chassis mode
-    float chassis_fb_ref;      // Target value of forward and back speed of chassis
-    float chassis_lr_ref;      // Target value of chassis left and right speed
-    uint8_t cap_mode;          // Capacitance mode
-    uint8_t power_limit_mode;  // Force to change power limit mode
-    uint8_t cap_charge_mode;   // cap charge mode
+    uint8_t gimbal_yaw_mode;      // Yaw mode of gimbal
+    float gimbal_yaw_ref;         // gimbal yaw target value
+    float gimbal_imu_pos;         // gimbal yaw IMU angle feedback value
+    float gimbal_imu_spd;         // Speed feedback value of gimbal yaw IMU
+    uint8_t chassis_mode;         // Chassis mode
+    float chassis_fb_ref;         // Target value of forward and back speed of chassis
+    float chassis_lr_ref;         // Target value of chassis left and right speed
+    uint8_t cap_mode_user;        // Capacitance mode
+    uint8_t cap_boost_mode_user;  // cap boost mode
+    uint8_t power_limit_mode;     // Force to change power limit mode
     float pitch_angle;
     uint8_t ui_cmd;
 
     // Super Cap up stream
+    uint32_t power_path_change_flag;
     uint8_t cap_state;
     uint8_t cap_rest_energy;
+    float cap_rest_energy_display;
 
+    float Cap_power;    // Chassis Power
+    float Cap_voltage;  // Chassis Voltage
+    float Cap_current;  // Chassis Current
 } BusComm_BusCommDataTypeDef;
 
 extern BusComm_BusCommDataTypeDef BusComm_BusCommData;
@@ -108,7 +120,7 @@ uint8_t BusComm_IsBusCommOffline(void);
 void BusComm_SendBusCommData(void);
 void BusComm_CANRxCallback(CAN_HandleTypeDef* phcan, uint32_t stdid, uint8_t rxdata[], uint32_t len);
 uint8_t BusComm_VerifyBusCommData(uint8_t* buff, uint16_t rxdatalen);
-void BusComm_DecodeBusCommData(uint8_t buff[], uint16_t rxdatalen);
+void BusComm_DecodeBusCommData(uint8_t buff[], uint32_t stdid, uint16_t rxdatalen);
 void BusComm_ResetBusCommData(void);
 void BusComm_Update(void);
 void _cmd_mode_control(void);

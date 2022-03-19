@@ -3,14 +3,81 @@
  * 
  *  file         : supercap_ctrl.c
  *  Description  : This file contains cap control function
- *  LastEditors  : ¶¯ÇéØ¼²·ìá¶¯ÐÄ
+ *  LastEditors  : ï¿½ï¿½ï¿½ï¿½Ø¼ï¿½ï¿½ï¿½á¶¯ï¿½ï¿½
  *  Date         : 2021-05-04 20:53:31
  *  LastEditTime : 2021-05-16 20:44:15
  */
 
 #include "supercap_ctrl.h"
 
-#if __FN_IF_ENABLE(__FN_SUPER_CAP)
+#if __FN_IF_ENABLE(__FN_INFANTRY_CHASSIS)
+
+#define SUPER_CAP_PERIOD 1
+
+CAP_CtrlDataTypeDef CapData;
+
+/**
+ * @brief   Get Cap Control Ptr
+ * @param 	None
+ * @retval	None
+ * @note	None
+ */
+CAP_CtrlDataTypeDef* Cap_GetCapDataPtr(void) {
+    return &CapData;
+}
+
+/**
+ * @brief      Cap Initialize control function
+ * @param      NULL
+ * @retval     NULL
+ */
+void Cap_Init(void) {
+    CAP_CtrlDataTypeDef* capctrl = Cap_GetCapDataPtr();
+    Cap_ResetCapData();
+    capctrl->last_update_time = HAL_GetTick();
+    capctrl->starting_time = 0;
+}
+
+/**
+ * @brief      Reset supercapacitor communication data object
+ * @param      NULL
+ * @retval     NULL
+ */
+void Cap_ResetCapData(void) {
+    CAP_CtrlDataTypeDef* capctrl = Cap_GetCapDataPtr();
+
+    capctrl->cap_boost_mode = 0;
+    capctrl->cap_mode_Remote = 0;
+    capctrl->cap_mode_Starting = 0;
+    capctrl->cap_mode_Stall = 0;
+    capctrl->cap_state = 0;
+}
+
+/**
+ * @brief      Update buscomm data
+ * @param      NULL
+ * @retval     NULL
+ */
+void Cap_Update(void) {
+    CAP_CtrlDataTypeDef* capctrl = Cap_GetCapDataPtr();
+    BusComm_BusCommDataTypeDef* buscomm = BusComm_GetBusDataPtr();
+    PowerCtrl_Data_t* PowCtr = PowerCtrl_GetPowerDataPtr();
+    Referee_RefereeDataTypeDef* referee = Referee_GetRefereeDataPtr();
+
+    capctrl->Sum_PowerReally = buscomm->Cap_power;
+    capctrl->Chassis_voltage = buscomm->Cap_voltage;
+    capctrl->Sum_CurrentReally = buscomm->Cap_current;
+    capctrl->cap_mode_Remote = buscomm->cap_mode_user;
+    capctrl->cap_boost_mode = buscomm->cap_boost_mode_user;
+
+    buscomm->cap_mode_fnl = (capctrl->cap_mode_Remote | capctrl->cap_mode_Stall | capctrl->cap_mode_Starting);
+    buscomm->cap_boost_mode_fnl = PowCtr->ChassisStarting_flag << 2 | PowCtr->ChassisDown_flag << 1 | capctrl->cap_boost_mode;
+    buscomm->chassis_power_limit = referee->max_chassis_power;
+    buscomm->chassis_power_buffer = (uint8_t)referee->chassis_power_buffer;
+    buscomm->chassis_power = referee->chassis_power;
+}
+
+#elif __FN_IF_ENABLE(__FN_SUPER_CAP)
 
 #include "supercap_comm.h"
 #include "const_lib.h"

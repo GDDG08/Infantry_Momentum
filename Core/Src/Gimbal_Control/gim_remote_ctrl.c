@@ -200,7 +200,7 @@ void Remote_RemoteProcess() {
     if (data->remote.ch[4] <= 500.0f)
         Servo_SetServoAngle(&Servo_ammoContainerCapServo, 0);
 
-    buscomm->cap_charge_mode = SUPERCAP_UNCHARGE;
+    buscomm->cap_boost_mode_user = SUPERCAP_UNBOOST;
     /*      remote chassis reference value bessel filter    */
     float yaw_ref,
         pitch_ref;
@@ -227,8 +227,6 @@ void Remote_KeyMouseProcess() {
 
     float max_chassis_speed;
     /************Control mode choise**************/
-    if (data->key.z == 1) {
-    }
 
     if (data->key.x == 1) {
     }
@@ -367,18 +365,28 @@ void Remote_KeyMouseProcess() {
     } else
         shooter_speed_setdown_offset = 0;
 
-    if (data->key.shift == 1) {
-        if (buscomm->cap_state == SUPERCAP_MODE_ON) {
-            buscomm->cap_mode = SUPERCAP_CTRL_ON;
-            buscomm->cap_charge_mode = SUPERCAP_CHARGE;
-        } else {
-            buscomm->cap_mode = SUPERCAP_CTRL_OFF;
-            buscomm->cap_charge_mode = SUPERCAP_UNCHARGE;
+   /******** supercap control ********/
+    static int cap_flag = 0;
+    if (data->key.z == 1) {
+        if (cap_flag == 1) {
+            if (buscomm->cap_mode_user == SUPERCAP_CTRL_OFF) {
+                if (buscomm->cap_state == SUPERCAP_MODE_ON) {
+                    buscomm->cap_mode_user = SUPERCAP_CTRL_ON;
+                } else {
+                    buscomm->cap_mode_user = SUPERCAP_CTRL_OFF;
+                }
+            } else if (buscomm->cap_mode_user == SUPERCAP_CTRL_ON) {
+                buscomm->cap_mode_user = SUPERCAP_CTRL_OFF;
+            }
+            cap_flag = 0;
         }
+    } else
+        cap_flag = 1;
 
+    if (data->key.shift == 1 && buscomm->cap_mode_user == SUPERCAP_CTRL_ON) {
+        buscomm->cap_boost_mode_user = SUPERCAP_BOOST;
     } else {
-        buscomm->cap_mode = SUPERCAP_CTRL_OFF;
-        buscomm->cap_charge_mode = SUPERCAP_CHARGE;
+        buscomm->cap_boost_mode_user = SUPERCAP_UNBOOST;
     }
 
     /**************Front and back control*************/
