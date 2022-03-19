@@ -3,7 +3,7 @@
  * 
  *  file         : const_lib.h
  *  Description  : This file contains all necessary constants
- *  LastEditors  : ¶¯ÇéØ¼²·ìá¶¯ÐÄ
+ *  LastEditors  : ï¿½ï¿½ï¿½ï¿½Ø¼ï¿½ï¿½ï¿½á¶¯ï¿½ï¿½
  *  Date         : 2021-05-04 20:53:31
  *  LastEditTime : 2021-05-14 12:13:23
  */
@@ -81,6 +81,8 @@ extern const float MOUSE_PITCH_ANGLE_TO_FACT;
 extern const float MOUSE_YAW_ANGLE_TO_FACT;
 extern const float MOUSE_CHASSIS_ACCELERATE;
 extern const float MOUSE_CHASSIS_SLOWDOWN;
+extern const float REMOTE_CHASSIS_ACCELERATE;
+extern const float REMOTE_CHASSIS_SLOWDOWN;
 extern const float MOUSE_CHASSIS_MAX_SPEED;
 extern const float MOUSE_CHASSIS_MAX_GYRO_SPEED;
 

@@ -1,6 +1,6 @@
 /*
  *  Project      : Infantry_Momentum
- * 
+ *
  *  file         : gim_remote_ctrl.c
  *  Description  : This file contains Remote control function
  *  LastEditors  : ����ؼ���ᶯ��
@@ -23,33 +23,38 @@ Remote_RemoteControlTypeDef Remote_remoteControlData;
 Math_SlopeParamTypeDef Remote_ChassisFBSlope;
 Math_SlopeParamTypeDef Remote_ChassisRLSlope;
 
+Math_SlopeParamTypeDef PC_ChassisFBSlope;
+Math_SlopeParamTypeDef PC_ChassisRLSlope;
 /**
-  * @brief      Remotr Control Init
-  * @param      NULL
-  * @retval     NULL
-  */
+ * @brief      Remotr Control Init
+ * @param      NULL
+ * @retval     NULL
+ */
 void Remotr_RemotrControlInit() {
     Remote_RemoteControlTypeDef* control_data = Remote_GetControlDataPtr();
 
-    Math_InitSlopeParam(&Remote_ChassisFBSlope, MOUSE_CHASSIS_ACCELERATE, MOUSE_CHASSIS_SLOWDOWN);
-    Math_InitSlopeParam(&Remote_ChassisRLSlope, MOUSE_CHASSIS_ACCELERATE, MOUSE_CHASSIS_SLOWDOWN);
+    Math_InitSlopeParam(&Remote_ChassisFBSlope, REMOTE_CHASSIS_ACCELERATE, REMOTE_CHASSIS_SLOWDOWN);
+    Math_InitSlopeParam(&Remote_ChassisRLSlope, REMOTE_CHASSIS_ACCELERATE, REMOTE_CHASSIS_SLOWDOWN);
+
+    Math_InitSlopeParam(&PC_ChassisFBSlope, MOUSE_CHASSIS_ACCELERATE, MOUSE_CHASSIS_SLOWDOWN);
+    Math_InitSlopeParam(&PC_ChassisRLSlope, MOUSE_CHASSIS_ACCELERATE, MOUSE_CHASSIS_SLOWDOWN);
 }
 
 /**
-  * @brief      Gets the pointer to the remote control data object
-  * @param      NULL
-  * @retval     Pointer to remote control data object
-  */
+ * @brief      Gets the pointer to the remote control data object
+ * @param      NULL
+ * @retval     Pointer to remote control data object
+ */
 Remote_RemoteControlTypeDef* Remote_GetControlDataPtr() {
     return &Remote_remoteControlData;
 }
 
 uint32_t timestamp = 0, CW = 1;
 /**
-* @brief      Remote control command
-* @param      NULL
-* @retval     NULL
-*/
+ * @brief      Remote control command
+ * @param      NULL
+ * @retval     NULL
+ */
 void Remote_ControlCom() {
     Shoot_StatusTypeDef* shooter = Shooter_GetShooterControlPtr();
     Remote_RemoteControlTypeDef* control_data = Remote_GetControlDataPtr();
@@ -97,10 +102,10 @@ void Remote_ControlCom() {
 }
 
 /**
-* @brief      Mouse shoot mode set
-* @param      NULL
-* @retval     NULL
-*/
+ * @brief      Mouse shoot mode set
+ * @param      NULL
+ * @retval     NULL
+ */
 void Remote_MouseShooterModeSet() {
     Remote_RemoteDataTypeDef* data = Remote_GetRemoteDataPtr();
     Shoot_StatusTypeDef* shooter = Shooter_GetShooterControlPtr();
@@ -129,10 +134,10 @@ void Remote_MouseShooterModeSet() {
 }
 
 /**
-* @brief      Remote shoot mode set
-* @param      NULL
-* @retval     NULL
-*/
+ * @brief      Remote shoot mode set
+ * @param      NULL
+ * @retval     NULL
+ */
 void Remote_RemoteShooterModeSet() {
     Remote_RemoteDataTypeDef* data = Remote_GetRemoteDataPtr();
 
@@ -153,7 +158,7 @@ void Remote_RemoteShooterModeSet() {
         case Remote_SWITCH_DOWN: {
             /* left switch down is slow shooting   */
             Shooter_ChangeShooterMode(Shoot_REFEREE);
-            //Shooter_ChangeFeederMode(Feeder_LOW_CONTINUE);
+            // Shooter_ChangeFeederMode(Feeder_LOW_CONTINUE);
             if ((Motor_shooterMotorLeft.pid_spd.fdb >= 30) && (Motor_shooterMotorRight.pid_spd.fdb >= 30)) {
                 Shooter_ChangeFeederMode(Feeder_REFEREE);
             } else
@@ -166,16 +171,23 @@ void Remote_RemoteShooterModeSet() {
 }
 
 /**
-* @brief      Remote control process
-* @param      NULL
-* @retval     NULL
-*/
+ * @brief      Remote control process
+ * @param      NULL
+ * @retval     NULL
+ */
 void Remote_RemoteProcess() {
     BusComm_BusCommDataTypeDef* buscomm = BusComm_GetBusDataPtr();
     Remote_RemoteDataTypeDef* data = Remote_GetRemoteDataPtr();
 
-    buscomm->chassis_fb_ref = Filter_Bessel((float)data->remote.ch[1], &Remote_forward_backFilter) * 0.5f;
-    buscomm->chassis_lr_ref = Filter_Bessel((float)data->remote.ch[0], &Remote_right_leftFilter) * 0.5f;
+    // buscomm->chassis_fb_ref = Filter_Bessel((float)data->remote.ch[1], &Remote_forward_backFilter) * 0.5f;
+    // buscomm->chassis_lr_ref = Filter_Bessel((float)data->remote.ch[0], &Remote_right_leftFilter) * 0.5f;
+    static float fb_ref = 0.0f;
+    static float lr_ref = 0.0f;
+    // if ((float)data->remote.ch[1]<0)
+    fb_ref = Math_CalcSlopeRef(fb_ref, (float)data->remote.ch[1], &Remote_ChassisFBSlope);
+    lr_ref = Math_CalcSlopeRef(lr_ref, (float)data->remote.ch[0], &Remote_ChassisRLSlope);
+    buscomm->chassis_fb_ref = fb_ref;
+    buscomm->chassis_lr_ref = lr_ref;
 
     if (data->remote.ch[4] <= -500.0f)
         Remote_ChangeChassisState(CHASSIS_CTRL_GYRO);
@@ -201,10 +213,10 @@ void Remote_RemoteProcess() {
 }
 
 /**
-* @brief      KeyMouse control process
-* @param      NULL
-* @retval     NULL
-*/
+ * @brief      KeyMouse control process
+ * @param      NULL
+ * @retval     NULL
+ */
 void Remote_KeyMouseProcess() {
     Remote_RemoteDataTypeDef* data = Remote_GetRemoteDataPtr();
     Remote_RemoteControlTypeDef* control_data = Remote_GetControlDataPtr();
@@ -251,7 +263,7 @@ void Remote_KeyMouseProcess() {
     /******Chassis mode control*******/
     static int gyro_flag = 0, gyro_state = 0;
     if (buscomm->chassis_mode != CHASSIS_CTRL_STOP) {
-        if (data->key.ctrl == 1) {  //ctrl gyro mode
+        if (data->key.ctrl == 1) {  // ctrl gyro mode
             if ((gyro_state == 0) && (gyro_flag == 1)) {
                 gyro_state = 1;
                 gyro_flag = 0;
@@ -303,7 +315,7 @@ void Remote_KeyMouseProcess() {
         if (big_energy_state == 1 && small_energy_state == 0) {
             Gimbal_ChangeMode(Gimbal_BIG_ENERGY);
             MiniPC_ChangeAimMode(MiniPC_BIG_BUFF);
-            //chassis stop
+            // chassis stop
             Remote_ChangeChassisState(CHASSIS_CTRL_STOP);
         }
 
@@ -331,9 +343,9 @@ void Remote_KeyMouseProcess() {
     }
 
     /*******State control of friction wheel*********/
-    if (data->key.q == 1)  //Q Press to open the friction wheel
+    if (data->key.q == 1)  // Q Press to open the friction wheel
         Shooter_ChangeShooterMode(Shoot_REFEREE);
-    if (data->key.e == 1)  //E Press to close the friction wheel
+    if (data->key.e == 1)  // E Press to close the friction wheel
         Shooter_ChangeShooterMode(Shoot_NULL);
 
     static int shooter_speed_setup_offset = 0;
@@ -374,18 +386,18 @@ void Remote_KeyMouseProcess() {
     static float t_ad = 0.0f;
 
     if (data->key.w == 1) {
-        t_ws = Math_CalcSlopeRef(t_ws, max_chassis_speed, &Remote_ChassisFBSlope);
+        t_ws = Math_CalcSlopeRef(t_ws, max_chassis_speed, &PC_ChassisFBSlope);
     } else if (data->key.s == 1) {
-        t_ws = Math_CalcSlopeRef(t_ws, -max_chassis_speed, &Remote_ChassisFBSlope);
+        t_ws = Math_CalcSlopeRef(t_ws, -max_chassis_speed, &PC_ChassisFBSlope);
     } else
         t_ws = 0;
     buscomm->chassis_fb_ref = t_ws;
 
     /**************Left and right control*************/
     if (data->key.d == 1) {
-        t_ad = Math_CalcSlopeRef(t_ad, max_chassis_speed, &Remote_ChassisRLSlope);
+        t_ad = Math_CalcSlopeRef(t_ad, max_chassis_speed, &PC_ChassisRLSlope);
     } else if (data->key.a == 1) {
-        t_ad = Math_CalcSlopeRef(t_ad, -max_chassis_speed, &Remote_ChassisRLSlope);
+        t_ad = Math_CalcSlopeRef(t_ad, -max_chassis_speed, &PC_ChassisRLSlope);
     } else
         t_ad = 0;
     buscomm->chassis_lr_ref = t_ad;
@@ -403,20 +415,20 @@ void Remote_KeyMouseProcess() {
 }
 
 /**
-* @brief      Change chassis control state
-* @param      Chassis: control mode
-* @retval     NULL
-*/
+ * @brief      Change chassis control state
+ * @param      Chassis: control mode
+ * @retval     NULL
+ */
 void Remote_ChangeChassisState(uint8_t chassis_mode) {
     BusComm_BusCommDataTypeDef* buscomm = BusComm_GetBusDataPtr();
     buscomm->chassis_mode = chassis_mode;
 }
 
 /**
-* @brief      Gesture control judge function
-* @param      NULL
-* @retval     Gesture flag
-*/
+ * @brief      Gesture control judge function
+ * @param      NULL
+ * @retval     Gesture flag
+ */
 uint8_t Remote_Gesturejudge() {
     Remote_RemoteDataTypeDef* data = Remote_GetRemoteDataPtr();
 
@@ -472,10 +484,10 @@ uint8_t Remote_Gesturejudge() {
 }
 
 /**
-* @brief      Gesture control function
-* @param      NULL
-* @retval     NULL
-*/
+ * @brief      Gesture control function
+ * @param      NULL
+ * @retval     NULL
+ */
 void Remote_Gesture() {
     switch (Remote_Gesturejudge()) {
         case 0:
@@ -497,10 +509,10 @@ void Remote_Gesture() {
 }
 
 /**
-* @brief      ��\/�� control function
-* @param      NULL
-* @retval     NULL
-*/
+ * @brief      ��\/�� control function
+ * @param      NULL
+ * @retval     NULL
+ */
 void Remote_GestureFunction_1() {
     // force open power control
 
@@ -509,10 +521,10 @@ void Remote_GestureFunction_1() {
 }
 
 /**
-* @brief      ��/\�� control function
-* @param      NULL
-* @retval     NULL
-*/
+ * @brief      ��/\�� control function
+ * @param      NULL
+ * @retval     NULL
+ */
 void Remote_GestureFunction_2() {
     // force close power control
 
@@ -521,20 +533,20 @@ void Remote_GestureFunction_2() {
 }
 
 /**
-* @brief      ��//�� control function
-* @param      NULL
-* @retval     NULL
-*/
+ * @brief      ��//�� control function
+ * @param      NULL
+ * @retval     NULL
+ */
 void Remote_GestureFunction_3() {
     // super cap power control
     Servo_SetServoAngle(&Servo_ammoContainerCapServo, 0);
 }
 
 /**
-* @brief      ��\\�� control function
-* @param      NULL
-* @retval     NULL
-*/
+ * @brief      ��\\�� control function
+ * @param      NULL
+ * @retval     NULL
+ */
 void Remote_GestureFunction_4() {
     Servo_SetServoAngle(&Servo_ammoContainerCapServo, 90);
 }

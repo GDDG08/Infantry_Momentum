@@ -1,6 +1,6 @@
 /*
  *  Project      : Infantry_Momentum
- * 
+ *
  *  file         : const_lib.c
  *  Description  : This file contains all necessary constants
  *  LastEditors  : ����ؼ���ᶯ��
@@ -131,6 +131,8 @@ const float MOUSE_PITCH_ANGLE_TO_FACT = 0.008f;
 const float MOUSE_YAW_ANGLE_TO_FACT = 0.015f;
 const float MOUSE_CHASSIS_ACCELERATE = 0.5;
 const float MOUSE_CHASSIS_SLOWDOWN = 0.5;
+const float REMOTE_CHASSIS_ACCELERATE = 2.0f;
+const float REMOTE_CHASSIS_SLOWDOWN = 5.0f;
 const float MOUSE_CHASSIS_MAX_SPEED = 600;
 const float MOUSE_CHASSIS_MAX_GYRO_SPEED = 400;
 
@@ -210,11 +212,11 @@ float Const_ShooterLockedReverseSpeed = 0.0f;
 float Const_ShooterSlowSpeed = 150.0f;
 float Const_ShooterFastSpeed = 230.0f;
 
-float Const_Shooter15mpers = 160.0f;  //280: infantry3,12~14
-float Const_Shooter18mpers = 250.0f;  //300: infantry3,15~17
+float Const_Shooter15mpers = 160.0f;  // 280: infantry3,12~14
+float Const_Shooter18mpers = 250.0f;  // 300: infantry3,15~17
 float Const_Shooter30mpers = 300.0f;
 
-float Const_FeederSlowSpeed = 50.0f;
+float Const_FeederSlowSpeed = 100.0f;
 float Const_FeederFastSpeed = 100.0f;
 float Const_FeederWaitSpeed = 10.0f;
 
