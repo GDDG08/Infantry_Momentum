@@ -5,7 +5,7 @@
  * @Author       : GDDG08
  * @Date         : 2021-07-24 11:39:13
  * @LastEditors  : GDDG08
- * @LastEditTime : 2022-03-19 20:06:53
+ * @LastEditTime : 2022-03-20 15:09:05
  */
 /*
  *  Project      : Infantry_Momentum
@@ -51,7 +51,8 @@ typedef struct {
     void (*bus_func)(uint8_t buff[]);
 } BusCmd_TableEntry;
 
-extern BusCmd_TableEntry Buscmd_Receive[15];
+extern BusCmd_TableEntry Buscmd_Receive[12];
+extern BusCmd_TableEntry Buscmd_Receive_Cap[3];
 extern BusCmd_TableEntry Buscmd_GimSend[7];
 extern BusCmd_TableEntry Buscmd_ChaSend[6];
 extern BusCmd_TableEntry Buscmd_CapSend[1];

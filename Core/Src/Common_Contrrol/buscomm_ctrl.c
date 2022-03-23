@@ -38,6 +38,9 @@ const uint8_t Const_BusComm_GIMBAL_BUFF_SIZE = 7;
 const uint8_t Const_BusComm_CHASSIS_BUFF_SIZE = 6;
 const uint8_t Const_BusComm_SUPERCAP_BUFF_SIZE = 1;
 
+const uint8_t Const_BusComm_RECEIVE_SIZE = 11;
+const uint8_t Const_BusComm_RECEIVE_CAP_SIZE = 2;
+
 const uint8_t Const_BusComm_FRAME_HEADER_SOF = 0x5A;
 
 //      power limit mode
@@ -202,15 +205,34 @@ void BusComm_DecodeBusCommData(uint8_t buff[], uint32_t stdid, uint16_t rxdatale
     buscomm->last_update_time = HAL_GetTick();
 
     memcpy(BusComm_RxData, buff, rxdatalen);
-    if (stdid != CMD_SET_CAP_STATE_1 && stdid != CMD_SET_CAP_STATE_2)
-        if (!BusComm_VerifyBusCommData(buff, rxdatalen)) {
-            buscomm->state = BusComm_STATE_ERROR;
+    if (!BusComm_VerifyBusCommData(buff, rxdatalen)) {
+        buscomm->state = BusComm_STATE_ERROR;
+        return;
+    }
+
+    for (int i = 0; i < (Const_BusComm_RECEIVE_SIZE + 1); i++) {
+        if ((BusComm_RxData[1] == Buscmd_Receive[i].cmd_id) && (Buscmd_Receive[i].bus_func != NULL)) {
+            Buscmd_Receive[i].bus_func(BusComm_RxData);
             return;
         }
+    }
+}
 
-    for (int i = 0; i <= (Const_BusComm_SUPERCAP_BUFF_SIZE + Const_BusComm_CHASSIS_BUFF_SIZE + Const_BusComm_GIMBAL_BUFF_SIZE + 1); i++) {
-        if (((stdid == Buscmd_Receive[i].cmd_id) || (BusComm_RxData[1] == Buscmd_Receive[i].cmd_id)) && (Buscmd_Receive[i].bus_func != NULL)) {
-            Buscmd_Receive[i].bus_func(BusComm_RxData);
+/**
+ * @brief      Data decoding function of serial port in inter bus communication for cap
+ * @param      buff: Data buffer
+ * @param      rxdatalen: data length
+ * @retval     NULL
+ */
+void BusComm_DecodeBusCommData_Cap(uint8_t buff[], uint32_t stdid, uint16_t rxdatalen) {
+    BusComm_BusCommDataTypeDef* buscomm = BusComm_GetBusDataPtr();
+    buscomm->last_update_time = HAL_GetTick();
+
+    memcpy(BusComm_RxData, buff, rxdatalen);
+
+    for (int i = 0; i < (Const_BusComm_RECEIVE_CAP_SIZE + 1); i++) {
+        if (stdid == Buscmd_Receive_Cap[i].cmd_id) {
+            Buscmd_Receive_Cap[i].bus_func(BusComm_RxData);
             return;
         }
     }
@@ -458,6 +480,10 @@ void BusComm_CANRxCallback(CAN_HandleTypeDef* phcan, uint32_t stdid, uint8_t rxd
 #if __FN_IF_ENABLE(__FN_INFANTRY)
     if (phcan == Const_BusComm_CAN_HANDLER) {
         BusComm_DecodeBusCommData(rxdata, stdid, len);
+    } else if (phcan == &hcan1) {
+#if __FN_IF_ENABLE(__FN_INFANTRY_CHASSIS)
+        BusComm_DecodeBusCommData_Cap(rxdata, stdid, len);
+#endif
     }
 #endif
 }

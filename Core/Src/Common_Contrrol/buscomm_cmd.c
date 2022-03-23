@@ -93,7 +93,7 @@ static void _set_cap_state(uint8_t buff[]);
 static void _set_cap_state_1(uint8_t buff[]);
 static void _set_cap_state_2(uint8_t buff[]);
 
-BusCmd_TableEntry Buscmd_Receive[15] = {
+BusCmd_TableEntry Buscmd_Receive[12] = {
     {0xff, NULL},
     {CMD_SET_YAW_RELATIVE_ANGLE, &_set_yaw_relative_angle},
     {CMD_SET_ROBOT_ID_POWER_LIMIT, &_set_robot_id_power_limit},
@@ -105,7 +105,10 @@ BusCmd_TableEntry Buscmd_Receive[15] = {
     {CMD_SET_IMU_SPD, &_set_imu_spd},
     {CMD_SET_CHA_FB, &_set_cha_fb},
     {CMD_SET_CHA_LR, &_set_cha_lr},
-    {CMD_SEND_CAP_STATE, &_set_cap_state},
+    {CMD_SEND_CAP_STATE, &_set_cap_state}};
+
+BusCmd_TableEntry Buscmd_Receive_Cap[3] = {
+    {0xff, NULL},
     {CMD_SET_CAP_STATE_1, &_set_cap_state_1},
     {CMD_SET_CAP_STATE_2, &_set_cap_state_2}};
 
@@ -351,7 +354,7 @@ static void _send_cap_mode(uint8_t buff[]) {
     buff[2] = buscomm->chassis_power_limit;
     buff[3] = buscomm->chassis_power_buffer;
     float2buff(buscomm->chassis_power, buff + 4);
-    Can_SendMessage(Const_BusComm_CAN_HANDLER, pheader, buff);
+    Can_SendMessage(&hcan1, pheader, buff);
 }
 
 

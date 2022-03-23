@@ -53,7 +53,7 @@ void Chassis_InitChassis() {
     // Initialization of motor parameters (including PID parameters)
     Const_SetChasisMotorParam();
 
-    PowerCtrl_Init(POWER_LIMIT, &Motor_chassisMotors);
+    PowerCtrl_Init(POWER_UNLIMIT, &Motor_chassisMotors);
     chassis->pending_state = 0;
 }
 

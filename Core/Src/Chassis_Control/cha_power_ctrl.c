@@ -1,6 +1,6 @@
 /*
  *  Project      : Infantry_Momentum
- * 
+ *
  *  file         : cha_power_ctrl.c
  *  Description  : This file contains power control function
  *  LastEditors  : ����ؼ���ᶯ��
@@ -14,10 +14,25 @@
 
 PowerCtrl_Data_t PowerCtrl_Data;
 
-PID_PIDParamTypeDef Chassis_SpeedCWPIDParam = {.kp = 30, .ki = 0.05, .kd = 3500, .sum_max = 4000, .output_max = 13000};
-PID_PIDParamTypeDef Chassis_SpeedCCWPIDParam = {.kp = 35, .ki = 0, .kd = 3700, .sum_max = 3000, .output_max = 16000};
+float CWPIDParam_temp[4][5] = {
+    {75, 0, 0.5, 0, 11000},
+    {-1, -1},
+    {0, 0},
+    {-1, -1}};
+float CCWPIDParam_temp[4][5] = {
+    {75, 0, 0.5, 0, 11000},
+    {-1, -1},
+    {0, 0},
+    {-1, -1}};
+
+PID_PIDParamTypeDef Chassis_SpeedCWPIDParam;
+PID_PIDParamTypeDef Chassis_SpeedCCWPIDParam;
+// PID_PIDParamTypeDef Chassis_SpeedCWPIDParam = {.kp = 30, .ki = 0.05, .kd = 3500, .sum_max = 4000, .output_max = 13000};
+// PID_PIDParamTypeDef Chassis_SpeedCCWPIDParam = {.kp = 35, .ki = 0, .kd = 3700, .sum_max = 3000, .output_max = 16000};
 PID_PIDParamTypeDef PowerCtrl_CurrentParam = {.kp = 1.3, .ki = 0.1, .kd = 130, .sum_max = 5000, .output_max = 16000};
-PID_PIDParamTypeDef PowerCtrl_PIDParam = {.kp = 0.005, .ki = 0.00055, .kd = 0, .sum_max = 1650, .output_max = 1};
+PID_PIDParamTypeDef PowerCtrl_PIDParam = {.kp = 0.0045, .ki = 0.00057, .kd = 0, .sum_max = 1700, .output_max = 1};
+
+float Power_ref = 60.0f;
 
 /**
  * @brief   获取功率控制数据
@@ -30,14 +45,15 @@ PowerCtrl_Data_t* PowerCtrl_GetPowerDataPtr(void) {
 }
 
 /**
-  * @brief      Force change power contorl mode
-  * @param      NULL
-  * @retval     NULL
-  */
+ * @brief      Force change power contorl mode
+ * @param      NULL
+ * @retval     NULL
+ */
 void Power_ForceChangePowerMode(Power_ControlModeMnum mode) {
     PowerCtrl_Data_t* PowCtr = PowerCtrl_GetPowerDataPtr();
-    // PowCtr->PowerCtrl_State = mode;
-    PowCtr->PowerCtrl_State = POWER_UNLIMITED;
+    PowCtr->PowerCtrl_State = mode;
+    // Debug
+    //  PowCtr->PowerCtrl_State = POWER_UNLIMITED;
 }
 
 /**
@@ -51,6 +67,9 @@ void PowerCtrl_Init(Power_ControlModeMnum Ctrl_state, Motor_MotorGroupTypeDef* M
 
     PowCtr->PowerCtrl_State = Ctrl_state;
     PowCtr->Mecanum_Chassis_Motor = Mecanum;
+
+    PID_InitPIDParam(&Chassis_SpeedCWPIDParam, CWPIDParam_temp[0][0], CWPIDParam_temp[0][1], CWPIDParam_temp[0][2], CWPIDParam_temp[0][3], CWPIDParam_temp[0][4], CWPIDParam_temp[1][0], CWPIDParam_temp[1][1], CWPIDParam_temp[2][0], CWPIDParam_temp[2][1], CWPIDParam_temp[3][0], CWPIDParam_temp[3][1], PID_POSITION);
+    PID_InitPIDParam(&Chassis_SpeedCCWPIDParam, CCWPIDParam_temp[0][0], CCWPIDParam_temp[0][1], CCWPIDParam_temp[0][2], CCWPIDParam_temp[0][3], CCWPIDParam_temp[0][4], CCWPIDParam_temp[1][0], CCWPIDParam_temp[1][1], CCWPIDParam_temp[2][0], CCWPIDParam_temp[2][1], CCWPIDParam_temp[3][0], CCWPIDParam_temp[3][1], PID_POSITION);
 
     Filter_LowPassInit(2 * PI * 0.001f * 2, &PowCtr->Mecanum_MotorCurrent_lpf_param[0]);
     Filter_LowPassInit(2 * PI * 0.001f * 2, &PowCtr->Mecanum_MotorCurrent_lpf_param[1]);
@@ -109,9 +128,9 @@ void ChassisCurrentPID_StartingAndDownCalc(uint8_t motor_num) {
             &PowCtr->Mecanum_MotorCurrent_lpf_param[motor_num],
             &PowCtr->Mecanum_MotorCurrent_lpf[motor_num]);
         PowCtr->Mecanum_Chassis_Motor->motor_handle[motor_num]->pid_spd.output = Filter_LowPass(PowCtr->Mecanum_Chassis_Motor->motor_handle[motor_num]->pid_spd.output,
-                                                              &PowCtr->Mecanum_SpeedOutput_lpf_param[motor_num], &PowCtr->Mecanum_SpeedOutput_lpf[motor_num]);
+                                                                                                &PowCtr->Mecanum_SpeedOutput_lpf_param[motor_num], &PowCtr->Mecanum_SpeedOutput_lpf[motor_num]);
         PowCtr->Mecanum_Chassis_Motor->motor_handle[motor_num]->pid_spd.output = Filter_Aver(PowCtr->Mecanum_Chassis_Motor->motor_handle[motor_num]->pid_spd.output,
-                                                           &PowCtr->Mecanum_SpeedOutput_aft[motor_num]);
+                                                                                             &PowCtr->Mecanum_SpeedOutput_aft[motor_num]);
         PID_SetPIDRef(&PowCtr->Mecanum_current_pid[motor_num], PowCtr->Mecanum_Chassis_Motor->motor_handle[motor_num]->pid_spd.output);
         PID_SetPIDFdb(&PowCtr->Mecanum_current_pid[motor_num], PowCtr->Mecanum_motor_current[motor_num]);
         PID_CalcPID(&PowCtr->Mecanum_current_pid[motor_num], &PowerCtrl_CurrentParam);
@@ -291,9 +310,15 @@ void PowerCtrl(void) {
     CAP_CtrlDataTypeDef* capctrl = Cap_GetCapDataPtr();
     Referee_RefereeDataTypeDef* referee = Referee_GetRefereeDataPtr();
 
-    if (PowCtr->PowerCtrl_State == 0) {
+    if (PowCtr->PowerCtrl_State == POWER_UNLIMITED) {
         Motor_CalcMotorGroupOutput(&Motor_chassisMotors, chassis->current_param);
-    }else{
+        for (uint8_t i = 0; i < 4; i++) {
+            PowCtr->Mecanum_Chassis_Motor->motor_handle[i]->cur_pid = 0;
+        }
+    } else {
+        for (uint8_t i = 0; i < 4; i++) {
+            PowCtr->Mecanum_Chassis_Motor->motor_handle[i]->cur_pid = 1;
+        }
         ChassisSpeedPID_StartingAndDownCalc(&PowCtr->Mecanum_Chassis_Motor->motor_handle[0]->pid_spd, 0);  //速度环PID计算
         ChassisSpeedPID_StartingAndDownCalc(&PowCtr->Mecanum_Chassis_Motor->motor_handle[1]->pid_spd, 1);
         ChassisSpeedPID_StartingAndDownCalc(&PowCtr->Mecanum_Chassis_Motor->motor_handle[2]->pid_spd, 2);
@@ -306,12 +331,12 @@ void PowerCtrl(void) {
 
         if (capctrl->cap_boost_mode == 1 || capctrl->cap_mode_Starting == 1)  //三种模式 急速、加速、普通匀速
         {
-            PowerPID_Cal(100.0f, capctrl->Sum_PowerReally);  //即功率期望极大
+            PowerPID_Cal((Power_ref >= 0) ? Power_ref : 100.0f, capctrl->Sum_PowerReally);  //即功率期望极大
         } else if ((capctrl->cap_mode_Remote | capctrl->cap_mode_Stall) == 1) {
-            PowerPID_Cal((float)referee->max_chassis_power + 20.0f, capctrl->Sum_PowerReally);
+            PowerPID_Cal((Power_ref >= 0) ? Power_ref : ((float)referee->max_chassis_power + 20.0f), capctrl->Sum_PowerReally);
         } else {
             PowerOffset_Cal();  //计算OFFSET 保证不超功率
-            PowerPID_Cal((float)(referee->max_chassis_power) - PowCtr->Power_offset, capctrl->Sum_PowerReally);
+            PowerPID_Cal((Power_ref >= 0) ? Power_ref : ((float)(referee->max_chassis_power) - PowCtr->Power_offset), capctrl->Sum_PowerReally);
             // PowerPID_Cal(60.0f, capctrl->Sum_PowerReally);
         }
 
@@ -329,10 +354,8 @@ void PowerCtrl(void) {
         Motor_SetMotorOutput(PowCtr->Mecanum_Chassis_Motor->motor_handle[1], (PowCtr->Mecanum_current_pid[1].output));
         Motor_SetMotorOutput(PowCtr->Mecanum_Chassis_Motor->motor_handle[2], (PowCtr->Mecanum_current_pid[2].output));
         Motor_SetMotorOutput(PowCtr->Mecanum_Chassis_Motor->motor_handle[3], (PowCtr->Mecanum_current_pid[3].output));
-
     }
 }
-
 
 /**
  * @brief 	Motor output control

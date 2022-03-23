@@ -121,6 +121,7 @@ void BusComm_SendBusCommData(void);
 void BusComm_CANRxCallback(CAN_HandleTypeDef* phcan, uint32_t stdid, uint8_t rxdata[], uint32_t len);
 uint8_t BusComm_VerifyBusCommData(uint8_t* buff, uint16_t rxdatalen);
 void BusComm_DecodeBusCommData(uint8_t buff[], uint32_t stdid, uint16_t rxdatalen);
+void BusComm_DecodeBusCommData_Cap(uint8_t buff[], uint32_t stdid, uint16_t rxdatalen);
 void BusComm_ResetBusCommData(void);
 void BusComm_Update(void);
 void _cmd_mode_control(void);
