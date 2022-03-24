@@ -1,9 +1,9 @@
 /*
  *  Project      : Infantry_Momentum
- * 
+ *
  *  file         : supercap_comm.c
  *  Description  : This file is for sb can init
- *  LastEditors  : ¶¯ÇéØ¼²·ìá¶¯ÐÄ
+ *  LastEditors  : ï¿½ï¿½ï¿½ï¿½Ø¼ï¿½ï¿½ï¿½á¶¯ï¿½ï¿½
  *  Date         : 2021-05-14 12:01:01
  *  LastEditTime : 2021-05-14 12:20:22
  */
@@ -27,10 +27,10 @@ uint8_t CapComm_RxData[Const_CapComm_RX_BUFF_LEN];
 CapComm_CapCommDataTypeDef CapComm_CapCommData;
 
 /**
-  * @brief      Inter bus communication initialization
-  * @param      NULL
-  * @retval     NULL
-  */
+ * @brief      Inter bus communication initialization
+ * @param      NULL
+ * @retval     NULL
+ */
 void CapComm_InitCapComm() {
     CapComm_ResetCapCommData();
     CapComm_CapCommData.last_update_time = HAL_GetTick();
@@ -39,19 +39,19 @@ void CapComm_InitCapComm() {
 }
 
 /**
-  * @brief      Gets the pointer to the cap communication data object
-  * @param      NULL
-  * @retval     Pointer to cap communication data object
-  */
+ * @brief      Gets the pointer to the cap communication data object
+ * @param      NULL
+ * @retval     Pointer to cap communication data object
+ */
 CapComm_CapCommDataTypeDef* CapComm_GetCapDataPty() {
     return &CapComm_CapCommData;
 }
 
 /**
-  * @brief      Reset supercapacitor communication data object
-  * @param      NULL
-  * @retval     NULL
-  */
+ * @brief      Reset supercapacitor communication data object
+ * @param      NULL
+ * @retval     NULL
+ */
 void CapComm_ResetCapCommData() {
     CapComm_CapCommDataTypeDef* capcomm = CapComm_GetCapDataPty();
 
@@ -64,10 +64,10 @@ void CapComm_ResetCapCommData() {
 }
 
 /**
-  * @brief      Judege weather capcomm is offline or not
-  * @param      NULL
-  * @retval     online is 1  offline is 0
-  */
+ * @brief      Judege weather capcomm is offline or not
+ * @param      NULL
+ * @retval     online is 1  offline is 0
+ */
 uint8_t CapComm_IsCapCommOffline() {
     CapComm_CapCommDataTypeDef* capcomm = CapComm_GetCapDataPty();
     if (HAL_GetTick() - capcomm->last_update_time > Const_CapComm_OFFLINE_TIME) {
@@ -78,10 +78,10 @@ uint8_t CapComm_IsCapCommOffline() {
 }
 
 /**
-  * @brief      Update cap communication
-  * @param      NULL
-  * @retval     NULL
-  */
+ * @brief      Update cap communication
+ * @param      NULL
+ * @retval     NULL
+ */
 void CapComm_Update() {
     CapComm_CapCommDataTypeDef* capcomm = CapComm_GetCapDataPty();
 
@@ -107,10 +107,10 @@ void CapComm_Update() {
 }
 
 /**
-  * @brief      Data sending function of serial port in inter cap communication
-  * @param      NULL
-  * @retval     NULL
-  */
+ * @brief      Data sending function of serial port in inter cap communication
+ * @param      NULL
+ * @retval     NULL
+ */
 void CapComm_SendCapCommData() {
     /* up data struct data    */
     CapComm_Update();
@@ -150,11 +150,11 @@ void CapComm_SendCapCommData() {
 }
 
 /**
-  * @brief      Data check function of serial port in inter cap communication
-  * @param      buff: data buffer
-  * @param      rxdatalen: data length
-  * @retval     Verification result (1 is correct, 0 is failed)
-  */
+ * @brief      Data check function of serial port in inter cap communication
+ * @param      buff: data buffer
+ * @param      rxdatalen: data length
+ * @retval     Verification result (1 is correct, 0 is failed)
+ */
 uint8_t CapComm_VerifyCapCommData(uint8_t* buff, uint16_t rxdatalen) {
     const uint8_t FAILED = 0, SUCCEEDED = 1;
 
@@ -171,11 +171,11 @@ uint8_t CapComm_VerifyCapCommData(uint8_t* buff, uint16_t rxdatalen) {
 }
 
 /**
-  * @brief      Data decoding function of serial port in inter cap communication
-  * @param      buff: Data buffer
-  * @param      rxdatalen: data length
-  * @retval     NULL
-  */
+ * @brief      Data decoding function of serial port in inter cap communication
+ * @param      buff: Data buffer
+ * @param      rxdatalen: data length
+ * @retval     NULL
+ */
 void CapComm_DecodeCapCommData(uint8_t* buff, uint16_t rxdatalen) {
     CapComm_CapCommDataTypeDef* capcomm = CapComm_GetCapDataPty();
 
@@ -207,10 +207,10 @@ void CapComm_DecodeCapCommData(uint8_t* buff, uint16_t rxdatalen) {
 }
 
 /**
-  * @brief      Interrupt callback function of serial port in inter cap communication
-  * @param      huart: Pointer to serial port handle
-  * @retval     NULL
-  */
+ * @brief      Interrupt callback function of serial port in inter cap communication
+ * @param      huart: Pointer to serial port handle
+ * @retval     NULL
+ */
 void CapComm_RXCallback(UART_HandleTypeDef* huart) {
     /* clear DMA transfer complete flag */
     __HAL_DMA_DISABLE(huart->hdmarx);

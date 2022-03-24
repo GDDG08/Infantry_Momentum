@@ -357,7 +357,6 @@ static void _send_cap_mode(uint8_t buff[]) {
     Can_SendMessage(&hcan1, pheader, buff);
 }
 
-
 int count6;
 float rate6;
 /*          function driver      */

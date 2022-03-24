@@ -1,9 +1,9 @@
 /*
  *  Project      : Infantry_Momentum
- * 
+ *
  *  file         : gim_miniPC_ctrl.h
  *  Description  : This file contains MiniPC control function
- *  LastEditors  : ¶¯ÇéØ¼²·ìá¶¯ÐÄ
+ *  LastEditors  : ï¿½ï¿½ï¿½ï¿½Ø¼ï¿½ï¿½ï¿½á¶¯ï¿½ï¿½
  *  Date         : 2021-05-04 20:53:31
  *  LastEditTime : 2021-05-16 20:01:45
  */
@@ -58,9 +58,9 @@ typedef struct {
     Filter_LowPassParamTypeDef distance_fil_param;
     Filter_LowPassTypeDef distance_fil;
 
-    Kalman_CVKalmanInitDataTypeDef cvkf_data_yaw, cvkf_data_pitch;  //For CVKF:
+    Kalman_CVKalmanInitDataTypeDef cvkf_data_yaw, cvkf_data_pitch;  // For CVKF:
     Kalman_CVKalmanTypeDef cvkf_yaw, cvkf_pitch;
-    Kalman_CVKalmanControlTypeDef cvkf_control;  //For Debug: Start Which Function
+    Kalman_CVKalmanControlTypeDef cvkf_control;  // For Debug: Start Which Function
 
     uint32_t get_target_time;
     MiniPC_AutoAimModeEnum aim_mode;

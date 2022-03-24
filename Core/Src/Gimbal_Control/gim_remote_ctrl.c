@@ -365,7 +365,7 @@ void Remote_KeyMouseProcess() {
     } else
         shooter_speed_setdown_offset = 0;
 
-   /******** supercap control ********/
+    /******** supercap control ********/
     static int cap_flag = 0;
     if (data->key.z == 1) {
         if (cap_flag == 1) {

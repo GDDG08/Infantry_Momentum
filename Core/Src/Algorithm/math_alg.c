@@ -1,9 +1,9 @@
 /*
  *  Project      : Infantry_Momentum
- * 
+ *
  *  file         : math_alg.c
  *  Description  : This file contains the math calculate tools
- *  LastEditors  : ¶¯ÇéØ¼²·ìá¶¯ÐÄ
+ *  LastEditors  : ï¿½ï¿½ï¿½ï¿½Ø¼ï¿½ï¿½ï¿½á¶¯ï¿½ï¿½
  *  Date         : 2021-05-04 20:53:31
  *  LastEditTime : 2021-05-08 03:38:32
  */
@@ -11,11 +11,11 @@
 #include "math_alg.h"
 
 /**
-  * @brief      Calculation differential (only two order)(To be improved)
-  * @param      arr :point to be differential value
-  * @param      order :The differential order
-  * @retval     NULL
-  */
+ * @brief      Calculation differential (only two order)(To be improved)
+ * @param      arr :point to be differential value
+ * @param      order :The differential order
+ * @retval     NULL
+ */
 float Math_Differential(float arr[], uint8_t order) {
     float value;
     switch (order) {
@@ -33,27 +33,27 @@ float Math_Differential(float arr[], uint8_t order) {
 }
 
 /**
-  * @brief      Initialize ramp function control parameters
-  * @param      pparam: Pointer to ramp function control parameter
-  * @param      kp: P factor
-  * @param      ki: I factor
-  * @param      kd: D factor
-  * @param      sum_max: Integral limiting
-  * @param      output_max: Output limiting
-  * @retval     NULL
-  */
+ * @brief      Initialize ramp function control parameters
+ * @param      pparam: Pointer to ramp function control parameter
+ * @param      kp: P factor
+ * @param      ki: I factor
+ * @param      kd: D factor
+ * @param      sum_max: Integral limiting
+ * @param      output_max: Output limiting
+ * @retval     NULL
+ */
 void Math_InitSlopeParam(Math_SlopeParamTypeDef* pparam, float acc, float dec) {
     pparam->acc = acc;
     pparam->dec = dec;
 }
 
 /**
-  * @brief      Calculate slope function setting
-  * @param      rawref: Current setting value
-  * @param      targetref: Target set point
-  * @param      pparam: Pointer to ramp function control parameter
-  * @retval     Slope function setting value. If slope function is not enabled (parameter is 0), the target setting value is returned
-  */
+ * @brief      Calculate slope function setting
+ * @param      rawref: Current setting value
+ * @param      targetref: Target set point
+ * @param      pparam: Pointer to ramp function control parameter
+ * @retval     Slope function setting value. If slope function is not enabled (parameter is 0), the target setting value is returned
+ */
 float Math_CalcSlopeRef(float rawref, float targetref, Math_SlopeParamTypeDef* pparam) {
     float newref;
     if (pparam->acc == 0 | pparam->dec == 0)
@@ -69,12 +69,12 @@ float Math_CalcSlopeRef(float rawref, float targetref, Math_SlopeParamTypeDef* p
 }
 
 /**
-  * @brief      Calculate the absolute slope function setting value
-  * @param      rawref: Current setting value
-  * @param      targetref: Target set point
-  * @param      pparam: Pointer to ramp function control parameter
-  * @retval     Absolute value ramp function setting value. If ramp function is not enabled, the target setting value is returned
-  */
+ * @brief      Calculate the absolute slope function setting value
+ * @param      rawref: Current setting value
+ * @param      targetref: Target set point
+ * @param      pparam: Pointer to ramp function control parameter
+ * @retval     Absolute value ramp function setting value. If ramp function is not enabled, the target setting value is returned
+ */
 float Math_CalcAbsSlopeRef(float rawref, float targetref, Math_SlopeParamTypeDef* pparam) {
     float newref;
     if (pparam->acc == 0 | pparam->dec == 0)

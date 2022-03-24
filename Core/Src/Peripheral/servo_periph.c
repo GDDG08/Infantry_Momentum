@@ -1,9 +1,9 @@
 /*
  *  Project      : Infantry_Momentum
- * 
+ *
  *  file         : servo_periph.c
  *  Description  : This document contains the relevant auxiliary functions of steering gear control
- *  LastEditors  : ¶¯ÇéØ¼²·ìá¶¯ÐÄ
+ *  LastEditors  : ï¿½ï¿½ï¿½ï¿½Ø¼ï¿½ï¿½ï¿½á¶¯ï¿½ï¿½
  *  Date         : 2021-05-04 20:53:31
  *  LastEditTime : 2021-05-16 00:31:15
  */
@@ -19,70 +19,70 @@
 Servo_ServoTypeDef Servo_ammoContainerCapServo;
 
 /**
-  * @brief      Initialize all steering gear
-  * @param      NULL
-  * @retval     NULL
-  */
+ * @brief      Initialize all steering gear
+ * @param      NULL
+ * @retval     NULL
+ */
 void Servo_InitAllServos() {
     Servo_InitServo(&Servo_ammoContainerCapServo, &htim2, TIM_CHANNEL_1);
 }
 
 /**
-  * @brief      Return to steering gear status
-  * @param      servo: The pointer points to the actuator object
-  * @retval     Steering gear status
-  */
+ * @brief      Return to steering gear status
+ * @param      servo: The pointer points to the actuator object
+ * @retval     Steering gear status
+ */
 Servo_ServoStateEnum Servo_GetServoState(Servo_ServoTypeDef* servo) {
     return servo->state;
 }
 
 /**
-  * @brief      Start the steering gear
-  * @param      servo: The pointer points to the actuator object
-  * @retval     NULL
-  */
+ * @brief      Start the steering gear
+ * @param      servo: The pointer points to the actuator object
+ * @retval     NULL
+ */
 void Servo_StartServo(Servo_ServoTypeDef* servo) {
     servo->state = Servo_ON;
     PWM_StartPWM(&(servo->pwm));
 }
 
 /**
-  * @brief      Stop the servo
-  * @param      servo: The pointer points to the actuator object
-  * @retval     NULL
-  */
+ * @brief      Stop the servo
+ * @param      servo: The pointer points to the actuator object
+ * @retval     NULL
+ */
 void Servo_StopServo(Servo_ServoTypeDef* servo) {
     servo->state = Servo_OFF;
     PWM_StopPWM(&(servo->pwm));
 }
 
 /**
-  * @brief      Return to steering angle
-  * @param      servo: The pointer points to the actuator object
-  * @retval     Steering gear angle
-  */
+ * @brief      Return to steering angle
+ * @param      servo: The pointer points to the actuator object
+ * @retval     Steering gear angle
+ */
 float Servo_GetServoAngle(Servo_ServoTypeDef* servo) {
     return servo->angle;
 }
 
 /**
-  * @brief      Set steering angle
-  * @param      servo: The pointer points to the actuator object
-  * @param      angle: Steering gear angle
-  * @retval     NULL
-  */
+ * @brief      Set steering angle
+ * @param      servo: The pointer points to the actuator object
+ * @param      angle: Steering gear angle
+ * @retval     NULL
+ */
 void Servo_SetServoAngle(Servo_ServoTypeDef* servo, float angle) {
     servo->angle = angle;
     PWM_SetPWMDuty(&(servo->pwm), angle / 275.0f * 0.1f + Const_SERVO_INIT_OFFSET);
 }
 
 /**
-  * @brief      Initialize the steering gear
-  * @param      servo: Pointer to steering gear object
-  * @param      htim: Timer handle
-  * @param      ch: PWM channel number
-  * @retval     NULL
-  */
+ * @brief      Initialize the steering gear
+ * @param      servo: Pointer to steering gear object
+ * @param      htim: Timer handle
+ * @param      ch: PWM channel number
+ * @retval     NULL
+ */
 void Servo_InitServo(Servo_ServoTypeDef* servo, TIM_HandleTypeDef* htim, uint32_t ch) {
     servo->state = Servo_OFF;
 

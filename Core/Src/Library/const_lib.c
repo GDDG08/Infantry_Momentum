@@ -138,7 +138,7 @@ const float MOUSE_CHASSIS_MAX_GYRO_SPEED = 400;
 
 const uint32_t Const_MiniPC_Follow_Target_Time = 100;
 const uint32_t Const_MiniPC_Lost_Target_Time = 100;
-//const uint32_t Const_MiniPC_New_Target_Time           = 200;
+// const uint32_t Const_MiniPC_New_Target_Time           = 200;
 
 /*          Uart Handle definition              */
 UART_HandleTypeDef* Const_IMU_UART_HANDLER = &huart3;

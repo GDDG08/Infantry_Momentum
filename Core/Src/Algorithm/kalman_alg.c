@@ -1,6 +1,6 @@
 /*
  *  Project      : Infantry_Momentum
- * 
+ *
  *  file         : kalman_alg.c
  *  Description  : This file contains the kalman filter algorithm
  *  LastEditors  : ???????
@@ -14,12 +14,12 @@ float Pinit_1 = 3000.0f;
 float MAX_SPEED_KF = 60.0f;
 
 /**
-  * @brief      Initialization of CV Kalman filter yaw parameters
-  * @param      cvkf_data: Initialized Kalman filter structure
-  * @param      KF_T: Kalman 
-  * @param      init_angle_yaw: Initialized yaw axis angle
-  * @retval     NULL
-  */
+ * @brief      Initialization of CV Kalman filter yaw parameters
+ * @param      cvkf_data: Initialized Kalman filter structure
+ * @param      KF_T: Kalman
+ * @param      init_angle_yaw: Initialized yaw axis angle
+ * @retval     NULL
+ */
 void Kalman_CVKalmanInitYawParam(Kalman_CVKalmanInitDataTypeDef* cvkf_data, float KF_T, float init_angle_yaw, float init_angle_speed) {
     float KF_A[4] = {1.0f, 0.0f,
                      0.0f, 1.0f};
@@ -56,12 +56,12 @@ void Kalman_CVKalmanInitYawParam(Kalman_CVKalmanInitDataTypeDef* cvkf_data, floa
 }
 
 /**
-  * @brief      Initialization of CV Kalman filter pitch parameters
-  * @param      cvkf_data: Initialized Kalman filter structure
-  * @param      KF_T: Kalman 
-  * @param      init_angle_pitch: Initialized pitch axis angle
-  * @retval     NULL
-  */
+ * @brief      Initialization of CV Kalman filter pitch parameters
+ * @param      cvkf_data: Initialized Kalman filter structure
+ * @param      KF_T: Kalman
+ * @param      init_angle_pitch: Initialized pitch axis angle
+ * @retval     NULL
+ */
 void Kalman_CVKalmanInitPitchParam(Kalman_CVKalmanInitDataTypeDef* cvkf_data, float KF_T, float init_angle_pitch, float init_angle_speed) {
     float KF_A[4] = {1.0f, 0.0f,
                      0.0f, 1.0f};
@@ -98,11 +98,11 @@ void Kalman_CVKalmanInitPitchParam(Kalman_CVKalmanInitDataTypeDef* cvkf_data, fl
 }
 
 /**
-  * @brief      Initialization of CV Kalman filter yaw 
-  * @param      cvkf_data: Initialized Kalman filter structure
-  * @param      init_angle_yaw: Initialized yaw angle
-  * @retval     NULL
-  */
+ * @brief      Initialization of CV Kalman filter yaw
+ * @param      cvkf_data: Initialized Kalman filter structure
+ * @param      init_angle_yaw: Initialized yaw angle
+ * @retval     NULL
+ */
 void Kalman_CVInitSetYaw(Kalman_CVKalmanInitDataTypeDef* cvkf_data, float init_angle_yaw, float init_angle_speed) {
     float XLast[2] = {0.0f};
     XLast[0] = init_angle_yaw;
@@ -120,11 +120,11 @@ void Kalman_CVInitSetYaw(Kalman_CVKalmanInitDataTypeDef* cvkf_data, float init_a
 }
 
 /**
-  * @brief      Initialization of CV Kalman filter pitch 
-  * @param      cvkf_data: Initialized Kalman filter structure
-  * @param      init_angle_pitch: Initialized pitch angle
-  * @retval     NULL
-  */
+ * @brief      Initialization of CV Kalman filter pitch
+ * @param      cvkf_data: Initialized Kalman filter structure
+ * @param      init_angle_pitch: Initialized pitch angle
+ * @retval     NULL
+ */
 void Kalman_CVInitSetPitch(Kalman_CVKalmanInitDataTypeDef* cvkf_data, float init_angle_pitch, float init_angle_speed) {
     float XLast[2] = {0.0f};
     XLast[0] = init_angle_pitch;
@@ -142,11 +142,11 @@ void Kalman_CVInitSetPitch(Kalman_CVKalmanInitDataTypeDef* cvkf_data, float init
 }
 
 /**
-  * @brief      Initialize cvkf structure and allocate memory space
-  * @param      cvkf: Kalman filter structure
-  * @param      cvkf_data: Initialized Kalman filter structure
-  * @retval     NULL
-  */
+ * @brief      Initialize cvkf structure and allocate memory space
+ * @param      cvkf: Kalman filter structure
+ * @param      cvkf_data: Initialized Kalman filter structure
+ * @retval     NULL
+ */
 void Kalman_CVKalmanInit(Kalman_CVKalmanTypeDef* cvkf, Kalman_CVKalmanInitDataTypeDef* cvkf_data) {
     mat_init(&cvkf->KF_A, 2, 2, (float*)cvkf_data->KF_A);
     mat_init(&cvkf->KF_C, 1, 2, (float*)cvkf_data->KF_C);
@@ -166,41 +166,41 @@ void Kalman_CVKalmanInit(Kalman_CVKalmanTypeDef* cvkf, Kalman_CVKalmanInitDataTy
     cvkf->measure_mode = 0;   // Default: None Update Measurement
     cvkf->targer_change = 0;  // Default: Target Follow no change
     cvkf->max_speed = MAX_SPEED_KF;
-    cvkf->min_speed = 3.5f;  //For Prediction AngleSpeed Dead Region
+    cvkf->min_speed = 3.5f;  // For Prediction AngleSpeed Dead Region
 }
 
 /**
-  * @brief      Turn off Kalman filter
-  * @param      cvkf: Kalman filter structure
-  * @retval     NULL
-  */
+ * @brief      Turn off Kalman filter
+ * @param      cvkf: Kalman filter structure
+ * @retval     NULL
+ */
 void Kalman_TurnOffCVKF(Kalman_CVKalmanTypeDef* cvkf) {
     cvkf->switch_mode = 0;
 }
 
 /**
-  * @brief      Turn on Kalman filter
-  * @param      cvkf: Kalman filter structure
-  * @retval     NULL
-  */
+ * @brief      Turn on Kalman filter
+ * @param      cvkf: Kalman filter structure
+ * @retval     NULL
+ */
 void Kalman_TurnOnCVKF(Kalman_CVKalmanTypeDef* cvkf) {
     cvkf->switch_mode = 1;
 }
 
 /**
-  * @brief      Turn on Kalman filter update
-  * @param      cvkf: Kalman filter structure
-  * @retval     NULL
-  */
+ * @brief      Turn on Kalman filter update
+ * @param      cvkf: Kalman filter structure
+ * @retval     NULL
+ */
 void Kalman_TurnOnMeasureUpdate(Kalman_CVKalmanTypeDef* cvkf) {
     cvkf->measure_mode = 1;
 }
 
 /**
-  * @brief      The model is used for prediction and variance iteration
-  * @param      cvkf: Kalman filter structure
-  * @retval     NULL
-  */
+ * @brief      The model is used for prediction and variance iteration
+ * @param      cvkf: Kalman filter structure
+ * @retval     NULL
+ */
 void Kalman_CalcPredict(Kalman_CVKalmanTypeDef* cvkf) {
     float _temp1[4] = {0.0f};
     float _temp2[4] = {0.0f};
@@ -222,10 +222,10 @@ void Kalman_CalcPredict(Kalman_CVKalmanTypeDef* cvkf) {
 }
 
 /**
-  * @brief      Calculation of Kalman filter gain
-  * @param      cvkf: Kalman filter structure
-  * @retval     NULL
-  */
+ * @brief      Calculation of Kalman filter gain
+ * @param      cvkf: Kalman filter structure
+ * @retval     NULL
+ */
 void Kalman_CalcKFGain(Kalman_CVKalmanTypeDef* cvkf) {
     float _temp1[2] = {0.0f};
     float _temp2[2] = {0.0f};
@@ -250,11 +250,11 @@ void Kalman_CalcKFGain(Kalman_CVKalmanTypeDef* cvkf) {
 }
 
 /**
-  * @brief      Using measurement data to update and predict optimal state estimation
-  * @param      cvkf: Kalman filter structure
-  * @param      angle: Measured angle
-  * @retval     NULL
-  */
+ * @brief      Using measurement data to update and predict optimal state estimation
+ * @param      cvkf: Kalman filter structure
+ * @param      angle: Measured angle
+ * @retval     NULL
+ */
 void Kalman_CalcCorrect(Kalman_CVKalmanTypeDef* cvkf, float angle) {
     // Init Measurement Mat:
     static float _ym[1] = {0.0f};
@@ -281,20 +281,20 @@ void Kalman_CalcCorrect(Kalman_CVKalmanTypeDef* cvkf, float angle) {
     mat_init(&Eye, 2, 2, (float*)_eye);
     mat_init(&_t4, 2, 2, (float*)_temp4);
 
-    //POpt = (eye(length(XOpt))-Kf*C)*PPre:
+    // POpt = (eye(length(XOpt))-Kf*C)*PPre:
     mat_mult(&cvkf->Kf, &cvkf->KF_C, &cvkf->Popt);
     mat_sub(&Eye, &cvkf->Popt, &_t4);
     mat_mult(&_t4, &cvkf->Ppre, &cvkf->Popt);
 
-    //Set Best Angle:
+    // Set Best Angle:
     cvkf->angle = cvkf->Xopt.pData[0];
 }
 
 /**
-  * @brief      The last state is set to the optimal value to prepare for the next iteration
-  * @param      cvkf: Kalman filter structure
-  * @retval     NULL
-  */
+ * @brief      The last state is set to the optimal value to prepare for the next iteration
+ * @param      cvkf: Kalman filter structure
+ * @retval     NULL
+ */
 void Kalman_Update(Kalman_CVKalmanTypeDef* cvkf) {
     // Calculate the variance corresponding to the angle state
     cvkf->angle_p_err = fabs(cvkf->PLast.pData[0] - cvkf->Popt.pData[0]);
@@ -321,11 +321,11 @@ void Kalman_Update_none_data(Kalman_CVKalmanTypeDef* cvkf) {
 }
 
 /**
-  * @brief      KF filtering using measured data normally
-  * @param      cvkf: Kalman filter structure
-  * @param      angle: Measured angle
-  * @retval     NULL
-  */
+ * @brief      KF filtering using measured data normally
+ * @param      cvkf: Kalman filter structure
+ * @param      angle: Measured angle
+ * @retval     NULL
+ */
 void Kalman_MeasurementCalc(Kalman_CVKalmanTypeDef* cvkf, float angle) {
     Kalman_CalcPredict(cvkf);
     Kalman_CalcKFGain(cvkf);
@@ -336,22 +336,22 @@ void Kalman_MeasurementCalc(Kalman_CVKalmanTypeDef* cvkf, float angle) {
 }
 
 /**
-  * @brief      KF filtering without measured data normally
-  * @param      cvkf: Kalman filter structure
-  * @param      angle: Measured angle
-  * @retval     NULL
-  */
+ * @brief      KF filtering without measured data normally
+ * @param      cvkf: Kalman filter structure
+ * @param      angle: Measured angle
+ * @retval     NULL
+ */
 void Kalman_NonMeasurementCalc(Kalman_CVKalmanTypeDef* cvkf) {
     Kalman_CalcPredict(cvkf);
     Kalman_Update_none_data(cvkf);
 }
 
 /**
-  * @brief      Forecast N cycles without variance iteration
-  * @param      cvkf: Kalman filter structure
-  * @param      nT: Forecast period
-  * @retval     Mat: [angle_yaw omega_yaw angle_pitch omega_pitch]
-  */
+ * @brief      Forecast N cycles without variance iteration
+ * @param      cvkf: Kalman filter structure
+ * @param      nT: Forecast period
+ * @retval     Mat: [angle_yaw omega_yaw angle_pitch omega_pitch]
+ */
 float Kalman_Predict_nT(Kalman_CVKalmanTypeDef* cvkf, int nT) {
     //	if (nT == 0)	// None Prediction
     //		return cvkf->angle;
@@ -368,11 +368,11 @@ float Kalman_Predict_nT(Kalman_CVKalmanTypeDef* cvkf, int nT) {
     //	mat_mult(&_t1, &cvkf->XLast, &_t2);
     //	return (float)_t2.pData[0];
 
-    //Prediction Without DSP:
+    // Prediction Without DSP:
     float pre_time = cvkf->KF_A.pData[1] * nT;
     float pre_angle = cvkf->XLast.pData[0];
     float pre_speed = cvkf->XLast.pData[1];
-    //Set Min Piction Speed:
+    // Set Min Piction Speed:
     if (fabs(pre_speed) >= cvkf->min_speed) {
         pre_angle += pre_speed * pre_time;
     }
@@ -380,11 +380,11 @@ float Kalman_Predict_nT(Kalman_CVKalmanTypeDef* cvkf, int nT) {
 }
 
 /**
-  * @brief      Forecast N cycles without variance iteration
-  * @param      cvkf: Kalman filter structure
-  * @param      m_angle: Forecast period
-  * @retval     last_target: last terget angle
-  */
+ * @brief      Forecast N cycles without variance iteration
+ * @param      cvkf: Kalman filter structure
+ * @param      m_angle: Forecast period
+ * @retval     last_target: last terget angle
+ */
 float Kalman_JudgeChange(Kalman_CVKalmanTypeDef* cvkf, float m_angle) {
     int nT = 10;
     static uint32_t target_change_time = 0;
@@ -415,7 +415,7 @@ void Kalman_CV_Limit_Speed(Kalman_CVKalmanTypeDef* cvkf) {
     } else if (cvkf->Xopt.pData[1] < -max_angle_speed) {
         cvkf->Xopt.pData[1] = -max_angle_speed;
     }
-    //Set Dead domain : 5 degree
+    // Set Dead domain : 5 degree
     //	if(fabs(cvkf->Xopt.pData[1])<= cvkf->min_speed){
     //		cvkf->Xopt.pData[1] = 0;
     //	}
@@ -440,7 +440,7 @@ float Kalman_CV_CalInitSpeed(float delta_err_angle) {
 float poly_pitch_offset(float object_angle, int Speed) {
     float offset_angle = object_angle;
 
-    //Dead Domain:
+    // Dead Domain:
     if (object_angle < -10.0f) {
         offset_angle = 0.0f;
     }

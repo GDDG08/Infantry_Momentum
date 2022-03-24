@@ -1,9 +1,9 @@
 /*
  *  Project      : Infantry_Momentum
- * 
+ *
  *  file         : referee_periph.c
  *  Description  : This document contains the data receiving and sending of the referee system
- *  LastEditors  : ¶¯ÇéØ¼²·ìá¶¯ÐÄ
+ *  LastEditors  : ï¿½ï¿½ï¿½ï¿½Ø¼ï¿½ï¿½ï¿½á¶¯ï¿½ï¿½
  *  Date         : 2021-05-04 20:53:31
  *  LastEditTime : 2021-05-16 19:12:06
  */
@@ -37,19 +37,19 @@ uint8_t P_ext_game_status(Referee_RefereeDataTypeDef* referee, void* data_ptr) {
 }
 
 uint8_t P_ext_game_result(Referee_RefereeDataTypeDef* referee, void* data_ptr) {
-    //ext_game_result_t *struct_ptr = data_ptr;
+    // ext_game_result_t *struct_ptr = data_ptr;
 
     return PARSE_SUCCEEDED;
 }
 
 uint8_t P_ext_game_robot_HP(Referee_RefereeDataTypeDef* referee, void* data_ptr) {
-    //ext_game_robot_HP_t *struct_ptr = data_ptr;
+    // ext_game_robot_HP_t *struct_ptr = data_ptr;
 
     return PARSE_SUCCEEDED;
 }
 
 uint8_t P_ext_dart_status(Referee_RefereeDataTypeDef* referee, void* data_ptr) {
-    //ext_dart_status_t *struct_ptr = data_ptr;
+    // ext_dart_status_t *struct_ptr = data_ptr;
 
     return PARSE_SUCCEEDED;
 }
@@ -63,19 +63,19 @@ uint8_t P_ext_event_data(Referee_RefereeDataTypeDef* referee, void* data_ptr) {
 }
 
 uint8_t P_ext_supply_projectile_action(Referee_RefereeDataTypeDef* referee, void* data_ptr) {
-    //ext_supply_projectile_action_t *struct_ptr = data_ptr;
+    // ext_supply_projectile_action_t *struct_ptr = data_ptr;
 
     return PARSE_SUCCEEDED;
 }
 
 uint8_t P_ext_referee_warning(Referee_RefereeDataTypeDef* referee, void* data_ptr) {
-    //ext_referee_warning_t *struct_ptr = data_ptr;
+    // ext_referee_warning_t *struct_ptr = data_ptr;
 
     return PARSE_SUCCEEDED;
 }
 
 uint8_t P_ext_dart_remaining_time(Referee_RefereeDataTypeDef* referee, void* data_ptr) {
-    //ext_dart_remaining_time_t *struct_ptr = data_ptr;
+    // ext_dart_remaining_time_t *struct_ptr = data_ptr;
 
     return PARSE_SUCCEEDED;
 }
@@ -145,7 +145,7 @@ uint8_t P_aerial_robot_energy(Referee_RefereeDataTypeDef* referee, void* data_pt
 }
 
 uint8_t P_ext_robot_hurt(Referee_RefereeDataTypeDef* referee, void* data_ptr) {
-    //ext_robot_hurt_t *struct_ptr = data_ptr;
+    // ext_robot_hurt_t *struct_ptr = data_ptr;
 
     // Hurt Callback
 
@@ -153,7 +153,7 @@ uint8_t P_ext_robot_hurt(Referee_RefereeDataTypeDef* referee, void* data_ptr) {
 }
 
 uint8_t P_ext_shoot_data(Referee_RefereeDataTypeDef* referee, void* data_ptr) {
-    //ext_shoot_data_t *struct_ptr = data_ptr;
+    // ext_shoot_data_t *struct_ptr = data_ptr;
 
     // Shoot Callback
 
@@ -161,100 +161,100 @@ uint8_t P_ext_shoot_data(Referee_RefereeDataTypeDef* referee, void* data_ptr) {
 }
 
 uint8_t P_ext_bullet_remaining(Referee_RefereeDataTypeDef* referee, void* data_ptr) {
-    //ext_bullet_remaining_t *struct_ptr = data_ptr;
+    // ext_bullet_remaining_t *struct_ptr = data_ptr;
 
     return PARSE_SUCCEEDED;
 }
 
 uint8_t P_ext_rfid_status(Referee_RefereeDataTypeDef* referee, void* data_ptr) {
-    //ext_rfid_status_t *struct_ptr = data_ptr;
+    // ext_rfid_status_t *struct_ptr = data_ptr;
 
     return PARSE_SUCCEEDED;
 }
 
 uint8_t P_ext_dart_cmd(Referee_RefereeDataTypeDef* referee, void* data_ptr) {
-    //ext_dart_client_cmd_t *struct_ptr = data_ptr;
+    // ext_dart_client_cmd_t *struct_ptr = data_ptr;
 
     return PARSE_SUCCEEDED;
 }
 
 /********** END OF REFEREE CMD PARSER FUNCTION **********/
 
-const uint16_t Const_Referee_FRAME_HEADER_SOF = 0xA5;  // ²ÃÅÐÏµÍ³Ö¸ÁîÖ¡Í·³¤¶È
-const Referee_RobotAndClientIDTypeDef                  // »úÆ÷ÈËID¼°¶ÔÓ¦¿Í»§¶ËID£¬0±íÊ¾ÎÞ¶ÔÓ¦¿Í»§¶Ë
-    HERO_RED = {1, 0x0101},                            // Ó¢ÐÛ(ºì)
-    ENGINEER_RED = {2, 0x0102},                        // ¹¤³Ì(ºì)
-    INFANTRY3_RED = {3, 0x0103},                       // ²½±ø3(ºì)
-    INFANTRY4_RED = {4, 0x0104},                       // ²½±ø4(ºì)
-    INFANTRY5_RED = {5, 0x0105},                       // ²½±ø5(ºì)
-    AERIAL_RED = {6, 0x0106},                          // ¿ÕÖÐ(ºì)
-    SENTRY_RED = {7, 0},                               // ÉÚ±ø(ºì)
-    HERO_BLUE = {101, 0x0165},                         // Ó¢ÐÛ(À¶)
-    ENGINEER_BLUE = {102, 0x0166},                     // ¹¤³Ì(À¶)
-    INFANTRY3_BLUE = {103, 0x0167},                    // ²½±ø3(À¶)
-    INFANTRY4_BLUE = {104, 0x0168},                    // ²½±ø4(À¶)
-    INFANTRY5_BLUE = {105, 0x0169},                    // ²½±ø5(À¶)
-    AERIAL_BLUE = {106, 0x016A},                       // ¿ÕÖÐ(À¶)
-    SENTRY_BLUE = {107, 0};                            // ÉÚ±ø(À¶)
+const uint16_t Const_Referee_FRAME_HEADER_SOF = 0xA5;  // ï¿½ï¿½ï¿½ï¿½ÏµÍ³Ö¸ï¿½ï¿½Ö¡Í·ï¿½ï¿½ï¿½ï¿½
+const Referee_RobotAndClientIDTypeDef                  // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½IDï¿½ï¿½ï¿½ï¿½Ó¦ï¿½Í»ï¿½ï¿½ï¿½IDï¿½ï¿½0ï¿½ï¿½Ê¾ï¿½Þ¶ï¿½Ó¦ï¿½Í»ï¿½ï¿½ï¿½
+    HERO_RED = {1, 0x0101},                            // Ó¢ï¿½ï¿½(ï¿½ï¿½)
+    ENGINEER_RED = {2, 0x0102},                        // ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½)
+    INFANTRY3_RED = {3, 0x0103},                       // ï¿½ï¿½ï¿½ï¿½3(ï¿½ï¿½)
+    INFANTRY4_RED = {4, 0x0104},                       // ï¿½ï¿½ï¿½ï¿½4(ï¿½ï¿½)
+    INFANTRY5_RED = {5, 0x0105},                       // ï¿½ï¿½ï¿½ï¿½5(ï¿½ï¿½)
+    AERIAL_RED = {6, 0x0106},                          // ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½)
+    SENTRY_RED = {7, 0},                               // ï¿½Ú±ï¿½(ï¿½ï¿½)
+    HERO_BLUE = {101, 0x0165},                         // Ó¢ï¿½ï¿½(ï¿½ï¿½)
+    ENGINEER_BLUE = {102, 0x0166},                     // ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½)
+    INFANTRY3_BLUE = {103, 0x0167},                    // ï¿½ï¿½ï¿½ï¿½3(ï¿½ï¿½)
+    INFANTRY4_BLUE = {104, 0x0168},                    // ï¿½ï¿½ï¿½ï¿½4(ï¿½ï¿½)
+    INFANTRY5_BLUE = {105, 0x0169},                    // ï¿½ï¿½ï¿½ï¿½5(ï¿½ï¿½)
+    AERIAL_BLUE = {106, 0x016A},                       // ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½)
+    SENTRY_BLUE = {107, 0};                            // ï¿½Ú±ï¿½(ï¿½ï¿½)
 
-const uint16_t Const_Referee_CMD_NUM = 20;  // ²ÃÅÐÏµÍ³Ö¸Áî¸öÊý£¨²»º¬½»»¥Ö¸Áî£©
+const uint16_t Const_Referee_CMD_NUM = 20;  // ï¿½ï¿½ï¿½ï¿½ÏµÍ³Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¸ï¿½î£©
 const Referee_RefereeCmdTypeDef Const_Referee_CMD_LIST[Const_Referee_CMD_NUM] = {
-    // ²ÃÅÐÏµÍ³ÏûÏ¢ÃüÁîIDÁÐ±í
-    {0x0001, 11, &P_ext_game_status},              // ±ÈÈü×´Ì¬Êý¾Ý£¬1Hz ÖÜÆÚ·¢ËÍ
-    {0x0002, 1, &P_ext_game_result},               // ±ÈÈü½á¹ûÊý¾Ý£¬±ÈÈü½áÊøºó·¢ËÍ
-    {0x0003, 32, &P_ext_game_robot_HP},            // ±ÈÈü»úÆ÷ÈËÑªÁ¿Êý¾Ý£¬1Hz ÖÜÆÚ·¢ËÍ
-    {0x0004, 3, &P_ext_dart_status},               // ·ÉïÚ·¢Éä×´Ì¬£¬·ÉïÚ·¢ÉäÊ±·¢ËÍ
-    {0x0005, 11, NULL},                            // £¨Î´Ê¹ÓÃ£©ÈË¹¤ÖÇÄÜÌôÕ½Èü¼Ó³ÉÓë³Í·£Çø×´Ì¬£¬1HzÖÜÆÚ·¢ËÍ
-    {0x0101, 4, &P_ext_event_data},                // ³¡µØÊÂ¼þÊý¾Ý£¬ÊÂ¼þ¸Ä±äºó·¢ËÍ
-    {0x0102, 4, &P_ext_supply_projectile_action},  // ³¡µØ²¹¸øÕ¾¶¯×÷±êÊ¶Êý¾Ý£¬¶¯×÷¸Ä±äºó·¢ËÍ
-    {0x0103, 2, NULL},                             // £¨ÒÑ·ÏÆú£©ÇëÇó²¹¸øÕ¾²¹µ¯Êý¾Ý£¬ÓÉ²ÎÈü¶Ó·¢ËÍ£¬ÉÏÏÞ 10Hz¡££¨RM ¶Ô¿¹ÈüÉÐÎ´¿ª·Å£©
-    {0x0104, 2, &P_ext_referee_warning},           // ²ÃÅÐ¾¯¸æÊý¾Ý£¬¾¯¸æ·¢Éúºó·¢ËÍ
-    {0x0105, 1, &P_ext_dart_remaining_time},       // ·ÉïÚ·¢Éä¿Úµ¹¼ÆÊ±£¬1HzÖÜÆÚ·¢ËÍ
-    {0x0201, 27, &P_ext_game_robot_status},        // »úÆ÷ÈË×´Ì¬Êý¾Ý£¬10Hz ÖÜÆÚ·¢ËÍ
-    {0x0202, 16, &P_ext_power_heat_data},          // ÊµÊ±¹¦ÂÊÈÈÁ¿Êý¾Ý£¬50Hz ÖÜÆÚ·¢ËÍ
-    {0x0203, 16, &P_ext_game_robot_pos},           // »úÆ÷ÈËÎ»ÖÃÊý¾Ý£¬10Hz ·¢ËÍ
-    {0x0204, 1, &P_ext_buff},                      // »úÆ÷ÈËÔöÒæÊý¾Ý£¬1Hz ÖÜÆÚ·¢ËÍ
-    {0x0205, 2, &P_aerial_robot_energy},           // ¿ÕÖÐ»úÆ÷ÈËÄÜÁ¿×´Ì¬Êý¾Ý£¬10Hz ÖÜÆÚ·¢ËÍ£¬Ö»ÓÐ¿ÕÖÐ»úÆ÷ÈËÖ÷¿Ø·¢ËÍ
-    {0x0206, 1, &P_ext_robot_hurt},                // ÉËº¦×´Ì¬Êý¾Ý£¬ÉËº¦·¢Éúºó·¢ËÍ
-    {0x0207, 7, &P_ext_shoot_data},                // ÊµÊ±Éä»÷Êý¾Ý£¬×Óµ¯·¢Éäºó·¢ËÍ
-    {0x0208, 6, &P_ext_bullet_remaining},          // µ¯ÍèÊ£Óà·¢ÉäÊý£¬½ö¿ÕÖÐ»úÆ÷ÈË£¬ÉÚ±ø»úÆ÷ÈËÒÔ¼°ICRA»úÆ÷ÈË·¢ËÍ£¬1HzÖÜÆÚ·¢ËÍ
-    {0x0209, 4, &P_ext_rfid_status},               // »úÆ÷ÈËRFID×´Ì¬£¬1HzÖÜÆÚ·¢ËÍ
-    {0x020A, 12, &P_ext_dart_cmd}                  // ·ÉïÚ»úÆ÷ÈË¿Í»§¶ËÖ¸ÁîÊé£¬10HzÖÜÆÚ·¢ËÍ
+    // ï¿½ï¿½ï¿½ï¿½ÏµÍ³ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½IDï¿½Ð±ï¿½
+    {0x0001, 11, &P_ext_game_status},              // ï¿½ï¿½ï¿½ï¿½×´Ì¬ï¿½ï¿½ï¿½Ý£ï¿½1Hz ï¿½ï¿½ï¿½Ú·ï¿½ï¿½ï¿½
+    {0x0002, 1, &P_ext_game_result},               // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    {0x0003, 32, &P_ext_game_robot_HP},            // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñªï¿½ï¿½ï¿½ï¿½ï¿½Ý£ï¿½1Hz ï¿½ï¿½ï¿½Ú·ï¿½ï¿½ï¿½
+    {0x0004, 3, &P_ext_dart_status},               // ï¿½ï¿½ï¿½Ú·ï¿½ï¿½ï¿½×´Ì¬ï¿½ï¿½ï¿½ï¿½ï¿½Ú·ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½
+    {0x0005, 11, NULL},                            // ï¿½ï¿½Î´Ê¹ï¿½Ã£ï¿½ï¿½Ë¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Õ½ï¿½ï¿½ï¿½Ó³ï¿½ï¿½ï¿½Í·ï¿½ï¿½ï¿½×´Ì¬ï¿½ï¿½1Hzï¿½ï¿½ï¿½Ú·ï¿½ï¿½ï¿½
+    {0x0101, 4, &P_ext_event_data},                // ï¿½ï¿½ï¿½ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½Ý£ï¿½ï¿½Â¼ï¿½ï¿½Ä±ï¿½ï¿½ï¿½ï¿½
+    {0x0102, 4, &P_ext_supply_projectile_action},  // ï¿½ï¿½ï¿½Ø²ï¿½ï¿½ï¿½Õ¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¶ï¿½ï¿½ï¿½Ý£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä±ï¿½ï¿½ï¿½ï¿½
+    {0x0103, 2, NULL},                             // ï¿½ï¿½ï¿½Ñ·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ó²¹¸ï¿½Õ¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý£ï¿½ï¿½É²ï¿½ï¿½ï¿½ï¿½Ó·ï¿½ï¿½Í£ï¿½ï¿½ï¿½ï¿½ï¿½ 10Hzï¿½ï¿½ï¿½ï¿½RM ï¿½Ô¿ï¿½ï¿½ï¿½ï¿½ï¿½Î´ï¿½ï¿½ï¿½Å£ï¿½
+    {0x0104, 2, &P_ext_referee_warning},           // ï¿½ï¿½ï¿½Ð¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý£ï¿½ï¿½ï¿½ï¿½æ·¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    {0x0105, 1, &P_ext_dart_remaining_time},       // ï¿½ï¿½ï¿½Ú·ï¿½ï¿½ï¿½Úµï¿½ï¿½ï¿½Ê±ï¿½ï¿½1Hzï¿½ï¿½ï¿½Ú·ï¿½ï¿½ï¿½
+    {0x0201, 27, &P_ext_game_robot_status},        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×´Ì¬ï¿½ï¿½ï¿½Ý£ï¿½10Hz ï¿½ï¿½ï¿½Ú·ï¿½ï¿½ï¿½
+    {0x0202, 16, &P_ext_power_heat_data},          // ÊµÊ±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý£ï¿½50Hz ï¿½ï¿½ï¿½Ú·ï¿½ï¿½ï¿½
+    {0x0203, 16, &P_ext_game_robot_pos},           // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î»ï¿½ï¿½ï¿½ï¿½ï¿½Ý£ï¿½10Hz ï¿½ï¿½ï¿½ï¿½
+    {0x0204, 1, &P_ext_buff},                      // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý£ï¿½1Hz ï¿½ï¿½ï¿½Ú·ï¿½ï¿½ï¿½
+    {0x0205, 2, &P_aerial_robot_energy},           // ï¿½ï¿½ï¿½Ð»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×´Ì¬ï¿½ï¿½ï¿½Ý£ï¿½10Hz ï¿½ï¿½ï¿½Ú·ï¿½ï¿½Í£ï¿½Ö»ï¿½Ð¿ï¿½ï¿½Ð»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ø·ï¿½ï¿½ï¿½
+    {0x0206, 1, &P_ext_robot_hurt},                // ï¿½Ëºï¿½×´Ì¬ï¿½ï¿½ï¿½Ý£ï¿½ï¿½Ëºï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    {0x0207, 7, &P_ext_shoot_data},                // ÊµÊ±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý£ï¿½ï¿½Óµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    {0x0208, 6, &P_ext_bullet_remaining},          // ï¿½ï¿½ï¿½ï¿½Ê£ï¿½à·¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð»ï¿½ï¿½ï¿½ï¿½Ë£ï¿½ï¿½Ú±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô¼ï¿½ICRAï¿½ï¿½ï¿½ï¿½ï¿½Ë·ï¿½ï¿½Í£ï¿½1Hzï¿½ï¿½ï¿½Ú·ï¿½ï¿½ï¿½
+    {0x0209, 4, &P_ext_rfid_status},               // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½RFID×´Ì¬ï¿½ï¿½1Hzï¿½ï¿½ï¿½Ú·ï¿½ï¿½ï¿½
+    {0x020A, 12, &P_ext_dart_cmd}                  // ï¿½ï¿½ï¿½Ú»ï¿½ï¿½ï¿½ï¿½Ë¿Í»ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½ï¿½é£¬10Hzï¿½ï¿½ï¿½Ú·ï¿½ï¿½ï¿½
 };
 
-const Referee_RefereeCmdTypeDef Const_Referee_CMD_INTERACTIVE = {0x0301, 8, NULL};  // »úÆ÷ÈË¼ä½»»¥Êý¾Ý£¬·¢ËÍ·½´¥·¢·¢ËÍ
-// ×¢£ºÕâÀïµÄ6ÊÇ½»»¥Êý¾ÝÖ¡Í·µÄ³¤¶È£¬ÒòÎª½»»¥Êý¾ÝÖ¡ÊÇ²»¶¨³¤µÄ
-//const uint16_t Const_Referee_DATA_CMD_ID_CLIENT_CUSTOM_DATA       = 0xD180;               // £¨ÒÑ·ÏÆú£©¿Í»§¶Ë×Ô¶¨ÒåÊý¾ÝÄÚÈÝID
-const uint16_t Const_Referee_DATA_CMD_ID_INTERACTIVE_DATA_LBOUND = 0x0200;  // »úÆ÷ÈË¼ä½»»¥Êý¾ÝÄÚÈÝIDÏÂ½ç
-const uint16_t Const_Referee_DATA_CMD_ID_INTERACTIVE_DATA_UBOUND = 0x02FF;  // »úÆ÷ÈË¼ä½»»¥Êý¾ÝÄÚÈÝIDÉÏ½ç
-const uint16_t Const_Referee_DATA_INTERACTIVE_DATA_MAX_LENGTH = 113 - 1;    // »úÆ÷ÈË¼ä½»»¥Êý¾ÝÄÚÈÝ×î´ó³¤¶È
-const uint16_t Const_Referee_GRAPHIC_BUFFER_MAX_LENGTH = 21;                // Í¼ÐÎ»º³åÇø×î´ó³¤¶È
+const Referee_RefereeCmdTypeDef Const_Referee_CMD_INTERACTIVE = {0x0301, 8, NULL};  // ï¿½ï¿½ï¿½ï¿½ï¿½Ë¼ä½»ï¿½ï¿½ï¿½ï¿½ï¿½Ý£ï¿½ï¿½ï¿½ï¿½Í·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+// ×¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½6ï¿½Ç½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¡Í·ï¿½Ä³ï¿½ï¿½È£ï¿½ï¿½ï¿½Îªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¡ï¿½Ç²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+// const uint16_t Const_Referee_DATA_CMD_ID_CLIENT_CUSTOM_DATA       = 0xD180;               // ï¿½ï¿½ï¿½Ñ·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í»ï¿½ï¿½ï¿½ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ID
+const uint16_t Const_Referee_DATA_CMD_ID_INTERACTIVE_DATA_LBOUND = 0x0200;  // ï¿½ï¿½ï¿½ï¿½ï¿½Ë¼ä½»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½IDï¿½Â½ï¿½
+const uint16_t Const_Referee_DATA_CMD_ID_INTERACTIVE_DATA_UBOUND = 0x02FF;  // ï¿½ï¿½ï¿½ï¿½ï¿½Ë¼ä½»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½IDï¿½Ï½ï¿½
+const uint16_t Const_Referee_DATA_INTERACTIVE_DATA_MAX_LENGTH = 113 - 1;    // ï¿½ï¿½ï¿½ï¿½ï¿½Ë¼ä½»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ó³¤¶ï¿½
+const uint16_t Const_Referee_GRAPHIC_BUFFER_MAX_LENGTH = 21;                // Í¼ï¿½Î»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ó³¤¶ï¿½
 const Referee_RefereeCmdTypeDef Const_Referee_DATA_CMD_ID_LIST[6] = {
-    // ²ÃÅÐÏµÍ³½»»¥Êý¾ÝÄÚÈÝID
-    {0x0100, 2, NULL},    // ¿Í»§¶ËÉ¾³ýÍ¼ÐÎ
-    {0x0101, 15, NULL},   // ¿Í»§¶Ë»æÖÆÒ»¸öÍ¼ÐÎ
-    {0x0102, 30, NULL},   // ¿Í»§¶Ë»æÖÆ¶þ¸öÍ¼ÐÎ
-    {0x0103, 75, NULL},   // ¿Í»§¶Ë»æÖÆÎå¸öÍ¼ÐÎ
-    {0x0104, 105, NULL},  // ¿Í»§¶Ë»æÖÆÆß¸öÍ¼ÐÎ
-    {0x0105, 45, NULL}    // ¿Í»§¶Ë»æÖÆ×Ö·ûÍ¼ÐÎ
+    // ï¿½ï¿½ï¿½ï¿½ÏµÍ³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ID
+    {0x0100, 2, NULL},    // ï¿½Í»ï¿½ï¿½ï¿½É¾ï¿½ï¿½Í¼ï¿½ï¿½
+    {0x0101, 15, NULL},   // ï¿½Í»ï¿½ï¿½Ë»ï¿½ï¿½ï¿½Ò»ï¿½ï¿½Í¼ï¿½ï¿½
+    {0x0102, 30, NULL},   // ï¿½Í»ï¿½ï¿½Ë»ï¿½ï¿½Æ¶ï¿½ï¿½ï¿½Í¼ï¿½ï¿½
+    {0x0103, 75, NULL},   // ï¿½Í»ï¿½ï¿½Ë»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¼ï¿½ï¿½
+    {0x0104, 105, NULL},  // ï¿½Í»ï¿½ï¿½Ë»ï¿½ï¿½ï¿½ï¿½ß¸ï¿½Í¼ï¿½ï¿½
+    {0x0105, 45, NULL}    // ï¿½Í»ï¿½ï¿½Ë»ï¿½ï¿½ï¿½ï¿½Ö·ï¿½Í¼ï¿½ï¿½
 };
 
 graphic_data_struct_t Referee_dummyGraphicCmd = {{0x00, 0x00, 0x00}, Draw_OPERATE_NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 
 /**
-  * @brief      »ñÈ¡²ÃÅÐÏµÍ³Êý¾Ý¶ÔÏóµÄÖ¸Õë
-  * @param      ÎÞ
-  * @retval     Ö¸ÕëÖ¸Ïò²ÃÅÐÏµÍ³Êý¾Ý¶ÔÏó
-  */
+ * @brief      ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ÏµÍ³ï¿½ï¿½ï¿½Ý¶ï¿½ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½
+ * @param      ï¿½ï¿½
+ * @retval     Ö¸ï¿½ï¿½Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½ÏµÍ³ï¿½ï¿½ï¿½Ý¶ï¿½ï¿½ï¿½
+ */
 Referee_RefereeDataTypeDef* Referee_GetRefereeDataPtr() {
     return &Referee_RefereeData;
 }
 
 /**
-  * @brief      ÖØÖÃ²ÃÅÐÏµÍ³Êý¾Ý¶ÔÏó
-  * @param      ÎÞ
-  * @retval     ÎÞ
-  */
+ * @brief      ï¿½ï¿½ï¿½Ã²ï¿½ï¿½ï¿½ÏµÍ³ï¿½ï¿½ï¿½Ý¶ï¿½ï¿½ï¿½
+ * @param      ï¿½ï¿½
+ * @retval     ï¿½ï¿½
+ */
 void Referee_ResetRefereeData() {
     Referee_RefereeDataTypeDef* referee = &Referee_RefereeData;
     Referee_RefereeStateEnum state = referee->state;        // backup state
@@ -265,10 +265,10 @@ void Referee_ResetRefereeData() {
 }
 
 /**
-  * @brief      ³õÊ¼»¯²ÃÅÐÏµÍ³
-  * @param      ÎÞ
-  * @retval     ÎÞ
-  */
+ * @brief      ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÏµÍ³
+ * @param      ï¿½ï¿½
+ * @retval     ï¿½ï¿½
+ */
 void Referee_InitReferee() {
     Referee_RefereeDataTypeDef* referee = &Referee_RefereeData;
     Referee_ResetRefereeData();
@@ -278,10 +278,10 @@ void Referee_InitReferee() {
 }
 
 /**
-  * @brief      Í¨¹ý»úÆ÷ÈËID»ñÈ¡¶ÔÓ¦¿Í»§¶ËID
-  * @param      robot_id: »úÆ÷ÈËID
-  * @retval     ¿Í»§¶ËID
-  */
+ * @brief      Í¨ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½IDï¿½ï¿½È¡ï¿½ï¿½Ó¦ï¿½Í»ï¿½ï¿½ï¿½ID
+ * @param      robot_id: ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ID
+ * @retval     ï¿½Í»ï¿½ï¿½ï¿½ID
+ */
 uint16_t Referee_GetClientIDByRobotID(uint8_t robot_id) {
     if (robot_id == 7 || robot_id == 107)
         return 0;
@@ -291,13 +291,13 @@ uint16_t Referee_GetClientIDByRobotID(uint8_t robot_id) {
 }
 
 /**
-  * @brief      ²ÃÅÐÏµÍ³½»»¥Êý¾Ý·¢ËÍº¯Êý£¨×èÈû£©
-  * @param      data_cmd_id: Êý¾ÝÄÚÈÝID
-  * @param      receiver_ID: ½ÓÊÜÕßID
-  * @param      interactive_data: ½»»¥Êý¾ÝÖ¡
-  * @param      interactive_data_length: ½»»¥Êý¾ÝÖ¡³¤¶È
-  * @retval     ÎÞ
-  */
+ * @brief      ï¿½ï¿½ï¿½ï¿½ÏµÍ³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý·ï¿½ï¿½Íºï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ * @param      data_cmd_id: ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ID
+ * @param      receiver_ID: ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ID
+ * @param      interactive_data: ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¡
+ * @param      interactive_data_length: ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¡ï¿½ï¿½ï¿½ï¿½
+ * @retval     ï¿½ï¿½
+ */
 void Referee_SendInteractiveData(uint16_t data_cmd_id, uint16_t receiver_ID, const uint8_t* interactive_data, uint16_t interactive_data_length) {
     Referee_RefereeDataTypeDef* referee = &Referee_RefereeData;
     static uint8_t seq = 0;
@@ -332,11 +332,11 @@ void Referee_SendInteractiveData(uint16_t data_cmd_id, uint16_t receiver_ID, con
 }
 
 /**
-  * @brief      £¨ÒÑ·ÏÆú£©ÉèÖÃ¿Í»§¶Ë×Ô¶¨ÒåÊý¾ÝLED
-  * @param      led_no: ¿Í»§¶Ë×Ô¶¨ÒåÊý¾ÝLEDÐòºÅ
-  * @param      led_state: ¿Í»§¶Ë×Ô¶¨ÒåÊý¾ÝLED×´Ì¬£¨1ÎªÂÌ£¬0Îªºì£©
-  */
-/* 
+ * @brief      ï¿½ï¿½ï¿½Ñ·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã¿Í»ï¿½ï¿½ï¿½ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½LED
+ * @param      led_no: ï¿½Í»ï¿½ï¿½ï¿½ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½LEDï¿½ï¿½ï¿½
+ * @param      led_state: ï¿½Í»ï¿½ï¿½ï¿½ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½LED×´Ì¬ï¿½ï¿½1Îªï¿½Ì£ï¿½0Îªï¿½ì£©
+ */
+/*
 void Referee_SetClientCustomDataLED(uint8_t led_no, uint8_t led_state) {
     Referee_RefereeDataTypeDef* referee = &Referee_RefereeData;
     if (led_no > 5) return;
@@ -346,26 +346,26 @@ void Referee_SetClientCustomDataLED(uint8_t led_no, uint8_t led_state) {
 */
 
 /**
-  * @brief      £¨ÒÑ·ÏÆú£©¿Í»§¶Ë×Ô¶¨ÒåÊý¾Ý·¢ËÍº¯Êý
-  * @param      ÎÞ
-  * @retval     ÎÞ
-  */
+ * @brief      ï¿½ï¿½ï¿½Ñ·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í»ï¿½ï¿½ï¿½ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý·ï¿½ï¿½Íºï¿½ï¿½ï¿½
+ * @param      ï¿½ï¿½
+ * @retval     ï¿½ï¿½
+ */
 /*
 void Referee_SendClientCustomData() {
     Referee_RefereeDataTypeDef* referee = &Referee_RefereeData;
-    Referee_SendInteractiveData(Const_Referee_DATA_CMD_ID_CLIENT_CUSTOM_DATA, referee->client_id, 
+    Referee_SendInteractiveData(Const_Referee_DATA_CMD_ID_CLIENT_CUSTOM_DATA, referee->client_id,
                                 (void *) &(referee->custom_data), sizeof(referee->custom_data));
 }
 */
 
 /**
-  * @brief      »úÆ÷ÈË¼ä½»»¥Êý¾Ý·¢ËÍº¯Êý
-  * @param      data_cmd_id: Êý¾ÝÄÚÈÝID
-  * @param      receiver_ID: ½ÓÊÜÕßID
-  * @param      data: Êý¾ÝÖ¡
-  * @param      data_length: Êý¾ÝÖ¡³¤¶È
-  * @retval     ÎÞ
-  */
+ * @brief      ï¿½ï¿½ï¿½ï¿½ï¿½Ë¼ä½»ï¿½ï¿½ï¿½ï¿½ï¿½Ý·ï¿½ï¿½Íºï¿½ï¿½ï¿½
+ * @param      data_cmd_id: ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ID
+ * @param      receiver_ID: ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ID
+ * @param      data: ï¿½ï¿½ï¿½ï¿½Ö¡
+ * @param      data_length: ï¿½ï¿½ï¿½ï¿½Ö¡ï¿½ï¿½ï¿½ï¿½
+ * @retval     ï¿½ï¿½
+ */
 void Referee_SendRobotCustomData(uint16_t data_cmd_id, uint16_t receiver_ID, const uint8_t* data, uint16_t data_length) {
     if (data_cmd_id < Const_Referee_DATA_CMD_ID_INTERACTIVE_DATA_LBOUND ||
         data_cmd_id > Const_Referee_DATA_CMD_ID_INTERACTIVE_DATA_UBOUND)
@@ -378,24 +378,24 @@ void Referee_SendRobotCustomData(uint16_t data_cmd_id, uint16_t receiver_ID, con
 }
 
 /**
-  * @brief      £¨ÒÑ·ÏÆú£©¿Í»§¶Ë×Ô¶¨ÒåÍ¼ÐÎ·¢ËÍº¯Êý
-  * @param      ÎÞ
-  * @retval     ÎÞ
-  */
+ * @brief      ï¿½ï¿½ï¿½Ñ·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í»ï¿½ï¿½ï¿½ï¿½Ô¶ï¿½ï¿½ï¿½Í¼ï¿½Î·ï¿½ï¿½Íºï¿½ï¿½ï¿½
+ * @param      ï¿½ï¿½
+ * @retval     ï¿½ï¿½
+ */
 /*
 void Referee_SendClientGraphicDraw() {
     Referee_RefereeDataTypeDef* referee = &Referee_RefereeData;
-    Referee_SendInteractiveData(Const_Referee_DATA_CMD_ID_CLIENT_GRAPHIC_DRAW, referee->client_id, 
+    Referee_SendInteractiveData(Const_Referee_DATA_CMD_ID_CLIENT_GRAPHIC_DRAW, referee->client_id,
                                 (void *) &(referee->graphic_draw), sizeof(referee->graphic_draw));
 }
 */
 
 /**
-  * @brief      ·¢ËÍ¿Í»§¶Ë×Ô¶¨ÒåÍ¼ÐÎÃüÁî×é
-  * @param      graph: Êý×é°üÀ¨Ö¸¶¨ÊýÁ¿¸öÍ¼ÐÎÃüÁî
-  * @param      mode: ·¢ËÍÄ£Ê½£¬1¡¢2¡¢3¡¢4¶ÔÓ¦1¡¢2¡¢5¡¢7¸öÒ»×é
-  * @retval     ÎÞ
-  */
+ * @brief      ï¿½ï¿½ï¿½Í¿Í»ï¿½ï¿½ï¿½ï¿½Ô¶ï¿½ï¿½ï¿½Í¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ * @param      graph: ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ * @param      mode: ï¿½ï¿½ï¿½ï¿½Ä£Ê½ï¿½ï¿½1ï¿½ï¿½2ï¿½ï¿½3ï¿½ï¿½4ï¿½ï¿½Ó¦1ï¿½ï¿½2ï¿½ï¿½5ï¿½ï¿½7ï¿½ï¿½Ò»ï¿½ï¿½
+ * @retval     ï¿½ï¿½
+ */
 void Referee_SendDrawingCmd(graphic_data_struct_t graph[], uint8_t mode) {
     Referee_RefereeDataTypeDef* referee = &Referee_RefereeData;
     if (mode == 0 || mode >= 5)
@@ -423,11 +423,11 @@ void Referee_SendDrawingCmd(graphic_data_struct_t graph[], uint8_t mode) {
 }
 
 /**
-  * @brief      ·¢ËÍ¿Í»§¶Ë×Ô¶¨ÒåÍ¼ÐÎÏÔÊ¾×Ö·û´®ÃüÁî
-  * @param      pgraph: Ö¸ÕëÖ¸ÏòÏÔÊ¾×Ö·û´®Í¼ÐÎÃüÁî
-  * @param      str: ×Ö·û´®£¨¶¨³¤Îª30£©
-  * @retval     ÎÞ
-  */
+ * @brief      ï¿½ï¿½ï¿½Í¿Í»ï¿½ï¿½ï¿½ï¿½Ô¶ï¿½ï¿½ï¿½Í¼ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½Ö·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ * @param      pgraph: Ö¸ï¿½ï¿½Ö¸ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½Ö·ï¿½ï¿½ï¿½Í¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ * @param      str: ï¿½Ö·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îª30ï¿½ï¿½
+ * @retval     ï¿½ï¿½
+ */
 void Referee_SendDrawingStringCmd(graphic_data_struct_t* pgraph, const uint8_t str[]) {
     Referee_RefereeDataTypeDef* referee = &Referee_RefereeData;
 
@@ -440,20 +440,20 @@ void Referee_SendDrawingStringCmd(graphic_data_struct_t* pgraph, const uint8_t s
 }
 
 /**
-  * @brief      ¿Í»§¶Ë×Ô¶¨ÒåÍ¼ÐÎ»º³åÇøÊÇ·ñÎª¿Õ
-  * @param      ÎÞ
-  * @retval     1Îª¿Õ£¬0Îª·Ç¿Õ
-  */
+ * @brief      ï¿½Í»ï¿½ï¿½ï¿½ï¿½Ô¶ï¿½ï¿½ï¿½Í¼ï¿½Î»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç·ï¿½Îªï¿½ï¿½
+ * @param      ï¿½ï¿½
+ * @retval     1Îªï¿½Õ£ï¿½0Îªï¿½Ç¿ï¿½
+ */
 uint8_t Referee_IsDrawingBufferEmpty() {
     Referee_RefereeDataTypeDef* referee = &Referee_RefereeData;
     return referee->graphic_buf_len == 0;
 }
 
 /**
-  * @brief      ¿Í»§¶Ë×Ô¶¨ÒåÍ¼ÐÎ»º³åÇøË¢Ð´º¯Êý
-  * @param      ÎÞ
-  * @retval     ÎÞ
-  */
+ * @brief      ï¿½Í»ï¿½ï¿½ï¿½ï¿½Ô¶ï¿½ï¿½ï¿½Í¼ï¿½Î»ï¿½ï¿½ï¿½ï¿½ï¿½Ë¢Ð´ï¿½ï¿½ï¿½ï¿½
+ * @param      ï¿½ï¿½
+ * @retval     ï¿½ï¿½
+ */
 void Referee_DrawingBufferFlush() {
     Referee_RefereeDataTypeDef* referee = &Referee_RefereeData;
     if (Referee_IsDrawingBufferEmpty())
@@ -481,10 +481,10 @@ void Referee_DrawingBufferFlush() {
 }
 
 /**
-  * @brief      ½«¿ÕÍ¼ÐÎÃüÁî¼ÓÈë¿Í»§¶Ë×Ô¶¨ÒåÍ¼ÐÎ»º³åÇø£¨Õ¼Î»ÓÃ£©
-  * @param      ÎÞ
-  * @retval     ÎÞ
-  */
+ * @brief      ï¿½ï¿½ï¿½ï¿½Í¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í»ï¿½ï¿½ï¿½ï¿½Ô¶ï¿½ï¿½ï¿½Í¼ï¿½Î»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Õ¼Î»ï¿½Ã£ï¿½
+ * @param      ï¿½ï¿½
+ * @retval     ï¿½ï¿½
+ */
 void Referee_DrawingBufferPushDummy() {
     Referee_RefereeDataTypeDef* referee = &Referee_RefereeData;
     memcpy(referee->graphic_buf + referee->graphic_buf_len, &Referee_dummyGraphicCmd, sizeof(graphic_data_struct_t));
@@ -492,10 +492,10 @@ void Referee_DrawingBufferPushDummy() {
 }
 
 /**
-  * @brief      ½«Í¼ÐÎÃüÁî¼ÓÈë¿Í»§¶Ë×Ô¶¨ÒåÍ¼ÐÎ»º³åÇø
-  * @param      pgraph: Ö¸ÕëÖ¸ÏòÍ¼ÐÎÃüÁî
-  * @retval     ÎÞ
-  */
+ * @brief      ï¿½ï¿½Í¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í»ï¿½ï¿½ï¿½ï¿½Ô¶ï¿½ï¿½ï¿½Í¼ï¿½Î»ï¿½ï¿½ï¿½ï¿½ï¿½
+ * @param      pgraph: Ö¸ï¿½ï¿½Ö¸ï¿½ï¿½Í¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ * @retval     ï¿½ï¿½
+ */
 void Referee_DrawingBufferPush(graphic_data_struct_t* pgraph) {
     Referee_RefereeDataTypeDef* referee = &Referee_RefereeData;
     memcpy(referee->graphic_buf + referee->graphic_buf_len, pgraph, sizeof(graphic_data_struct_t));
@@ -506,10 +506,10 @@ void Referee_DrawingBufferPush(graphic_data_struct_t* pgraph) {
 }
 
 /**
-  * @brief      ¿Í»§¶Ë×Ô¶¨ÒåÍ¼ÐÎÊ±»ùº¯Êý
-  * @param      ÎÞ
-  * @retval     ÎÞ
-  */
+ * @brief      ï¿½Í»ï¿½ï¿½ï¿½ï¿½Ô¶ï¿½ï¿½ï¿½Í¼ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ * @param      ï¿½ï¿½
+ * @retval     ï¿½ï¿½
+ */
 void Referee_DrawingTimeBaseCallback() {
     static uint8_t tick = 0;
     ++tick;
@@ -520,10 +520,10 @@ void Referee_DrawingTimeBaseCallback() {
 }
 
 /**
-  * @brief      ´ò°üÍ¼ÐÎÃüÁî
-  * @param      Ïê¼ûÐ­Òé¼°Í·ÎÄ¼þ¶¨Òå
-  * @retval     ÊÇ·ñºÏ·¨£¨1ÎªÊÇ£¬0Îª·ñ£©
-  */
+ * @brief      ï¿½ï¿½ï¿½Í¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ * @param      ï¿½ï¿½ï¿½Ð­ï¿½é¼°Í·ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½
+ * @retval     ï¿½Ç·ï¿½Ï·ï¿½ï¿½ï¿½1Îªï¿½Ç£ï¿½0Îªï¿½ï¿½
+ */
 uint32_t Referee_PackGraphicData(graphic_data_struct_t* pgraph, uint32_t graph_id, Draw_OperateType operate_type, Draw_GraphicType graphic_type, uint8_t layer, Draw_Color color, uint16_t start_angle, uint16_t end_angle, uint8_t width, uint16_t start_x, uint16_t start_y, uint16_t radius, uint16_t end_x, uint16_t end_y) {
     if (graph_id > 0xffffff)
         return PARSE_FAILED;
@@ -559,10 +559,10 @@ uint32_t Referee_PackGraphicData(graphic_data_struct_t* pgraph, uint32_t graph_i
 }
 
 /**
-  * @brief      ´ò°üÏÔÊ¾¸¡µãÊýÍ¼ÐÎÃüÁî
-  * @param      Ïê¼ûÐ­Òé¼°Í·ÎÄ¼þ¶¨Òå
-  * @retval     ÊÇ·ñºÏ·¨£¨1ÎªÊÇ£¬0Îª·ñ£©
-  */
+ * @brief      ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ * @param      ï¿½ï¿½ï¿½Ð­ï¿½é¼°Í·ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½
+ * @retval     ï¿½Ç·ï¿½Ï·ï¿½ï¿½ï¿½1Îªï¿½Ç£ï¿½0Îªï¿½ï¿½
+ */
 uint32_t Referee_PackFloatGraphicData(graphic_data_struct_t* pgraph, uint32_t graph_id, Draw_OperateType operate_type, uint8_t layer, Draw_Color color, uint16_t font_size, uint16_t decimal_digit, uint8_t width, uint16_t start_x, uint16_t start_y, float value) {
     Referee_GraphicDataConverterUnion conv;
     conv.int_data = (int32_t)(value * 1000.0f);
@@ -574,10 +574,10 @@ uint32_t Referee_PackFloatGraphicData(graphic_data_struct_t* pgraph, uint32_t gr
 }
 
 /**
-  * @brief      ´ò°üÏÔÊ¾ÕûÊýÍ¼ÐÎÃüÁî
-  * @param      Ïê¼ûÐ­Òé¼°Í·ÎÄ¼þ¶¨Òå
-  * @retval     ÊÇ·ñºÏ·¨£¨1ÎªÊÇ£¬0Îª·ñ£©
-  */
+ * @brief      ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½Í¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ * @param      ï¿½ï¿½ï¿½Ð­ï¿½é¼°Í·ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½
+ * @retval     ï¿½Ç·ï¿½Ï·ï¿½ï¿½ï¿½1Îªï¿½Ç£ï¿½0Îªï¿½ï¿½
+ */
 uint32_t Referee_PackIntGraphicData(graphic_data_struct_t* pgraph, uint32_t graph_id, Draw_OperateType operate_type, uint8_t layer, Draw_Color color, uint16_t font_size, uint8_t width, uint16_t start_x, uint16_t start_y, int value) {
     Referee_GraphicDataConverterUnion conv;
     conv.int_data = value;
@@ -589,10 +589,10 @@ uint32_t Referee_PackIntGraphicData(graphic_data_struct_t* pgraph, uint32_t grap
 }
 
 /**
-  * @brief      ´ò°üÏÔÊ¾×Ö·û´®Í¼ÐÎÃüÁî
-  * @param      Ïê¼ûÐ­Òé¼°Í·ÎÄ¼þ¶¨Òå
-  * @retval     ÊÇ·ñºÏ·¨£¨1ÎªÊÇ£¬0Îª·ñ£©
-  */
+ * @brief      ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½Ö·ï¿½ï¿½ï¿½Í¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ * @param      ï¿½ï¿½ï¿½Ð­ï¿½é¼°Í·ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½
+ * @retval     ï¿½Ç·ï¿½Ï·ï¿½ï¿½ï¿½1Îªï¿½Ç£ï¿½0Îªï¿½ï¿½
+ */
 uint32_t Referee_PackStringGraphicData(graphic_data_struct_t* pgraph, uint32_t graph_id, Draw_OperateType operate_type, uint8_t layer, Draw_Color color, uint16_t font_size, uint8_t length, uint8_t width, uint16_t start_x, uint16_t start_y) {
     if (length > Const_Referee_DATA_CMD_ID_LIST[5].data_length - sizeof(graphic_data_struct_t))
         return PARSE_FAILED;
@@ -603,10 +603,10 @@ uint32_t Referee_PackStringGraphicData(graphic_data_struct_t* pgraph, uint32_t g
 /********** REFEREE CUSTOM GRAPHIC DRAWING FUNCTION **********/
 
 /**
-  * @brief      »æÍ¼º¯Êý£¬Çå¿ÕÖ¸¶¨Í¼²ã
-  * @param      layer: Í¼²ãºÅ£¨0~9£©
-  * @retval     ÎÞ
-  */
+ * @brief      ï¿½ï¿½Í¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½Í¼ï¿½ï¿½
+ * @param      layer: Í¼ï¿½ï¿½Å£ï¿½0~9ï¿½ï¿½
+ * @retval     ï¿½ï¿½
+ */
 void Draw_ClearLayer(uint8_t layer) {
     Referee_RefereeDataTypeDef* referee = &Referee_RefereeData;
     Referee_DrawingBufferFlush();
@@ -618,14 +618,14 @@ void Draw_ClearLayer(uint8_t layer) {
 }
 
 /**
-  * @brief      »æÍ¼º¯Êý£¬Çå¿ÕÈ«²¿
-  * @param      ÎÞ
-  * @retval     ÎÞ
-  */
+ * @brief      ï¿½ï¿½Í¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È«ï¿½ï¿½
+ * @param      ï¿½ï¿½
+ * @retval     ï¿½ï¿½
+ */
 void Draw_ClearAll() {
     Referee_RefereeDataTypeDef* referee = &Referee_RefereeData;
-    //Referee_DrawingBufferFlush();
-    referee->graphic_buf_len = 0;  // Ö±½ÓÅ×Æú»º³åÇøÖÐµÄ»æÍ¼Ö¸Áî
+    // Referee_DrawingBufferFlush();
+    referee->graphic_buf_len = 0;  // Ö±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÐµÄ»ï¿½Í¼Ö¸ï¿½ï¿½
     uint8_t buf[2];
     buf[0] = 2;
     buf[1] = 0;
@@ -634,10 +634,10 @@ void Draw_ClearAll() {
 }
 
 /**
-  * @brief      »æÍ¼º¯Êý£¬Çå¿ÕÖ¸¶¨Í¼ÐÎ
-  * @param      graph_id: Í¼ÐÎID
-  * @retval     ÎÞ
-  */
+ * @brief      ï¿½ï¿½Í¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½Í¼ï¿½ï¿½
+ * @param      graph_id: Í¼ï¿½ï¿½ID
+ * @retval     ï¿½ï¿½
+ */
 void Draw_Delete(uint32_t graph_id) {
     graphic_data_struct_t graph;
     if (Referee_PackGraphicData(&graph, graph_id, Draw_OPERATE_DELETE, (Draw_GraphicType)0, 0,
@@ -647,10 +647,10 @@ void Draw_Delete(uint32_t graph_id) {
 }
 
 /**
-  * @brief      »æÍ¼º¯Êý£¬»­Ö±Ïß£¨ÐÂÔö£©
-  * @param      Ïê¼ûÐ­Òé¼°Í·ÎÄ¼þ¶¨Òå
-  * @retval     ÎÞ
-  */
+ * @brief      ï¿½ï¿½Í¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö±ï¿½ß£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ * @param      ï¿½ï¿½ï¿½Ð­ï¿½é¼°Í·ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½
+ * @retval     ï¿½ï¿½
+ */
 void Draw_AddLine(uint32_t graph_id, uint8_t layer, Draw_Color color, uint8_t width, uint16_t start_x, uint16_t start_y, uint16_t end_x, uint16_t end_y) {
     graphic_data_struct_t graph;
     if (Referee_PackGraphicData(&graph, graph_id, Draw_OPERATE_ADD, Draw_TYPE_LINE, layer, color,
@@ -660,10 +660,10 @@ void Draw_AddLine(uint32_t graph_id, uint8_t layer, Draw_Color color, uint8_t wi
 }
 
 /**
-  * @brief      »æÍ¼º¯Êý£¬»­Ö±Ïß£¨ÐÞ¸Ä£©
-  * @param      Ïê¼ûÐ­Òé¼°Í·ÎÄ¼þ¶¨Òå
-  * @retval     ÎÞ
-  */
+ * @brief      ï¿½ï¿½Í¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö±ï¿½ß£ï¿½ï¿½Þ¸Ä£ï¿½
+ * @param      ï¿½ï¿½ï¿½Ð­ï¿½é¼°Í·ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½
+ * @retval     ï¿½ï¿½
+ */
 void Draw_ModifyLine(uint32_t graph_id, uint8_t layer, Draw_Color color, uint8_t width, uint16_t start_x, uint16_t start_y, uint16_t end_x, uint16_t end_y) {
     graphic_data_struct_t graph;
     if (Referee_PackGraphicData(&graph, graph_id, Draw_OPERATE_MODIFY, Draw_TYPE_LINE, layer, color,
@@ -673,10 +673,10 @@ void Draw_ModifyLine(uint32_t graph_id, uint8_t layer, Draw_Color color, uint8_t
 }
 
 /**
-  * @brief      »æÍ¼º¯Êý£¬»­¾ØÐÎ£¨ÐÂÔö£©
-  * @param      Ïê¼ûÐ­Òé¼°Í·ÎÄ¼þ¶¨Òå
-  * @retval     ÎÞ
-  */
+ * @brief      ï¿½ï¿½Í¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ * @param      ï¿½ï¿½ï¿½Ð­ï¿½é¼°Í·ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½
+ * @retval     ï¿½ï¿½
+ */
 void Draw_AddRectangle(uint32_t graph_id, uint8_t layer, Draw_Color color, uint8_t width, uint16_t start_x, uint16_t start_y, uint16_t end_x, uint16_t end_y) {
     graphic_data_struct_t graph;
     if (Referee_PackGraphicData(&graph, graph_id, Draw_OPERATE_ADD, Draw_TYPE_RECTANGLE, layer, color,
@@ -686,10 +686,10 @@ void Draw_AddRectangle(uint32_t graph_id, uint8_t layer, Draw_Color color, uint8
 }
 
 /**
-  * @brief      »æÍ¼º¯Êý£¬»­¾ØÐÎ£¨ÐÞ¸Ä£©
-  * @param      Ïê¼ûÐ­Òé¼°Í·ÎÄ¼þ¶¨Òå
-  * @retval     ÎÞ
-  */
+ * @brief      ï¿½ï¿½Í¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î£ï¿½ï¿½Þ¸Ä£ï¿½
+ * @param      ï¿½ï¿½ï¿½Ð­ï¿½é¼°Í·ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½
+ * @retval     ï¿½ï¿½
+ */
 void Draw_ModifyRectangle(uint32_t graph_id, uint8_t layer, Draw_Color color, uint8_t width, uint16_t start_x, uint16_t start_y, uint16_t end_x, uint16_t end_y) {
     graphic_data_struct_t graph;
     if (Referee_PackGraphicData(&graph, graph_id, Draw_OPERATE_MODIFY, Draw_TYPE_RECTANGLE, layer, color,
@@ -699,10 +699,10 @@ void Draw_ModifyRectangle(uint32_t graph_id, uint8_t layer, Draw_Color color, ui
 }
 
 /**
-  * @brief      »æÍ¼º¯Êý£¬»­Ô²£¨ÐÂÔö£©
-  * @param      Ïê¼ûÐ­Òé¼°Í·ÎÄ¼þ¶¨Òå
-  * @retval     ÎÞ
-  */
+ * @brief      ï¿½ï¿½Í¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ * @param      ï¿½ï¿½ï¿½Ð­ï¿½é¼°Í·ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½
+ * @retval     ï¿½ï¿½
+ */
 void Draw_AddCircle(uint32_t graph_id, uint8_t layer, Draw_Color color, uint8_t width, uint16_t center_x, uint16_t center_y, uint16_t radius) {
     graphic_data_struct_t graph;
     if (Referee_PackGraphicData(&graph, graph_id, Draw_OPERATE_ADD, Draw_TYPE_CIRCLE, layer, color,
@@ -712,10 +712,10 @@ void Draw_AddCircle(uint32_t graph_id, uint8_t layer, Draw_Color color, uint8_t 
 }
 
 /**
-  * @brief      »æÍ¼º¯Êý£¬»­Ô²£¨ÐÞ¸Ä£©
-  * @param      Ïê¼ûÐ­Òé¼°Í·ÎÄ¼þ¶¨Òå
-  * @retval     ÎÞ
-  */
+ * @brief      ï¿½ï¿½Í¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô²ï¿½ï¿½ï¿½Þ¸Ä£ï¿½
+ * @param      ï¿½ï¿½ï¿½Ð­ï¿½é¼°Í·ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½
+ * @retval     ï¿½ï¿½
+ */
 void Draw_ModifyCircle(uint32_t graph_id, uint8_t layer, Draw_Color color, uint8_t width, uint16_t center_x, uint16_t center_y, uint16_t radius) {
     graphic_data_struct_t graph;
     if (Referee_PackGraphicData(&graph, graph_id, Draw_OPERATE_MODIFY, Draw_TYPE_CIRCLE, layer, color,
@@ -725,10 +725,10 @@ void Draw_ModifyCircle(uint32_t graph_id, uint8_t layer, Draw_Color color, uint8
 }
 
 /**
-  * @brief      »æÍ¼º¯Êý£¬»­ÍÖÔ²£¨ÐÂÔö£©
-  * @param      Ïê¼ûÐ­Òé¼°Í·ÎÄ¼þ¶¨Òå
-  * @retval     ÎÞ
-  */
+ * @brief      ï¿½ï¿½Í¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ * @param      ï¿½ï¿½ï¿½Ð­ï¿½é¼°Í·ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½
+ * @retval     ï¿½ï¿½
+ */
 void Draw_AddEllipse(uint32_t graph_id, uint8_t layer, Draw_Color color, uint8_t width, uint16_t center_x, uint16_t center_y, uint16_t radius_x, uint16_t radius_y) {
     graphic_data_struct_t graph;
     if (Referee_PackGraphicData(&graph, graph_id, Draw_OPERATE_ADD, Draw_TYPE_ELLIPSE, layer, color,
@@ -738,10 +738,10 @@ void Draw_AddEllipse(uint32_t graph_id, uint8_t layer, Draw_Color color, uint8_t
 }
 
 /**
-  * @brief      »æÍ¼º¯Êý£¬»­ÍÖÔ²£¨ÐÞ¸Ä£©
-  * @param      Ïê¼ûÐ­Òé¼°Í·ÎÄ¼þ¶¨Òå
-  * @retval     ÎÞ
-  */
+ * @brief      ï¿½ï¿½Í¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô²ï¿½ï¿½ï¿½Þ¸Ä£ï¿½
+ * @param      ï¿½ï¿½ï¿½Ð­ï¿½é¼°Í·ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½
+ * @retval     ï¿½ï¿½
+ */
 void Draw_ModifyEllipse(uint32_t graph_id, uint8_t layer, Draw_Color color, uint8_t width, uint16_t center_x, uint16_t center_y, uint16_t radius_x, uint16_t radius_y) {
     graphic_data_struct_t graph;
     if (Referee_PackGraphicData(&graph, graph_id, Draw_OPERATE_MODIFY, Draw_TYPE_ELLIPSE, layer, color,
@@ -751,10 +751,10 @@ void Draw_ModifyEllipse(uint32_t graph_id, uint8_t layer, Draw_Color color, uint
 }
 
 /**
-  * @brief      »æÍ¼º¯Êý£¬»­Ô²»¡£¨ÐÂÔö£©
-  * @param      Ïê¼ûÐ­Òé¼°Í·ÎÄ¼þ¶¨Òå
-  * @retval     ÎÞ
-  */
+ * @brief      ï¿½ï¿½Í¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ * @param      ï¿½ï¿½ï¿½Ð­ï¿½é¼°Í·ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½
+ * @retval     ï¿½ï¿½
+ */
 void Draw_AddArc(uint32_t graph_id, uint8_t layer, Draw_Color color, uint16_t start_angle, uint16_t end_angle, uint8_t width, uint16_t center_x, uint16_t center_y, uint16_t radius_x, uint16_t radius_y) {
     graphic_data_struct_t graph;
     if (Referee_PackGraphicData(&graph, graph_id, Draw_OPERATE_ADD, Draw_TYPE_ARC, layer, color,
@@ -764,10 +764,10 @@ void Draw_AddArc(uint32_t graph_id, uint8_t layer, Draw_Color color, uint16_t st
 }
 
 /**
-  * @brief      »æÍ¼º¯Êý£¬»­Ô²»¡£¨ÐÞ¸Ä£©
-  * @param      Ïê¼ûÐ­Òé¼°Í·ÎÄ¼þ¶¨Òå
-  * @retval     ÎÞ
-  */
+ * @brief      ï¿½ï¿½Í¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô²ï¿½ï¿½ï¿½ï¿½ï¿½Þ¸Ä£ï¿½
+ * @param      ï¿½ï¿½ï¿½Ð­ï¿½é¼°Í·ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½
+ * @retval     ï¿½ï¿½
+ */
 void Draw_ModifyArc(uint32_t graph_id, uint8_t layer, Draw_Color color, uint16_t start_angle, uint16_t end_angle, uint8_t width, uint16_t center_x, uint16_t center_y, uint16_t radius_x, uint16_t radius_y) {
     graphic_data_struct_t graph;
     if (Referee_PackGraphicData(&graph, graph_id, Draw_OPERATE_MODIFY, Draw_TYPE_ARC, layer, color,
@@ -777,10 +777,10 @@ void Draw_ModifyArc(uint32_t graph_id, uint8_t layer, Draw_Color color, uint16_t
 }
 
 /**
-  * @brief      »æÍ¼º¯Êý£¬ÏÔÊ¾¸¡µãÊý£¨ÐÂÔö£©
-  * @param      Ïê¼ûÐ­Òé¼°Í·ÎÄ¼þ¶¨Òå
-  * @retval     ÎÞ
-  */
+ * @brief      ï¿½ï¿½Í¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ * @param      ï¿½ï¿½ï¿½Ð­ï¿½é¼°Í·ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½
+ * @retval     ï¿½ï¿½
+ */
 void Draw_AddFloat(uint32_t graph_id, uint8_t layer, Draw_Color color, uint16_t font_size, uint16_t decimal_digit, uint8_t width, uint16_t start_x, uint16_t start_y, float value) {
     graphic_data_struct_t graph;
     if (Referee_PackFloatGraphicData(&graph, graph_id, Draw_OPERATE_ADD, layer, color,
@@ -790,10 +790,10 @@ void Draw_AddFloat(uint32_t graph_id, uint8_t layer, Draw_Color color, uint16_t 
 }
 
 /**
-  * @brief      »æÍ¼º¯Êý£¬ÏÔÊ¾¸¡µãÊý£¨ÐÞ¸Ä£©
-  * @param      Ïê¼ûÐ­Òé¼°Í·ÎÄ¼þ¶¨Òå
-  * @retval     ÎÞ
-  */
+ * @brief      ï¿½ï¿½Í¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Þ¸Ä£ï¿½
+ * @param      ï¿½ï¿½ï¿½Ð­ï¿½é¼°Í·ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½
+ * @retval     ï¿½ï¿½
+ */
 void Draw_ModifyFloat(uint32_t graph_id, uint8_t layer, Draw_Color color, uint16_t font_size, uint16_t decimal_digit, uint8_t width, uint16_t start_x, uint16_t start_y, float value) {
     graphic_data_struct_t graph;
     if (Referee_PackFloatGraphicData(&graph, graph_id, Draw_OPERATE_MODIFY, layer, color,
@@ -803,10 +803,10 @@ void Draw_ModifyFloat(uint32_t graph_id, uint8_t layer, Draw_Color color, uint16
 }
 
 /**
-  * @brief      »æÍ¼º¯Êý£¬ÏÔÊ¾ÕûÊý£¨ÐÂÔö£©
-  * @param      Ïê¼ûÐ­Òé¼°Í·ÎÄ¼þ¶¨Òå
-  * @retval     ÎÞ
-  */
+ * @brief      ï¿½ï¿½Í¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ * @param      ï¿½ï¿½ï¿½Ð­ï¿½é¼°Í·ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½
+ * @retval     ï¿½ï¿½
+ */
 void Draw_AddInt(uint32_t graph_id, uint8_t layer, Draw_Color color, uint16_t font_size, uint8_t width, uint16_t start_x, uint16_t start_y, int value) {
     graphic_data_struct_t graph;
     if (Referee_PackIntGraphicData(&graph, graph_id, Draw_OPERATE_ADD, layer, color,
@@ -816,10 +816,10 @@ void Draw_AddInt(uint32_t graph_id, uint8_t layer, Draw_Color color, uint16_t fo
 }
 
 /**
-  * @brief      »æÍ¼º¯Êý£¬ÏÔÊ¾ÕûÊý£¨ÐÞ¸Ä£©
-  * @param      Ïê¼ûÐ­Òé¼°Í·ÎÄ¼þ¶¨Òå
-  * @retval     ÎÞ
-  */
+ * @brief      ï¿½ï¿½Í¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Þ¸Ä£ï¿½
+ * @param      ï¿½ï¿½ï¿½Ð­ï¿½é¼°Í·ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½
+ * @retval     ï¿½ï¿½
+ */
 void Draw_ModifyInt(uint32_t graph_id, uint8_t layer, Draw_Color color, uint16_t font_size, uint8_t width, uint16_t start_x, uint16_t start_y, int value) {
     graphic_data_struct_t graph;
     if (Referee_PackIntGraphicData(&graph, graph_id, Draw_OPERATE_MODIFY, layer, color,
@@ -829,10 +829,10 @@ void Draw_ModifyInt(uint32_t graph_id, uint8_t layer, Draw_Color color, uint16_t
 }
 
 /**
-  * @brief      »æÍ¼º¯Êý£¬ÏÔÊ¾×Ö·û´®£¨ÐÂÔö£©
-  * @param      Ïê¼ûÐ­Òé¼°Í·ÎÄ¼þ¶¨Òå
-  * @retval     ÎÞ
-  */
+ * @brief      ï¿½ï¿½Í¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½Ö·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ * @param      ï¿½ï¿½ï¿½Ð­ï¿½é¼°Í·ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½
+ * @retval     ï¿½ï¿½
+ */
 void Draw_AddString(uint32_t graph_id, uint8_t layer, Draw_Color color, uint16_t font_size, uint8_t width, uint16_t start_x, uint16_t start_y, const char str[]) {
     graphic_data_struct_t graph;
     Referee_DrawingBufferFlush();
@@ -846,10 +846,10 @@ void Draw_AddString(uint32_t graph_id, uint8_t layer, Draw_Color color, uint16_t
 }
 
 /**
-  * @brief      »æÍ¼º¯Êý£¬ÏÔÊ¾×Ö·û´®£¨ÐÞ¸Ä£©
-  * @param      Ïê¼ûÐ­Òé¼°Í·ÎÄ¼þ¶¨Òå
-  * @retval     ÎÞ
-  */
+ * @brief      ï¿½ï¿½Í¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½Ö·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Þ¸Ä£ï¿½
+ * @param      ï¿½ï¿½ï¿½Ð­ï¿½é¼°Í·ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½
+ * @retval     ï¿½ï¿½
+ */
 void Draw_ModifyString(uint32_t graph_id, uint8_t layer, Draw_Color color, uint16_t font_size, uint8_t width, uint16_t start_x, uint16_t start_y, const char str[]) {
     graphic_data_struct_t graph;
     Referee_DrawingBufferFlush();
@@ -865,10 +865,10 @@ void Draw_ModifyString(uint32_t graph_id, uint8_t layer, Draw_Color color, uint1
 /********** END OF REFEREE CUSTOM GRAPHIC DRAWING FUNCTION **********/
 
 /**
-  * @brief      ÅÐ¶Ï²ÃÅÐÏµÍ³ÊÇ·ñÀëÏß
-  * @param      ÎÞ
-  * @retval     ÊÇ·ñÀëÏß£¨1ÎªÊÇ£¬0Îª·ñ£©
-  */
+ * @brief      ï¿½Ð¶Ï²ï¿½ï¿½ï¿½ÏµÍ³ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½
+ * @param      ï¿½ï¿½
+ * @retval     ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ß£ï¿½1Îªï¿½Ç£ï¿½0Îªï¿½ï¿½
+ */
 uint8_t Referee_IsRefereeOffline() {
     Referee_RefereeDataTypeDef* referee = &Referee_RefereeData;
     uint32_t now = HAL_GetTick();
@@ -878,15 +878,15 @@ uint8_t Referee_IsRefereeOffline() {
 }
 
 /**
-  * @brief      »úÆ÷ÈË¼ä½»»¥Êý¾Ý½âÎöº¯Êý
-  * @param      data: Êý¾ÝÖ¡
-  * @param      data_length: Êý¾ÝÖ¡³¤¶È
-  * @retval     ½âÎö½á¹û£¨0ÎªÊ§°Ü£¬1Îª³É¹¦£©
-  */
+ * @brief      ï¿½ï¿½ï¿½ï¿½ï¿½Ë¼ä½»ï¿½ï¿½ï¿½ï¿½ï¿½Ý½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ * @param      data: ï¿½ï¿½ï¿½ï¿½Ö¡
+ * @param      data_length: ï¿½ï¿½ï¿½ï¿½Ö¡ï¿½ï¿½ï¿½ï¿½
+ * @retval     ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½0ÎªÊ§ï¿½Ü£ï¿½1Îªï¿½É¹ï¿½ï¿½ï¿½
+ */
 uint8_t Referee_ParseRobotCustomData(uint8_t* data, uint16_t data_length) {
     Referee_RefereeDataTypeDef* referee = &Referee_RefereeData;
 
-    //if (data_length != Const_Referee_CMD_INTERACTIVE.data_length) return PARSE_FAILED;      // wrong data length
+    // if (data_length != Const_Referee_CMD_INTERACTIVE.data_length) return PARSE_FAILED;      // wrong data length
 
     ext_student_interactive_header_data_t* header_struct_ptr = (void*)data;
     if (header_struct_ptr->data_cmd_id < Const_Referee_DATA_CMD_ID_INTERACTIVE_DATA_LBOUND ||
@@ -895,7 +895,7 @@ uint8_t Referee_ParseRobotCustomData(uint8_t* data, uint16_t data_length) {
     if (header_struct_ptr->receiver_ID != referee->robot_id)
         return PARSE_FAILED;  // wrong receiver id
 
-    //uint8_t interactive_data_ptr = data + Const_Referee_CMD_INTERACTIVE.data_length;
+    // uint8_t interactive_data_ptr = data + Const_Referee_CMD_INTERACTIVE.data_length;
 
     // Interactive Data Recieve Callback
 
@@ -903,12 +903,12 @@ uint8_t Referee_ParseRobotCustomData(uint8_t* data, uint16_t data_length) {
 }
 
 /**
-  * @brief      ²ÃÅÐÏµÍ³Êý¾Ý½âÎöº¯Êý
-  * @param      cmd_id: ÃüÁîID
-  * @param      data: Êý¾ÝÖ¡
-  * @param      data_length: Êý¾ÝÖ¡³¤¶È
-  * @retval     ½âÎö½á¹û£¨0ÎªÊ§°Ü£¬1Îª³É¹¦£©
-  */
+ * @brief      ï¿½ï¿½ï¿½ï¿½ÏµÍ³ï¿½ï¿½ï¿½Ý½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ * @param      cmd_id: ï¿½ï¿½ï¿½ï¿½ID
+ * @param      data: ï¿½ï¿½ï¿½ï¿½Ö¡
+ * @param      data_length: ï¿½ï¿½ï¿½ï¿½Ö¡ï¿½ï¿½ï¿½ï¿½
+ * @retval     ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½0ÎªÊ§ï¿½Ü£ï¿½1Îªï¿½É¹ï¿½ï¿½ï¿½
+ */
 uint8_t Referee_ParseRefereeCmd(uint16_t cmd_id, uint8_t* data, uint16_t data_length) {
     Referee_RefereeDataTypeDef* referee = &Referee_RefereeData;
 
@@ -917,7 +917,7 @@ uint8_t Referee_ParseRefereeCmd(uint16_t cmd_id, uint8_t* data, uint16_t data_le
 
     for (int i = 0; i < Const_Referee_CMD_NUM; ++i) {
         if (cmd_id == Const_Referee_CMD_LIST[i].cmd_id) {
-            //if (data_length != Const_Referee_CMD_LIST[i].data_length) return PARSE_FAILED;  // wrong data length
+            // if (data_length != Const_Referee_CMD_LIST[i].data_length) return PARSE_FAILED;  // wrong data length
             if (Const_Referee_CMD_LIST[i].parse_func == NULL)
                 return PARSE_FAILED;                                          // unsupported cmd
             return (*(Const_Referee_CMD_LIST[i].parse_func))(referee, data);  // parse cmd
@@ -928,16 +928,16 @@ uint8_t Referee_ParseRefereeCmd(uint16_t cmd_id, uint8_t* data, uint16_t data_le
 }
 
 /**
-  * @brief      ²ÃÅÐÏµÍ³´®¿ÚÊý¾Ý½âÂëº¯Êý
-  * @param      buff: Êý¾Ý»º³åÇø
-  * @param      rxdatalen: Êý¾Ý³¤¶È
-  * @retval     ÎÞ
-  */
+ * @brief      ï¿½ï¿½ï¿½ï¿½ÏµÍ³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý½ï¿½ï¿½ëº¯ï¿½ï¿½
+ * @param      buff: ï¿½ï¿½ï¿½Ý»ï¿½ï¿½ï¿½ï¿½ï¿½
+ * @param      rxdatalen: ï¿½ï¿½ï¿½Ý³ï¿½ï¿½ï¿½
+ * @retval     ï¿½ï¿½
+ */
 void Referee_DecodeRefereeData(uint8_t* buff, uint16_t rxdatalen) {
     Referee_RefereeDataTypeDef* referee = &Referee_RefereeData;
 
-    referee->state = Referee_STATE_PENDING;     // ¼ÓËø·ÀÖ¹»¥³â¶ÁÐ´
-    referee->last_update_time = HAL_GetTick();  // Ê±¼ä´Á
+    referee->state = Referee_STATE_PENDING;     // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¹ï¿½ï¿½ï¿½ï¿½ï¿½Ð´
+    referee->last_update_time = HAL_GetTick();  // Ê±ï¿½ï¿½ï¿½
 
     if (buff[0] != Const_Referee_FRAME_HEADER_SOF) {
         referee->state = Referee_STATE_ERROR;
@@ -952,8 +952,8 @@ void Referee_DecodeRefereeData(uint8_t* buff, uint16_t rxdatalen) {
     uint16_t data_length = (uint16_t)buff[2] << 8 | buff[1];
     uint8_t seq = buff[3];
     if (seq == 0) {
-        //referee->state          = Referee_STATE_ERROR;
-        //return;
+        // referee->state          = Referee_STATE_ERROR;
+        // return;
     }
     if (!CRC_VerifyCRC16CheckSum(buff, data_length + 9)) {
         referee->state = Referee_STATE_ERROR;
@@ -966,14 +966,14 @@ void Referee_DecodeRefereeData(uint8_t* buff, uint16_t rxdatalen) {
         return;
     }
 
-    referee->state = Referee_STATE_CONNECTED;  // ½âËø
+    referee->state = Referee_STATE_CONNECTED;  // ï¿½ï¿½ï¿½ï¿½
 }
 
 /**
-  * @brief      ²ÃÅÐÏµÍ³´®¿Ú»Øµ÷º¯Êý
-  * @param      huart: Ö¸ÕëÖ¸Ïò´®¿Ú¾ä±ú
-  * @retval     ÎÞ
-  */
+ * @brief      ï¿½ï¿½ï¿½ï¿½ÏµÍ³ï¿½ï¿½ï¿½Ú»Øµï¿½ï¿½ï¿½ï¿½ï¿½
+ * @param      huart: Ö¸ï¿½ï¿½Ö¸ï¿½ò´®¿Ú¾ï¿½ï¿½
+ * @retval     ï¿½ï¿½
+ */
 void Referee_RXCallback(UART_HandleTypeDef* huart) {
     /* clear DMA transfer complete flag */
     __HAL_DMA_DISABLE(huart->hdmarx);
@@ -986,11 +986,11 @@ void Referee_RXCallback(UART_HandleTypeDef* huart) {
             Referee_DecodeRefereeData(Referee_RxData + i, rxdatalen - i);
         }
     }
-    //Referee_DecodeRefereeData(Referee_RxData, rxdatalen);
+    // Referee_DecodeRefereeData(Referee_RxData, rxdatalen);
 
     /* restart dma transmission */
     __HAL_DMA_SET_COUNTER(huart->hdmarx, Const_Referee_RX_BUFF_LEN);
-    //HAL_DMA_Start(huart->hdmarx,(uint32_t)&huart->Instance->DR,(uint32_t)Referee_RxData,Const_Referee_RX_BUFF_LEN);
+    // HAL_DMA_Start(huart->hdmarx,(uint32_t)&huart->Instance->DR,(uint32_t)Referee_RxData,Const_Referee_RX_BUFF_LEN);
     __HAL_DMA_ENABLE(huart->hdmarx);
 }
 

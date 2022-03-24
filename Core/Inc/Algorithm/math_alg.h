@@ -1,9 +1,9 @@
 /*
  *  Project      : Infantry_Momentum
- * 
+ *
  *  file         : math_alg.h
  *  Description  : This file contains the math calculate tools
- *  LastEditors  : ¶¯ÇéØ¼²·ìá¶¯ÐÄ
+ *  LastEditors  : ï¿½ï¿½ï¿½ï¿½Ø¼ï¿½ï¿½ï¿½á¶¯ï¿½ï¿½
  *  Date         : 2021-05-04 20:53:31
  *  LastEditTime : 2021-05-08 03:38:13
  */
@@ -27,11 +27,11 @@ extern "C" {
 #define mat_inv arm_mat_inverse_f32
 
 /**
-  * @brief      Limit function
-  * @param      input :Limited value
-  * @param      max :Max limite value
-  * @retval     NULL
-  */
+ * @brief      Limit function
+ * @param      input :Limited value
+ * @param      max :Max limite value
+ * @retval     NULL
+ */
 #define LimitMax(input, max)       \
     {                              \
         if (input > max) {         \
@@ -42,12 +42,12 @@ extern "C" {
     }
 
 /**
-  * @brief      Maximum and minimum limiting
-  * @param      input :Limited value
-  * @param      max :Max limite value
-  * @param      min :Min limite value
-  * @retval     NULL
-  */
+ * @brief      Maximum and minimum limiting
+ * @param      input :Limited value
+ * @param      max :Max limite value
+ * @param      min :Min limite value
+ * @retval     NULL
+ */
 #define LimitMaxMin(input, max, min) \
     {                                \
         if (input > max) {           \

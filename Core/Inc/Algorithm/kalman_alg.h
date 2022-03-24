@@ -1,6 +1,6 @@
 /*
  *  Project      : Infantry_Momentum
- * 
+ *
  *  file         : kalman_alg.h
  *  Description  : This file contains the kalman filter algorithm
  *  LastEditors  : ???????
@@ -27,7 +27,7 @@ typedef struct {
     mat Kf;
 
     // Cycle Time
-    //float cvkf_t;
+    // float cvkf_t;
     float angle, angle_p_err, max_speed, min_speed;
     int switch_mode,
         measure_mode,
@@ -40,12 +40,12 @@ typedef struct {
     float PLast[4], Ppre[4], Popt[4];
     float Q[4], R[1];
     float Kf[2];
-    //float cvkf_t;
+    // float cvkf_t;
 } Kalman_CVKalmanInitDataTypeDef;
 
 typedef struct {
     int total;         //???:????????
-    int basicprocess;  //CVKF??????(????)
+    int basicprocess;  // CVKF??????(????)
     int predict;       //??????????????
     int limit;         //?????????????
     int jumpjudge;     //????????
@@ -56,11 +56,11 @@ typedef struct {
 
 } Kalman_CVKalmanControlTypeDef;
 
-//CVKF Inner Function:
+// CVKF Inner Function:
 void Kalman_CVKalmanInitYawParam(Kalman_CVKalmanInitDataTypeDef* cvkf_data, float KF_T, float init_angle_yaw, float init_angle_speed);
-//void Kalman_CVKalmanInitYawParam(Kalman_CVKalmanInitDataTypeDef *cvkf_data, float KF_T, float init_angle_yaw);
+// void Kalman_CVKalmanInitYawParam(Kalman_CVKalmanInitDataTypeDef *cvkf_data, float KF_T, float init_angle_yaw);
 void Kalman_CVKalmanInitPitchParam(Kalman_CVKalmanInitDataTypeDef* cvkf_data, float KF_T, float init_angle_pitch, float init_angle_speed);
-//void Kalman_CVKalmanInitPitchParam(Kalman_CVKalmanInitDataTypeDef *cvkf_data, float KF_T, float init_angle_pitch);
+// void Kalman_CVKalmanInitPitchParam(Kalman_CVKalmanInitDataTypeDef *cvkf_data, float KF_T, float init_angle_pitch);
 void Kalman_CVInitSetYaw(Kalman_CVKalmanInitDataTypeDef* cvkf_data, float init_angle_yaw, float init_angle_speed);
 void Kalman_CVInitSetPitch(Kalman_CVKalmanInitDataTypeDef* cvkf_data, float init_angle_pitch, float init_angle_speed);
 void Kalman_CVKalmanInit(Kalman_CVKalmanTypeDef* cvkf, Kalman_CVKalmanInitDataTypeDef* cvkf_data);

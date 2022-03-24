@@ -1,15 +1,6 @@
 /*
- * @Project      : RM_Infantry_Neptune_frame
- * @FilePath     : \GITEE2\Core\Inc\Gimbal_Control\gim_gimbal_ctrl.h
- * @Descripttion : 
- * @Author       : GDDG08
- * @Date         : 2021-07-24 11:39:13
- * @LastEditors  : GDDG08
- * @LastEditTime : 2021-10-14 20:13:15
- */
-/*
  *  Project      : Infantry_Momentum
- * 
+ *
  *  file         : gim_gimbal_ctrl.h
  *  Description  : This file contains Gimbal control function
  *  LastEditors  : ����ؼ���ᶯ��

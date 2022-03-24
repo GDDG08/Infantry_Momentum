@@ -1,6 +1,6 @@
 /*
  *  Project      : Infantry_Momentum
- * 
+ *
  *  file         : configure.h
  *  Description  : This file contains all functions enable
  *  LastEditors  : ����ؼ���ᶯ��

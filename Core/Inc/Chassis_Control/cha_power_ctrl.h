@@ -1,13 +1,4 @@
 /*
- * @Project      : RM_Infantry_Neptune_frame
- * @FilePath     : \GITEE2\Core\Inc\Chassis_Control\cha_power_ctrl.h
- * @Descripttion :
- * @Author       : GDDG08
- * @Date         : 2021-07-24 11:39:13
- * @LastEditors  : GDDG08
- * @LastEditTime : 2022-03-19 16:48:25
- */
-/*
  *  Project      : Infantry_Momentum
  *
  *  file         : cha_power_ctrl.h

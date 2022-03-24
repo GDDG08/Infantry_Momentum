@@ -1,9 +1,9 @@
 /*
  *  Project      : Infantry_Momentum
- * 
+ *
  *  file         : gim_shoot_ctrl.c
  *  Description  : This file contains Shooter control function
- *  LastEditors  : ¶¯ÇéØ¼²·ìá¶¯ÐÄ
+ *  LastEditors  : ï¿½ï¿½ï¿½ï¿½Ø¼ï¿½ï¿½ï¿½á¶¯ï¿½ï¿½
  *  Date         : 2021-05-04 20:53:31
  *  LastEditTime : 2021-05-09 03:55:15
  */
@@ -24,10 +24,10 @@ Motor_MotorParamTypeDef Shooter_feederMotorParam;
 Shoot_StatusTypeDef Shooter_ShooterControl;
 
 /**
-  * @brief      shooter control initialization
-  * @param      NULL
-  * @retval     NULL
-  */
+ * @brief      shooter control initialization
+ * @param      NULL
+ * @retval     NULL
+ */
 void Shooter_InitShooter() {
     Shoot_StatusTypeDef* shooter = Shooter_GetShooterControlPtr();
 
@@ -56,10 +56,10 @@ void Shooter_InitShooter() {
 }
 
 /**
-  * @brief      Shooter control
-  * @param      NULL
-  * @retval     NULL
-  */
+ * @brief      Shooter control
+ * @param      NULL
+ * @retval     NULL
+ */
 void Shooter_Control() {
     Shooter_UpdataControlData();
 
@@ -71,19 +71,19 @@ void Shooter_Control() {
 }
 
 /**
-  * @brief      Gets the pointer to the shooter control data object
-  * @param      NULL
-  * @retval     Pointer to shooter control data object
-  */
+ * @brief      Gets the pointer to the shooter control data object
+ * @param      NULL
+ * @retval     Pointer to shooter control data object
+ */
 Shoot_StatusTypeDef* Shooter_GetShooterControlPtr() {
     return &Shooter_ShooterControl;
 }
 
 /**
-  * @brief      Change frequent mode
-  * @param      mode: Shooter mode
-  * @retval     NULL
-  */
+ * @brief      Change frequent mode
+ * @param      mode: Shooter mode
+ * @retval     NULL
+ */
 void Shooter_ChangeShooterMode(Shoot_ShooterModeEnum mode) {
     Shoot_StatusTypeDef* shooter = Shooter_GetShooterControlPtr();
     BusComm_BusCommDataTypeDef* buscomm = BusComm_GetBusDataPtr();
@@ -95,10 +95,10 @@ void Shooter_ChangeShooterMode(Shoot_ShooterModeEnum mode) {
 }
 
 /**
-  * @brief      Change shooter mode
-  * @param      mode: Feeder mode
-  * @retval     NULL
-  */
+ * @brief      Change shooter mode
+ * @param      mode: Feeder mode
+ * @retval     NULL
+ */
 void Shooter_ChangeFeederMode(Shoot_FeederModeEnum mode) {
     Shoot_StatusTypeDef* shooter = Shooter_GetShooterControlPtr();
     if (shooter->feeder_mode == Feeder_LOCKED_ROTOR)
@@ -115,10 +115,10 @@ void Shooter_ChangeFeederMode(Shoot_FeederModeEnum mode) {
 }
 
 /**
-  * @brief      Initialize Shooter Motor
-  * @param      NULL
-  * @retval     NULL
-  */
+ * @brief      Initialize Shooter Motor
+ * @param      NULL
+ * @retval     NULL
+ */
 void Shooter_InitShooterMotor() {
     HAL_Delay(2000);
     for (int i = 0; i < 7; i++) {
@@ -130,19 +130,19 @@ void Shooter_InitShooterMotor() {
 }
 
 /**
-  * @brief      Initialize Shooter heat control
-  * @param      NULL
-  * @retval     NULL
-  */
+ * @brief      Initialize Shooter heat control
+ * @param      NULL
+ * @retval     NULL
+ */
 void Shooter_HeatCtrlInit() {
     Shoot_StatusTypeDef* shooter = Shooter_GetShooterControlPtr();
 }
 
 /**
-  * @brief      Set referee shooter speed
-  * @param      NULL
-  * @retval     NULL
-  */
+ * @brief      Set referee shooter speed
+ * @param      NULL
+ * @retval     NULL
+ */
 float Shooter_GetRefereeSpeed() {
     BusComm_BusCommDataTypeDef* buscomm = BusComm_GetBusDataPtr();
     Shoot_StatusTypeDef* shooter = Shooter_GetShooterControlPtr();
@@ -175,10 +175,10 @@ float Shooter_GetRefereeSpeed() {
 }
 
 /**
-  * @brief      Updata control data
-  * @param      NULL
-  * @retval     NULL
-  */
+ * @brief      Updata control data
+ * @param      NULL
+ * @retval     NULL
+ */
 void Shooter_UpdataControlData() {
     Shoot_StatusTypeDef* shooter = Shooter_GetShooterControlPtr();
     BusComm_BusCommDataTypeDef* buscomm = BusComm_GetBusDataPtr();
@@ -193,10 +193,10 @@ void Shooter_UpdataControlData() {
 }
 
 /**
-  * @brief      Set feeder motor speed
-  * @param      speed: Feeder motor speed ref
-  * @retval     NULL
-  */
+ * @brief      Set feeder motor speed
+ * @param      speed: Feeder motor speed ref
+ * @retval     NULL
+ */
 void Shooter_SetFeederSpeed(float speed) {
     Shoot_StatusTypeDef* shooter = Shooter_GetShooterControlPtr();
 
@@ -204,10 +204,10 @@ void Shooter_SetFeederSpeed(float speed) {
 }
 
 /**
-  * @brief      Set shooter motor speed
-  * @param      speed: shooter motor speed ref
-  * @retval     NULL
-  */
+ * @brief      Set shooter motor speed
+ * @param      speed: shooter motor speed ref
+ * @retval     NULL
+ */
 void Shooter_SetShooterSpeed(float speed) {
     Shoot_StatusTypeDef* shooter = Shooter_GetShooterControlPtr();
 
@@ -216,10 +216,10 @@ void Shooter_SetShooterSpeed(float speed) {
 }
 
 /**
-  * @brief      Force change shooter mode
-  * @param      mode: Feeder mode
-  * @retval     NULL
-  */
+ * @brief      Force change shooter mode
+ * @param      mode: Feeder mode
+ * @retval     NULL
+ */
 void Shooter_ForceChangeFeederMode(Shoot_FeederModeEnum mode) {
     Shoot_StatusTypeDef* shooter = Shooter_GetShooterControlPtr();
 
@@ -227,10 +227,10 @@ void Shooter_ForceChangeFeederMode(Shoot_FeederModeEnum mode) {
 }
 
 /**
-  * @brief      Motor locked rotor judge
-  * @param      NULL
-  * @retval     NULL
-  */
+ * @brief      Motor locked rotor judge
+ * @param      NULL
+ * @retval     NULL
+ */
 void Shooter_FeederMotorLockedJudge() {
     Shoot_StatusTypeDef* shooter = Shooter_GetShooterControlPtr();
 
@@ -248,10 +248,10 @@ void Shooter_FeederMotorLockedJudge() {
 }
 
 /**
-  * @brief      Motor locked handle
-  * @param      NULL
-  * @retval     NULL
-  */
+ * @brief      Motor locked handle
+ * @param      NULL
+ * @retval     NULL
+ */
 void Shooter_MotorLockedHandle() {
     static int count_reverse = 0;
     Shooter_SetFeederSpeed(Const_ShooterLockedReverseSpeed);
@@ -263,10 +263,10 @@ void Shooter_MotorLockedHandle() {
 }
 
 /**
-  * @brief      Correct stop angle
-  * @param      NULL
-  * @retval     NULL
-  */
+ * @brief      Correct stop angle
+ * @param      NULL
+ * @retval     NULL
+ */
 void Shooter_AngleCorrect() {
     Motor_feederMotor.pid_pos.ref = Motor_feederMotor.pid_pos.fdb;
     //    Motor_feederMotor.pid_pos.ref = ((int)(Motor_feederMotor.pid_pos.fdb + 40.0f) / 45) * 45;
@@ -277,10 +277,10 @@ void Shooter_RealAngleCorrect() {
 }
 
 /**
-  * @brief      Shooter heat control
-  * @param      NULL
-  * @retval     pid_num
-  */
+ * @brief      Shooter heat control
+ * @param      NULL
+ * @retval     pid_num
+ */
 uint8_t Shooter_HeatCtrl() {
     Shoot_StatusTypeDef* shooter = Shooter_GetShooterControlPtr();
 
@@ -323,10 +323,10 @@ uint8_t Shooter_HeatCtrl() {
 }
 
 /**
-  * @brief      Shooter control
-  * @param      NULL
-  * @retval     NULL
-  */
+ * @brief      Shooter control
+ * @param      NULL
+ * @retval     NULL
+ */
 void Shooter_ShootControl() {
     Shoot_StatusTypeDef* shooter = Shooter_GetShooterControlPtr();
 
@@ -362,15 +362,15 @@ void Shooter_ShootControl() {
 }
 
 /**
-  * @brief      Shooter feeder control: single shooting
-  * @param      NULL
-  * @retval     NULL
-  */
+ * @brief      Shooter feeder control: single shooting
+ * @param      NULL
+ * @retval     NULL
+ */
 void Shooter_SingleShootCtrl() {
     Shoot_StatusTypeDef* shooter = Shooter_GetShooterControlPtr();
 
     if (fabs(Motor_feederMotor.pid_pos.fdb - Motor_feederMotor.pid_pos.ref) > 1.0f) {  // feeder motor not ready
-        //return;     // do nothing
+        // return;     // do nothing
     }
     if (!shooter->single_shoot_done) {  // not shoot yet
         Motor_feederMotor.pid_pos.ref += 45.0f;
@@ -379,10 +379,10 @@ void Shooter_SingleShootCtrl() {
 }
 
 /**
-  * @brief      Shooter feeder control: reset single shooting
-  * @param      NULL
-  * @retval     NULL
-  */
+ * @brief      Shooter feeder control: reset single shooting
+ * @param      NULL
+ * @retval     NULL
+ */
 void Shooter_SingleShootReset() {
     Shoot_StatusTypeDef* shooter = Shooter_GetShooterControlPtr();
 
@@ -390,10 +390,10 @@ void Shooter_SingleShootReset() {
 }
 
 /**
-  * @brief      Shooter feeder control
-  * @param      NULL
-  * @retval     NULL
-  */
+ * @brief      Shooter feeder control
+ * @param      NULL
+ * @retval     NULL
+ */
 void Shooter_FeederControl() {
     Shoot_StatusTypeDef* shooter = Shooter_GetShooterControlPtr();
 
@@ -434,10 +434,10 @@ void Shooter_FeederControl() {
 }
 
 /**
-  * @brief      Output shooter motor
-  * @param      NULL
-  * @retval     NULL
-  */
+ * @brief      Output shooter motor
+ * @param      NULL
+ * @retval     NULL
+ */
 void Shooter_ShooterMotorOutput() {
     Shoot_StatusTypeDef* shooter = Shooter_GetShooterControlPtr();
 

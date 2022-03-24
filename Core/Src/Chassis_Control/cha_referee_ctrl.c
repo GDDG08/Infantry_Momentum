@@ -1,9 +1,9 @@
 /*
  *  Project      : Infantry_Momentum
- * 
+ *
  *  file         : cha_referee_ctrl.c
- *  Description  : ³Â¿µ±ùÐ´µÄ~
- *  LastEditors  : ¶¯ÇéØ¼²·ìá¶¯ÐÄ
+ *  Description  : ï¿½Â¿ï¿½ï¿½ï¿½Ð´ï¿½ï¿½~
+ *  LastEditors  : ï¿½ï¿½ï¿½ï¿½Ø¼ï¿½ï¿½ï¿½á¶¯ï¿½ï¿½
  *  Date         : 2021-05-04 20:53:31
  *  LastEditTime : 2021-05-08 07:55:42
  */
@@ -16,11 +16,11 @@
 
 /********** Drawing Constants **********/
 
-// ¹ØÓÚÍ¼²ã£ºÍ¼²ã0 ~ 9£¬¸ßÍ¼²ãÕÚ¸ÇµÍÍ¼²ã
-// ¶ÔÓÚ¾­³£¸üÐÂµÄ·ÖÍ¼²ã¹¦ÄÜ£¬½¨ÒéÇ°¾°Í¼²ãÊ¹ÓÃ3£¬±³¾°Í¼²ãÊ¹ÓÃ2
-// ÆäËû¹¦ÄÜÔÚ²»²úÉúÕÚµ²µÄÇé¿öÏÂ½¨ÒéÊ¹ÓÃÍ¼²ã2
+// ï¿½ï¿½ï¿½ï¿½Í¼ï¿½ã£ºÍ¼ï¿½ï¿½0 ~ 9ï¿½ï¿½ï¿½ï¿½Í¼ï¿½ï¿½ï¿½Ú¸Çµï¿½Í¼ï¿½ï¿½
+// ï¿½ï¿½ï¿½Ú¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÂµÄ·ï¿½Í¼ï¿½ã¹¦ï¿½Ü£ï¿½ï¿½ï¿½ï¿½ï¿½Ç°ï¿½ï¿½Í¼ï¿½ï¿½Ê¹ï¿½ï¿½3ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¼ï¿½ï¿½Ê¹ï¿½ï¿½2
+// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Úµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â½ï¿½ï¿½ï¿½Ê¹ï¿½ï¿½Í¼ï¿½ï¿½2
 
-// ¹ØÓÚ×ø±ê£º×óÏÂ½ÇÎª (0, 0)£¬Ë®Æ½·½ÏòÎª X£¬´¹Ö±·½ÏòÎª Y
+// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ê£ºï¿½ï¿½ï¿½Â½ï¿½Îª (0, 0)ï¿½ï¿½Ë®Æ½ï¿½ï¿½ï¿½ï¿½Îª Xï¿½ï¿½ï¿½ï¿½Ö±ï¿½ï¿½ï¿½ï¿½Îª Y
 
 const uint8_t AIM_LINE_LAYER = 2;
 const Draw_Color AIM_LINE_COLOR = Draw_COLOR_GREEN;
@@ -90,20 +90,20 @@ const uint16_t PITCH_METER_VALUE[6] = {0x502, 20, 3, 2, 1600, 540};  // ID, Font
 Referee_DrawDataTypeDef Referee_DrawData;
 
 /**
-  * @brief      ÉèÖÃ³µ¿íÏßÄ£Ê½
-  * @param      mode: ³µ¿íÏßÄ£Ê½£¨1ÎªÐ¡ÍÓÂÝ£¬0ÎªÆÕÍ¨£©
-  * @retval     ÎÞ
-  */
+ * @brief      ï¿½ï¿½ï¿½Ã³ï¿½ï¿½ï¿½ï¿½ï¿½Ä£Ê½
+ * @param      mode: ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä£Ê½ï¿½ï¿½1ÎªÐ¡ï¿½ï¿½ï¿½Ý£ï¿½0Îªï¿½ï¿½Í¨ï¿½ï¿½
+ * @retval     ï¿½ï¿½
+ */
 void Referee_SetWidthMode(uint8_t mode) {
     Referee_DrawDataTypeDef* draw = &Referee_DrawData;
     draw->width_mode = mode;
 }
 
 /**
-  * @brief      ÉèÖÃÃé×¼ÏßÄ£Ê½
-  * @param      mode: Ãé×¼ÏßÄ£Ê½£¨0 ~ 2¶ÔÓ¦µ¯ËÙ 15,18,30 m/s£©
-  * @retval     ÎÞ
-  */
+ * @brief      ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×¼ï¿½ï¿½Ä£Ê½
+ * @param      mode: ï¿½ï¿½×¼ï¿½ï¿½Ä£Ê½ï¿½ï¿½0 ~ 2ï¿½ï¿½Ó¦ï¿½ï¿½ï¿½ï¿½ 15,18,30 m/sï¿½ï¿½
+ * @retval     ï¿½ï¿½
+ */
 void Referee_SetAimMode(uint8_t mode) {
     Referee_DrawDataTypeDef* draw = &Referee_DrawData;
     if (mode > 2)
@@ -112,30 +112,30 @@ void Referee_SetAimMode(uint8_t mode) {
 }
 
 /**
-  * @brief      ÉèÖÃµçÈÝµçÁ¿
-  * @param      state: µçÈÝµçÁ¿£¨0 ~ 100£¬µ¥Î»°Ù·Ö±È£©
-  * @retval     ÎÞ
-  */
+ * @brief      ï¿½ï¿½ï¿½Ãµï¿½ï¿½Ýµï¿½ï¿½ï¿½
+ * @param      state: ï¿½ï¿½ï¿½Ýµï¿½ï¿½ï¿½ï¿½ï¿½0 ~ 100ï¿½ï¿½ï¿½ï¿½Î»ï¿½Ù·Ö±È£ï¿½
+ * @retval     ï¿½ï¿½
+ */
 void Referee_SetCapState(uint8_t state) {
     Referee_DrawDataTypeDef* draw = &Referee_DrawData;
     draw->cap_state = state;
 }
 
 /**
-  * @brief      ÉèÖÃPitchÇã½Ç
-  * @param      angle: PitchÇã½Ç
-  * @retval     ÎÞ
-  */
+ * @brief      ï¿½ï¿½ï¿½ï¿½Pitchï¿½ï¿½ï¿½
+ * @param      angle: Pitchï¿½ï¿½ï¿½
+ * @retval     ï¿½ï¿½
+ */
 void Referee_SetPitchAngle(float angle) {
     Referee_DrawDataTypeDef* draw = &Referee_DrawData;
     draw->pitch_angle = angle;
 }
 
 /**
-  * @brief      Ãé×¼Ïß»æÖÆ£º³õÊ¼»¯½×¶Î
-  * @param      ÎÞ
-  * @retval     ÎÞ
-  */
+ * @brief      ï¿½ï¿½×¼ï¿½ß»ï¿½ï¿½Æ£ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½×¶ï¿½
+ * @param      ï¿½ï¿½
+ * @retval     ï¿½ï¿½
+ */
 void Referee_SetupAimLine() {
     // draw_cnt: 4
     Referee_DrawDataTypeDef* draw = &Referee_DrawData;
@@ -147,10 +147,10 @@ void Referee_SetupAimLine() {
 }
 
 /**
-  * @brief      Ãé×¼Ïß»æÖÆ£º¸üÐÂ½×¶Î
-  * @param      ÎÞ
-  * @retval     ÎÞ
-  */
+ * @brief      ï¿½ï¿½×¼ï¿½ß»ï¿½ï¿½Æ£ï¿½ï¿½ï¿½ï¿½Â½×¶ï¿½
+ * @param      ï¿½ï¿½
+ * @retval     ï¿½ï¿½
+ */
 void Referee_UpdateAimLine() {
     // draw_cnt: 4 when mode changed, 0 when mode not change
     Referee_DrawDataTypeDef* draw = &Referee_DrawData;
@@ -164,29 +164,29 @@ void Referee_UpdateAimLine() {
 }
 
 /**
-  * @brief      ×¼ÐÄ»æÖÆ£º³õÊ¼»¯½×¶Î
-  * @param      ÎÞ
-  * @retval     ÎÞ
-  */
+ * @brief      ×¼ï¿½Ä»ï¿½ï¿½Æ£ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½×¶ï¿½
+ * @param      ï¿½ï¿½
+ * @retval     ï¿½ï¿½
+ */
 void Referee_SetupCrosshair() {
     // draw_cnt: 1
     Draw_AddCircle(CROSSHAIR[0], CROSSHAIR_LAYER, CROSSHAIR_COLOR, CROSSHAIR[1], CROSSHAIR[2], CROSSHAIR[3], CROSSHAIR[4]);
 }
 
 /**
-  * @brief      ×¼ÐÄ»æÖÆ£º¸üÐÂ½×¶Î
-  * @param      ÎÞ
-  * @retval     ÎÞ
-  */
+ * @brief      ×¼ï¿½Ä»ï¿½ï¿½Æ£ï¿½ï¿½ï¿½ï¿½Â½×¶ï¿½
+ * @param      ï¿½ï¿½
+ * @retval     ï¿½ï¿½
+ */
 void Referee_UpdateCrosshair() {
     // nothing
 }
 
 /**
-  * @brief      ³µ¿íÏß»æÖÆ£º³õÊ¼»¯½×¶Î
-  * @param      ÎÞ
-  * @retval     ÎÞ
-  */
+ * @brief      ï¿½ï¿½ï¿½ï¿½ï¿½ß»ï¿½ï¿½Æ£ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½×¶ï¿½
+ * @param      ï¿½ï¿½
+ * @retval     ï¿½ï¿½
+ */
 void Referee_SetupWidthMark() {
     // draw_cnt: 2
     Referee_DrawDataTypeDef* draw = &Referee_DrawData;
@@ -198,10 +198,10 @@ void Referee_SetupWidthMark() {
 }
 
 /**
-  * @brief      ³µ¿íÏß»æÖÆ£º¸üÐÂ½×¶Î
-  * @param      ÎÞ
-  * @retval     ÎÞ
-  */
+ * @brief      ï¿½ï¿½ï¿½ï¿½ï¿½ß»ï¿½ï¿½Æ£ï¿½ï¿½ï¿½ï¿½Â½×¶ï¿½
+ * @param      ï¿½ï¿½
+ * @retval     ï¿½ï¿½
+ */
 void Referee_UpdateWidthMark() {
     // draw_cnt: 2 when mode changed, 0 when mode not change
     Referee_DrawDataTypeDef* draw = &Referee_DrawData;
@@ -215,10 +215,10 @@ void Referee_UpdateWidthMark() {
 }
 
 /**
-  * @brief      µçÈÝ×´Ì¬»æÖÆ£º³õÊ¼»¯½×¶Î
-  * @param      ÎÞ
-  * @retval     ÎÞ
-  */
+ * @brief      ï¿½ï¿½ï¿½ï¿½×´Ì¬ï¿½ï¿½ï¿½Æ£ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½×¶ï¿½
+ * @param      ï¿½ï¿½
+ * @retval     ï¿½ï¿½
+ */
 void Referee_SetupCapState() {
     // draw_cnt: 2
     Referee_DrawDataTypeDef* draw = &Referee_DrawData;
@@ -247,10 +247,10 @@ void Referee_SetupCapState() {
 }
 
 /**
-  * @brief      µçÈÝ×´Ì¬»æÖÆ£º¸üÐÂ½×¶Î
-  * @param      ÎÞ
-  * @retval     ÎÞ
-  */
+ * @brief      ï¿½ï¿½ï¿½ï¿½×´Ì¬ï¿½ï¿½ï¿½Æ£ï¿½ï¿½ï¿½ï¿½Â½×¶ï¿½
+ * @param      ï¿½ï¿½
+ * @retval     ï¿½ï¿½
+ */
 void Referee_UpdateCapState() {
     // draw_cnt: 1
     Referee_DrawDataTypeDef* draw = &Referee_DrawData;
@@ -277,10 +277,10 @@ void Referee_UpdateCapState() {
 }
 
 /**
-  * @brief      PitchÇã½Ç¼Æ»æÖÆ£º³õÊ¼»¯½×¶Î
-  * @param      ÎÞ
-  * @retval     ÎÞ
-  */
+ * @brief      Pitchï¿½ï¿½Ç¼Æ»ï¿½ï¿½Æ£ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½×¶ï¿½
+ * @param      ï¿½ï¿½
+ * @retval     ï¿½ï¿½
+ */
 void Referee_SetupPitchMeter() {
     // draw_cnt: 1
     Referee_DrawDataTypeDef* draw = &Referee_DrawData;
@@ -289,68 +289,68 @@ void Referee_SetupPitchMeter() {
 }
 
 /**
-  * @brief      PitchÇã½Ç¼Æ»æÖÆ£º¸üÐÂ½×¶Î
-  * @param      ÎÞ
-  * @retval     ÎÞ
-  */
+ * @brief      Pitchï¿½ï¿½Ç¼Æ»ï¿½ï¿½Æ£ï¿½ï¿½ï¿½ï¿½Â½×¶ï¿½
+ * @param      ï¿½ï¿½
+ * @retval     ï¿½ï¿½
+ */
 void Referee_UpdatePitchMeter() {
     // draw_cnt: 1
     Referee_DrawDataTypeDef* draw = &Referee_DrawData;
     float value = -draw->pitch_angle;
     Draw_ModifyFloat(PITCH_METER_VALUE[0], PITCH_METER_LAYER, PITCH_METER_COLOR, PITCH_METER_VALUE[1], PITCH_METER_VALUE[2], PITCH_METER_VALUE[3], PITCH_METER_VALUE[4], PITCH_METER_VALUE[5], value);
-    //Draw_ModifyInt(PITCH_METER_VALUE[0], PITCH_METER_LAYER, PITCH_METER_COLOR, PITCH_METER_VALUE[1], PITCH_METER_VALUE[3], PITCH_METER_VALUE[4], PITCH_METER_VALUE[5], (int32_t) (value * 1000));
+    // Draw_ModifyInt(PITCH_METER_VALUE[0], PITCH_METER_LAYER, PITCH_METER_COLOR, PITCH_METER_VALUE[1], PITCH_METER_VALUE[3], PITCH_METER_VALUE[4], PITCH_METER_VALUE[5], (int32_t) (value * 1000));
 }
 
 /**
-  * @brief      Ä£Ê½ÏÔÊ¾»æÖÆ£º³õÊ¼»¯½×¶Î
-  * @param      ÎÞ
-  * @retval     ÎÞ
-  */
+ * @brief      Ä£Ê½ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½Æ£ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½×¶ï¿½
+ * @param      ï¿½ï¿½
+ * @retval     ï¿½ï¿½
+ */
 void Referee_SetupModeDisplay() {
 }
 
 /**
-  * @brief      Ä£Ê½ÏÔÊ¾»æÖÆ£º¸üÐÂ½×¶Î
-  * @param      ÎÞ
-  * @retval     ÎÞ
-  */
+ * @brief      Ä£Ê½ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½Æ£ï¿½ï¿½ï¿½ï¿½Â½×¶ï¿½
+ * @param      ï¿½ï¿½
+ * @retval     ï¿½ï¿½
+ */
 void Referee_UpdateModeDisplay() {
 }
 
 /**
-  * @brief      ´íÎóÏÔÊ¾»æÖÆ£º³õÊ¼»¯½×¶Î
-  * @param      ÎÞ
-  * @retval     ÎÞ
-  */
+ * @brief      ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½Æ£ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½×¶ï¿½
+ * @param      ï¿½ï¿½
+ * @retval     ï¿½ï¿½
+ */
 void Referee_SetupErrorDisplay() {
 }
 
 /**
-  * @brief      ´íÎóÏÔÊ¾»æÖÆ£º¸üÐÂ½×¶Î
-  * @param      ÎÞ
-  * @retval     ÎÞ
-  */
+ * @brief      ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½Æ£ï¿½ï¿½ï¿½ï¿½Â½×¶ï¿½
+ * @param      ï¿½ï¿½
+ * @retval     ï¿½ï¿½
+ */
 void Referee_UpdateErrorDisplay() {
 }
 
 /**
-  * @brief      ¸÷¹¦ÄÜ³õÊ¼»¯½×¶ÎÎÄ×Ö»æÖÆ
-  * @param      ÎÞ
-  * @retval     ÎÞ
-  */
+ * @brief      ï¿½ï¿½ï¿½ï¿½ï¿½Ü³ï¿½Ê¼ï¿½ï¿½ï¿½×¶ï¿½ï¿½ï¿½ï¿½Ö»ï¿½ï¿½ï¿½
+ * @param      ï¿½ï¿½
+ * @retval     ï¿½ï¿½
+ */
 void Referee_SetupAllString() {
     // cmd_cnt: 2
-    //Referee_RefereeDataTypeDef *Referee = &Referee_DrawData;
+    // Referee_RefereeDataTypeDef *Referee = &Referee_DrawData;
 
     Draw_AddString(CAP_STATE_TEXT[0], CAP_STATE_LAYER[1], CAP_STATE_COLOR[1], CAP_STATE_TEXT[1], CAP_STATE_TEXT[2], CAP_STATE_TEXT[3], CAP_STATE_TEXT[4], CAP_STATE_TEXT_STR);
     Draw_AddString(PITCH_METER_TEXT[0], PITCH_METER_LAYER, PITCH_METER_COLOR, PITCH_METER_TEXT[1], PITCH_METER_TEXT[2], PITCH_METER_TEXT[3], PITCH_METER_TEXT[4], PITCH_METER_TEXT_STR);
 }
 
 /**
-  * @brief      ³õÊ¼»¯¸÷»æÖÆ¹¦ÄÜ
-  * @param      ÎÞ
-  * @retval     ÎÞ
-  */
+ * @brief      ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¹ï¿½ï¿½ï¿½
+ * @param      ï¿½ï¿½
+ * @retval     ï¿½ï¿½
+ */
 void Referee_Setup() {
     static int last_time = -1000;
     int now = HAL_GetTick();
@@ -374,10 +374,10 @@ void Referee_Setup() {
 }
 
 /**
-  * @brief      ¸üÐÂ¸÷»æÖÆ¹¦ÄÜ
-  * @param      ÎÞ
-  * @retval     ÎÞ
-  */
+ * @brief      ï¿½ï¿½ï¿½Â¸ï¿½ï¿½ï¿½ï¿½Æ¹ï¿½ï¿½ï¿½
+ * @param      ï¿½ï¿½
+ * @retval     ï¿½ï¿½
+ */
 void Referee_Update() {
     Referee_UpdateAimLine();       // draw_cnt: if bullet speed changed 4, else 0
     Referee_UpdateCrosshair();     // draw_cnt: 0

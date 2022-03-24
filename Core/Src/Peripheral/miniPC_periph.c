@@ -1,9 +1,9 @@
 /*
  *  Project      : Infantry_Momentum
- * 
+ *
  *  file         : miniPC_periph.c
  *  Description  : This file contains mini_PC data transceiver related auxiliary functions
- *  LastEditors  : ¶¯ÇéØ¼²·ìá¶¯ÐÄ
+ *  LastEditors  : ï¿½ï¿½ï¿½ï¿½Ø¼ï¿½ï¿½ï¿½á¶¯ï¿½ï¿½
  *  Date         : 2021-05-04 20:53:31
  *  LastEditTime : 2021-05-08 10:44:15
  */
@@ -48,10 +48,10 @@ uint8_t MiniPC_RxData[Const_MiniPC_RX_BUFF_LEN];  // miniPC receive buff
 uint8_t MiniPC_TxData[Const_MiniPC_TX_BUFF_LEN];  // miniPC transmit buff
 
 /**
-  * @brief      Initialize minipc
-  * @param      NULL
-  * @retval     NULL
-  */
+ * @brief      Initialize minipc
+ * @param      NULL
+ * @retval     NULL
+ */
 void MiniPC_InitMiniPC() {
     MiniPC_ResetMiniPCData();
     Uart_InitUartDMA(Const_MiniPC_UART_HANDLER);
@@ -59,19 +59,19 @@ void MiniPC_InitMiniPC() {
 }
 
 /**
-  * @brief      Get pointer to minipc data object
-  * @param      NULL
-  * @retval     MiniPC Pointer to data object
-  */
+ * @brief      Get pointer to minipc data object
+ * @param      NULL
+ * @retval     MiniPC Pointer to data object
+ */
 MiniPC_MiniPCDataTypeDef* MiniPC_GetMiniPCDataPtr() {
     return &MiniPC_MiniPCData;
 }
 
 /**
-  * @brief      Sent MiniPC heart pack
-  * @param      NULL
-  * @retval     NULL
-  */
+ * @brief      Sent MiniPC heart pack
+ * @param      NULL
+ * @retval     NULL
+ */
 void MiniPC_SendHeartPacket() {
     MiniPC_Update();
 
@@ -108,10 +108,10 @@ void MiniPC_SendHeartPacket() {
 }
 
 /**
-  * @brief      Determine whether minipc is offline
-  * @param      NULL
-  * @retval     Offline or not (1 is yes, 0 is no)
-  */
+ * @brief      Determine whether minipc is offline
+ * @param      NULL
+ * @retval     Offline or not (1 is yes, 0 is no)
+ */
 uint8_t MiniPC_IsMiniPCOffline() {
     MiniPC_MiniPCDataTypeDef* minipc = MiniPC_GetMiniPCDataPtr();
 
@@ -120,10 +120,10 @@ uint8_t MiniPC_IsMiniPCOffline() {
 }
 
 /**
-  * @brief      Minipc serial port callback function
-  * @param      huart: Pointer to serial port handle
-  * @retval     NULL
-  */
+ * @brief      Minipc serial port callback function
+ * @param      huart: Pointer to serial port handle
+ * @retval     NULL
+ */
 void MiniPC_RXCallback(UART_HandleTypeDef* huart) {
     /* clear DMA transfer complete flag */
     __HAL_DMA_DISABLE(huart->hdmarx);
@@ -140,11 +140,11 @@ void MiniPC_RXCallback(UART_HandleTypeDef* huart) {
 }
 
 /**
-  * @brief      Minipc data packet decoding function
-  * @param      buff: Data buffer
-  * @param      rxdatalen: recevie data length
-  * @retval     NULL
-  */
+ * @brief      Minipc data packet decoding function
+ * @param      buff: Data buffer
+ * @param      rxdatalen: recevie data length
+ * @retval     NULL
+ */
 void MiniPC_DecodeMiniPCPacket(uint8_t* buff, uint16_t rxdatalen) {
     MiniPC_MiniPCDataTypeDef* minipc = MiniPC_GetMiniPCDataPtr();
     minipc->last_update_time = HAL_GetTick();
@@ -167,11 +167,11 @@ void MiniPC_DecodeMiniPCPacket(uint8_t* buff, uint16_t rxdatalen) {
 }
 
 /**
-  * @brief      Minipc data heart packet decoding function
-  * @param      buff: Data buffer
-  * @param      rxdatalen: recevie data length
-  * @retval     NULL
-  */
+ * @brief      Minipc data heart packet decoding function
+ * @param      buff: Data buffer
+ * @param      rxdatalen: recevie data length
+ * @retval     NULL
+ */
 void MiniPC_HeartPacketDecode(uint8_t* buff, uint16_t rxdatalen) {
     MiniPC_MiniPCDataTypeDef* minipc = MiniPC_GetMiniPCDataPtr();
 
@@ -183,11 +183,11 @@ void MiniPC_HeartPacketDecode(uint8_t* buff, uint16_t rxdatalen) {
 }
 
 /**
-  * @brief      Minipc data armor packet decoding function
-  * @param      buff: Data buffer
-  * @param      rxdatalen: recevie data length
-  * @retval     NULL
-  */
+ * @brief      Minipc data armor packet decoding function
+ * @param      buff: Data buffer
+ * @param      rxdatalen: recevie data length
+ * @retval     NULL
+ */
 void MiniPC_ArmorPacketDecode(uint8_t* buff, uint16_t rxdatalen) {
     MiniPC_MiniPCDataTypeDef* minipc = MiniPC_GetMiniPCDataPtr();
 
@@ -201,10 +201,10 @@ void MiniPC_ArmorPacketDecode(uint8_t* buff, uint16_t rxdatalen) {
 }
 
 /**
-  * @brief      Initialize minipc data object
-  * @param      minipc: Pointer to minipc data object
-  * @retval     NULL
-  */
+ * @brief      Initialize minipc data object
+ * @param      minipc: Pointer to minipc data object
+ * @retval     NULL
+ */
 void MiniPC_ResetMiniPCData() {
     MiniPC_MiniPCDataTypeDef* minipc = MiniPC_GetMiniPCDataPtr();
 
@@ -220,10 +220,10 @@ void MiniPC_ResetMiniPCData() {
 }
 
 /**
-  * @brief      MiniPC update sent data
-  * @param      NULL
-  * @retval     NULL
-  */
+ * @brief      MiniPC update sent data
+ * @param      NULL
+ * @retval     NULL
+ */
 void MiniPC_Update() {
     BusComm_BusCommDataTypeDef* buscomm = BusComm_GetBusDataPtr();
     MiniPC_MiniPCDataTypeDef* minipc = MiniPC_GetMiniPCDataPtr();
@@ -259,11 +259,11 @@ void MiniPC_Update() {
 }
 
 /**
-  * @brief      Minipc data decoding function
-  * @param      buff: Data buffer
-  * @param      rxdatalen: recevie data length
-  * @retval     Match is 1  not match is 0
-  */
+ * @brief      Minipc data decoding function
+ * @param      buff: Data buffer
+ * @param      rxdatalen: recevie data length
+ * @retval     Match is 1  not match is 0
+ */
 uint16_t checksum__ = 0, sum__ = 0;
 
 uint8_t MiniPC_VerifyMiniPCData(uint8_t* buff, uint16_t rxdatalen) {
@@ -280,8 +280,8 @@ uint8_t MiniPC_VerifyMiniPCData(uint8_t* buff, uint16_t rxdatalen) {
     //    return SUCCEEDED;
 
     sum = buff2ui16(buff + 6);
-    //buff[6] = 0;
-    //buff[7] = 0;
+    // buff[6] = 0;
+    // buff[7] = 0;
 
     if (size % 2) {
         buff[size] = 0x00;

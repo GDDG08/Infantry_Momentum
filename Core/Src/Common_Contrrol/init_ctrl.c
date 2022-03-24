@@ -84,7 +84,7 @@ void Init_InitAll() {
 
     Motor_InitAllMotors();
     BusComm_InitBusComm();
-    
+
 #if __FN_IF_ENABLE(__FN_SUPER_CAP_COMM)
     CapComm_InitCapComm();
 #endif

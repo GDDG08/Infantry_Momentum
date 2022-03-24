@@ -1,9 +1,9 @@
 /*
  *  Project      : Infantry_Momentum
- * 
+ *
  *  file         : led_util.c
  *  Description  : This file contains the led periph control functions
- *  LastEditors  : ¶¯ÇéØ¼²·ìá¶¯ÐÄ
+ *  LastEditors  : ï¿½ï¿½ï¿½ï¿½Ø¼ï¿½ï¿½ï¿½á¶¯ï¿½ï¿½
  *  Date         : 2021-05-04 20:53:31
  *  LastEditTime : 2021-05-07 03:07:12
  */
@@ -15,30 +15,30 @@
 LED_LEDTypeDef LED_LED1, LED_LED2;
 
 /**
-  * @brief      Initialize all onboard LEDs
-  * @param      NULL
-  * @retval     NULL
-  */
+ * @brief      Initialize all onboard LEDs
+ * @param      NULL
+ * @retval     NULL
+ */
 void LED_InitAllLEDs() {
     LED_InitLED(&LED_LED1, GPIOC, GPIO_PIN_8, GPIO_PIN_SET, GPIO_PIN_RESET, LED_OFF);
     LED_InitLED(&LED_LED2, GPIOA, GPIO_PIN_8, GPIO_PIN_SET, GPIO_PIN_RESET, LED_OFF);
 }
 
 /**
-  * @brief      Read LED status
-  * @param      led: Pointer to LED object
-  * @retval     LED status
-  */
+ * @brief      Read LED status
+ * @param      led: Pointer to LED object
+ * @retval     LED status
+ */
 LED_LEDStateEnum LED_GetLEDState(LED_LEDTypeDef* led) {
     return led->state;
 }
 
 /**
-  * @brief      Set LED status
-  * @param      led: Pointer to LED object
-  * @param      state: LED status
-  * @retval     NULL
-  */
+ * @brief      Set LED status
+ * @param      led: Pointer to LED object
+ * @param      state: LED status
+ * @retval     NULL
+ */
 void LED_SetLEDState(LED_LEDTypeDef* led, LED_LEDStateEnum state) {
     if (state == LED_OFF) {
         HAL_GPIO_WritePin(led->port, led->pin, led->off_pin_state);
@@ -49,25 +49,25 @@ void LED_SetLEDState(LED_LEDTypeDef* led, LED_LEDStateEnum state) {
 }
 
 /**
-  * @brief      Turn off all LEDs
-  * @param      NULL
-  * @retval     NULL
-  */
+ * @brief      Turn off all LEDs
+ * @param      NULL
+ * @retval     NULL
+ */
 void LED_AllOff() {
     LED_SetLEDState(&LED_LED1, LED_OFF);
     LED_SetLEDState(&LED_LED2, LED_OFF);
 }
 
 /**
-  * @brief      Initialize single LED
-  * @param      led: Pointer to LED object
-  * @param      port: Led corresponding GPIO port number
-  * @param      pin: Led corresponding GPIO pin number
-  * @param      off_pin_state: GPIO status corresponding to led off
-  * @param      on_pin_state: Led on corresponds to GPIO status
-  * @param      init_state: Led initial state
-  * @retval     NULL
-  */
+ * @brief      Initialize single LED
+ * @param      led: Pointer to LED object
+ * @param      port: Led corresponding GPIO port number
+ * @param      pin: Led corresponding GPIO pin number
+ * @param      off_pin_state: GPIO status corresponding to led off
+ * @param      on_pin_state: Led on corresponds to GPIO status
+ * @param      init_state: Led initial state
+ * @retval     NULL
+ */
 void LED_InitLED(LED_LEDTypeDef* led, GPIO_TypeDef* port, uint16_t pin, GPIO_PinState off_pin_state, GPIO_PinState on_pin_state, LED_LEDStateEnum init_state) {
     led->port = port;
     led->pin = pin;

@@ -1,6 +1,6 @@
 /*
  *  Project      : Infantry_Momentum
- * 
+ *
  *  file         : supercap_ctrl.c
  *  Description  : This file contains cap control function
  *  LastEditors  : ����ؼ���ᶯ��
@@ -125,10 +125,10 @@ void Cap_Init() {
 }
 
 /**
-  * @brief      Gets the pointer to the cap control data object
-  * @param      NULL
-  * @retval     Pointer to cap control data object
-  */
+ * @brief      Gets the pointer to the cap control data object
+ * @param      NULL
+ * @retval     Pointer to cap control data object
+ */
 CAP_ControlValueTypeDef* Cap_GetCapControlPtr() {
     return &Cap_ControlState;
 }

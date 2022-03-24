@@ -1,13 +1,4 @@
 /*
- * @Project      : RM_Infantry_Neptune_frame
- * @FilePath     : \GITEE2\Core\Inc\Common_Contrrol\buscomm_cmd.h
- * @Descripttion :
- * @Author       : GDDG08
- * @Date         : 2021-07-24 11:39:13
- * @LastEditors  : GDDG08
- * @LastEditTime : 2022-03-20 15:09:05
- */
-/*
  *  Project      : Infantry_Momentum
  *
  *  file         : buscomm_cmd.h

@@ -1,13 +1,4 @@
 /*
- * @Project      : RM_Infantry_Neptune_frame
- * @FilePath     : \GITEE2\Core\Inc\SuperCap_Control\supercap_ctrl.h
- * @Descripttion :
- * @Author       : GDDG08
- * @Date         : 2021-07-24 11:39:13
- * @LastEditors  : GDDG08
- * @LastEditTime : 2022-03-19 16:53:32
- */
-/*
  *  Project      : Infantry_Momentum
  *
  *  file         : supercap_ctrl.h

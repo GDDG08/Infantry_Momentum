@@ -1,13 +1,4 @@
 /*
- * @Project      : RM_Infantry_Neptune_frame
- * @FilePath     : \GITEE2\Core\Inc\Algorithm\filter_alg.h
- * @Descripttion :
- * @Author       : GDDG08
- * @Date         : 2021-07-24 11:39:13
- * @LastEditors  : GDDG08
- * @LastEditTime : 2022-03-19 16:46:01
- */
-/*
  *  Project      : Infantry_Momentum
  *
  *  file         : filter_alg.h

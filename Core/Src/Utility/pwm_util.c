@@ -1,9 +1,9 @@
 /*
  *  Project      : Infantry_Momentum
- * 
+ *
  *  file         : pwm_util.c
  *  Description  : This file contains the PWM functions
- *  LastEditors  : ¶¯ÇéØ¼²·ìá¶¯ÐÄ
+ *  LastEditors  : ï¿½ï¿½ï¿½ï¿½Ø¼ï¿½ï¿½ï¿½á¶¯ï¿½ï¿½
  *  Date         : 2021-05-04 20:53:31
  *  LastEditTime : 2021-05-07 01:48:27
  */
@@ -13,12 +13,12 @@
 #if __FN_IF_ENABLE(__FN_UTIL_PWM)
 
 /**
-  * @brief      Initialize PWM
-  * @param      pwm: The pointer points to the PWM object to initialize
-  * @param      htim:Timer object for PWM
-  * @param      ch:  The PWM channel
-  * @retval     NULL
-  */
+ * @brief      Initialize PWM
+ * @param      pwm: The pointer points to the PWM object to initialize
+ * @param      htim:Timer object for PWM
+ * @param      ch:  The PWM channel
+ * @retval     NULL
+ */
 void PWM_InitPWM(PWM_PWMHandleTypeDef* pwm, TIM_HandleTypeDef* htim, uint32_t ch) {
     pwm->htim = htim;
     pwm->ch = ch;
@@ -37,10 +37,10 @@ void PWM_InitPWM(PWM_PWMHandleTypeDef* pwm, TIM_HandleTypeDef* htim, uint32_t ch
 }
 
 /**
-  * @brief      Start PWM output
-  * @param      pwm: The pointer points to the PWM object to initialize 
-  * @retval     NULL
-  */
+ * @brief      Start PWM output
+ * @param      pwm: The pointer points to the PWM object to initialize
+ * @retval     NULL
+ */
 void PWM_StartPWM(PWM_PWMHandleTypeDef* pwm) {
     if (pwm->state == PWM_OFF) {
         HAL_TIM_PWM_Start(pwm->htim, pwm->ch);
@@ -49,10 +49,10 @@ void PWM_StartPWM(PWM_PWMHandleTypeDef* pwm) {
 }
 
 /**
-  * @brief      Stop PWM output
-  * @param      pwm: The pointer points to the PWM object to initialize 
-  * @retval     NULL
-  */
+ * @brief      Stop PWM output
+ * @param      pwm: The pointer points to the PWM object to initialize
+ * @retval     NULL
+ */
 void PWM_StopPWM(PWM_PWMHandleTypeDef* pwm) {
     if (pwm->state == PWM_ON) {
         HAL_TIM_PWM_Stop(pwm->htim, pwm->ch);
@@ -61,11 +61,11 @@ void PWM_StopPWM(PWM_PWMHandleTypeDef* pwm) {
 }
 
 /**
-  * @brief      Setting PWM duty
-  * @param      pwm: The pointer points to the PWM object to initialize 
-  * @param      duty: PWM duty 
-  * @retval     NULL
-  */
+ * @brief      Setting PWM duty
+ * @param      pwm: The pointer points to the PWM object to initialize
+ * @param      duty: PWM duty
+ * @retval     NULL
+ */
 void PWM_SetPWMDuty(PWM_PWMHandleTypeDef* pwm, float duty) {
     PWM_PWMStateEnum last_state = pwm->state;
     PWM_StopPWM(pwm);
@@ -80,11 +80,11 @@ void PWM_SetPWMDuty(PWM_PWMHandleTypeDef* pwm, float duty) {
 }
 
 /**
-  * @brief      Setting PWM frequency
-  * @param      pwm: The pointer points to the PWM object to initialize 
-  * @param      freq: PWM frequency 
-  * @retval     NULL
-  */
+ * @brief      Setting PWM frequency
+ * @param      pwm: The pointer points to the PWM object to initialize
+ * @param      freq: PWM frequency
+ * @retval     NULL
+ */
 void PWM_SetPWMFreq(PWM_PWMHandleTypeDef* pwm, uint32_t freq) {
     PWM_PWMStateEnum last_state = pwm->state;
     PWM_StopPWM(pwm);

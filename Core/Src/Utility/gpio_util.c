@@ -1,9 +1,9 @@
 /*
  *  Project      : Infantry_Momentum
- * 
+ *
  *  file         : gpio_util.c
  *  Description  : This file contains the GPIO functions
- *  LastEditors  : ¶¯ÇéØ¼²·ìá¶¯ÐÄ
+ *  LastEditors  : ï¿½ï¿½ï¿½ï¿½Ø¼ï¿½ï¿½ï¿½á¶¯ï¿½ï¿½
  *  Date         : 2021-05-04 20:53:31
  *  LastEditTime : 2021-05-07 03:02:10
  */
@@ -37,19 +37,19 @@ GPIO_GPIOTypeDef* CAP = &CAP_START;
 #endif
 
 /**
-  * @brief      Set GPIO
-  * @param      gpio :Mark of peripheral
-  * @retval     NULL
-  */
+ * @brief      Set GPIO
+ * @param      gpio :Mark of peripheral
+ * @retval     NULL
+ */
 void GPIO_Open(GPIO_GPIOTypeDef* gpio) {
     HAL_GPIO_WritePin(gpio->gpio_handle, gpio->gpio_pin, GPIO_PIN_SET);
 }
 
 /**
-  * @brief      Reset GPIO
-  * @param      gpio :Mark of peripheral
-  * @retval     NULL
-  */
+ * @brief      Reset GPIO
+ * @param      gpio :Mark of peripheral
+ * @retval     NULL
+ */
 void GPIO_Close(GPIO_GPIOTypeDef* gpio) {
     HAL_GPIO_WritePin(gpio->gpio_handle, gpio->gpio_pin, GPIO_PIN_RESET);
 }

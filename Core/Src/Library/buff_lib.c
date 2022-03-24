@@ -1,9 +1,9 @@
 /*
  *  Project      : Infantry_Momentum
- * 
+ *
  *  file         : buff_lib.c
  *  Description  : This file contains auxiliary functions related to byte buffer operation
- *  LastEditors  : ¶¯ÇéØ¼²·ìá¶¯ÐÄ
+ *  LastEditors  : ï¿½ï¿½ï¿½ï¿½Ø¼ï¿½ï¿½ï¿½á¶¯ï¿½ï¿½
  *  Date         : 2021-05-04 20:53:31
  *  LastEditTime : 2021-05-08 03:35:22
  */
@@ -11,10 +11,10 @@
 #include "buff_lib.h"
 
 /**
-  * @brief      Extract float from byte buffer
-  * @param      buff: Pointer to byte buffer
-  * @retval     Extracted float
-  */
+ * @brief      Extract float from byte buffer
+ * @param      buff: Pointer to byte buffer
+ * @retval     Extracted float
+ */
 float buff2float(uint8_t* buff) {
     uint8_t tmpbuff[4];
     memcpy(tmpbuff, buff, 4);
@@ -22,11 +22,11 @@ float buff2float(uint8_t* buff) {
 }
 
 /**
-  * @brief      Push float into byte buffer
-  * @param      f: Float to be pressed in
-  * @param      buff: Pointer to byte buffer
-  * @retval     NULL
-  */
+ * @brief      Push float into byte buffer
+ * @param      f: Float to be pressed in
+ * @param      buff: Pointer to byte buffer
+ * @retval     NULL
+ */
 void float2buff(float f, uint8_t* buff) {
     uint8_t tmpbuff[4];
     *((float*)tmpbuff) = f;
@@ -34,10 +34,10 @@ void float2buff(float f, uint8_t* buff) {
 }
 
 /**
-  * @brief      Extract int16 from byte buffer
-  * @param      buff: Pointer to byte buffer
-  * @retval     The extracted int16
-  */
+ * @brief      Extract int16 from byte buffer
+ * @param      buff: Pointer to byte buffer
+ * @retval     The extracted int16
+ */
 int16_t buff2i16(uint8_t* buff) {
     uint8_t tmpbuff[2];
     memcpy(tmpbuff, buff, 2);
@@ -45,10 +45,10 @@ int16_t buff2i16(uint8_t* buff) {
 }
 
 /**
-  * @brief      Extract uint16 from byte buffer
-  * @param      buff: Pointer to byte buffer
-  * @retval     The extracted uint16
-  */
+ * @brief      Extract uint16 from byte buffer
+ * @param      buff: Pointer to byte buffer
+ * @retval     The extracted uint16
+ */
 uint16_t buff2ui16(uint8_t* buff) {
     uint8_t tmpbuff[2];
     memcpy(tmpbuff, buff, 2);
@@ -56,11 +56,11 @@ uint16_t buff2ui16(uint8_t* buff) {
 }
 
 /**
-  * @brief      Turn uint16_ T push into byte buffer
-  * @param      u: Uint16 T to be pressed in
-  * @param      buff: Pointer to byte buffer
-  * @retval     NULL
-  */
+ * @brief      Turn uint16_ T push into byte buffer
+ * @param      u: Uint16 T to be pressed in
+ * @param      buff: Pointer to byte buffer
+ * @retval     NULL
+ */
 void ui162buff(uint16_t u, uint8_t* buff) {
     uint8_t tmpbuff[2];
     *((uint16_t*)tmpbuff) = u;
@@ -68,10 +68,10 @@ void ui162buff(uint16_t u, uint8_t* buff) {
 }
 
 /**
-  * @brief      Extract uint32 from byte buffer
-  * @param      buff: Pointer to byte buffer
-  * @retval     The extracted uint32
-  */
+ * @brief      Extract uint32 from byte buffer
+ * @param      buff: Pointer to byte buffer
+ * @retval     The extracted uint32
+ */
 uint32_t buff2ui32(uint8_t* buff) {
     uint8_t tmpbuff[4];
     memcpy(tmpbuff, buff, 4);
@@ -79,11 +79,11 @@ uint32_t buff2ui32(uint8_t* buff) {
 }
 
 /**
-  * @brief      uint32_ T push into byte buffer
-  * @param      u: Uint32 to be pressed in
-  * @param      buff: Pointer to byte buffer
-  * @retval     NULL
-  */
+ * @brief      uint32_ T push into byte buffer
+ * @param      u: Uint32 to be pressed in
+ * @param      buff: Pointer to byte buffer
+ * @retval     NULL
+ */
 void ui322buff(uint32_t u, uint8_t* buff) {
     uint8_t tmpbuff[4];
     *((uint32_t*)tmpbuff) = u;

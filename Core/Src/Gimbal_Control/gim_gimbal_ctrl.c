@@ -1,6 +1,6 @@
 /*
  *  Project      : Infantry_Momentum
- * 
+ *
  *  file         : gim_gimbal_ctrl.c
  *  Description  : This file contains Gimbal control function
  *  LastEditors  : ����ؼ���ᶯ��
@@ -27,10 +27,10 @@ Motor_MotorParamTypeDef GimbalPitch_gimbalPitchMotorParamNoAuto;
 Gimbal_GimbalTypeDef Gimbal_gambalControlData;
 
 /**
-* @brief      Gimbal initialization offset and mode
-* @param      NULL
-* @retval     NULL
-*/
+ * @brief      Gimbal initialization offset and mode
+ * @param      NULL
+ * @retval     NULL
+ */
 void Gimbal_Init_Offset() {
     IMU_IMUDataTypeDef* imu = IMU_GetIMUDataPtr();
     Gimbal_GimbalTypeDef* gimbal = Gimbal_GetGimbalControlPtr();
@@ -55,19 +55,19 @@ void Gimbal_Init_Offset() {
 }
 
 /**
-  * @brief      Gets the pointer to the gimbal control object
-  * @param      NULL
-  * @retval     The pointer points to the gimbal control object
-  */
+ * @brief      Gets the pointer to the gimbal control object
+ * @param      NULL
+ * @retval     The pointer points to the gimbal control object
+ */
 Gimbal_GimbalTypeDef* Gimbal_GetGimbalControlPtr() {
     return &Gimbal_gambalControlData;
 }
 
 /**
-* @brief      Change Gimbal mode
-* @param      mode: Gimbal mode enum
-* @retval     NULL
-*/
+ * @brief      Change Gimbal mode
+ * @param      mode: Gimbal mode enum
+ * @retval     NULL
+ */
 void Gimbal_ChangeMode(Gimbal_ModeEnum mode) {
     Gimbal_GimbalTypeDef* gimbal = Gimbal_GetGimbalControlPtr();
     gimbal->mode.last_mode = gimbal->mode.present_mode;
@@ -78,10 +78,10 @@ void Gimbal_ChangeMode(Gimbal_ModeEnum mode) {
 }
 
 /**
-* @brief      Yaw state control
-* @param      NULL
-* @retval     NULL
-*/
+ * @brief      Yaw state control
+ * @param      NULL
+ * @retval     NULL
+ */
 void Gimbal_CtrlYaw() {
     Gimbal_GimbalTypeDef* gimbal = Gimbal_GetGimbalControlPtr();
 
@@ -108,10 +108,10 @@ void Gimbal_CtrlYaw() {
 }
 
 /**
-* @brief      Pitch state control
-* @param      NULL
-* @retval     NULL
-*/
+ * @brief      Pitch state control
+ * @param      NULL
+ * @retval     NULL
+ */
 void Gimbal_CtrlPitch() {
     IMU_IMUDataTypeDef* imu = IMU_GetIMUDataPtr();
     Gimbal_GimbalTypeDef* gimbal = Gimbal_GetGimbalControlPtr();
@@ -167,10 +167,10 @@ void Gimbal_CtrlPitch() {
 }
 
 /**
-* @brief      Pitch angle limit
-* @param      ref: Pitch set ref
-* @retval     Limited pitch ref
-*/
+ * @brief      Pitch angle limit
+ * @param      ref: Pitch set ref
+ * @retval     Limited pitch ref
+ */
 float Gimbal_LimitPitch(float ref) {
     Gimbal_GimbalTypeDef* gimbal = Gimbal_GetGimbalControlPtr();
     BusComm_BusCommDataTypeDef* buscomm = BusComm_GetBusDataPtr();
@@ -191,10 +191,10 @@ float Gimbal_LimitPitch(float ref) {
 }
 
 /**
-* @brief      Yaw angle limit
-* @param      ref: Yaw set ref
-* @retval     Limited ywa ref
-*/
+ * @brief      Yaw angle limit
+ * @param      ref: Yaw set ref
+ * @retval     Limited ywa ref
+ */
 float Gimbal_LimitYaw(float ref) {
     BusComm_BusCommDataTypeDef* buscomm = BusComm_GetBusDataPtr();
     Gimbal_GimbalTypeDef* gimbal = Gimbal_GetGimbalControlPtr();
@@ -209,10 +209,10 @@ float Gimbal_LimitYaw(float ref) {
 }
 
 /**
-* @brief      Set pitch ref
-* @param      ref: Yaw set ref
-* @retval     NULL
-*/
+ * @brief      Set pitch ref
+ * @param      ref: Yaw set ref
+ * @retval     NULL
+ */
 void Gimbal_SetPitchRef(float ref) {
     Gimbal_GimbalTypeDef* gimbal = Gimbal_GetGimbalControlPtr();
 
@@ -220,10 +220,10 @@ void Gimbal_SetPitchRef(float ref) {
 }
 
 /**
-* @brief      Aoto aim mode set pitch ref
-* @param      ref: Yaw set ref
-* @retval     NULL
-*/
+ * @brief      Aoto aim mode set pitch ref
+ * @param      ref: Yaw set ref
+ * @retval     NULL
+ */
 void Gimbal_SetPitchAutoRef(float ref) {
     Gimbal_GimbalTypeDef* gimbal = Gimbal_GetGimbalControlPtr();
     IMU_IMUDataTypeDef* imu = IMU_GetIMUDataPtr();
@@ -237,14 +237,14 @@ void Gimbal_SetPitchAutoRef(float ref) {
     else
         limited_ref = ref;
     // Out of depression set maximum ref
-    gimbal->angle.pitch_angle_ref = limited_ref;  //imu->angle.pitch + ref
+    gimbal->angle.pitch_angle_ref = limited_ref;  // imu->angle.pitch + ref
 }
 
 /**
-* @brief      Set yaw ref
-* @param      ref: Pitch set ref
-* @retval     NULL
-*/
+ * @brief      Set yaw ref
+ * @param      ref: Pitch set ref
+ * @retval     NULL
+ */
 void Gimbal_SetYawRef(float ref) {
     Gimbal_GimbalTypeDef* gimbal = Gimbal_GetGimbalControlPtr();
 
@@ -252,23 +252,23 @@ void Gimbal_SetYawRef(float ref) {
 }
 
 /**
-* @brief      Aoto aim mode set yaw ref
-* @param      ref: Yaw set ref
-* @retval     NULL
-*/
+ * @brief      Aoto aim mode set yaw ref
+ * @param      ref: Yaw set ref
+ * @retval     NULL
+ */
 void Gimbal_SetYawAutoRef(float ref) {
     Gimbal_GimbalTypeDef* gimbal = Gimbal_GetGimbalControlPtr();
     IMU_IMUDataTypeDef* imu = IMU_GetIMUDataPtr();
     MiniPC_MiniPCDataTypeDef* minipc_data = MiniPC_GetMiniPCDataPtr();
 
-    gimbal->angle.yaw_angle_ref = Gimbal_LimitYaw(ref);  //imu->angle.yaw - ref
+    gimbal->angle.yaw_angle_ref = Gimbal_LimitYaw(ref);  // imu->angle.yaw - ref
 }
 
 /**
-  * @brief      Gimbal pitch output function
-  * @param      NULL
-  * @retval     NULL
-  */
+ * @brief      Gimbal pitch output function
+ * @param      NULL
+ * @retval     NULL
+ */
 void GimbalPitch_Output() {
     Gimbal_GimbalTypeDef* gimbal = Gimbal_GetGimbalControlPtr();
 

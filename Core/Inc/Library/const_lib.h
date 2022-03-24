@@ -1,6 +1,6 @@
 /*
  *  Project      : Infantry_Momentum
- * 
+ *
  *  file         : const_lib.h
  *  Description  : This file contains all necessary constants
  *  LastEditors  : ����ؼ���ᶯ��
@@ -23,17 +23,17 @@ extern "C" {
 #if __FN_IF_ENABLE(__FN_SUPER_CAP)
 
 /*          ADC Control related constants       */
-extern const float Const_ADC_V_VGAIN;               //The voltage reading gain resistor divider ratio is 11
-extern const float Const_ADC_V_C_HolzerGAIN;        //Hall current sensor gain (chassis current, referee system current)
-extern const float Const_ADC_V_C_BuckOutResGAIN;    //Buck output current sensing gain (lt3790)
-extern const float Const_ADC_V_C_BuckInputResGAIN;  //Buck input current sensing gain (lt3790)
-extern const float Const_ADC_Cap_TotalEnergy;       //Total capacitance energy
-extern const float Const_ADC_CapValue;              //Capacity of capacitor bank
-extern const float Const_ADC_CurrentErrorVoltage;   //ACS712 error
+extern const float Const_ADC_V_VGAIN;               // The voltage reading gain resistor divider ratio is 11
+extern const float Const_ADC_V_C_HolzerGAIN;        // Hall current sensor gain (chassis current, referee system current)
+extern const float Const_ADC_V_C_BuckOutResGAIN;    // Buck output current sensing gain (lt3790)
+extern const float Const_ADC_V_C_BuckInputResGAIN;  // Buck input current sensing gain (lt3790)
+extern const float Const_ADC_Cap_TotalEnergy;       // Total capacitance energy
+extern const float Const_ADC_CapValue;              // Capacity of capacitor bank
+extern const float Const_ADC_CurrentErrorVoltage;   // ACS712 error
 
 /*          DAC Control related constants       */
-extern const float Const_DAC_GAIN;       //DAC Current setting gain (lt3790)
-extern const float Const_DAC_DetectRES;  //DAC Current setting resistor (lt3790)
+extern const float Const_DAC_GAIN;       // DAC Current setting gain (lt3790)
+extern const float Const_DAC_DetectRES;  // DAC Current setting resistor (lt3790)
 
 /*          CAN Handle definition              */
 // extern CAN_HandleTypeDef* Const_BusComm_CAN_HANDLER;

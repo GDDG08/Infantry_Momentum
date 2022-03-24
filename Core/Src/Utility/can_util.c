@@ -1,9 +1,9 @@
 /*
  *  Project      : Infantry_Momentum
- * 
+ *
  *  file         : can_util.c
  *  Description  : This file contains the CAN funtions
- *  LastEditors  : ¶¯ÇéØ¼²·ìá¶¯ÐÄ
+ *  LastEditors  : ï¿½ï¿½ï¿½ï¿½Ø¼ï¿½ï¿½ï¿½á¶¯ï¿½ï¿½
  *  Date         : 2021-05-04 20:53:31
  *  LastEditTime : 2021-05-16 19:11:26
  */
@@ -20,23 +20,23 @@ const uint16_t Const_Can_RX_BUFF_LEN = 200;
 uint8_t Can_RxData[Const_Can_RX_BUFF_LEN];
 
 /**
-  * @brief      CAN Error handle handling
-  * @param      ret: error data
-  * @retval     NULL
-  */
+ * @brief      CAN Error handle handling
+ * @param      ret: error data
+ * @retval     NULL
+ */
 void Can_ErrorHandler(uint32_t ret) {
-    //Log_DebugPrintf("Error: CAN Error!\n");
+    // Log_DebugPrintf("Error: CAN Error!\n");
     while (1) {
         return;
     }
 }
 
 /**
-  * @brief      Initialize can transmitter
-  * @param      pheader: Pointer to the initialized header
-  * @param      stdid: CAN Equipment number
-  * @retval     NULL
-  */
+ * @brief      Initialize can transmitter
+ * @param      pheader: Pointer to the initialized header
+ * @param      stdid: CAN Equipment number
+ * @retval     NULL
+ */
 void Can_InitTxHeader(CAN_TxHeaderTypeDef* pheader, uint32_t stdid, uint32_t extid, uint32_t dlc) {
     pheader->StdId = stdid;
     pheader->ExtId = extid;
@@ -47,10 +47,10 @@ void Can_InitTxHeader(CAN_TxHeaderTypeDef* pheader, uint32_t stdid, uint32_t ext
 }
 
 /**
-  * @brief      Initialize can filter and enable CAN Bus Transceiver
-  * @param      phcan: Pointer to the CAN header
-  * @retval     NULL
-  */
+ * @brief      Initialize can filter and enable CAN Bus Transceiver
+ * @param      phcan: Pointer to the CAN header
+ * @retval     NULL
+ */
 void Can_InitFilterAndStart(CAN_HandleTypeDef* phcan) {
     CAN_FilterTypeDef sFilterConfig;
 
@@ -86,12 +86,12 @@ void Can_InitFilterAndStart(CAN_HandleTypeDef* phcan) {
 }
 
 /**
-  * @brief      Sending information to can bus
-  * @param      phcan: Pointer to the CAN header
-  * @param      pheader: Pointer to the CAN tx header
-  * @param      txdata: Message to send
-  * @retval     NULL
-  */
+ * @brief      Sending information to can bus
+ * @param      phcan: Pointer to the CAN header
+ * @param      pheader: Pointer to the CAN tx header
+ * @param      txdata: Message to send
+ * @retval     NULL
+ */
 void Can_SendMessage(CAN_HandleTypeDef* phcan, CAN_TxHeaderTypeDef* pheader, uint8_t txdata[]) {
     uint32_t mailbox;
     /* Start the Transmission process */
@@ -103,10 +103,10 @@ void Can_SendMessage(CAN_HandleTypeDef* phcan, CAN_TxHeaderTypeDef* pheader, uin
 }
 
 /**
-  * @brief      HAL_CAN_ Rx Fifo0 Message Pending Call back
-  * @param      phcan: Pointer to the CAN header
-  * @retval     NULL
-  */
+ * @brief      HAL_CAN_ Rx Fifo0 Message Pending Call back
+ * @param      phcan: Pointer to the CAN header
+ * @retval     NULL
+ */
 void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef* phcan) {
     /* Get RX message */
     uint32_t ret = HAL_CAN_GetRxMessage(phcan, CAN_RX_FIFO0, &Can_RxHeader, Can_RxData);
@@ -118,12 +118,12 @@ void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef* phcan) {
 }
 
 /**
-  * @brief      Can bus data receiving callback function that updates the motor status according to the received information
-  * @param      phcan: Pointer to the CAN header
-  * @param      rxheader: Pointer to the CAN receive header
-  * @param      rxdata: The message CAN receive
-  * @retval     NULL
-  */
+ * @brief      Can bus data receiving callback function that updates the motor status according to the received information
+ * @param      phcan: Pointer to the CAN header
+ * @param      rxheader: Pointer to the CAN receive header
+ * @param      rxdata: The message CAN receive
+ * @retval     NULL
+ */
 void Can_RxMessageCallback(CAN_HandleTypeDef* phcan, CAN_RxHeaderTypeDef* rxheader, uint8_t rxdata[]) {
 #if __FN_IF_ENABLE(__FN_INFANTRY)
     BusComm_CANRxCallback(phcan, rxheader->StdId, rxdata, rxheader->DLC);
